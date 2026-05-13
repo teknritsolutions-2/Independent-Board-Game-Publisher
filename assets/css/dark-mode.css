@@ -1,149 +1,175 @@
 /* ============================================================
    TabletopForge — dark-mode.css
+   Dark theme overrides for the Metaverse design system
    ============================================================ */
 
-/* ─── NAV ───────────────────────────────────────────────────── */
-[data-theme="dark"] .nav.scrolled {
-  background     : rgba(10, 10, 10, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom-color: rgba(255, 255, 255, 0.07);
+/* ─── NAV ────────────────────────────────────────────────────── */
+[data-theme="dark"] .nav {
+  background : rgba(12, 14, 18, 0.96);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow  : 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* ─── NAV DROPDOWN ──────────────────────────────────────────── */
-[data-theme="dark"] .nav__dropdown {
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+/* ─── SECTIONS ───────────────────────────────────────────────── */
+[data-theme="dark"] .sec--lt {
+  background  : var(--dark-2);
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
-/* ─── HERO ──────────────────────────────────────────────────── */
-[data-theme="dark"] .hero__orb--1 {
-  background: rgba(212, 245, 60, 0.035);
-}
+[data-theme="dark"] .sec--lt .sec-title { color: #ffffff; }
+[data-theme="dark"] .sec--lt .sec-sub   { color: rgba(255,255,255,0.50); }
 
-[data-theme="dark"] .hero__orb--2 {
-  background: rgba(255, 255, 255, 0.02);
+/* ─── CAMPAIGN CARDS ─────────────────────────────────────────── */
+[data-theme="dark"] .camp-card {
+  background  : var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow  : none;
 }
-
-/* ─── MARQUEE ───────────────────────────────────────────────── */
-[data-theme="dark"] .marquee-strip {
-  background: #111111;
-}
-
-/* ─── CAMPAIGN CARDS ────────────────────────────────────────── */
-[data-theme="dark"] .campaign-card:hover {
+[data-theme="dark"] .camp-card:hover {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
-
-/* ─── FEATURE ACCORDION ─────────────────────────────────────── */
-[data-theme="dark"] .feature-item.active {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-/* ─── TESTIMONIAL CARDS ──────────────────────────────────────── */
-[data-theme="dark"] .testi-card:hover {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-}
+[data-theme="dark"] .camp-card__title { color: #ffffff; }
+[data-theme="dark"] .camp-card__desc  { color: rgba(255,255,255,0.50); }
 
 /* ─── GAME CARDS ─────────────────────────────────────────────── */
+[data-theme="dark"] .game-card {
+  background  : var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.07);
+}
 [data-theme="dark"] .game-card:hover {
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45);
 }
 
-/* ─── BLOG FEATURED COVER ───────────────────────────────────── */
-[data-theme="dark"] .blog-featured__cover::after {
-  background: linear-gradient(90deg, transparent, rgba(212, 245, 60, 0.18), transparent);
+/* ─── BLOG CARDS ─────────────────────────────────────────────── */
+[data-theme="dark"] .blog-card {
+  background  : var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+[data-theme="dark"] .blog-card__title { color: #ffffff; }
+[data-theme="dark"] .blog-card__meta  { color: rgba(255,255,255,0.35); }
+
+/* ─── THREAD CARDS ───────────────────────────────────────────── */
+[data-theme="dark"] .thread-card {
+  background  : var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+[data-theme="dark"] .thread-card__title { color: #ffffff; }
+[data-theme="dark"] .thread-card__meta  { color: rgba(255,255,255,0.40); }
+
+/* ─── GAME SINGLE SIDEBAR ─────────────────────────────────────── */
+[data-theme="dark"] .gs-sidebar {
+  background  : var(--dark-2);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+[data-theme="dark"] .sidebar-stat { color: rgba(255,255,255,0.45); }
+
+/* ─── FORMS ──────────────────────────────────────────────────── */
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] .form-textarea:focus,
+[data-theme="dark"] .newsletter-input:focus {
+  box-shadow: 0 0 0 3px rgba(244, 87, 69, 0.12);
 }
 
-/* ─── DASHBOARD SIDEBAR ─────────────────────────────────────── */
+/* ─── FILTER CHIPS ───────────────────────────────────────────── */
+[data-theme="dark"] .chip {
+  background  : rgba(255,255,255,0.06);
+  color       : rgba(255,255,255,0.65);
+  border-color: rgba(255,255,255,0.10);
+}
+[data-theme="dark"] .chip:hover  { background: rgba(255,255,255,0.10); color: #fff; }
+[data-theme="dark"] .chip.active { background: var(--primary); color: #fff; border-color: transparent; }
+
+/* ─── SEARCH BAR ─────────────────────────────────────────────── */
+[data-theme="dark"] .search-bar {
+  background  : var(--dark-2);
+  border-color: rgba(255,255,255,0.10);
+  color       : #fff;
+}
+
+/* ─── PROGRESS / PBAR ────────────────────────────────────────── */
+[data-theme="dark"] .pbar {
+  background: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .pbar-fill {
+  box-shadow: 0 0 8px rgba(244, 87, 69, 0.3);
+}
+
+/* ─── LIVE DOT ───────────────────────────────────────────────── */
+[data-theme="dark"] .ldot {
+  box-shadow: 0 0 0 3px rgba(244, 87, 69, 0.15);
+}
+
+/* ─── DASHBOARD ──────────────────────────────────────────────── */
+[data-theme="dark"] .dash-stat-card {
+  background  : var(--dark-2);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+[data-theme="dark"] .dash-stat-num { color: #ffffff; }
+
+[data-theme="dark"] .dash-card {
+  background  : var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
 [data-theme="dark"] .dash-sidebar {
-  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.04);
+  background  : var(--dark);
+  border-color: rgba(255, 255, 255, 0.07);
 }
 
-/* ─── BUTTONS ───────────────────────────────────────────────── */
+[data-theme="dark"] .dash-topbar {
+  background  : var(--dark);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+[data-theme="dark"] .footer {
+  background: var(--dark);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
 [data-theme="dark"] .btn--primary:hover {
-  box-shadow: 0 0 28px rgba(212, 245, 60, 0.2);
+  box-shadow: 0 0 24px rgba(244, 87, 69, 0.2);
 }
 
-[data-theme="dark"] .btn--accent:hover {
-  box-shadow: 0 0 36px rgba(212, 245, 60, 0.3);
+/* ─── TIER CARDS ─────────────────────────────────────────────── */
+[data-theme="dark"] .tier-card {
+  background  : var(--dark-2);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .tier-card.selected {
+  border-color: var(--primary);
 }
 
-/* ─── PROGRESS FILL ─────────────────────────────────────────── */
-[data-theme="dark"] .campaign-card:first-child .progress__fill,
-[data-theme="dark"] .gs-funding__fill,
-[data-theme="dark"] .h2-meter-fill {
-  box-shadow: 0 0 8px rgba(212, 245, 60, 0.25);
+/* ─── TABLES ─────────────────────────────────────────────────── */
+[data-theme="dark"] .ttf-table th {
+  background  : rgba(255,255,255,0.04);
+  color       : rgba(255,255,255,0.50);
+}
+[data-theme="dark"] .ttf-table td {
+  border-color: rgba(255,255,255,0.06);
+}
+[data-theme="dark"] .ttf-table tr:hover td {
+  background: rgba(255,255,255,0.025);
 }
 
-/* ─── LIVE DOT ──────────────────────────────────────────────── */
-[data-theme="dark"] .live-dot,
-[data-theme="dark"] .h2-live-dot {
-  box-shadow: 0 0 0 3px rgba(212, 245, 60, 0.15);
-}
-
-/* ─── COMING SOON COUNTDOWN ──────────────────────────────────── */
-[data-theme="dark"] .cs-unit {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-/* ─── 404 NUMBER ────────────────────────────────────────────── */
-[data-theme="dark"] .e404-number {
-  color               : transparent;
-  -webkit-text-stroke : 1px rgba(255, 255, 255, 0.08);
-}
-
-/* ─── FORMS ─────────────────────────────────────────────────── */
-[data-theme="dark"] .cf-input:focus,
-[data-theme="dark"] .cf-select:focus,
-[data-theme="dark"] .cf-textarea:focus,
-[data-theme="dark"] .newsletter__input:focus,
-[data-theme="dark"] .cs-input:focus,
-[data-theme="dark"] .sidebar-nl-input:focus,
-[data-theme="dark"] .reply-textarea:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-/* ─── MOBILE NAV ────────────────────────────────────────────── */
-[data-theme="dark"] .nav__mobile.open {
-  background: rgba(10, 10, 10, 0.98);
-}
-
-/* ─── SCROLLBARS ────────────────────────────────────────────── */
+/* ─── SCROLLBARS ─────────────────────────────────────────────── */
 [data-theme="dark"] {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
+[data-theme="dark"] ::-webkit-scrollbar { width: 6px; height: 6px; }
+[data-theme="dark"] ::-webkit-scrollbar-track { background: transparent; }
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
 
-[data-theme="dark"] ::-webkit-scrollbar {
-  width : 6px;
-  height: 6px;
+/* ─── TEXT SELECTION ─────────────────────────────────────────── */
+[data-theme="dark"] ::selection {
+  background: rgba(244, 87, 69, 0.2);
+  color     : #f4f4f4;
 }
 
-[data-theme="dark"] ::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background   : rgba(255, 255, 255, 0.1);
-  border-radius: 99px;
-}
-
-[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-/* ─── SKELETON LOADER ───────────────────────────────────────── */
-[data-theme="dark"] .skeleton {
-  background: linear-gradient(
-    90deg,
-    #161616 25%,
-    #1C1C1C 50%,
-    #161616 75%
-  );
-  background-size: 1200px 100%;
-}
-
-/* ─── CODE BLOCKS ───────────────────────────────────────────── */
+/* ─── CODE ───────────────────────────────────────────────────── */
 [data-theme="dark"] code,
 [data-theme="dark"] pre {
   background  : #161616;
@@ -151,8 +177,9 @@
   color       : #c4c4c4;
 }
 
-/* ─── SELECTION COLOUR ───────────────────────────────────────── */
-[data-theme="dark"] ::selection {
-  background: rgba(212, 245, 60, 0.2);
-  color     : #F4F4F4;
+/* ─── FAQ ACCORDION ──────────────────────────────────────────── */
+[data-theme="dark"] .faq-item {
+  border-color: rgba(255,255,255,0.08);
 }
+[data-theme="dark"] .faq-q { color: rgba(255,255,255,0.85); }
+[data-theme="dark"] .faq-a { color: rgba(255,255,255,0.50); }

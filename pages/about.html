@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/dark-mode.css" />
   <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    [data-theme="light"] .team-name { color: #111827 !important; }
+    [data-theme="light"] .sec--dk { background: #f0f0f0; }
+  </style>
 </head>
 <body>
 <div class="nav-wrap">
@@ -65,17 +69,33 @@
   </div>
   <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
 </nav>
-<section class="sec-hero" style="min-height:60vh;">
-  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1542396601-dca920ea2807?w=1800&q=80&auto=format&fit=crop" alt="" aria-hidden="true" /></div>
-  <div class="orbit-wrap" style="right:-60px;top:50%;transform:translateY(-50%);width:500px;height:500px;">
-    <div class="orbit-ring orbit-ring--1"><div class="orbit-dot"></div></div>
-    <div class="orbit-ring orbit-ring--2"><div class="orbit-dot orbit-dot--sm"></div></div>
-    <div class="orbit-ring orbit-ring--3"></div>
-  </div>
+<section class="sec-hero" style="min-height:70vh;">
   <div class="container" style="position:relative;z-index:1;width:100%;">
-    <div class="hero-eyebrow reveal"><i class="fa-solid fa-circle-info"></i> Our Story</div>
-    <h1 class="hero-title reveal reveal-d1" style="font-size:clamp(2.4rem,5vw,4.5rem);">Built for<br>Independent<br><em>Designers</em></h1>
-    <p class="hero-sub reveal reveal-d2">TabletopForge was founded by gamers who wanted better tools for discovering and backing independent board game campaigns.</p>
+    <div class="hero-split" style="gap:80px;min-height:auto;align-items:center;">
+      <!-- Copy -->
+      <div class="hero-split__copy">
+        <div class="hero-eyebrow reveal"><i class="fa-solid fa-circle-info"></i> Our Story</div>
+        <h1 class="hero-title reveal reveal-d1">Built for<br>Independent<br><em>Designers</em></h1>
+        <p class="hero-sub reveal reveal-d2" style="max-width:480px;">TabletopForge was founded by gamers who wanted better tools for discovering and backing independent board game campaigns.</p>
+        <div class="hero-actions reveal reveal-d3">
+          <a href="launch.html" class="btn btn--primary btn--lg"><i class="fa-solid fa-rocket"></i> Launch Your Game</a>
+          <a href="campaigns.html" class="btn btn--ghost btn--lg">Browse Campaigns</a>
+        </div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);" class="reveal reveal-d4">
+          <div><div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">2019</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Founded</div></div>
+          <div><div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">248+</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Games Launched</div></div>
+          <div><div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">$12M+</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Funds Raised</div></div>
+        </div>
+      </div>
+      <!-- Geometric Image Frame -->
+      <div class="hero-split__visual" style="display:flex;justify-content:center;align-items:center;">
+        <div class="geo-frame">
+          <img class="geo-frame__img"
+            src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=720&q=85&auto=format&fit=crop"
+            alt="Board game design process" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -103,22 +123,22 @@
     <div class="cards-grid cards-grid--4 reveal">
       <div style="text-align:center;">
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=80&auto=format&fit=crop&crop=face" alt="Marcus Reid" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid rgba(244,87,69,0.3);" loading="lazy" />
-        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Marcus Reid</div>
+        <div class="team-name" style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Marcus Reid</div>
         <div style="font-size:0.8rem;color:var(--primary);">Co-founder &amp; CEO</div>
       </div>
       <div style="text-align:center;">
         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&q=80&auto=format&fit=crop&crop=face" alt="Sana Okafor" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid rgba(244,87,69,0.3);" loading="lazy" />
-        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Sana Okafor</div>
+        <div class="team-name" style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Sana Okafor</div>
         <div style="font-size:0.8rem;color:var(--primary);">Head of Designer Relations</div>
       </div>
       <div style="text-align:center;">
         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&q=80&auto=format&fit=crop&crop=face" alt="Tom Kovacs" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid rgba(244,87,69,0.3);" loading="lazy" />
-        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Tom Kovacs</div>
+        <div class="team-name" style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Tom Kovacs</div>
         <div style="font-size:0.8rem;color:var(--primary);">Lead Engineer</div>
       </div>
       <div style="text-align:center;">
         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&q=80&auto=format&fit=crop&crop=face" alt="Yuki Tanaka" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid rgba(244,87,69,0.3);" loading="lazy" />
-        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Yuki Tanaka</div>
+        <div class="team-name" style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:4px;">Yuki Tanaka</div>
         <div style="font-size:0.8rem;color:var(--primary);">Head of Community</div>
       </div>
     </div>

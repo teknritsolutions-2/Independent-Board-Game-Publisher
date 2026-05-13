@@ -76,16 +76,16 @@
     }
     /* ── Live stats bar ── */
     .camp-stats-bar {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 24px;
       padding: 24px 32px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 16px;
       margin-top: 40px;
     }
-    .camp-stats-bar__item { display: flex; flex-direction: column; gap: 2px; }
+    .camp-stats-bar__item { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .camp-stats-bar__num {
       font-family: 'Space Mono', monospace;
       font-size: 1.6rem;
@@ -415,6 +415,18 @@
       border-radius: 16px;
       margin-bottom: 28px;
     }
+    .campaign-urgency-section {
+      padding-top: 72px !important;
+      padding-bottom: 72px;
+    }
+    .campaign-urgency-section .container {
+      display: flex;
+      justify-content: center;
+    }
+    .campaign-urgency-section .urgency-banner {
+      width: min(100%, 1140px);
+      margin-bottom: 0;
+    }
     .urgency-banner__left { display: flex; align-items: center; gap: 12px; }
     .urgency-banner__icon {
       width: 36px; height: 36px;
@@ -500,7 +512,7 @@
       .feat-camp { grid-template-columns: 1fr; }
       .feat-camp__img { min-height: 240px; }
       .feat-camp__body { padding: 28px 24px; }
-      .camp-stats-bar { gap: 20px; padding: 16px 20px; }
+      .camp-stats-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 16px 20px; }
       .filter-bar { flex-direction: column; align-items: stretch; }
       .filter-bar__search { min-width: 100%; }
     }
@@ -522,6 +534,10 @@
     [data-theme="light"] .urgency-banner { background: linear-gradient(135deg, rgba(244,87,69,0.06), rgba(244,87,69,0.03)); }
     [data-theme="light"] .urgency-count { background: rgba(0,0,0,0.06); }
     [data-theme="light"] .urgency-count__num { color: #0c0e12; }
+    [data-theme="light"] .camp-hero__sub { color: #4b5563; }
+    [data-theme="light"] .camp-hero__eyebrow { color: #6b7280; }
+    [data-theme="light"] .trust-badge { background: rgba(0,0,0,0.05); color: #374151; border-color: rgba(0,0,0,0.10); }
+    [data-theme="light"] .camp-stats-bar__lbl { color: #6b7280; }
     [data-theme="light"] .notify-bar input { background: #fff; border-color: #e5e7eb; color: #0c0e12; }
   </style>
 </head>
@@ -710,7 +726,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      URGENCY BANNER
 ══════════════════════════════════════════════════════════════ -->
-<section class="sec sec--dk" style="padding-top:0;">
+<section class="sec sec--dk sec--ov campaign-urgency-section" style="padding-top:0;">
   <div class="container">
     <div class="urgency-banner reveal">
       <div class="urgency-banner__left">
@@ -1037,7 +1053,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      HOW PLEDGING WORKS
 ══════════════════════════════════════════════════════════════ -->
-<section class="sec sec--dk">
+<section class="sec sec--dk sec--ov">
   <div class="container">
     <div class="sec-eyebrow reveal">For Backers</div>
     <h2 class="sec-title reveal reveal-d1">How Pledging Works</h2>
@@ -1070,7 +1086,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      BACKER PROMISE (TRUST)
 ══════════════════════════════════════════════════════════════ -->
-<section class="sec sec--ov" style="z-index:3;position:relative;">
+<section class="sec sec--dk sec--ov" style="z-index:3;position:relative;">
   <div class="container">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;" class="reveal">
       <div style="display:flex;flex-direction:column;gap:12px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">

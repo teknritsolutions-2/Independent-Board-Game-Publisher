@@ -2,8 +2,8 @@
      SHARED NAV — TabletopForge
      Include in HTML: <?php include '_nav.html'; ?> or JS fetch
 ═══════════════════════════════════════════ -->
-<header class="nav" role="banner">
-  <div class="container">
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
 
       <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
@@ -31,12 +31,12 @@
             </a>
             <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem">
               <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              <div>Home Page 2 <span>Designer showcase layout</span></div>
+              <div>Home Page 2 <span>Campaign spotlight layout</span></div>
             </a>
           </div>
         </li>
         <li class="nav__item">
-          <a href="about.html" class="nav__link">About</a>
+          <a href="about.html" class="nav__link">About Us</a>
         </li>
         <li class="nav__item">
           <a href="games.html" class="nav__link" aria-haspopup="true">
@@ -47,55 +47,72 @@
             <a href="games.html" class="nav__dropdown-link" role="menuitem">
               <i class="fa-solid fa-dice" aria-hidden="true"></i>
               <div>All Titles <span>Browse our full catalogue</span></div>
-            </a>          </div>
+            </a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <div>Coming Soon <span>Wishlist &amp; notify</span></div>
+            </a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-check-circle" aria-hidden="true"></i>
+              <div>Funded Games <span>Find where to buy</span></div>
+            </a>
+          </div>
         </li>
         <li class="nav__item">
-          <a href="blog.html" class="nav__link">Blog</a>
+          <a href="forum.html" class="nav__link">Forum</a>
         </li>
         <li class="nav__item">
-          <a href="contact.html" class="nav__link">Contact</a>
+          <a href="campaigns.html" class="nav__link">Campaigns</a>
         </li>
-                <li class="nav__item"><a href="forum.html" class="nav__link">Forum</a></li>
+        <li class="nav__item">
+          <a href="launch.html" class="nav__link">Launch</a>
+        </li>
         <li class="nav__item">
           <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">
             Dashboard
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
           </a>
           <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-user" aria-hidden="true"></i>
-              <div>User Dashboard <span>Orders, downloads, forum</span></div>
-            </a>
             <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem">
               <i class="fa-solid fa-gear" aria-hidden="true"></i>
-              <div>Admin Dashboard <span>Manage games &amp; designers</span></div>
+              <div>Admin Dashboard <span>Manage games &amp; operations</span></div>
             </a>
           </div>
         </li>
       </ul>
 
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
         <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <a href="login.html" class="btn btn--primary btn--sm nav__login">Login</a>
       </div>
+
       <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
-  </div>
-</header>
+  </header>
+</div>
 
 <nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html" class="nav__mobile-link">Home</a>
-  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
-  <a href="about.html" class="nav__mobile-link">About</a>
-  <a href="games.html" class="nav__mobile-link">Games</a>
-  <a href="blog.html" class="nav__mobile-link">Blog</a>
-  <a href="contact.html" class="nav__mobile-link">Contact</a>
-  <a href="forum.html" class="nav__mobile-link">Forum</a>
-  <a href="dashboard-user.html" class="nav__mobile-link">User Dashboard</a>
-  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-section">
+    <a href="index.html" class="nav__mobile-link">Home</a>
+    <a href="about.html" class="nav__mobile-link">About Us</a>
+    <a href="games.html" class="nav__mobile-link">Games</a>
+    <a href="forum.html" class="nav__mobile-link">Forum</a>
+    <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+    <a href="launch.html" class="nav__mobile-link">Launch</a>
+    <a href="dashboard-user.html" class="nav__mobile-link">Dashboard</a>
+  </div>
+  <div class="nav__mobile-section nav__mobile-section--compact">
+    <div class="nav__mobile-label">More</div>
+    <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+    <a href="games-coming-soon.html" class="nav__mobile-link nav__mobile-sub">Coming Soon</a>
+    <a href="games-funded.html" class="nav__mobile-link nav__mobile-sub">Funded Games</a>
+    <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  </div>
   <div class="nav__mobile-controls">
     <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
     <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>

@@ -83,11 +83,36 @@
     /* Marquee partner strip */
     .partner-strip { display:flex; gap:48px; flex-wrap:wrap; align-items:center; justify-content:center; }
     .partner-strip__item { font-family:'Space Mono',monospace; font-size:0.78rem; color:rgba(255,255,255,0.22); text-transform:uppercase; letter-spacing:0.12em; }
+    /* Homepage hero polygon scene */
+    .home-hero-scene {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, 520px);
+      min-height: auto;
+      margin-inline: auto;
+    }
+    .home-hero-scene .poly-img {
+      width: min(420px, 100%);
+      height: auto;
+      aspect-ratio: 4 / 5;
+    }
+    .home-platform-bar { margin-bottom: 24px; }
+    .home-lead-section {
+      margin-top: 24px;
+      padding-top: 104px;
+    }
     /* Light mode overrides */
     [data-theme="light"] .testi-card-sm { background:#fff; border-color:#e5e7eb; }
     [data-theme="light"] .testi-card-sm__quote { color:#6b7280; }
     [data-theme="light"] .trending-chip { background:#f3f4f6; border-color:#e5e7eb; color:#6b7280; }
     [data-theme="light"] .partner-strip__item { color:rgba(0,0,0,0.28); }
+    @media (max-width: 960px) {
+      .home-hero-scene { display: none; }
+      .home-platform-bar { margin-bottom: 16px; }
+      .home-lead-section { margin-top: 16px; padding-top: 84px; }
+    }
   </style>
 </head>
 <body>
@@ -172,7 +197,7 @@
           Where Great<br>Board Games<br><em>Get Their Start</em>
         </h1>
         <p class="hero-sub reveal reveal-d2" style="max-width:520px;">
-          TabletopForge is the crowdfunding home for independent board game designers. Backers discover and fund the next generation of tabletop experiences.
+          Track live campaigns, discover upcoming launches, and follow funded tabletop hits from the first pledge to final delivery.
         </p>
         <div class="hero-actions reveal reveal-d3">
           <a href="campaigns.html" class="btn btn--primary btn--lg">
@@ -200,21 +225,15 @@
           </div>
         </div>
       </div>
-      <!-- 3D Floating Visual -->
+      <!-- Polygon Visual -->
       <div class="hero-split__visual">
-        <div class="hero-3d">
-          <div class="hero-3d__blob"></div>
-          <div class="hero-3d__ring"></div>
-          <img
-            class="hero-3d__img"
-            src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=840&q=85&auto=format&fit=crop"
-            alt="Board game in play"
-          />
-          <div class="hero-3d__badge hero-3d__badge--tl">
-            <i class="fa-solid fa-fire" style="margin-right:6px;"></i> 847% Funded
-          </div>
-          <div class="hero-3d__badge hero-3d__badge--br">
-            <i class="fa-solid fa-clock" style="margin-right:6px;"></i> 15 days left
+        <div class="home-hero-scene">
+          <div class="poly-wrap">
+            <img
+              class="poly-img"
+              src="https://images.unsplash.com/photo-1609372332255-611485350f25?w=840&q=85&auto=format&fit=crop"
+              alt="Players gathered around a fantasy tabletop game"
+            />
           </div>
         </div>
       </div>
@@ -223,7 +242,7 @@
 </section>
 
 <!-- QUICK PLATFORM STATS BAR -->
-<div style="position:relative;z-index:3;background:rgba(244,87,69,0.07);border-top:1px solid rgba(244,87,69,0.12);border-bottom:1px solid rgba(244,87,69,0.12);padding:14px 0;">
+<div class="home-platform-bar" style="position:relative;z-index:3;background:rgba(244,87,69,0.07);border-top:1px solid rgba(244,87,69,0.12);border-bottom:1px solid rgba(244,87,69,0.12);padding:14px 0;">
   <div class="container" style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;">
     <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:rgba(255,255,255,0.55);">
       <i class="fa-solid fa-fire" style="color:var(--primary);"></i>
@@ -250,7 +269,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      AUDIENCE SPLIT — Who is TabletopForge for?
 ══════════════════════════════════════════════════════════════ -->
-<section class="sec sec--dk sec--ov">
+<section class="sec sec--dk home-lead-section">
   <div class="container">
     <div class="sec-head reveal">
       <div class="sec-label"><i class="fa-solid fa-users"></i> Who We Serve</div>
@@ -275,8 +294,8 @@
       <div class="audience-panel" style="border-left:1px solid rgba(255,255,255,0.06);">
         <div class="audience-panel__icon"><i class="fa-solid fa-pencil"></i></div>
         <div>
-          <h3 class="audience-panel__title">For Designers</h3>
-          <p class="audience-panel__desc">Got a game that deserves the world? Submit your title, run a funded campaign, and take your creation from concept to community.</p>
+          <h3 class="audience-panel__title">For Studios</h3>
+          <p class="audience-panel__desc">Planning your next release? Build campaign momentum, reach tabletop fans, and take a project from preview buzz to funded launch.</p>
         </div>
         <ul class="audience-panel__list">
           <li><i class="fa-solid fa-check"></i> No upfront costs — we succeed when you do</li>
@@ -284,7 +303,7 @@
           <li><i class="fa-solid fa-check"></i> Campaign page builder + analytics dashboard</li>
           <li><i class="fa-solid fa-check"></i> Fulfilment &amp; retail distribution support</li>
         </ul>
-        <a href="launch.html" class="btn btn--ghost" style="align-self:flex-start;">Launch Your Game <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="launch.html" class="btn btn--ghost" style="align-self:flex-start;">See Launch Tools <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -482,8 +501,8 @@
       <div class="step-card reveal">
         <div class="step-icon"><i class="fa-solid fa-lightbulb"></i></div>
         <div class="step-num">01</div>
-        <h3 class="step-title">Designers Submit</h3>
-        <p class="step-desc">Creators pitch their game on the Launch page. Our team reviews quality, playability, and market fit before approval.</p>
+        <h3 class="step-title">Campaign Review</h3>
+        <p class="step-desc">Studios bring their game to the Launch page. Our team reviews quality, playability, and market fit before approval.</p>
       </div>
       <div class="step-card reveal reveal-d1">
         <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
@@ -625,12 +644,12 @@
         </div>
       </div>
       <div class="testi-card-sm">
-        <p class="testi-card-sm__quote">"As a first-time designer, TabletopForge gave us the tools and the audience we needed. We hit our goal in 18 hours and ended at 847% funded."</p>
+        <p class="testi-card-sm__quote">"As a first-time studio, TabletopForge gave us the tools and the audience we needed. We hit our goal in 18 hours and ended at 847% funded."</p>
         <div class="testi-card-sm__author">
           <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=72&h=72&q=80&auto=format&fit=crop&crop=face" alt="Priya" /></div>
           <div>
             <div class="testi-card-sm__name">Priya S.</div>
-            <div class="testi-card-sm__role">Designer — Kingdoms of Ash</div>
+            <div class="testi-card-sm__role">Studio Lead — Kingdoms of Ash</div>
           </div>
         </div>
       </div>
@@ -716,7 +735,7 @@
           <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
           <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
         </a>
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">Live campaigns, upcoming launches, and funded tabletop favorites for backers who want to stay close to the next great game.</p>
         <div style="display:flex;gap:10px;margin-top:20px;">
           <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
           <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -735,7 +754,7 @@
         </div>
       </div>
       <div class="footer-col">
-        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__heading">Campaign Tools</div>
         <div class="footer-col__links">
           <a href="launch.html" class="footer-col__link">Launch a Game</a>
           <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>

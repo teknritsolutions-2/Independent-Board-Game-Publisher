@@ -81,6 +81,7 @@ window.TTF.paginationButtons = function(btnSel = '.page-btn', scrollTargetSel = 
 const NavManager = (() => {
   let menuOpen = false;
   const SHARED_MOBILE_ID = 'mobile-menu';
+  const DESKTOP_NAV_BREAKPOINT = 980;
 
   function currentFile() {
     return window.location.pathname.split('/').pop() || 'index.html';
@@ -88,11 +89,21 @@ const NavManager = (() => {
 
   function currentGroup(file) {
     if (['index.html', 'home-page-2.html'].includes(file)) return 'home';
-    if (file === 'about.html') return 'about';
-    if (['games.html', 'game-single.html', 'press-kit.html', 'retailer-info.html', 'coming-soon.html'].includes(file)) return 'games';
-    if (['blog.html', 'blog-single.html'].includes(file)) return 'blog';
-    if (file === 'contact.html') return 'contact';
-    if (['forum.html', 'forum-thread.html', 'faq.html'].includes(file)) return 'community';
+    if ([
+      'about.html',
+      'careers.html',
+      'blog.html',
+      'blog-single.html',
+      'contact.html',
+      'faq.html',
+      'press-kit.html',
+      'privacy-policy.html',
+      'terms-conditions.html'
+    ].includes(file)) return 'about';
+    if (['forum.html', 'forum-thread.html'].includes(file)) return 'forum';
+    if (['games.html', 'game-single.html', 'games-coming-soon.html', 'games-funded.html', 'retailer-info.html'].includes(file)) return 'games';
+    if (file === 'campaigns.html') return 'campaigns';
+    if (file === 'launch.html') return 'launch';
     if (file === 'profile.html' || file === 'shipping-status.html' || file.startsWith('dashboard-')) return 'dashboard';
     return '';
   }
@@ -101,11 +112,92 @@ const NavManager = (() => {
     return group === activeGroup ? 'nav__link active' : 'nav__link';
   }
 
+  function normalizeNavFile(file) {
+    return {
+      'blog-single.html': 'blog.html',
+      'forum-thread.html': 'forum.html',
+      'game-single.html': 'games.html',
+      'retailer-info.html': 'games.html',
+      'profile.html': 'dashboard-user.html',
+      'shipping-status.html': 'dashboard-user.html',
+      'careers.html': 'about.html',
+      'press-kit.html': 'about.html',
+      'privacy-policy.html': 'about.html',
+      'terms-conditions.html': 'about.html'
+    }[file] || file;
+  }
+
+  function dropdownLinkClass(target, current) {
+    return target === normalizeNavFile(current) ? 'nav__dropdown-link active' : 'nav__dropdown-link';
+  }
+
   function mobileLinkClass(file, current, extra = '') {
     const classes = ['nav__mobile-link'];
     if (extra) classes.push(extra);
-    if (file === current) classes.push('active');
+    if (file === normalizeNavFile(current)) classes.push('active');
     return classes.join(' ');
+  }
+
+  function buildFooterMarkup() {
+    return `
+<footer class="footer" data-footer-normalized="1">
+  <div class="container">
+    <div class="footer-grid footer-grid--site">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer__brand" aria-label="TabletopForge Home">
+          <div class="nav__logo-mark" aria-hidden="true">
+            ${brandMarkSvg(18)}
+          </div>
+          <span class="footer__brand-text">TabletopForge</span>
+        </a>
+        <p class="footer__summary">Crowdfunding, discovery, and launch tooling for independent board game publishers and the backers who keep them moving.</p>
+        <div class="footer__cta-row">
+          <a href="campaigns.html" class="btn btn--primary btn--sm">Browse Campaigns</a>
+          <a href="launch.html" class="btn btn--ghost btn--sm">Launch a Game</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Explore</div>
+        <div class="footer-col__links">
+          <a href="index.html" class="footer-col__link">Home</a>
+          <a href="home-page-2.html" class="footer-col__link">Home Page 2</a>
+          <a href="games.html" class="footer-col__link">Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="campaigns.html" class="footer-col__link">Campaigns</a>
+          <a href="launch.html" class="footer-col__link">Launch</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="forum.html" class="footer-col__link">Forum</a>
+          <a href="faq.html" class="footer-col__link">FAQ</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Account</div>
+        <div class="footer-col__links">
+          <a href="dashboard-user.html" class="footer-col__link">Dashboard</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="login.html" class="footer-col__link">Login</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy Policy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TabletopForge. All rights reserved.</span>
+      <span>Independent board games, cleaner launches, stronger backer support.</span>
+    </div>
+  </div>
+</footer>`;
   }
 
   function buildHeaderMarkup(file) {
@@ -128,15 +220,18 @@ const NavManager = (() => {
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
           </a>
           <div class="nav__dropdown" role="menu">
-            <a href="index.html" class="nav__dropdown-link" role="menuitem">
+            <a href="index.html" class="${dropdownLinkClass('index.html', file)}" role="menuitem">
               <i class="fa-solid fa-house" aria-hidden="true"></i>
               <div>Home Page 1 <span>Main landing experience</span></div>
             </a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem">
+            <a href="home-page-2.html" class="${dropdownLinkClass('home-page-2.html', file)}" role="menuitem">
               <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              <div>Home Page 2 <span>Designer showcase layout</span></div>
+              <div>Home Page 2 <span>Campaign spotlight layout</span></div>
             </a>
           </div>
+        </li>
+        <li class="nav__item">
+          <a href="about.html" class="${linkClass('about', activeGroup)}" data-nav-group="about">About Us</a>
         </li>
         <li class="nav__item">
           <a href="games.html" class="${linkClass('games', activeGroup)}" aria-haspopup="true" data-nav-group="games">
@@ -144,35 +239,28 @@ const NavManager = (() => {
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
           </a>
           <div class="nav__dropdown" role="menu">
-            <a href="games.html" class="nav__dropdown-link" role="menuitem">
+            <a href="games.html" class="${dropdownLinkClass('games.html', file)}" role="menuitem">
               <i class="fa-solid fa-dice" aria-hidden="true"></i>
               <div>All Titles <span>Browse our full catalogue</span></div>
             </a>
-            <a href="games.html?filter=live" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-fire" aria-hidden="true"></i>
-              <div>Live Campaigns <span>Back a game now</span></div>
-            </a>
-            <a href="games.html?filter=coming" class="nav__dropdown-link" role="menuitem">
+            <a href="games-coming-soon.html" class="${dropdownLinkClass('games-coming-soon.html', file)}" role="menuitem">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
               <div>Coming Soon <span>Wishlist &amp; notify</span></div>
             </a>
-            <a href="games.html?filter=funded" class="nav__dropdown-link" role="menuitem">
+            <a href="games-funded.html" class="${dropdownLinkClass('games-funded.html', file)}" role="menuitem">
               <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
               <div>Funded Games <span>Find where to buy</span></div>
             </a>
           </div>
         </li>
         <li class="nav__item">
-          <a href="about.html" class="${linkClass('about', activeGroup)}" data-nav-group="about">About</a>
+          <a href="forum.html" class="${linkClass('forum', activeGroup)}" data-nav-group="forum">Forum</a>
         </li>
         <li class="nav__item">
-          <a href="blog.html" class="${linkClass('blog', activeGroup)}" data-nav-group="blog">Blog</a>
+          <a href="campaigns.html" class="${linkClass('campaigns', activeGroup)}" data-nav-group="campaigns">Campaigns</a>
         </li>
         <li class="nav__item">
-          <a href="contact.html" class="${linkClass('contact', activeGroup)}" data-nav-group="contact">Contact</a>
-        </li>
-        <li class="nav__item">
-          <a href="forum.html" class="${linkClass('community', activeGroup)}" data-nav-group="community">Forum</a>
+          <a href="launch.html" class="${linkClass('launch', activeGroup)}" data-nav-group="launch">Launch</a>
         </li>
         <li class="nav__item">
           <a href="dashboard-user.html" class="${linkClass('dashboard', activeGroup)}" aria-haspopup="true" data-nav-group="dashboard">
@@ -180,13 +268,9 @@ const NavManager = (() => {
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
           </a>
           <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-user" aria-hidden="true"></i>
-              <div>User Dashboard <span>Orders, downloads, forum</span></div>
-            </a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem">
+            <a href="dashboard-admin.html" class="${dropdownLinkClass('dashboard-admin.html', file)}" role="menuitem">
               <i class="fa-solid fa-gear" aria-hidden="true"></i>
-              <div>Admin Dashboard <span>Manage games &amp; designers</span></div>
+              <div>Admin Dashboard <span>Manage games &amp; operations</span></div>
             </a>
           </div>
         </li>
@@ -211,19 +295,26 @@ const NavManager = (() => {
   function buildMobileMarkup(file) {
     return `
 <nav id="${SHARED_MOBILE_ID}" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nav__mobile-section">
+    <a href="index.html" class="${mobileLinkClass('index.html', file)}">Home</a>
+    <a href="about.html" class="${mobileLinkClass('about.html', file)}">About Us</a>
+    <a href="games.html" class="${mobileLinkClass('games.html', file)}">Games</a>
+    <a href="forum.html" class="${mobileLinkClass('forum.html', file)}">Forum</a>
+    <a href="campaigns.html" class="${mobileLinkClass('campaigns.html', file)}">Campaigns</a>
+    <a href="launch.html" class="${mobileLinkClass('launch.html', file)}">Launch</a>
+    <a href="dashboard-user.html" class="${mobileLinkClass('dashboard-user.html', file)}">Dashboard</a>
+  </div>
+  <div class="nav__mobile-section nav__mobile-section--compact">
+    <div class="nav__mobile-label">More</div>
+    <a href="home-page-2.html" class="${mobileLinkClass('home-page-2.html', file, 'nav__mobile-sub')}">Home Page 2</a>
+    <a href="games-coming-soon.html" class="${mobileLinkClass('games-coming-soon.html', file, 'nav__mobile-sub')}">Coming Soon</a>
+    <a href="games-funded.html" class="${mobileLinkClass('games-funded.html', file, 'nav__mobile-sub')}">Funded Games</a>
+    <a href="dashboard-admin.html" class="${mobileLinkClass('dashboard-admin.html', file, 'nav__mobile-sub')}">Admin Dashboard</a>
+  </div>
   <div class="nav__mobile-controls">
     <button class="btn btn--ghost" data-theme-toggle data-theme-label="Theme" type="button">Theme</button>
     <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
   </div>
-  <a href="index.html" class="${mobileLinkClass('index.html', file)}">Home</a>
-  <a href="home-page-2.html" class="${mobileLinkClass('home-page-2.html', file, 'nav__mobile-sub')}">Home Page 2</a>
-  <a href="about.html" class="${mobileLinkClass('about.html', file)}">About</a>
-  <a href="games.html" class="${mobileLinkClass('games.html', file)}">Games</a>
-  <a href="blog.html" class="${mobileLinkClass('blog.html', file)}">Blog</a>
-  <a href="contact.html" class="${mobileLinkClass('contact.html', file)}">Contact</a>
-  <a href="forum.html" class="${mobileLinkClass('forum.html', file)}">Forum</a>
-  <a href="dashboard-user.html" class="${mobileLinkClass('dashboard-user.html', file)}">User Dashboard</a>
-  <a href="dashboard-admin.html" class="${mobileLinkClass('dashboard-admin.html', file, 'nav__mobile-sub')}">Admin Dashboard</a>
   <a href="login.html" class="btn btn--primary nav__mobile-login">Login</a>
 </nav>`;
   }
@@ -239,9 +330,17 @@ const NavManager = (() => {
     $('.nav-wrap')?.insertAdjacentHTML('afterend', buildMobileMarkup(file));
   }
 
+  function normalizePublicFooter() {
+    const existingFooter = $('.footer');
+    if (!existingFooter || existingFooter.dataset.footerNormalized === '1') return;
+    if (document.body.classList.contains('dashboard-page')) return;
+    existingFooter.outerHTML = buildFooterMarkup();
+  }
+
   function init() {
     const file = currentFile();
     normalizePublicNav(file);
+    normalizePublicFooter();
     syncBrandMarks();
 
     const nav       = $('.nav-wrap .nav') || $('.nav');
@@ -277,7 +376,7 @@ const NavManager = (() => {
       if (menuOpen && !nav.contains(e.target) && !mobileNav?.contains(e.target)) closeMenu();
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 1024) closeMenu(); });
+    window.addEventListener('resize', () => { if (window.innerWidth > DESKTOP_NAV_BREAKPOINT) closeMenu(); });
 
     $$('.nav__link[href]').forEach(link => {
       if (link.getAttribute('href').split('/').pop() === file) {

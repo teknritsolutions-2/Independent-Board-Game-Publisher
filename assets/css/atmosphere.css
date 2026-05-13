@@ -49,12 +49,12 @@
   border-color: #4A7C00;
   color: #fff;
 }
-[data-theme="light"] .progress__fill,
+[data-theme="light"] .pbar-fill,
 [data-theme="light"] .gs-funding__fill,
 [data-theme="light"] .h2-meter-fill {
   background-color: #4A7C00 !important;
 }
-[data-theme="light"] .live-dot,
+[data-theme="light"] .ldot,
 [data-theme="light"] .h2-live-dot {
   background-color: #4A7C00 !important;
 }
@@ -884,7 +884,7 @@
 }
 
 
-.campaign-card {
+.camp-card {
   background:
     linear-gradient(180deg,
       rgba(255,255,255,0.014) 0%, transparent 28%),
@@ -983,8 +983,7 @@
   display: none !important;
 }
 
-.progress__fill[data-width="100"],
-.campaign-card:first-child .progress__fill {
+.pbar-fill {
   background: var(--accent) !important;
   box-shadow: 0 0 8px rgba(212,245,60,0.35);
 }
