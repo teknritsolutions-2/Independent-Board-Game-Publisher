@@ -3,365 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
-  <title>My Profile — TabletopForge</title>
-  <meta name="robots" content="noindex" />
+  <title>Profile — TabletopForge</title>
+  <meta name="description" content="View a TabletopForge user profile." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
-  </head>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+</head>
 <body>
-
-<!-- Navigation -->
-<header class="nav scrolled" role="banner">
-  <div class="container">
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
-        <div class="nav__logo-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-        </div>
-        <span class="nav__logo-text">TabletopForge</span>
-      </a>
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
       <ul class="nav__links" role="list">
-        <li class="nav__item"><a href="index.html"  class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="games.html"  class="nav__link">Games</a></li>
-        <li class="nav__item"><a href="blog.html"   class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="forum.html"  class="nav__link">Forum</a></li>
-        <li class="nav__item"><a href="dashboard-user.html" class="nav__link active">Dashboard</a></li>
+        <li class="nav__item">
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="dashboard-user.html" class="btn btn--ghost nav__login">Dashboard</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
     </nav>
+  </header>
+</div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
   </div>
-</header>
-
-<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"          class="nav__mobile-link">Home</a>
-  <a href="games.html"          class="nav__mobile-link">Games</a>
-  <a href="blog.html"           class="nav__mobile-link">Blog</a>
-  <a href="forum.html"          class="nav__mobile-link">Forum</a>
-  <a href="dashboard-user.html" class="nav__mobile-link">Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
-  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
 </nav>
-
-<!-- Main Content -->
-<main id="main-content">
-
-<!-- Profile Header -->
-<div class="profile-header">
-
-  <div class="profile-avatar-wrap">
-    <div class="profile-avatar" aria-label="Profile avatar: JD">JD</div>
-    <button class="profile-avatar-edit" aria-label="Edit avatar" type="button">
-      <i class="fa-solid fa-pen" aria-hidden="true"></i>
-    </button>
-  </div>
-
-  <div class="profile-info">
-    <h1 class="profile-name">James Donnelly</h1>
-    <p class="profile-handle">@jamesdonnelly · Designer since 2021</p>
-    <div class="profile-badges">
-      <span class="tag">Designer</span>
-      <span class="tag tag--accent">8 games</span>
-      <span class="tag">Forum member</span>
+<section class="sec-hero" style="min-height:40vh;">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1542396601-dca920ea2807?w=1800&q=80&auto=format&fit=crop" alt="" aria-hidden="true" /></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;display:flex;align-items:flex-end;gap:24px;">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&q=80&auto=format&fit=crop&crop=face" alt="Sarah K." style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);" />
+    <div style="padding-bottom:4px;">
+      <h1 style="font-family:'Rubik',sans-serif;font-size:2rem;font-weight:400;color:#fff;margin-bottom:4px;">Sarah K.</h1>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.50);">Backer &middot; Member since 2024 &middot; 4 games backed</p>
     </div>
   </div>
+</section>
 
-  <nav class="profile-tabs" aria-label="Profile sections">
-    <button class="gs-tab active" data-ptab="overview" type="button">Overview</button>
-    <button class="gs-tab" data-ptab="settings"  type="button">Settings</button>
-    <button class="gs-tab" data-ptab="security"  type="button">Security</button>
-    <button class="gs-tab" data-ptab="notifs"    type="button">Notifications</button>
-  </nav>
-
-</div>
-
-<!-- Profile Panels -->
-<div style="background:var(--bg-primary);padding:var(--sp-7);">
-  <div style="max-width:900px;margin:0 auto;">
-
-    <div id="ptab-overview" class="gs-panel active" role="tabpanel">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5);">
-
-        <div class="dash-card">
-          <div class="dash-card__head">
-            <span class="dash-card__title"><i class="fa-solid fa-chart-bar"></i> Creator Stats</span>
-          </div>
-          <div class="dash-card__body">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);">
-              <div>
-                <span style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;display:block;">8</span>
-                <span style="font-size:0.75rem;color:var(--text-muted);">Campaigns backed</span>
-              </div>
-              <div>
-                <span style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;display:block;">$642</span>
-                <span style="font-size:0.75rem;color:var(--text-muted);">Total pledged</span>
-              </div>
-              <div>
-                <span style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;display:block;">14</span>
-                <span style="font-size:0.75rem;color:var(--text-muted);">PnP files</span>
-              </div>
-              <div>
-                <span style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;letter-spacing:-0.04em;display:block;">38</span>
-                <span style="font-size:0.75rem;color:var(--text-muted);">Forum posts</span>
-              </div>
-            </div>
-          </div>
+<section class="sec sec--dk sec--ov">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;">
+      <div>
+        <h2 style="font-family:'Rubik',sans-serif;font-size:1.2rem;font-weight:400;color:#fff;margin-bottom:16px;">Backed Games</h2>
+        <div class="cards-grid cards-grid--4">
+          <article class="camp-card"><img class="camp-card__img" src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400&q=80&auto=format&fit=crop" alt="Kingdoms of Ash" loading="lazy" style="height:140px;" /><div class="camp-card__body" style="padding:14px;"><h3 class="camp-card__title" style="font-size:0.95rem;">Kingdoms of Ash</h3></div></article>
+          <article class="camp-card"><img class="camp-card__img" src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=400&q=80&auto=format&fit=crop" alt="Verdant Isles" loading="lazy" style="height:140px;" /><div class="camp-card__body" style="padding:14px;"><h3 class="camp-card__title" style="font-size:0.95rem;">Verdant Isles</h3></div></article>
         </div>
-
-        <div class="dash-card">
-          <div class="dash-card__head">
-            <span class="dash-card__title"><i class="fa-solid fa-dice"></i> Backed Titles</span>
-            <a href="dashboard-user.html" class="dash-card__link">View all <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-          <div class="dash-card__body" style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-muted);flex-shrink:0;"><i class="fa-solid fa-chess-rook" aria-hidden="true"></i></div>
-              <div style="flex:1;"><p style="font-size:0.85rem;font-weight:600;">Citadels of the Deep</p><p style="font-size:0.72rem;color:var(--text-muted);">Sailor Edition · $65</p></div>
-              <span class="status-badge status-live"><i class="fa-solid fa-circle"></i> Live</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-muted);flex-shrink:0;"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div>
-              <div style="flex:1;"><p style="font-size:0.85rem;font-weight:600;">Verdant Empires</p><p style="font-size:0.72rem;color:var(--text-muted);">Deluxe All-In · $145</p></div>
-              <span class="status-badge status-transit"><i class="fa-solid fa-circle"></i> Transit</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-muted);flex-shrink:0;"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
-              <div style="flex:1;"><p style="font-size:0.85rem;font-weight:600;">The Iron Pact</p><p style="font-size:0.72rem;color:var(--text-muted);">Standard · $55</p></div>
-              <span class="status-badge status-delivered"><i class="fa-solid fa-check"></i> Delivered</span>
-            </div>
-          </div>
+      </div>
+      <div style="background:var(--dark-card);border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:24px;">
+        <h3 style="font-family:'Rubik',sans-serif;font-size:0.9rem;font-weight:400;color:#fff;margin-bottom:16px;">Stats</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.40);">Games Backed</span><span style="color:#fff;font-family:'Space Mono',monospace;">4</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.40);">Forum Posts</span><span style="color:#fff;font-family:'Space Mono',monospace;">23</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.40);">Wishlisted</span><span style="color:#fff;font-family:'Space Mono',monospace;">12</span></div>
         </div>
-
-        <div class="dash-card" style="grid-column:span 2;">
-          <div class="dash-card__head">
-            <span class="dash-card__title"><i class="fa-solid fa-comments"></i> Recent Forum Activity</span>
-            <a href="forum.html" class="dash-card__link">Go to forum <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-          <div class="dash-card__body">
-            <div style="display:flex;flex-direction:column;">
-              <div class="forum-row">
-                <div class="forum-row__avatar">JD</div>
-                <div style="flex:1;">
-                  <p class="forum-row__title">Re: Best solo strategies for Verdant Empires?</p>
-                  <p class="forum-row__meta">Gameplay Strategies · 2h ago</p>
-                </div>
-                <div class="forum-row__stats">42 replies</div>
-              </div>
-              <div class="forum-row">
-                <div class="forum-row__avatar">JD</div>
-                <div style="flex:1;">
-                  <p class="forum-row__title">House rule: asymmetric starting VP — it works!</p>
-                  <p class="forum-row__meta">House Rules · 3d ago</p>
-                </div>
-                <div class="forum-row__stats">15 replies</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-
-    <div id="ptab-settings" class="gs-panel" role="tabpanel">
-
-      <div class="settings-section">
-        <div class="settings-section__head">
-          <i class="fa-solid fa-user" aria-hidden="true"></i>
-          <h3>Personal Information</h3>
-        </div>
-        <div class="settings-section__body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-4);">
-            <div class="cf-field">
-              <label class="cf-label">First Name</label>
-              <input class="cf-input" type="text" value="James" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Last Name</label>
-              <input class="cf-input" type="text" value="Donnelly" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Email</label>
-              <input class="cf-input" type="email" value="james@email.com" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Display Name</label>
-              <input class="cf-input" type="text" value="jamesdonnelly" />
-            </div>
-          </div>
-          <div class="cf-field" style="margin-bottom:var(--sp-5);">
-            <label class="cf-label">Bio <span>(optional)</span></label>
-            <textarea class="cf-textarea" style="min-height:80px;">Backed 8 TabletopForge titles. Strategy gamer. Bristol, UK.</textarea>
-          </div>
-          <button class="btn btn--primary btn--sm" type="button">Save changes</button>
-        </div>
-      </div>
-
-      <div class="settings-section">
-        <div class="settings-section__head">
-          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-          <h3>Shipping Address</h3>
-        </div>
-        <div class="settings-section__body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);margin-bottom:var(--sp-4);">
-            <div class="cf-field" style="grid-column:span 2;">
-              <label class="cf-label">Address Line 1</label>
-              <input class="cf-input" type="text" placeholder="Street address" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">City</label>
-              <input class="cf-input" type="text" placeholder="City" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Postcode</label>
-              <input class="cf-input" type="text" placeholder="Postcode" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Country</label>
-              <select class="cf-select">
-                <option>United Kingdom</option>
-                <option>United States</option>
-                <option>Germany</option>
-                <option>France</option>
-                <option>Australia</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn--primary btn--sm" type="button">Save address</button>
-        </div>
-      </div>
-
-    </div>
-
-    <div id="ptab-security" class="gs-panel" role="tabpanel">
-
-      <div class="settings-section">
-        <div class="settings-section__head">
-          <i class="fa-solid fa-lock" aria-hidden="true"></i>
-          <h3>Change Password</h3>
-        </div>
-        <div class="settings-section__body">
-          <div style="max-width:440px;display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-5);">
-            <div class="cf-field">
-              <label class="cf-label">Current password</label>
-              <input class="cf-input" type="password" placeholder="••••••••" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">New password</label>
-              <input class="cf-input" type="password" placeholder="••••••••" />
-            </div>
-            <div class="cf-field">
-              <label class="cf-label">Confirm new password</label>
-              <input class="cf-input" type="password" placeholder="••••••••" />
-            </div>
-          </div>
-          <button class="btn btn--primary btn--sm" type="button">Update password</button>
-        </div>
-      </div>
-
-      <div class="settings-section">
-        <div class="settings-section__head">
-          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-          <h3>Two-Factor Authentication</h3>
-        </div>
-        <div class="settings-section__body">
-          <div class="settings-row">
-            <div class="settings-row__info">
-              <h4>Authenticator App</h4>
-              <p>Use Google Authenticator or Authy for 2FA codes.</p>
-            </div>
-            <label class="toggle" aria-label="Enable authenticator app">
-              <input type="checkbox" />
-              <div class="toggle__track"></div>
-              <div class="toggle__thumb"></div>
-            </label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info">
-              <h4>SMS Backup</h4>
-              <p>Receive a code by text message as a backup method.</p>
-            </div>
-            <label class="toggle" aria-label="Enable SMS backup">
-              <input type="checkbox" />
-              <div class="toggle__track"></div>
-              <div class="toggle__thumb"></div>
-            </label>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div id="ptab-notifs" class="gs-panel" role="tabpanel">
-
-      <div class="settings-section">
-        <div class="settings-section__head">
-          <i class="fa-solid fa-bell" aria-hidden="true"></i>
-          <h3>Email Notifications</h3>
-        </div>
-        <div class="settings-section__body">
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>Game updates</h4><p>News and stretch goal unlocks for games you've followedked.</p></div>
-            <label class="toggle" aria-label="Toggle game updates"><input type="checkbox" checked /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>Shipping notifications</h4><p>Updates when your order status changes.</p></div>
-            <label class="toggle" aria-label="Toggle shipping notifications"><input type="checkbox" checked /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>New PnP files</h4><p>Alerts when new print-and-play files are available.</p></div>
-            <label class="toggle" aria-label="Toggle PnP file alerts"><input type="checkbox" checked /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>Forum replies</h4><p>Notify when someone replies to your posts.</p></div>
-            <label class="toggle" aria-label="Toggle forum reply alerts"><input type="checkbox" checked /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>New campaign launches</h4><p>Be the first to know when we launch something new.</p></div>
-            <label class="toggle" aria-label="Toggle new campaign notifications"><input type="checkbox" /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-          <div class="settings-row">
-            <div class="settings-row__info"><h4>Marketing emails</h4><p>Occasional offers, merchandise, and partner news.</p></div>
-            <label class="toggle" aria-label="Toggle marketing emails"><input type="checkbox" /><div class="toggle__track"></div><div class="toggle__thumb"></div></label>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
   </div>
-</div>
-
-</main>
-
-<script src="../assets/js/main.js?v=20260412r2"></script>
-<script src="../assets/js/dashboard.js?v=20260412r3"></script>
-<script>
-  document.querySelectorAll('[data-ptab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-ptab]').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.gs-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      const panel = document.getElementById('ptab-' + btn.dataset.ptab);
-      if (panel) panel.classList.add('active');
-    });
-  });
-</script>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

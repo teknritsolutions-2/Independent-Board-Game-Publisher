@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Your Game — TabletopForge</title>
+  <meta name="description" content="Submit your independent board game for crowdfunding on TabletopForge. Reach 47,000+ backers, keep your IP, and get to market faster." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    /* ── Hero ── */
+    .launch-hero {
+      background: linear-gradient(135deg, #0c0e12 40%, #130f1e 100%);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .launch-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(244,87,69,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .launch-hero__glow {
+      position: absolute;
+      left: -200px;
+      top: -100px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,87,69,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .launch-hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .launch-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      background: rgba(244,87,69,0.1);
+      border: 1px solid rgba(244,87,69,0.2);
+      font-size: 0.78rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .launch-hero__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .launch-hero__title em { color: var(--primary); font-style: normal; }
+    .launch-hero__sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 500px;
+    }
+    /* ── Floating mockup card ── */
+    .launch-mockup {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .launch-mockup__card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      animation: float-y 4s ease-in-out infinite;
+    }
+    .launch-mockup__card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .launch-mockup__card-body {
+      padding: 20px;
+    }
+    .launch-mockup__card-title {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .launch-mockup__progress {
+      height: 4px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .launch-mockup__progress-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--primary);
+      box-shadow: 0 0 8px rgba(244,87,69,0.35);
+    }
+    .launch-mockup__stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.40);
+    }
+    .launch-mockup__stat-row span:first-child {
+      font-family: 'Space Mono', monospace;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    /* Floating badges */
+    .launch-badge {
+      position: absolute;
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .launch-badge--tl {
+      top: -20px;
+      left: -30px;
+      animation: float-y 3.5s ease-in-out infinite;
+    }
+    .launch-badge--br {
+      bottom: -20px;
+      right: -24px;
+      animation: float-y 4.5s ease-in-out infinite 0.8s;
+    }
+    .launch-badge i { color: var(--primary); }
+    /* ── Steps timeline ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+    .timeline-step {
+      padding: 0 24px 0 0;
+      position: relative;
+    }
+    .timeline-step__dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(244,87,69,0.1);
+      border: 1px solid rgba(244,87,69,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step__dot i { color: var(--primary); font-size: 1.1rem; }
+    .timeline-step__num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.20);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .timeline-step__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .timeline-step__desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+    /* ── Comparison table ── */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .comp-table th {
+      text-align: left;
+      padding: 14px 20px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .comp-table td {
+      padding: 13px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.60);
+    }
+    .comp-table tr:last-child td { border-radius: 0 0 16px 16px; }
+    .comp-table td:first-child { color: rgba(255,255,255,0.75); }
+    .comp-table .check { color: var(--primary); font-size: 1rem; }
+    .comp-table .cross  { color: rgba(255,255,255,0.20); font-size: 1rem; }
+    .comp-col--us { background: rgba(244,87,69,0.06); }
+    .comp-col-header--us {
+      color: var(--primary);
+      background: rgba(244,87,69,0.08);
+      border-radius: 12px 12px 0 0;
+      border: 1px solid rgba(244,87,69,0.15);
+      border-bottom: none;
+    }
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .pricing-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(244,87,69,0.2);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 14px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .pricing-tier {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .pricing-name {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .pricing-amount {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-amount sup { font-size: 1rem; vertical-align: top; margin-top: 6px; }
+    .pricing-note {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 24px;
+    }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.60);
+    }
+    .pricing-features li i { color: var(--primary); margin-top: 2px; width: 14px; flex-shrink: 0; }
+    /* ── Submission form ── */
+    .submit-form {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 48px 44px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .form-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .form-input, .form-select, .form-textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(244,87,69,0.35);
+    }
+    .form-select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.22); }
+    .form-hint { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
+    /* Upload zone */
+    .upload-zone {
+      border: 2px dashed rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .upload-zone:hover {
+      border-color: rgba(244,87,69,0.35);
+      background: rgba(244,87,69,0.04);
+    }
+    .upload-zone__icon { font-size: 2rem; color: var(--primary); opacity: 0.7; margin-bottom: 10px; }
+    .upload-zone__title { font-size: 0.9rem; color: rgba(255,255,255,0.60); margin-bottom: 4px; }
+    .upload-zone__sub { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+    /* Checklist */
+    .ready-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      list-style: none;
+    }
+    .ready-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .ready-list li i { color: var(--primary); width: 14px; flex-shrink: 0; }
+    /* ── Testimonial row ── */
+    .creator-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      cursor: pointer;
+      font-family: 'Rubik', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-q i { transition: transform 0.25s; color: var(--primary); flex-shrink: 0; }
+    .faq-item.open .faq-q i { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 0 20px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { display: block; }
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .launch-hero__inner { grid-template-columns: 1fr; }
+      .launch-mockup { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .timeline::before { display: none; }
+      .ready-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .submit-form { padding: 28px 20px; }
+    }
+    /* ── Light mode ── */
+    [data-theme="light"] .launch-hero { background: linear-gradient(135deg, #f9fafb 40%, #f5f3ff 100%); }
+    [data-theme="light"] .launch-hero__title { color: #0c0e12; }
+    [data-theme="light"] .launch-badge { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .launch-mockup__card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .launch-mockup__card-title { color: #0c0e12; }
+    [data-theme="light"] .launch-mockup__stat-row { color: #9ca3af; }
+    [data-theme="light"] .timeline-step__title { color: #0c0e12; }
+    [data-theme="light"] .comp-table td { border-color: #e5e7eb; color: #6b7280; }
+    [data-theme="light"] .comp-table td:first-child { color: #374151; }
+    [data-theme="light"] .comp-col--us { background: rgba(244,87,69,0.04); }
+    [data-theme="light"] .pricing-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .pricing-name, [data-theme="light"] .pricing-amount { color: #0c0e12; }
+    [data-theme="light"] .submit-form { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .form-input, [data-theme="light"] .form-select, [data-theme="light"] .form-textarea {
+      background: #f9fafb; border-color: #e5e7eb; color: #0c0e12;
+    }
+    [data-theme="light"] .upload-zone { border-color: #d1d5db; }
+    [data-theme="light"] .ready-list li { background: #f9fafb; border-color: #e5e7eb; color: #6b7280; }
+    [data-theme="light"] .faq-q { color: #0c0e12; }
+    [data-theme="light"] .faq-item { border-color: #e5e7eb; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
+    <nav class="nav__inner" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
+        <div class="nav__logo-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
+        </div>
+        <span class="nav__logo-text">TabletopForge</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li class="nav__item">
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link active">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
+      </ul>
+      <div class="nav__controls">
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+</div>
+
+<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════ -->
+<section class="launch-hero">
+  <div class="launch-hero__glow"></div>
+  <div class="container">
+    <div class="launch-hero__inner">
+      <!-- Copy -->
+      <div>
+        <div class="launch-hero__eyebrow">
+          <i class="fa-solid fa-rocket" style="font-size:0.75rem;"></i>
+          For Independent Designers
+        </div>
+        <h1 class="launch-hero__title reveal">
+          Your Game.<br>Your Vision.<br><em>Our Platform.</em>
+        </h1>
+        <p class="launch-hero__sub reveal reveal-d1">
+          Submit your board game for crowdfunding and reach 47,000+ backers who are actively looking to fund the next great game. Keep your IP. Keep your creative control.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-d2">
+          <a href="#apply" class="btn btn--primary btn--lg">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            Apply to Launch
+          </a>
+          <a href="#how-it-works" class="btn btn--ghost btn--lg">How It Works</a>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.07);" class="reveal reveal-d3">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">$0</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em;">Upfront fee</div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">5%</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em;">Only if funded</div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">18hrs</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em;">Avg. first backer</div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:1.4rem;color:#fff;">94%</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em;">Success rate</div>
+          </div>
+        </div>
+      </div>
+      <!-- Mockup -->
+      <div class="launch-mockup">
+        <div class="launch-badge launch-badge--tl">
+          <i class="fa-solid fa-fire"></i>
+          <span>Campaign Live — <strong style="color:#fff;">847% funded</strong></span>
+        </div>
+        <div class="launch-mockup__card">
+          <img
+            class="launch-mockup__card-img"
+            src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=700&auto=format&fit=crop&q=80"
+            alt="Campaign mockup"
+          />
+          <div class="launch-mockup__card-body">
+            <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);margin-bottom:6px;">Sci-Fi · Strategy</div>
+            <div class="launch-mockup__card-title">Void Architects</div>
+            <div class="launch-mockup__progress">
+              <div class="launch-mockup__progress-fill" style="width:100%;"></div>
+            </div>
+            <div class="launch-mockup__stat-row">
+              <span>847%</span>
+              <span>6,824 backers · 9 days left</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div style="padding:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;text-align:center;">
+            <div style="font-family:'Space Mono',monospace;font-size:1.2rem;color:#fff;">$1.69M</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:3px;">Total raised</div>
+          </div>
+          <div style="padding:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;text-align:center;">
+            <div style="font-family:'Space Mono',monospace;font-size:1.2rem;color:#fff;">38</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:3px;">Countries shipped</div>
+          </div>
+        </div>
+        <div class="launch-badge launch-badge--br">
+          <i class="fa-solid fa-circle-check" style="color:var(--primary);"></i>
+          <span>Fully funded in <strong style="color:#fff;">18 hours</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk" id="how-it-works">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Process</div>
+    <h2 class="sec-title reveal reveal-d1">From Idea to Funded — In 5 Steps</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:48px;">Our process is built to get your campaign in front of the right people as quickly as possible.</p>
+    <div class="timeline reveal reveal-d3">
+      <div class="timeline-step">
+        <div class="timeline-step__dot"><i class="fa-solid fa-clipboard-check"></i></div>
+        <div class="timeline-step__num">01</div>
+        <div class="timeline-step__title">Apply</div>
+        <div class="timeline-step__desc">Submit your game concept using our application form. Include a prototype video, rulebook, and production plan. Reviews take 5-7 days.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step__dot"><i class="fa-solid fa-handshake"></i></div>
+        <div class="timeline-step__num">02</div>
+        <div class="timeline-step__title">Onboard</div>
+        <div class="timeline-step__desc">If approved, you'll be paired with a dedicated campaign manager who guides you through campaign page setup, pledge tiers, and timing.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step__dot"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="timeline-step__num">03</div>
+        <div class="timeline-step__title">Pre-Launch</div>
+        <div class="timeline-step__desc">Build buzz with a "Coming Soon" listing. Collect wishlists, get featured in our newsletter sent to 47,000+ backers, and prepare your community.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step__dot"><i class="fa-solid fa-rocket"></i></div>
+        <div class="timeline-step__num">04</div>
+        <div class="timeline-step__title">Go Live</div>
+        <div class="timeline-step__desc">Campaign launches with full platform support — analytics dashboard, backer messaging, stretch goal management, and real-time notifications.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-step__dot"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="timeline-step__num">05</div>
+        <div class="timeline-step__title">Fulfil</div>
+        <div class="timeline-step__desc">After funding, our logistics partners help you produce and ship to backers in 38 countries. We handle customs, tracking, and backer communication.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     WHAT YOU GET
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Platform Features</div>
+    <h2 class="sec-title reveal reveal-d1">Everything You Need to Succeed</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:40px;">We built TabletopForge specifically for board game creators — not a generic crowdfunding tool adapted for games.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;" class="reveal reveal-d3">
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-chart-line" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Campaign Analytics</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Real-time dashboard showing pledge velocity, traffic sources, backer demographics, and daily funding summaries.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-users" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Backer Audience</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Instant access to 47,000+ active backers — the most engaged board game audience on any crowdfunding platform.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-cubes" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Stretch Goal Builder</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Visually plan and manage stretch goals. Backers see animated unlock milestones that drive urgency and pledges.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-box" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Pledge Tier Management</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Design multiple reward tiers with item lists, limited quantities, and early-bird pricing — all from a drag-and-drop editor.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-globe" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Global Shipping</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Integrated fulfilment partners in 38 countries. We pre-negotiate shipping rates so your backers pay less and more back you.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-envelope-open-text" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Backer Updates</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Built-in update system with email delivery, in-app notifications, and engagement analytics. Keep your community invested.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-print" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Print-and-Play Tools</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Offer digital PnP files to early backers. Our hosted file system handles secure distribution and download tracking.</div>
+      </div>
+      <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <i class="fa-solid fa-person-chalkboard" style="color:var(--primary);font-size:1.3rem;margin-bottom:14px;"></i>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;margin-bottom:8px;">Campaign Manager</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Every campaign gets a dedicated campaign manager — a real person who knows board games and helps you every step of the way.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     COMPARISON TABLE
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Why TabletopForge</div>
+    <h2 class="sec-title reveal reveal-d1">We're Built for Board Games</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:40px;">Generic crowdfunding platforms make you compete against tech gadgets and art projects. We give you a focused, dedicated audience.</p>
+    <div style="overflow-x:auto;" class="reveal reveal-d3">
+      <table class="comp-table" style="min-width:600px;">
+        <colgroup>
+          <col style="width:35%;">
+          <col style="width:22%;">
+          <col class="comp-col--us" style="width:22%;">
+          <col style="width:21%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="color:rgba(255,255,255,0.35);font-size:0.78rem;font-weight:500;padding-left:0;"></th>
+            <th style="color:rgba(255,255,255,0.50);font-family:'Rubik',sans-serif;">Generic Platforms</th>
+            <th class="comp-col-header--us" style="font-family:'Rubik',sans-serif;color:var(--primary);padding:14px 20px;">TabletopForge</th>
+            <th style="color:rgba(255,255,255,0.50);font-family:'Rubik',sans-serif;">Retail Publishing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Board game–specific audience</td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+          </tr>
+          <tr>
+            <td>Zero upfront cost</td>
+            <td class="check"><i class="fa-solid fa-check"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+          </tr>
+          <tr>
+            <td>Keep full IP rights</td>
+            <td class="check"><i class="fa-solid fa-check"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+          </tr>
+          <tr>
+            <td>Dedicated campaign manager</td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td style="color:rgba(255,255,255,0.35);">Sometimes</td>
+          </tr>
+          <tr>
+            <td>Integrated fulfilment</td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td class="check"><i class="fa-solid fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Pre-launch wishlist tools</td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i></td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+          </tr>
+          <tr>
+            <td>Stretch goal builder</td>
+            <td style="color:rgba(255,255,255,0.35);">Basic</td>
+            <td class="comp-col--us check"><i class="fa-solid fa-check"></i> Advanced</td>
+            <td class="cross"><i class="fa-solid fa-xmark"></i></td>
+          </tr>
+          <tr>
+            <td>Platform fee</td>
+            <td style="color:rgba(255,255,255,0.60);">5-8%</td>
+            <td class="comp-col--us" style="color:var(--primary);font-family:'Space Mono',monospace;font-weight:700;">5% if funded</td>
+            <td style="color:rgba(255,255,255,0.60);">40-60% margin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Pricing</div>
+    <h2 class="sec-title reveal reveal-d1">Simple, Success-Based Pricing</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:40px;">No monthly fees. No listing fees. We only earn when you do.</p>
+    <div class="pricing-grid reveal reveal-d3">
+      <!-- Starter -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-name">Free Launch</div>
+        <div class="pricing-amount"><sup></sup>$0</div>
+        <div class="pricing-note">+ 5% platform fee on funds raised</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> Campaign page builder</li>
+          <li><i class="fa-solid fa-check"></i> Up to 5 pledge tiers</li>
+          <li><i class="fa-solid fa-check"></i> Analytics dashboard</li>
+          <li><i class="fa-solid fa-check"></i> Backer updates (email)</li>
+          <li><i class="fa-solid fa-check"></i> Community forum listing</li>
+          <li><i class="fa-solid fa-check"></i> Ship to 20 countries</li>
+        </ul>
+        <a href="#apply" class="btn btn--ghost" style="width:100%;justify-content:center;">Get Started Free</a>
+      </div>
+      <!-- Creator (Featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Creator</div>
+        <div class="pricing-name">Pro Campaign</div>
+        <div class="pricing-amount"><sup>$</sup>49<span style="font-size:1rem;font-family:inherit;font-weight:400;color:rgba(255,255,255,0.35);">/mo during campaign</span></div>
+        <div class="pricing-note">+ 4% platform fee on funds raised</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> Everything in Starter</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited pledge tiers</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated campaign manager</li>
+          <li><i class="fa-solid fa-check"></i> Pre-launch wishlist page</li>
+          <li><i class="fa-solid fa-check"></i> Newsletter feature slot</li>
+          <li><i class="fa-solid fa-check"></i> Stretch goal builder</li>
+          <li><i class="fa-solid fa-check"></i> Ship to 38 countries</li>
+          <li><i class="fa-solid fa-check"></i> Priority review (3 days)</li>
+        </ul>
+        <a href="#apply" class="btn btn--primary" style="width:100%;justify-content:center;">Start Pro Campaign</a>
+      </div>
+      <!-- Studio -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Studio</div>
+        <div class="pricing-name">Publisher</div>
+        <div class="pricing-amount"><sup>$</sup>249<span style="font-size:1rem;font-family:inherit;font-weight:400;color:rgba(255,255,255,0.35);">/mo</span></div>
+        <div class="pricing-note">+ 3% platform fee on funds raised</div>
+        <ul class="pricing-features">
+          <li><i class="fa-solid fa-check"></i> Everything in Creator</li>
+          <li><i class="fa-solid fa-check"></i> Run multiple campaigns</li>
+          <li><i class="fa-solid fa-check"></i> White-label campaign pages</li>
+          <li><i class="fa-solid fa-check"></i> API access</li>
+          <li><i class="fa-solid fa-check"></i> Custom fulfilment integration</li>
+          <li><i class="fa-solid fa-check"></i> Homepage feature placement</li>
+          <li><i class="fa-solid fa-check"></i> Retailer distribution list</li>
+        </ul>
+        <a href="contact.html" class="btn btn--ghost" style="width:100%;justify-content:center;">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CREATOR SPOTLIGHTS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Creator Stories</div>
+    <h2 class="sec-title reveal reveal-d1">Designers Who Made It</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:40px;">Real independent creators who launched on TabletopForge and built thriving games.</p>
+    <div class="creator-row reveal reveal-d3">
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&auto=format&fit=crop&q=80" alt="Marcus Chen" />
+          </div>
+          <div>
+            <div class="creator-card__name">Marcus Chen</div>
+            <div class="creator-card__meta">Designer · San Francisco, CA</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">
+          "TabletopForge gave my first game, Ironclad Empires, an audience I could never have built on my own. The campaign manager knew exactly when to push promotions and when to let the community speak."
+        </p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">$312k</div><div class="creator-card__stat-label">Raised</div></div>
+          <div><div class="creator-card__stat-num">2,148</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">312%</div><div class="creator-card__stat-label">Funded</div></div>
+        </div>
+      </div>
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&auto=format&fit=crop&q=80" alt="Priya Nair" />
+          </div>
+          <div>
+            <div class="creator-card__name">Priya Nair</div>
+            <div class="creator-card__meta">Designer · London, UK</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">
+          "I designed Meadowvale in my spare bedroom over 2 years. The platform's wishlist feature helped me build an audience of 8,000 people before launch day. We funded in under an hour."
+        </p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">$892k</div><div class="creator-card__stat-label">Raised</div></div>
+          <div><div class="creator-card__stat-num">7,018</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">892%</div><div class="creator-card__stat-label">Funded</div></div>
+        </div>
+      </div>
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&auto=format&fit=crop&q=80" alt="Jordan Reeves" />
+          </div>
+          <div>
+            <div class="creator-card__name">Jordan Reeves</div>
+            <div class="creator-card__meta">Designer · Toronto, CA</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">
+          "The stretch goal builder is unlike anything else out there. Backers could see the next unlock milestone animated in real time. It drove a 40% increase in pledges in the final 48 hours."
+        </p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">$524k</div><div class="creator-card__stat-label">Raised</div></div>
+          <div><div class="creator-card__stat-num">3,912</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">524%</div><div class="creator-card__stat-label">Funded</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     IS YOUR GAME READY?
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Eligibility</div>
+    <h2 class="sec-title reveal reveal-d1">Is Your Game Ready to Launch?</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">We review all applications before approval. Here's what you'll need to submit a strong application.</p>
+    <ul class="ready-list reveal reveal-d3">
+      <li><i class="fa-solid fa-check"></i> A complete game concept with defined rules</li>
+      <li><i class="fa-solid fa-check"></i> A working prototype (digital or physical)</li>
+      <li><i class="fa-solid fa-check"></i> A prototype demo video (2–5 minutes)</li>
+      <li><i class="fa-solid fa-check"></i> A rulebook (draft is fine)</li>
+      <li><i class="fa-solid fa-check"></i> Estimated production cost & timeline</li>
+      <li><i class="fa-solid fa-check"></i> A clear funding goal in mind</li>
+      <li><i class="fa-solid fa-check"></i> Game suitable for 1–8 players</li>
+      <li><i class="fa-solid fa-check"></i> Original IP (no licensed games)</li>
+    </ul>
+    <p style="margin-top:24px;font-size:0.875rem;color:rgba(255,255,255,0.35);" class="reveal">
+      <i class="fa-solid fa-info-circle" style="color:var(--primary);"></i>&nbsp;
+      Don't have everything yet? <a href="contact.html" style="color:var(--primary);">Contact us</a> — we offer a free pre-application consult for early-stage designers.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     APPLICATION FORM
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk" id="apply">
+  <div class="container">
+    <div style="max-width:800px;margin:0 auto;">
+      <div class="sec-eyebrow reveal" style="justify-content:center;text-align:center;">Apply Now</div>
+      <h2 class="sec-title reveal reveal-d1" style="text-align:center;">Submit Your Game</h2>
+      <p class="sec-sub reveal reveal-d2" style="text-align:center;margin-bottom:40px;">Fill out the form below. Our team reviews all applications within 5-7 business days.</p>
+      <div class="submit-form reveal reveal-d3">
+        <form action="#" method="post" novalidate>
+          <!-- Designer info -->
+          <h3 style="font-family:'Rubik',sans-serif;font-size:1rem;color:rgba(255,255,255,0.55);font-weight:500;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.06em;">01 / Designer Info</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="first-name">First Name *</label>
+              <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Aria" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="last-name">Last Name *</label>
+              <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Jensen" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="aria@studio.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="country">Country *</label>
+              <select class="form-select" id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Germany</option>
+                <option>France</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="studio">Studio / Company Name (optional)</label>
+            <input class="form-input" type="text" id="studio" name="studio" placeholder="Starfall Games" />
+          </div>
+
+          <!-- Game info -->
+          <h3 style="font-family:'Rubik',sans-serif;font-size:1rem;color:rgba(255,255,255,0.55);font-weight:500;margin:32px 0 20px;text-transform:uppercase;letter-spacing:0.06em;">02 / Game Details</h3>
+          <div class="form-group">
+            <label class="form-label" for="game-title">Game Title *</label>
+            <input class="form-input" type="text" id="game-title" name="game_title" placeholder="Void Architects: The Deep Space Chronicles" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="genre">Primary Genre *</label>
+              <select class="form-select" id="genre" name="genre" required>
+                <option value="" disabled selected>Choose a genre</option>
+                <option>Strategy</option>
+                <option>Adventure / Exploration</option>
+                <option>Co-operative</option>
+                <option>RPG / Legacy</option>
+                <option>Puzzle / Abstract</option>
+                <option>Family</option>
+                <option>Deck Building</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="player-count">Player Count *</label>
+              <select class="form-select" id="player-count" name="player_count" required>
+                <option value="" disabled selected>Min – Max players</option>
+                <option>Solo only (1)</option>
+                <option>1-2 players</option>
+                <option>1-4 players</option>
+                <option>2-4 players</option>
+                <option>2-6 players</option>
+                <option>3-6 players</option>
+                <option>4-8 players</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="play-time">Play Time</label>
+              <select class="form-select" id="play-time" name="play_time">
+                <option value="" disabled selected>Estimated play time</option>
+                <option>Under 30 min</option>
+                <option>30-60 min</option>
+                <option>60-120 min</option>
+                <option>120-180 min</option>
+                <option>180+ min</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="funding-goal">Funding Goal (USD) *</label>
+              <input class="form-input" type="number" id="funding-goal" name="funding_goal" placeholder="25000" min="1000" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pitch">Game Pitch * <span class="form-hint">(2-3 sentences — what makes this game special?)</span></label>
+            <textarea class="form-textarea" id="pitch" name="pitch" placeholder="Void Architects is a 2-5 player sci-fi strategy game where players build civilizations across a procedurally generated galaxy. Every session evolves based on players' choices, creating a unique experience each time. It combines asymmetric factions, emergent narrative, and tight engine-building mechanics." required style="min-height:100px;"></textarea>
+          </div>
+
+          <!-- Assets -->
+          <h3 style="font-family:'Rubik',sans-serif;font-size:1rem;color:rgba(255,255,255,0.55);font-weight:500;margin:32px 0 20px;text-transform:uppercase;letter-spacing:0.06em;">03 / Supporting Materials</h3>
+          <div class="form-group">
+            <label class="form-label" for="video-link">Prototype Demo Video Link *</label>
+            <input class="form-input" type="url" id="video-link" name="video_link" placeholder="https://youtube.com/watch?v=..." required />
+            <div class="form-hint">A 2-5 minute walkthrough showing the game in action. Unlisted YouTube or Vimeo link accepted.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rulebook-link">Rulebook Link</label>
+            <input class="form-input" type="url" id="rulebook-link" name="rulebook_link" placeholder="https://drive.google.com/..." />
+            <div class="form-hint">PDF link (Google Drive, Dropbox, etc.). Draft is fine.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Game Artwork / Images (optional)</label>
+            <div class="upload-zone" role="button" tabindex="0" aria-label="Upload game artwork">
+              <div class="upload-zone__icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+              <div class="upload-zone__title">Drop images here or click to browse</div>
+              <div class="upload-zone__sub">PNG, JPG up to 10 MB each · Max 5 files</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="anything-else">Anything else we should know?</label>
+            <textarea class="form-textarea" id="anything-else" name="notes" placeholder="Previous campaigns, awards, press coverage, notable playtesting feedback…" style="min-height:80px;"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px;">
+            <button type="submit" class="btn btn--primary btn--lg">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Submit Application
+            </button>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.30);">
+              <i class="fa-solid fa-lock" style="color:var(--primary);"></i>
+              Your information is kept confidential.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container" style="max-width:800px;">
+    <div class="sec-eyebrow reveal">FAQ</div>
+    <h2 class="sec-title reveal reveal-d1">Designer Questions Answered</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:36px;">Everything you need to know before you apply.</p>
+    <div class="faq-list reveal reveal-d3">
+      <div class="faq-item">
+        <button class="faq-q">How long does the application review take? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">We aim to review all applications within 5-7 business days. If your application is approved, you'll receive an onboarding email from your campaign manager within 24 hours of the decision.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens if my campaign doesn't reach its goal? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">If a campaign doesn't reach its funding goal, all backers receive a full refund automatically. You pay nothing — no platform fees, no listing fees. You're free to re-apply with an updated campaign at any time.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I keep ownership of my game's IP? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">Absolutely. You retain 100% of your intellectual property at all times. TabletopForge is a crowdfunding platform, not a publisher. We never take any rights to your game, artwork, or brand.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How does fulfilment work after a campaign succeeds? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">After your campaign closes, we connect you with our network of fulfilment partners who handle warehousing, packing, and shipping to 38 countries. We negotiate competitive rates on your behalf. You can also use your own manufacturer and shipper if preferred.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I run a campaign if I'm based outside the US? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">Yes. TabletopForge supports designers from over 30 countries. We handle currency conversion, international payments, and local tax compliance so you can focus on your game. Contact us for country-specific details.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I want to run multiple campaigns? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a">The Studio/Publisher plan supports multiple simultaneous campaigns. If you're on the Starter or Creator plan and want to run a second campaign, contact your campaign manager and we'll upgrade your plan accordingly.</div>
+      </div>
+    </div>
+    <div style="margin-top:32px;text-align:center;" class="reveal">
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.45);margin-bottom:16px;">Still have questions?</p>
+      <a href="contact.html" class="btn btn--ghost">Contact the Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+<script>
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  /* Upload zone click passthrough */
+  document.querySelectorAll('.upload-zone').forEach(zone => {
+    zone.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.multiple = true;
+      input.accept = 'image/*';
+      input.click();
+    });
+    zone.addEventListener('dragover', e => {
+      e.preventDefault();
+      zone.style.borderColor = 'var(--primary)';
+      zone.style.background = 'rgba(244,87,69,0.06)';
+    });
+    zone.addEventListener('dragleave', () => {
+      zone.style.borderColor = '';
+      zone.style.background = '';
+    });
+  });
+</script>
+</body>
+</html>

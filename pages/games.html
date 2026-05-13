@@ -3,720 +3,1220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
-  <title>Games — TabletopForge</title>
-  <meta name="description" content="Browse and buy games made by independent designers — or design, print, and publish your own on TabletopForge." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tabletopforge.com/games" />
-    <meta property="og:title"       content="Games — TabletopForge" />
-  <meta property="og:description" content="Browse every TabletopForge title — live, shipping, and coming soon." />
-  <meta property="og:type"        content="website" />
-
+  <title>Explore Board Games — TabletopForge</title>
+  <meta name="description" content="Discover the best board games of 2025 and 2026. Browse trending titles, read reviews, and find your next favourite tabletop experience." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    /* ── Hero ── */
+    .games-hero {
+      background: linear-gradient(140deg, #0c0e12 55%, #0f1520 100%);
+      padding: 120px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .games-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(244,87,69,0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .games-hero::after {
+      content: '';
+      position: absolute;
+      right: 10%;
+      top: 20%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,87,69,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .games-hero__inner { position: relative; z-index: 1; }
+    .games-hero__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .games-hero__title em { color: var(--primary); font-style: normal; }
+    .games-hero__sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    /* ── Quick-stat chips ── */
+    .stat-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+    .stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.60);
+    }
+    .stat-chip i { color: var(--primary); }
+    /* ── Trending badge ── */
+    .trend-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: rgba(244,87,69,0.10);
+      border: 1px solid rgba(244,87,69,0.18);
+      color: var(--primary);
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.65);
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    /* ── Spotlight: hero game card ── */
+    .spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px;
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 28px;
+      transition: box-shadow 0.3s;
+    }
+    .spotlight:hover { box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+    .spotlight__img-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .spotlight__img { width: 100%; height: 340px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .spotlight:hover .spotlight__img { transform: scale(1.04); }
+    .spotlight__rank {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--primary);
+      background: rgba(0,0,0,0.7);
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid rgba(244,87,69,0.2);
+    }
+    .spotlight__body {}
+    .spotlight__eyebrow {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .spotlight__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .spotlight__desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .spotlight__meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .spotlight__meta-item { display: flex; align-items: center; gap: 7px; font-size: 0.85rem; color: rgba(255,255,255,0.50); }
+    .spotlight__meta-item i { color: var(--primary); width: 14px; text-align: center; }
+    .spotlight__rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .stars { color: var(--primary); font-size: 0.9rem; letter-spacing: 1px; }
+    .rating-num { font-family: 'Space Mono', monospace; font-size: 1.1rem; color: #fff; }
+    .rating-count { font-size: 0.8rem; color: rgba(255,255,255,0.30); }
+    .spotlight__tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .game-tag { font-size: 0.73rem; padding: 4px 12px; border-radius: 99px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.55); }
+    /* ── Search + filters ── */
+    .games-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .games-search {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 10px 16px;
+      transition: all 0.2s;
+    }
+    .games-search:focus-within {
+      border-color: rgba(244,87,69,0.3);
+      background: rgba(255,255,255,0.07);
+    }
+    .games-search input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    .games-search input::placeholder { color: rgba(255,255,255,0.28); }
+    .games-search i { color: rgba(255,255,255,0.28); }
+    .games-sort {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.85rem;
+      font-family: inherit;
+      padding: 10px 36px 10px 14px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+    /* ── Game card grid ── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    /* ── Extended game card ── */
+    .gx-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .gx-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .gx-card__img-wrap { position: relative; }
+    .gx-card__img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .gx-card__badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      gap: 6px;
+    }
+    .gx-card__wishlist {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(255,255,255,0.40);
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .gx-card__wishlist:hover { background: rgba(244,87,69,0.2); color: var(--primary); }
+    .gx-card__wishlist.saved { color: var(--primary); }
+    .gx-card__body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .gx-card__genre { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 5px; }
+    .gx-card__title { font-family: 'Rubik', sans-serif; font-size: 1rem; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .gx-card__desc { font-size: 0.82rem; color: rgba(255,255,255,0.40); line-height: 1.6; margin-bottom: 12px; flex: 1; }
+    .gx-card__meta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .gx-card__meta-item { display: flex; align-items: center; gap: 5px; font-size: 0.78rem; color: rgba(255,255,255,0.40); }
+    .gx-card__meta-item i { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+    .gx-card__rating { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; }
+    .gx-card__stars { color: var(--primary); font-size: 0.75rem; }
+    .gx-card__score { font-family: 'Space Mono', monospace; color: rgba(255,255,255,0.65); }
+    .gx-card__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .gx-card__tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .gx-card__tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 99px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.40); }
+    /* ── Trending rank list ── */
+    .trend-list { display: flex; flex-direction: column; gap: 2px; }
+    .trend-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .trend-row:hover {
+      background: rgba(244,87,69,0.06);
+      border-color: rgba(244,87,69,0.15);
+    }
+    .trend-row__rank {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.20);
+      min-width: 22px;
+      text-align: right;
+    }
+    .trend-row.hot .trend-row__rank { color: var(--primary); }
+    .trend-row__img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+    .trend-row__info { flex: 1; min-width: 0; }
+    .trend-row__title { font-family: 'Rubik', sans-serif; font-size: 0.9rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .trend-row__sub { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    .trend-row__score { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: rgba(255,255,255,0.40); }
+    .trend-arrow { font-size: 0.7rem; }
+    .trend-arrow.up { color: var(--primary); }
+    .trend-arrow.stable { color: rgba(255,255,255,0.20); }
+    /* ── Collection banner ── */
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .collection-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      height: 180px;
+      cursor: pointer;
+      transition: transform 0.25s;
+    }
+    .collection-card:hover { transform: translateY(-4px); }
+    .collection-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .collection-card:hover img { transform: scale(1.06); }
+    .collection-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+    }
+    .collection-card__title { font-family: 'Rubik', sans-serif; font-size: 0.95rem; color: #fff; margin-bottom: 3px; }
+    .collection-card__count { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+    /* ── Info panel (how to use games page) ── */
+    .info-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: rgba(244,87,69,0.06);
+      border: 1px solid rgba(244,87,69,0.12);
+      border-radius: 14px;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.60);
+      margin-bottom: 32px;
+    }
+    .info-strip i { color: var(--primary); flex-shrink: 0; }
+    .info-strip a { color: var(--primary); text-decoration: underline; }
+    /* ── Editorial picks ── */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .editorial-card {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      transition: all 0.2s;
+    }
+    .editorial-card:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.09);
+    }
+    .editorial-card__img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+    .editorial-card__body {}
+    .editorial-card__genre { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 4px; }
+    .editorial-card__title { font-family: 'Rubik', sans-serif; font-size: 0.92rem; color: #fff; margin-bottom: 4px; }
+    .editorial-card__desc { font-size: 0.8rem; color: rgba(255,255,255,0.40); line-height: 1.55; }
+    /* ── Pagination ── */
+    .pagination { display: flex; align-items: center; gap: 6px; justify-content: center; margin-top: 40px; }
+    .page-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem;
+      font-family: 'Space Mono', monospace;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover, .page-btn.active { background: rgba(244,87,69,0.12); border-color: var(--primary); color: var(--primary); }
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .spotlight { grid-template-columns: 1fr; }
+      .spotlight__img { height: 220px; }
+      .editorial-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .games-layout { grid-template-columns: 1fr !important; }
+      .trend-sidebar { display: none; }
+    }
+    @media (max-width: 600px) {
+      .games-filter-bar { flex-direction: column; align-items: stretch; }
+      .games-search { min-width: 100%; }
+      .collection-grid { grid-template-columns: 1fr 1fr; }
+      .games-grid { grid-template-columns: 1fr !important; }
+      .info-strip { flex-wrap: wrap; }
+    }
+    /* ── Light mode ── */
+    [data-theme="light"] .games-hero { background: linear-gradient(140deg, #f9fafb 55%, #f0f4ff 100%); }
+    [data-theme="light"] .games-hero__title { color: #0c0e12; }
+    [data-theme="light"] .stat-chip { background: #fff; border-color: #e5e7eb; color: #6b7280; }
+    [data-theme="light"] .spotlight { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .spotlight__title { color: #0c0e12; }
+    [data-theme="light"] .gx-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .gx-card__title { color: #0c0e12; }
+    [data-theme="light"] .games-search { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .games-search input { color: #0c0e12; }
+    [data-theme="light"] .games-sort { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .trend-row { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .trend-row__title { color: #0c0e12; }
+    [data-theme="light"] .editorial-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .editorial-card__title { color: #0c0e12; }
+    [data-theme="light"] .info-strip { background: rgba(99,102,241,0.05); border-color: rgba(99,102,241,0.1); }
+    [data-theme="light"] .page-btn { background: #fff; border-color: #e5e7eb; color: #6b7280; }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════ -->
-<header class="nav" role="banner">
-  <div class="container">
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-
       <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
         <div class="nav__logo-mark" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
         </div>
         <span class="nav__logo-text">TabletopForge</span>
       </a>
-
       <ul class="nav__links" role="list">
         <li class="nav__item">
-          <a href="index.html" class="nav__link" aria-haspopup="true">
-            Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
-            <a href="index.html"   class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house" aria-hidden="true"></i><div>Home Page 1 <span>Main landing experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><div>Home Page 2 <span>Designer showcase layout</span></div></a>
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
           </div>
         </li>
-        <li class="nav__item"><a href="about.html"   class="nav__link">About</a></li>
         <li class="nav__item">
-          <a href="games.html" class="nav__link active" aria-haspopup="true">
-            Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
+          <a href="games.html" class="nav__link active" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
-            <a href="games.html"        class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice" aria-hidden="true"></i><div>All Titles <span>Browse our full catalogue</span></div></a>          </div>
-        </li>
-        <li class="nav__item"><a href="blog.html"    class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-        <li class="nav__item">
-          <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">
-            Dashboard <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
-          <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html"  class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-user" aria-hidden="true"></i><div>User Dashboard <span>Orders, downloads, forum</span></div></a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-gear" aria-hidden="true"></i><div>Admin Dashboard <span>Manage games &amp; designers</span></div></a>
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
           </div>
         </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
-
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
       <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
-  </div>
-</header>
-
-<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"           class="nav__mobile-link">Home</a>
-  <a href="about.html"           class="nav__mobile-link">About</a>
-  <a href="games.html"           class="nav__mobile-link">Games</a>
-  <a href="blog.html"            class="nav__mobile-link">Blog</a>
-  <a href="contact.html"         class="nav__mobile-link">Contact</a>
-  <a href="dashboard-user.html"  class="nav__mobile-link">User Dashboard</a>
-  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
-  </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:1rem;width:100%;justify-content:center;">Login</a>
-</nav>
-
-
-<style>
-/* ── GAMES PAGE OVERRIDES ── */
-.games-mode-toggle {
-  display: flex;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px;
-  gap: 4px;
-}
-.games-mode-btn {
-  padding: 8px 22px;
-  border-radius: 999px;
-  border: none;
-  background: transparent;
-  color: var(--text-secondary);
-  font-family: var(--font-head);
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--t-fast);
-  letter-spacing: 0.04em;
-}
-.games-mode-btn.active {
-  background: var(--accent);
-  color: #000;
-}
-
-/* 3D float effect on game images */
-.game-card__thumb {
-  perspective: 800px;
-  transform: translateZ(0); /* force GPU layer — ensures overflow:hidden clips 3D children */
-  isolation: isolate;
-}
-.game-card__thumb img {
-  transform: rotateX(5deg) scale(1.02);
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 8px 16px rgba(212,245,60,0.08);
-}
-.game-card:hover .game-card__thumb img {
-  transform: rotateX(0deg) rotateY(-4deg) scale(1.06) translateY(-6px);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 12px 32px rgba(212,245,60,0.18);
-}
-
-/* Design-your-own card */
-.design-invite-card {
-  background: var(--bg-card);
-  border: 1px dashed var(--accent);
-  border-radius: var(--r-xl);
-  padding: var(--sp-8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: var(--sp-4);
-  min-height: 380px;
-  transition: border-color var(--t-mid), background var(--t-mid);
-}
-.design-invite-card:hover {
-  background: rgba(212,245,60,0.04);
-  border-color: var(--accent);
-}
-.design-invite-card__icon {
-  width: 64px; height: 64px;
-  background: rgba(212,245,60,0.12);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; color: var(--accent);
-}
-
-/* How it works mini strip */
-.games-how-strip {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: var(--sp-5);
-  margin-top: var(--sp-8);
-}
-@media (max-width:900px) { .games-how-strip { grid-template-columns: repeat(2,1fr); } }
-@media (max-width:520px) { .games-how-strip { grid-template-columns: 1fr; } }
-.games-how-step {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: var(--sp-5) var(--sp-5) var(--sp-6);
-  position: relative;
-  overflow: hidden;
-}
-.games-how-step__num {
-  font-family: var(--font-head);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: var(--sp-3);
-  background: rgba(212,245,60,0.1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(212,245,60,0.3);
-}
-.games-how-step__title {
-  font-family: var(--font-head);
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--sp-2);
-}
-.games-how-step__body {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* Price tag */
-.game-card__price-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-/* Featured image 3D */
-.games-featured__visual {
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  perspective: 1000px;
-  transform: translateZ(0);
-  isolation: isolate;
-}
-.games-featured__visual img {
-  transform: rotateY(3deg) rotateX(2deg) scale(1.02);
-  transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
-}
-.games-featured__visual:hover img {
-  transform: rotateY(-2deg) rotateX(0deg) scale(1.04) translateY(-4px);
-}
-</style>
-
-<main id="main-content">
-
-<!-- ═══════════════════════════════════════════
-     DUAL-MODE HERO
-═══════════════════════════════════════════ -->
-<section class="games-hero" aria-labelledby="games-heading">
-  <div class="games-hero__orb" aria-hidden="true"></div>
-  <div class="container">
-    <div class="compact-hero__stack">
-      <div class="compact-hero__row" style="align-items:flex-end;flex-wrap:wrap;gap:var(--sp-6);">
-        <div class="compact-hero__copy" style="flex:1 1 260px;min-width:0;">
-          <div style="margin-bottom:var(--sp-4);">
-            <span class="tag tag--accent"><i class="fa-solid fa-circle" style="font-size:0.4rem;"></i> 1 title live now</span>
-          </div>
-          <h1 id="games-heading" class="display-xl games-hero__title">
-            <span class="hero__title-line"><span>Buy a game.</span></span>
-            <span class="hero__title-line"><span>Build your own.</span></span>
-          </h1>
-          <p class="games-hero__sub">
-            Browse ready-to-buy games from independent designers worldwide —
-            or use our platform to design, print, and publish your very own.
-          </p>
-          <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-5);">
-            <a href="#store" class="btn btn--primary">
-              <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Shop Games
-            </a>
-            <a href="#design" class="btn btn--ghost">
-              <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Design Your Own
-            </a>
-          </div>
-        </div>
-        <div style="flex-shrink:0;">
-          <div class="games-mode-toggle" role="tablist" aria-label="View mode">
-            <button class="games-mode-btn active" id="btn-buy"    data-mode="buy"    role="tab" type="button">Buy Games</button>
-            <button class="games-mode-btn"         id="btn-design" data-mode="design" role="tab" type="button">Design &amp; Print</button>
-          </div>
-        </div>
-      </div>
-      <div class="inner-hero-strip inner-hero-strip--full compact-hero__strip" aria-label="Platform stats">
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">In the Store</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-dice" aria-hidden="true"></i> 4 titles available</span>
-          <span class="inner-hero-strip__meta">Ready to ship — buy direct from the designer.</span>
-        </div>
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">Games Created</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-pencil-ruler" aria-hidden="true"></i> 12,000+ designed</span>
-          <span class="inner-hero-strip__meta">Designed and printed on our platform.</span>
-        </div>
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">Global Shipping</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-earth-americas" aria-hidden="true"></i> 48+ countries</span>
-          <span class="inner-hero-strip__meta">Print-on-demand fulfilment worldwide.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     FEATURED — Citadels of the Deep
-═══════════════════════════════════════════ -->
-<section class="games-featured section-pad" aria-labelledby="featured-heading" id="store">
-  <div class="container">
-    <div class="games-featured__layout">
-
-      <div class="games-featured__visual reveal">
-        <img src="../assets/images/Gemini_Generated_Image_9wyc2z9wyc2z9wyc.png" alt="Citadels of the Deep — full board setup with ships and glowing hex tiles" loading="lazy" />
-      </div>
-
-      <div>
-        <div class="games-featured__eyebrow reveal">
-          <span class="tag tag--accent">
-            <i class="fa-solid fa-circle" style="font-size:0.45rem;" aria-hidden="true"></i>
-            Live — Buy Now
-          </span>
-        </div>
-        <h2 id="featured-heading" class="display-md games-featured__title reveal reveal--delay-1">
-          Citadels of the Deep
-        </h2>
-        <p class="games-featured__desc reveal reveal--delay-1">
-          A naval conquest and fortress-building game for 2–5 players.
-          Designed, prototyped, and playtested entirely on TabletopForge.
-          Order your copy — printed on demand and shipped direct to your door.
-        </p>
-
-        <div class="games-featured__stats reveal reveal--delay-2">
-          <div class="gf-stat">
-            <span class="gf-stat__value" data-count="2847">—</span>
-            <span class="gf-stat__label">Copies sold</span>
-          </div>
-          <div class="gf-stat">
-            <span class="gf-stat__value" data-count="4" data-suffix=".8★">—</span>
-            <span class="gf-stat__label">Rating</span>
-          </div>
-          <div class="gf-stat">
-            <span class="gf-stat__value" data-count="48" data-suffix="h">—</span>
-            <span class="gf-stat__label">Ships in</span>
-          </div>
-          <div class="gf-stat">
-            <span class="gf-stat__value" data-count="14">—</span>
-            <span class="gf-stat__label">Days left</span>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:var(--sp-4);margin:var(--sp-5) 0;" class="reveal reveal--delay-2">
-          <div>
-            <span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);">From</span>
-            <div class="game-card__price-tag" style="font-size:1.5rem;">$65</div>
-          </div>
-          <div style="width:1px;height:40px;background:var(--border);"></div>
-          <div style="font-size:0.78rem;color:var(--text-secondary);">
-            <i class="fa-solid fa-truck-fast" aria-hidden="true"></i> Ships worldwide<br>
-            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> 30-day returns
-          </div>
-        </div>
-
-        <div class="games-featured__ctas reveal reveal--delay-3">
-          <a href="game-single.html" class="btn btn--primary">
-            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
-            Buy This Game — $65
-          </a>
-          <a href="game-single.html" class="btn btn--ghost">
-            View full details
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     FILTER BAR
-═══════════════════════════════════════════ -->
-<div class="filter-bar" role="navigation" aria-label="Filter games">
-  <div class="container">
-    <div class="filter-bar__inner">
-      <span class="filter-bar__label">Filter</span>
-      <button class="filter-pill active" data-filter="all" type="button">
-        <i class="fa-solid fa-border-all" aria-hidden="true"></i> All
-      </button>
-      <button class="filter-pill" data-filter="live" type="button">
-        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Buy Now
-      </button>
-      <button class="filter-pill" data-filter="fulfillment" type="button">
-        <i class="fa-solid fa-print" aria-hidden="true"></i> Printing
-      </button>
-      <button class="filter-pill" data-filter="delivered" type="button">
-        <i class="fa-solid fa-check" aria-hidden="true"></i> Published
-      </button>
-      <button class="filter-pill" data-filter="strategy" type="button">Strategy</button>
-      <button class="filter-pill" data-filter="coop" type="button">Co-op</button>
-      <button class="filter-pill" data-filter="deckbuilding" type="button">Deck Building</button>
-    </div>
-  </div>
+  </header>
 </div>
 
+<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
 
-<!-- ═══════════════════════════════════════════
-     STORE GRID — Buy games
-═══════════════════════════════════════════ -->
-<section class="games-section section-pad" aria-labelledby="grid-heading">
-  <div class="container">
-
-    <div class="section-head" style="margin-bottom:var(--sp-6);">
-      <div>
-        <div class="section-eyebrow"><span class="tag">Store</span></div>
-        <h2 id="grid-heading" class="display-md reveal" style="margin-top:var(--sp-3);">Games you can buy right now</h2>
-      </div>
-      <span class="label reveal reveal--delay-1" id="results-count">4 titles</span>
+<!-- ══════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════ -->
+<section class="games-hero">
+  <div class="container games-hero__inner">
+    <div class="sec-eyebrow reveal" style="margin-bottom:14px;">
+      <i class="fa-solid fa-fire" style="color:var(--primary);"></i>
+      Trending in 2025-26
     </div>
+    <h1 class="games-hero__title reveal reveal-d1">
+      Discover Your<br>Next <em>Favourite Game</em>
+    </h1>
+    <p class="games-hero__sub reveal reveal-d2">
+      Explore hundreds of board games — from indie gems to award-winning hits. Curated for strategy lovers, story seekers, and family game nights.
+    </p>
+    <div class="stat-chips reveal reveal-d3">
+      <div class="stat-chip"><i class="fa-solid fa-dice-d20"></i> 620+ Titles</div>
+      <div class="stat-chip"><i class="fa-solid fa-fire"></i> Updated Weekly</div>
+      <div class="stat-chip"><i class="fa-solid fa-star"></i> Editor Picks</div>
+      <div class="stat-chip"><i class="fa-solid fa-trophy"></i> Award Winners</div>
+      <div class="stat-chip"><i class="fa-solid fa-chart-line"></i> Trending Worldwide</div>
+    </div>
+  </div>
+</section>
 
-    <div class="games-grid" id="games-grid">
+<!-- ══════════════════════════════════════════════════════════════
+     SPOTLIGHT — #1 TRENDING
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+      <div>
+        <div class="sec-eyebrow reveal">#1 This Week</div>
+        <h2 class="sec-title reveal reveal-d1">Trending Spotlight</h2>
+      </div>
+      <span class="trend-badge reveal reveal-d2"><i class="fa-solid fa-arrow-trend-up"></i> Community Favourite 2025</span>
+    </div>
+    <article class="spotlight reveal">
+      <div class="spotlight__img-wrap">
+        <img
+          class="spotlight__img"
+          src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=900&auto=format&fit=crop&q=80"
+          alt="Dune: Imperium board game"
+          loading="eager"
+        />
+        <div class="spotlight__rank">#1 Trending</div>
+      </div>
+      <div class="spotlight__body">
+        <div class="spotlight__eyebrow">Strategy · Deck Building · 1–4 Players</div>
+        <h3 class="spotlight__title">Dune: Imperium</h3>
+        <p class="spotlight__desc">
+          Combine deck-building with worker placement in the universe of Frank Herbert's Dune. Control spice production, forge alliances, and fight for dominance on Arrakis. One of the most-loved strategy games of the modern era — consistently topping community charts and award lists.
+        </p>
+        <div class="spotlight__rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">9.2</span>
+          <span class="rating-count">/ 10 · 48,000+ ratings</span>
+        </div>
+        <div class="spotlight__meta">
+          <div class="spotlight__meta-item"><i class="fa-solid fa-clock"></i> 60-120 min</div>
+          <div class="spotlight__meta-item"><i class="fa-solid fa-chart-line"></i> Complex</div>
+          <div class="spotlight__meta-item"><i class="fa-solid fa-user"></i> Ages 14+</div>
+          <div class="spotlight__meta-item"><i class="fa-solid fa-trophy"></i> SXSW Best in Show 2022</div>
+        </div>
+        <div class="spotlight__tags">
+          <span class="game-tag">Deck Building</span>
+          <span class="game-tag">Worker Placement</span>
+          <span class="game-tag">Area Control</span>
+          <span class="game-tag">Sci-Fi</span>
+          <span class="game-tag">Political</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 
-      <!-- Citadels of the Deep -->
-      <article class="game-card game-card--live reveal" data-tags="live strategy" aria-label="Citadels of the Deep">
-        <div class="game-card__thumb">
-          <div class="game-card__badge">
-            <span class="tag tag--accent" style="font-size:0.65rem;">
-              <i class="fa-solid fa-circle" style="font-size:0.4rem;" aria-hidden="true"></i> Live
-            </span>
-          </div>
-          <img src="../assets/images/Gemini_Generated_Image_9wyc2z9wyc2z9wyc.png" alt="Citadels of the Deep board game" loading="lazy" />
-        </div>
-        <div class="game-card__body">
-          <div class="game-card__meta">
-            <span class="game-card__genre">Strategy</span>
-            <span style="font-size:0.72rem;color:var(--text-muted);">By Elena Voss</span>
-          </div>
-          <h3 class="game-card__title">Citadels of the Deep</h3>
-          <p class="game-card__desc">Naval conquest and fortress building. For 2–5 players, 90–150 min. Designed and playtested on TabletopForge.</p>
-          <div class="game-card__chips">
-            <span class="chip"><i class="fa-solid fa-user-group" aria-hidden="true"></i> 2–5</span>
-            <span class="chip"><i class="fa-solid fa-clock" aria-hidden="true"></i> 90–150 min</span>
-            <span class="chip"><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> 14+</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin:var(--sp-3) 0 var(--sp-2);">
-            <span style="color:#D4F53C;">★★★★★</span>
-            <span style="font-size:0.78rem;color:var(--text-muted);">4.8 (312 reviews)</span>
-          </div>
-          <div class="game-card__footer">
-            <span class="game-card__price-tag">$65</span>
-            <a href="game-single.html" class="btn btn--primary btn--sm">
-              <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Buy Now
-            </a>
-          </div>
-        </div>
-      </article>
+<!-- ══════════════════════════════════════════════════════════════
+     TRENDING RIGHT NOW — ranked list
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="games-layout" style="display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start;">
+      <!-- Left: full grid -->
+      <div>
+        <div class="sec-eyebrow reveal">Most Popular in 2025-26</div>
+        <h2 class="sec-title reveal reveal-d1">Top Trending Games</h2>
+        <p class="sec-sub reveal reveal-d2" style="margin-bottom:28px;">Ranked by search volume, community activity, and tabletop popularity this year.</p>
 
-      <!-- Verdant Empires -->
-      <article class="game-card reveal reveal--delay-1" data-tags="fulfillment strategy" aria-label="Verdant Empires">
-        <div class="game-card__thumb">
-          <div class="game-card__badge">
-            <span class="tag" style="font-size:0.65rem;">Pre-order</span>
+        <!-- Filter / search -->
+        <div class="games-filter-bar reveal reveal-d3">
+          <div class="games-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Search all games…" id="game-search" aria-label="Search games" />
           </div>
-          <img src="../assets/images/Gemini_Generated_Image_n3jzyln3jzyln3jz.png" alt="Verdant Empires board game" loading="lazy" />
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="chip active" data-gfilter="all">All</button>
+            <button class="chip" data-gfilter="strategy">Strategy</button>
+            <button class="chip" data-gfilter="family">Family</button>
+            <button class="chip" data-gfilter="coop">Co-op</button>
+            <button class="chip" data-gfilter="rpg">RPG</button>
+          </div>
+          <select class="games-sort" aria-label="Sort games">
+            <option value="trending">Trending</option>
+            <option value="rating">Highest Rated</option>
+            <option value="az">A–Z</option>
+            <option value="newest">Newest</option>
+          </select>
         </div>
-        <div class="game-card__body">
-          <div class="game-card__meta">
-            <span class="game-card__genre">Eco-Strategy</span>
-            <span style="font-size:0.72rem;color:var(--text-muted);">By David Osei</span>
-          </div>
-          <h3 class="game-card__title">Verdant Empires</h3>
-          <p class="game-card__desc">Build civilisations in a living ecological world. 1–4 players, 60–120 min. Ships Apr 2026.</p>
-          <div class="game-card__chips">
-            <span class="chip"><i class="fa-solid fa-user-group" aria-hidden="true"></i> 1–4</span>
-            <span class="chip"><i class="fa-solid fa-clock" aria-hidden="true"></i> 60–120 min</span>
-            <span class="chip"><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> 12+</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin:var(--sp-3) 0 var(--sp-2);">
-            <span style="color:#D4F53C;">★★★★☆</span>
-            <span style="font-size:0.78rem;color:var(--text-muted);">4.6 (198 reviews)</span>
-          </div>
-          <div class="game-card__footer">
-            <span class="game-card__price-tag">$79</span>
-            <a href="game-single.html" class="btn btn--primary btn--sm">
-              <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Pre-order
-            </a>
-          </div>
-        </div>
-      </article>
 
-      <!-- Moonfall Chronicles -->
-      <article class="game-card reveal reveal--delay-2" data-tags="coop" aria-label="Moonfall Chronicles">
-        <div class="game-card__thumb">
-          <div class="game-card__badge">
-            <span class="tag" style="font-size:0.65rem;">Notify Me</span>
-          </div>
-          <img src="../assets/images/Gemini_Generated_Image_3u5wjp3u5wjp3u5w.png" alt="Moonfall Chronicles board game" loading="lazy" />
+        <div class="info-strip reveal">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>This page is for game discovery. Looking to fund a game? Visit <a href="campaigns.html">Live Campaigns</a>.</span>
         </div>
-        <div class="game-card__body">
-          <div class="game-card__meta">
-            <span class="game-card__genre">Co-op Narrative</span>
-            <span style="font-size:0.72rem;color:var(--text-muted);">By Noa Bergman</span>
-          </div>
-          <h3 class="game-card__title">Moonfall Chronicles</h3>
-          <p class="game-card__desc">10-chapter cooperative narrative campaign. 1–4 players. 3,200 already signed up for launch.</p>
-          <div class="game-card__chips">
-            <span class="chip"><i class="fa-solid fa-user-group" aria-hidden="true"></i> 1–4</span>
-            <span class="chip"><i class="fa-solid fa-clock" aria-hidden="true"></i> Campaign</span>
-            <span class="chip"><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> 13+</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin:var(--sp-3) 0 var(--sp-2);">
-            <span style="font-size:0.78rem;color:var(--text-muted);">Est. launch Q2 2026 — 3,200 waiting</span>
-          </div>
-          <div class="game-card__footer">
-            <span class="game-card__price-tag">~$80</span>
-            <a href="coming-soon.html" class="btn btn--ghost btn--sm">
-              <i class="fa-solid fa-bell" aria-hidden="true"></i> Get Notified
-            </a>
-          </div>
-        </div>
-      </article>
 
-      <!-- The Iron Pact -->
-      <article class="game-card reveal reveal--delay-1" data-tags="delivered deckbuilding" aria-label="The Iron Pact">
-        <div class="game-card__thumb">
-          <div class="game-card__badge">
-            <span class="tag" style="font-size:0.65rem;">
-              <i class="fa-solid fa-check" style="font-size:0.6rem;" aria-hidden="true"></i> In Stock
-            </span>
-          </div>
-          <img src="../assets/images/Gemini_Generated_Image_oba3deoba3deoba3.png" alt="The Iron Pact board game" loading="lazy" />
-        </div>
-        <div class="game-card__body">
-          <div class="game-card__meta">
-            <span class="game-card__genre">Deck Building</span>
-            <span style="font-size:0.72rem;color:var(--text-muted);">By Priya Kaur</span>
-          </div>
-          <h3 class="game-card__title">The Iron Pact</h3>
-          <p class="game-card__desc">Semi-cooperative deck-builder of political intrigue. Fully published — 4,200 copies sold worldwide.</p>
-          <div class="game-card__chips">
-            <span class="chip"><i class="fa-solid fa-user-group" aria-hidden="true"></i> 3–6</span>
-            <span class="chip"><i class="fa-solid fa-clock" aria-hidden="true"></i> 60–90 min</span>
-            <span class="chip"><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> 14+</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;margin:var(--sp-3) 0 var(--sp-2);">
-            <span style="color:#D4F53C;">★★★★☆</span>
-            <span style="font-size:0.78rem;color:var(--text-muted);">4.5 (421 reviews)</span>
-          </div>
-          <div class="game-card__footer">
-            <span class="game-card__price-tag">$55</span>
-            <a href="game-single.html" class="btn btn--primary btn--sm">
-              <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Buy Now
-            </a>
-          </div>
-        </div>
-      </article>
+        <div class="games-grid" id="games-grid">
 
-      <!-- Design Your Own — invite card -->
-      <div class="design-invite-card reveal reveal--delay-3" id="design">
-        <div class="design-invite-card__icon" aria-hidden="true">
-          <i class="fa-solid fa-pen-ruler"></i>
+          <!-- 1. Dune: Imperium -->
+          <article class="gx-card" data-genre="strategy">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=600&auto=format&fit=crop&q=80" alt="Dune: Imperium" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #1</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Strategy · Deck Building</div>
+              <div class="gx-card__title">Dune: Imperium</div>
+              <div class="gx-card__desc">Worker placement meets deck building in Frank Herbert's universe. Control spice, influence, and Arrakis.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 60-120 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 14+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 9.2</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Sci-Fi</span><span class="gx-card__tag">Political</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Wingspan -->
+          <article class="gx-card" data-genre="family">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&auto=format&fit=crop&q=80" alt="Wingspan" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #2</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Engine Building · Nature</div>
+              <div class="gx-card__title">Wingspan</div>
+              <div class="gx-card__desc">Attract birds to your wildlife reserve in this award-winning engine-builder. Gorgeous cards, elegant design.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-5</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 40-70 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 10+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 8.9</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Spiel Award</span><span class="gx-card__tag">Nature</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Ark Nova -->
+          <article class="gx-card" data-genre="strategy">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop&q=80" alt="Ark Nova" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #3</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Strategy · Card Driven</div>
+              <div class="gx-card__title">Ark Nova</div>
+              <div class="gx-card__desc">Build and manage a scientifically planned zoo. Play animal cards, establish conservation projects, score points.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 90-150 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 14+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 9.0</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">BGG #1</span><span class="gx-card__tag">Zoo</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Cascadia -->
+          <article class="gx-card" data-genre="family">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1542601906897-ecd1da1a7d42?w=600&auto=format&fit=crop&q=80" alt="Cascadia" loading="lazy" />
+              <div class="gx-card__badges">
+                <span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #4</span>
+                <span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Spiel 2022</span>
+              </div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Tile Laying · Family</div>
+              <div class="gx-card__title">Cascadia</div>
+              <div class="gx-card__desc">Build a pacific northwest habitat by placing terrain tiles and wildlife tokens. Spiel des Jahres 2022 winner.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 30-45 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 10+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 8.7</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Nature</span><span class="gx-card__tag">Solo</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Gloomhaven -->
+          <article class="gx-card" data-genre="rpg">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&auto=format&fit=crop&q=80" alt="Gloomhaven" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #5</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Dungeon Crawl · Legacy</div>
+              <div class="gx-card__title">Gloomhaven</div>
+              <div class="gx-card__desc">A game of Euro-inspired tactical combat in an ever-changing world. Held BGG's #1 spot for five years straight.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 60-120 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 14+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 8.8</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Legacy</span><span class="gx-card__tag">RPG-lite</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Everdell -->
+          <article class="gx-card" data-genre="family">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=600&auto=format&fit=crop&q=80" alt="Everdell" loading="lazy" />
+              <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Fan Favourite</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Worker Placement · Family</div>
+              <div class="gx-card__title">Everdell</div>
+              <div class="gx-card__desc">Build a city of woodland creatures through worker placement and card drafting. Stunning artwork and components.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 40-80 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 13+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★½</span><span class="gx-card__score"> 8.5</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Fantasy</span><span class="gx-card__tag">Cosy</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Lost Ruins of Arnak -->
+          <article class="gx-card" data-genre="strategy">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1568694836920-a96aa7ac2c58?w=600&auto=format&fit=crop&q=80" alt="Lost Ruins of Arnak" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-arrow-trend-up"></i> Rising</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Deck Building · Exploration</div>
+              <div class="gx-card__title">Lost Ruins of Arnak</div>
+              <div class="gx-card__desc">Explore a mysterious island, uncover artefacts, and outwit rivals. Combines deck building with worker placement.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 30-120 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 12+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★½</span><span class="gx-card__score"> 8.4</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Adventure</span><span class="gx-card__tag">Indiana Jones</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Brass: Birmingham -->
+          <article class="gx-card" data-genre="strategy">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&auto=format&fit=crop&q=80" alt="Brass: Birmingham" loading="lazy" />
+              <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">BGG Top 10</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Economic · Network</div>
+              <div class="gx-card__title">Brass: Birmingham</div>
+              <div class="gx-card__desc">Build industries and rail networks in 18th-century Birmingham. Considered one of the finest economic games ever made.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 2-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 60-120 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 14+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 9.1</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Economic</span><span class="gx-card__tag">Historical</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. Spirit Island -->
+          <article class="gx-card" data-genre="coop">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=600&auto=format&fit=crop&q=80" alt="Spirit Island" loading="lazy" />
+              <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> Co-op #1</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Co-operative · Fantasy</div>
+              <div class="gx-card__title">Spirit Island</div>
+              <div class="gx-card__desc">Island spirits team up to repel colonial invaders. A fully cooperative game with asymmetric powers and deep strategy.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 90-120 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 13+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 8.9</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Co-op</span><span class="gx-card__tag">Asymmetric</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. Viticulture -->
+          <article class="gx-card" data-genre="strategy">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600&auto=format&fit=crop&q=80" alt="Viticulture Essential Edition" loading="lazy" />
+              <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Evergreen</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Worker Placement · Tableau</div>
+              <div class="gx-card__title">Viticulture: Essential Ed.</div>
+              <div class="gx-card__desc">Manage a vineyard through the seasons. Plant, harvest, and make wine in this beloved Tuscany-set worker placer.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 1-6</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 45-90 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 13+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★½</span><span class="gx-card__score"> 8.7</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Mediterranean</span><span class="gx-card__tag">Seasonal</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. Ticket to Ride: Legacy -->
+          <article class="gx-card" data-genre="family">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=600&auto=format&fit=crop&q=80" alt="Ticket to Ride Legacy" loading="lazy" />
+              <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">2024 Release</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Family · Legacy</div>
+              <div class="gx-card__title">Ticket to Ride: Legacy</div>
+              <div class="gx-card__desc">The classic train game transformed into a 12-session legacy campaign. Permanent choices shape the world as you play.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 2-5</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 60-90 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 10+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★½</span><span class="gx-card__score"> 8.6</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Legacy</span><span class="gx-card__tag">Trains</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12. Pandemic Legacy S1 -->
+          <article class="gx-card" data-genre="coop">
+            <div class="gx-card__img-wrap">
+              <img class="gx-card__img" src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&auto=format&fit=crop&q=80" alt="Pandemic Legacy Season 1" loading="lazy" />
+              <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">All-Time Great</span></div>
+              <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="gx-card__body">
+              <div class="gx-card__genre">Co-op · Legacy · Thematic</div>
+              <div class="gx-card__title">Pandemic Legacy: Season 1</div>
+              <div class="gx-card__desc">Cure diseases and save humanity across 12–24 connected sessions. Permanent consequences, incredible narrative arc.</div>
+              <div class="gx-card__meta">
+                <div class="gx-card__meta-item"><i class="fa-solid fa-users"></i> 2-4</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-clock"></i> 60 min</div>
+                <div class="gx-card__meta-item"><i class="fa-solid fa-user"></i> 13+</div>
+              </div>
+              <div class="gx-card__foot">
+                <div class="gx-card__rating"><span class="gx-card__stars">★★★★★</span><span class="gx-card__score"> 8.9</span></div>
+                <div style="display:flex;gap:5px;"><span class="gx-card__tag">Co-op</span><span class="gx-card__tag">Legacy</span></div>
+              </div>
+            </div>
+          </article>
+
         </div>
-        <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--text-primary);">Design Your Own Game</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);max-width:260px;line-height:1.6;">Start from a template, upload your artwork, and get a printed prototype delivered in 48 hours. Your game, your rules.</p>
-        <a href="create-account.html" class="btn btn--primary" style="margin-top:var(--sp-2);">
-          <i class="fa-solid fa-plus" aria-hidden="true"></i>
-          Start Free
+
+        <!-- Pagination -->
+        <div class="pagination reveal">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn" style="width:auto;padding:0 14px;">→ Next</button>
+        </div>
+      </div>
+
+      <!-- Right: Trending rank sidebar -->
+      <div class="trend-sidebar">
+        <div class="sec-eyebrow reveal">Trending Rank</div>
+        <h3 style="font-family:'Rubik',sans-serif;font-size:1.1rem;color:#fff;margin-bottom:20px;" class="reveal reveal-d1">This Week's Movers</h3>
+        <div class="trend-list reveal reveal-d2">
+          <a class="trend-row hot" href="game-single.html">
+            <div class="trend-row__rank">01</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=100&auto=format&fit=crop&q=80" alt="Dune" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Dune: Imperium</div><div class="trend-row__sub">Strategy · Sci-Fi</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">02</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=100&auto=format&fit=crop&q=80" alt="Wingspan" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Wingspan</div><div class="trend-row__sub">Engine Building</div></div>
+            <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
+          </a>
+          <a class="trend-row hot" href="game-single.html">
+            <div class="trend-row__rank">03</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&auto=format&fit=crop&q=80" alt="Ark Nova" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Ark Nova</div><div class="trend-row__sub">Strategy · Zoo</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">04</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1542601906897-ecd1da1a7d42?w=100&auto=format&fit=crop&q=80" alt="Cascadia" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Cascadia</div><div class="trend-row__sub">Tile Laying</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">05</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=100&auto=format&fit=crop&q=80" alt="Gloomhaven" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Gloomhaven</div><div class="trend-row__sub">Dungeon Crawl</div></div>
+            <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">06</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=100&auto=format&fit=crop&q=80" alt="Everdell" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Everdell</div><div class="trend-row__sub">Worker Placement</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row hot" href="game-single.html">
+            <div class="trend-row__rank">07</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1568694836920-a96aa7ac2c58?w=100&auto=format&fit=crop&q=80" alt="Arnak" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Lost Ruins of Arnak</div><div class="trend-row__sub">Deck Building</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">08</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=100&auto=format&fit=crop&q=80" alt="Brass" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Brass: Birmingham</div><div class="trend-row__sub">Economic</div></div>
+            <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">09</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=100&auto=format&fit=crop&q=80" alt="Spirit Island" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Spirit Island</div><div class="trend-row__sub">Co-operative</div></div>
+            <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
+          </a>
+          <a class="trend-row" href="game-single.html">
+            <div class="trend-row__rank">10</div>
+            <img class="trend-row__img" src="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=100&auto=format&fit=crop&q=80" alt="Viticulture" loading="lazy" />
+            <div class="trend-row__info"><div class="trend-row__title">Viticulture: EE</div><div class="trend-row__sub">Worker Placement</div></div>
+            <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CURATED COLLECTIONS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Collections</div>
+    <h2 class="sec-title reveal reveal-d1">Browse by Mood</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">Not sure where to start? Pick a vibe and we'll surface the right titles.</p>
+    <div class="collection-grid reveal reveal-d3">
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=500&auto=format&fit=crop&q=80" alt="Epic Strategy" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Epic Strategy</div>
+          <div class="collection-card__count">24 games</div>
+        </div>
+      </div>
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=500&auto=format&fit=crop&q=80" alt="Family Night" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Family Night</div>
+          <div class="collection-card__count">18 games</div>
+        </div>
+      </div>
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=80" alt="Dungeon Delves" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Dungeon Delves</div>
+          <div class="collection-card__count">12 games</div>
+        </div>
+      </div>
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=500&auto=format&fit=crop&q=80" alt="Solo Adventures" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Solo Adventures</div>
+          <div class="collection-card__count">15 games</div>
+        </div>
+      </div>
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1542601906897-ecd1da1a7d42?w=500&auto=format&fit=crop&q=80" alt="Short & Sweet" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Short &amp; Sweet (under 30 min)</div>
+          <div class="collection-card__count">22 games</div>
+        </div>
+      </div>
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=500&auto=format&fit=crop&q=80" alt="Award Winners" loading="lazy" />
+        <div class="collection-card__overlay">
+          <div class="collection-card__title">Award Winners</div>
+          <div class="collection-card__count">31 games</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     EDITORIAL PICKS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-eyebrow reveal">From Our Team</div>
+    <h2 class="sec-title reveal reveal-d1">Editor's Picks — May 2026</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">Hand-picked recommendations from the TabletopForge editorial team.</p>
+    <div class="editorial-grid reveal reveal-d3">
+      <div class="editorial-card">
+        <img class="editorial-card__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&auto=format&fit=crop&q=80" alt="Ark Nova" loading="lazy" />
+        <div class="editorial-card__body">
+          <div class="editorial-card__genre">Strategy</div>
+          <div class="editorial-card__title">Ark Nova — Best Complex Game 2025</div>
+          <div class="editorial-card__desc">If you've got 2+ hours and a love for intricate systems, Ark Nova is the game of the decade. BGG's current #1 for good reason.</div>
+        </div>
+      </div>
+      <div class="editorial-card">
+        <img class="editorial-card__img" src="https://images.unsplash.com/photo-1542601906897-ecd1da1a7d42?w=200&auto=format&fit=crop&q=80" alt="Cascadia" loading="lazy" />
+        <div class="editorial-card__body">
+          <div class="editorial-card__genre">Family</div>
+          <div class="editorial-card__title">Cascadia — Best Gateway Game</div>
+          <div class="editorial-card__desc">Perfect for introducing non-gamers to the hobby. Fast to learn, impossible to get tired of. Spiel des Jahres 2022 winner.</div>
+        </div>
+      </div>
+      <div class="editorial-card">
+        <img class="editorial-card__img" src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=200&auto=format&fit=crop&q=80" alt="Spirit Island" loading="lazy" />
+        <div class="editorial-card__body">
+          <div class="editorial-card__genre">Co-operative</div>
+          <div class="editorial-card__title">Spirit Island — Best Co-op Game</div>
+          <div class="editorial-card__desc">Flip the colonial narrative and play as the island itself. Every spirit plays radically differently — near-infinite replayability.</div>
+        </div>
+      </div>
+      <div class="editorial-card">
+        <img class="editorial-card__img" src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=200&auto=format&fit=crop&q=80" alt="Brass Birmingham" loading="lazy" />
+        <div class="editorial-card__body">
+          <div class="editorial-card__genre">Economic</div>
+          <div class="editorial-card__title">Brass: Birmingham — Best 2-Player</div>
+          <div class="editorial-card__desc">Industrial England at its most elegant. Two players building, competing, and forcing each other into impossible choices.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CTA — CAMPAIGNS & LAUNCH
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="reveal">
+      <!-- Backers -->
+      <div style="padding:40px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:24px;">
+        <div class="sec-eyebrow" style="margin-bottom:12px;">For Backers</div>
+        <h3 style="font-family:'Rubik',sans-serif;font-size:1.6rem;color:#fff;margin-bottom:12px;">Ready to Fund a Game?</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:24px;">Browse 12 live crowdfunding campaigns. Find your next pledge, track funding progress, and become part of a game's story.</p>
+        <a href="campaigns.html" class="btn btn--primary">
+          <i class="fa-solid fa-fire"></i> Browse Live Campaigns
         </a>
-        <p style="font-size:0.72rem;color:var(--text-muted);">No design skills required · Free to start</p>
       </div>
-
-    </div>
-
-    <div id="empty-state" style="display:none; text-align:center; padding:var(--sp-9) 0;">
-      <i class="fa-solid fa-dice" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:var(--sp-4);display:block;" aria-hidden="true"></i>
-      <p style="color:var(--text-secondary);font-size:0.95rem;">No games match that filter.</p>
-      <button class="btn btn--ghost" style="margin-top:var(--sp-4);" onclick="resetFilter()">Clear filter</button>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     DESIGN YOUR OWN — how it works
-═══════════════════════════════════════════ -->
-<section class="section-pad" style="background:var(--bg-secondary);" aria-labelledby="how-heading">
-  <div class="container">
-    <div class="section-head" style="flex-direction:column;align-items:flex-start;gap:var(--sp-3);margin-bottom:0;">
-      <div class="section-eyebrow reveal"><span class="tag">Design &amp; Print</span></div>
-      <h2 id="how-heading" class="display-md reveal reveal--delay-1" style="margin-top:var(--sp-3);">Want your game in this store?</h2>
-      <p class="reveal reveal--delay-2" style="color:var(--text-secondary);max-width:520px;font-size:0.95rem;line-height:1.75;">
-        Every game above was created by an independent designer using TabletopForge.
-        Here's how you take your idea from sketch to shelf.
-      </p>
-    </div>
-    <div class="games-how-strip">
-      <div class="games-how-step reveal">
-        <div class="games-how-step__num">01</div>
-        <div style="font-size:1.3rem;color:var(--accent);margin-bottom:var(--sp-3);"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></div>
-        <p class="games-how-step__title">Design</p>
-        <p class="games-how-step__body">Choose from 50+ templates for cards, boards, and tokens. Upload your artwork and customise every detail — no software needed.</p>
+      <!-- Designers -->
+      <div style="padding:40px;background:rgba(244,87,69,0.05);border:1px solid rgba(244,87,69,0.15);border-radius:24px;">
+        <div class="sec-eyebrow" style="margin-bottom:12px;">For Designers</div>
+        <h3 style="font-family:'Rubik',sans-serif;font-size:1.6rem;color:#fff;margin-bottom:12px;">Made Something Great?</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:24px;">Launch your game to 47,000+ active backers. $0 upfront, 94% success rate, dedicated campaign manager from day one.</p>
+        <a href="launch.html" class="btn btn--ghost">
+          <i class="fa-solid fa-rocket"></i> Launch Your Game
+        </a>
       </div>
-      <div class="games-how-step reveal reveal--delay-1">
-        <div class="games-how-step__num">02</div>
-        <div style="font-size:1.3rem;color:var(--accent);margin-bottom:var(--sp-3);"><i class="fa-solid fa-print" aria-hidden="true"></i></div>
-        <p class="games-how-step__title">Print</p>
-        <p class="games-how-step__body">Order 1 prototype or 1,000 retail copies. Approve a digital proof, then we print and ship in 48 hours — premium quality guaranteed.</p>
-      </div>
-      <div class="games-how-step reveal reveal--delay-2">
-        <div class="games-how-step__num">03</div>
-        <div style="font-size:1.3rem;color:var(--accent);margin-bottom:var(--sp-3);"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
-        <p class="games-how-step__title">Playtest</p>
-        <p class="games-how-step__body">Run live online playtest sessions with up to 8 players. Gather structured feedback, iterate, and refine before you commit to a print run.</p>
-      </div>
-      <div class="games-how-step reveal reveal--delay-3">
-        <div class="games-how-step__num">04</div>
-        <div style="font-size:1.3rem;color:var(--accent);margin-bottom:var(--sp-3);"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
-        <p class="games-how-step__title">Sell</p>
-        <p class="games-how-step__body">List your game in the TabletopForge store. List at a fixed price, run a pre-order, or offer print-on-demand — your game, your terms.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:var(--sp-8);" class="reveal">
-      <a href="create-account.html" class="btn btn--primary" style="font-size:1rem;padding:16px 36px;">
-        Start Designing Free
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-      <p style="margin-top:var(--sp-3);font-size:0.82rem;color:var(--text-muted);">Free plan available · No credit card required</p>
     </div>
   </div>
 </section>
 
-
-</main>
-
-
-
-<!-- ═══════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════
      FOOTER
-═══════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
   <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand-name">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-          TabletopForge
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <p class="footer__brand-desc">The all-in-one platform for independent board game designers. Design, print, playtest, and sell your game worldwide since 2018.</p>
-        <nav class="footer__social" aria-label="Social links">
-          <a href="#" class="footer__social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Platform</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="index.html"   class="footer__col-link">Home</a></li>
-          <li><a href="about.html"   class="footer__col-link">About</a></li>
-          <li><a href="blog.html"    class="footer__col-link">Blog &amp; Guides</a></li>
-          <li><a href="contact.html" class="footer__col-link">Contact</a></li>
-          <li><a href="press-kit.html" class="footer__col-link">Press Kit</a></li>
-          <li><a href="careers.html"   class="footer__col-link">Careers</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Create</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="games.html" class="footer__col-link">Designer Studio</a></li>
-          <li><a href="forum.html" class="footer__col-link">Template Library</a></li>
-          <li><a href="games.html"              class="footer__col-link">Browse Games</a></li>
-          <li><a href="coming-soon.html"        class="footer__col-link">Coming Soon</a></li>
-          <li><a href="retailer-info.html"      class="footer__col-link">Retailer Info</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Community</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="forum.html"             class="footer__col-link">Designer Forum</a></li>
-          <li><a href="faq.html"               class="footer__col-link">FAQ</a></li>
-          <li><a href="shipping-status.html"   class="footer__col-link">Order Tracking</a></li>
-          <li><a href="login.html"             class="footer__col-link">Login</a></li>
-          <li><a href="dashboard-user.html"    class="footer__col-link">Dashboard</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Support &amp; Legal</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="privacy-policy.html"            class="footer__col-link">Privacy Policy</a></li>
-          <li><a href="terms-conditions.html"            class="footer__col-link">Terms &amp; Conditions</a></li>
-          <li><a href="contact.html" class="footer__col-link">Support</a></li>
-        </ul>
-        <div style="margin-top:1.5rem;">
-          <p class="footer__col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-          <form data-newsletter-form style="display:flex;gap:8px;flex-direction:column;" aria-label="Footer newsletter">
-            <input class="newsletter__input" type="email" placeholder="Enter email" aria-label="Email" style="min-width:unset;font-size:0.82rem;padding:10px 14px;" />
-            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
-          </form>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TabletopForge Ltd. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <a href="mailto:hello@tabletopforge.com" class="footer__copy">hello@tabletopforge.com</a>
-        <span class="footer__copy">·</span>
-        <span class="footer__copy">+1 (000) 000-0000</span>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
       </div>
-      <nav class="footer__bottom-links" aria-label="Legal">
-        <a href="privacy-policy.html" class="footer__bottom-link">Privacy</a>
-        <a href="terms-conditions.html" class="footer__bottom-link">Terms</a>
-        <a href="privacy-policy.html#cookies-policy" class="footer__bottom-link">Cookies</a>
-      </nav>
     </div>
   </div>
 </footer>
-<script src="../assets/js/main.js?v=20260412r2"></script>
+
+<script src="../assets/js/main.js" defer></script>
+<script>
+  /* Filter chips */
+  const gChips = document.querySelectorAll('[data-gfilter]');
+  const gCards = document.querySelectorAll('#games-grid .gx-card');
+
+  gChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      gChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.gfilter;
+      gCards.forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.genre === f) ? '' : 'none';
+      });
+    });
+  });
+
+  /* Search */
+  document.getElementById('game-search').addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    gCards.forEach(card => {
+      const title = card.querySelector('.gx-card__title')?.textContent.toLowerCase() || '';
+      const desc  = card.querySelector('.gx-card__desc')?.textContent.toLowerCase() || '';
+      card.style.display = (!q || title.includes(q) || desc.includes(q)) ? '' : 'none';
+    });
+  });
+
+  /* Wishlist toggle */
+  document.querySelectorAll('.gx-card__wishlist').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      btn.classList.toggle('saved');
+      btn.querySelector('i').className = btn.classList.contains('saved')
+        ? 'fa-solid fa-heart'
+        : 'fa-regular fa-heart';
+    });
+  });
+
+  /* Pagination (visual only) */
+  document.querySelectorAll('.page-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.scrollTo({ top: document.querySelector('.games-filter-bar')?.offsetTop - 80, behavior: 'smooth' });
+    });
+  });
+</script>
 </body>
 </html>

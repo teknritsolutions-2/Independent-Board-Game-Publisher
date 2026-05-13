@@ -3,603 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
   <title>Blog — TabletopForge</title>
-  <meta name="description" content="Design guides, playtesting deep-dives, print-on-demand tutorials, and news from the TabletopForge community. For indie board game designers." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tabletopforge.com/blog" />
-    <meta property="og:title"       content="Blog — TabletopForge" />
-  <meta property="og:description" content="Designer diaries, design guides, and news from the TabletopForge studio." />
-  <meta property="og:type"        content="website" />
-
+  <meta name="description" content="News, design tips, campaign spotlights, and industry insights from the TabletopForge team." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
 </head>
 <body>
-
-<!-- ═══════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════ -->
-<header class="nav" role="banner">
-  <div class="container">
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-
-      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
-        <div class="nav__logo-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-        </div>
-        <span class="nav__logo-text">TabletopForge</span>
-      </a>
-
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
       <ul class="nav__links" role="list">
         <li class="nav__item">
-          <a href="index.html" class="nav__link" aria-haspopup="true">
-            Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
-            <a href="index.html"   class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house" aria-hidden="true"></i><div>Home Page 1 <span>Main landing experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><div>Home Page 2 <span>Designer showcase layout</span></div></a>
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
           </div>
         </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
         <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item">
-          <a href="games.html" class="nav__link" aria-haspopup="true">
-            Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
-          <div class="nav__dropdown" role="menu">
-            <a href="games.html"       class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice" aria-hidden="true"></i><div>All Titles <span>Browse our full catalogue</span></div></a>          </div>
-        </li>
-        <li class="nav__item"><a href="blog.html" class="nav__link active">Blog</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-        <li class="nav__item">
-          <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">
-            Dashboard <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
-          <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html"  class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-user" aria-hidden="true"></i><div>User Dashboard <span>Orders, downloads, forum</span></div></a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-gear" aria-hidden="true"></i><div>Admin Dashboard <span>Manage games &amp; designers</span></div></a>
-          </div>
-        </li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
-
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
     </nav>
-  </div>
-</header>
-
-<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"           class="nav__mobile-link">Home</a>
-  <a href="about.html"           class="nav__mobile-link">About</a>
-  <a href="games.html"           class="nav__mobile-link">Games</a>
-  <a href="blog.html"            class="nav__mobile-link">Blog</a>
-  <a href="contact.html"         class="nav__mobile-link">Contact</a>
-  <a href="dashboard-user.html"  class="nav__mobile-link">User Dashboard</a>
-  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
-  </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:1rem;width:100%;justify-content:center;">Login</a>
-</nav>
-
-
-<main id="main-content">
-
-<!-- ═══════════════════════════════════════════
-     BLOG HERO
-═══════════════════════════════════════════ -->
-<section class="blog-hero" aria-labelledby="blog-heading">
-  <div class="blog-hero__orb" aria-hidden="true"></div>
-  <div class="container">
-    <div class="compact-hero__stack">
-      <div class="compact-hero__row">
-        <div class="compact-hero__copy">
-        <div style="margin-bottom:var(--sp-4);">
-          <span class="tag">Journal</span>
-        </div>
-        <h1 id="blog-heading" class="display-xl">
-          <span class="hero__title-line"><span>Stories behind</span></span>
-          <span class="hero__title-line"><span>the games.</span></span>
-        </h1>
-        <p class="blog-hero__sub">
-          Design guides, playtesting deep-dives, print tutorials,
-          and honest reflections on what it takes to publish your game independently.
-        </p>
-        </div>
-        <div class="compact-hero__aside">
-        <form data-newsletter-form style="display:flex;gap:8px;flex-wrap:wrap;" aria-label="Blog newsletter signup" novalidate>
-          <input class="newsletter__input" type="email" placeholder="Get posts by email" aria-label="Email address" style="flex:1 1 200px;min-width:0;" />
-          <button class="btn btn--primary" type="submit">Subscribe</button>
-        </form>
-        </div>
-      </div>
-      <div class="inner-hero-strip inner-hero-strip--full compact-hero__strip" aria-label="Blog highlights">
-      <div class="inner-hero-strip__item">
-        <span class="inner-hero-strip__label">Studio Journal</span>
-        <span class="inner-hero-strip__value"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 46 published entries</span>
-        <span class="inner-hero-strip__meta">Design guides, tutorials, and creator postmortems.</span>
-      </div>
-      <div class="inner-hero-strip__item">
-        <span class="inner-hero-strip__label">Reading Format</span>
-        <span class="inner-hero-strip__value"><i class="fa-regular fa-clock" aria-hidden="true"></i> 5–12 minute reads</span>
-        <span class="inner-hero-strip__meta">Quick how-tos and deeper design development dives.</span>
-      </div>
-      <div class="inner-hero-strip__item">
-        <span class="inner-hero-strip__label">Topics Covered</span>
-        <span class="inner-hero-strip__value"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Playtests to shipping</span>
-        <span class="inner-hero-strip__meta">A clear trail from prototype decisions to fulfilment.</span>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     FEATURED POST
-═══════════════════════════════════════════ -->
-<a href="blog-single.html" class="blog-featured" aria-label="Read featured post: Why the Tide Mechanic took three years to get right" style="display:block;text-decoration:none;color:inherit;">
-  <div class="container" style="padding:0;">
-    <div class="blog-featured__layout">
-
-      <div class="blog-featured__cover" aria-hidden="true">
-        <img src="../assets/images/Gemini_Generated_Image_9wyc2z9wyc2z9wyc.png" alt="Citadels of the Deep board game" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;" loading="lazy" />
-      </div>
-
-      <div class="blog-featured__body reveal">
-        <div class="blog-featured__eyebrow">
-          <span class="tag tag--accent">Featured</span>
-          <span class="tag">Designer Diary</span>
-        </div>
-        <h2 class="blog-featured__title">
-          Why the Tide Mechanic took three years to get right
-        </h2>
-        <p class="blog-featured__excerpt">
-          David Osei walks through 47 discarded prototypes, two failed playtests
-          with professional reviewers, and the single playthrough moment that
-          made everything click. The story of Citadels of the Deep's most
-          controversial — and most loved — feature.
-        </p>
-        <div class="blog-featured__meta">
-          <div class="blog-author">
-            <div class="blog-author__avatar" aria-hidden="true">DO</div>
-            <div>
-              <p class="blog-author__name">David Osei</p>
-              <p class="blog-author__role">Lead Game Designer</p>
-            </div>
-          </div>
-          <div class="blog-meta-item">
-            <i class="fa-regular fa-calendar" aria-hidden="true"></i>
-            Mar 18, 2026
-          </div>
-          <div class="blog-meta-item">
-            <i class="fa-regular fa-clock" aria-hidden="true"></i>
-            12 min read
-          </div>
-          <div style="margin-left:auto;">
-            <span class="arrow-link">
-              Read article
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</a>
-
-
-<!-- ═══════════════════════════════════════════
-     CATEGORY FILTER
-═══════════════════════════════════════════ -->
-<div class="blog-filter" role="navigation" aria-label="Filter blog posts">
-  <div class="container">
-    <div class="blog-filter__inner">
-      <span class="blog-filter__label">Filter</span>
-      <button class="filter-pill active" data-blog-filter="all"            type="button">All Posts</button>
-      <button class="filter-pill"        data-blog-filter="designer-diary" type="button">
-        <i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Designer Diary
-      </button>
-      <button class="filter-pill"        data-blog-filter="update"       type="button">
-        <i class="fa-solid fa-bolt" aria-hidden="true"></i> Design Update
-      </button>
-      <button class="filter-pill"        data-blog-filter="playtest"       type="button">
-        <i class="fa-solid fa-dice" aria-hidden="true"></i> Playtesting
-      </button>
-      <button class="filter-pill"        data-blog-filter="studio"         type="button">
-        <i class="fa-solid fa-building" aria-hidden="true"></i> Studio Life
-      </button>
-      <button class="filter-pill"        data-blog-filter="community"      type="button">
-        <i class="fa-solid fa-users" aria-hidden="true"></i> Community
-      </button>
-    </div>
-  </div>
+  </header>
 </div>
-
-
-<!-- ═══════════════════════════════════════════
-     POSTS GRID + SIDEBAR
-═══════════════════════════════════════════ -->
-<section class="blog-section section-pad" aria-labelledby="posts-heading">
-  <div class="container">
-    <div class="blog-layout">
-
-      <div>
-        <h2 id="posts-heading" class="display-md reveal" style="margin-bottom:var(--sp-6);">All Posts</h2>
-
-        <div class="blog-grid" id="blog-grid">
-
-          <a href="blog-single.html" class="post-card reveal" data-blog-tags="designer-diary" aria-label="Read: Why the Tide Mechanic took three years to get right" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_eho40weho40weho4.png" alt="Board game design process" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Designer Diary</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 12 min</span>
-              </div>
-              <h3 class="post-card__title">Why the Tide Mechanic took three years to get right</h3>
-              <p class="post-card__excerpt">47 discarded prototypes, two failed playtest sessions, and one breakthrough moment. The full story behind Citadels of the Deep's defining feature.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">DO</div>
-                  <div>
-                    <p class="blog-author__name">David Osei</p>
-                    <p class="blog-author__role">Mar 18, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a href="blog-single.html" class="post-card reveal reveal--delay-1" data-blog-tags="tutorial" aria-label="Read: How to set up your first print-on-demand order" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_mna1ycmna1ycmna1.png" alt="Board game print production" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Tutorial</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 5 min</span>
-              </div>
-              <h3 class="post-card__title">How to set up your first print-on-demand order</h3>
-              <p class="post-card__excerpt">From uploading your art files to approving the print proof — a step-by-step walkthrough of the entire process for new designers on TabletopForge.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">EV</div>
-                  <div>
-                    <p class="blog-author__name">Elena Voss</p>
-                    <p class="blog-author__role">Mar 20, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a href="blog-single.html" class="post-card reveal" data-blog-tags="playtest" aria-label="Read: What 200 playtests taught us about player AP" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_1pn9yo1pn9yo1pn9.png" alt="Board game playtesting session" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Playtesting</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 8 min</span>
-              </div>
-              <h3 class="post-card__title">What 200 playtests taught us about player AP</h3>
-              <p class="post-card__excerpt">Analysis paralysis kills games. We ran structured sessions with 340 playtesters to understand exactly where decisions become overwhelming — and what we did about it.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">DO</div>
-                  <div>
-                    <p class="blog-author__name">David Osei</p>
-                    <p class="blog-author__role">Mar 5, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a href="blog-single.html" class="post-card reveal reveal--delay-1" data-blog-tags="studio" aria-label="Read: Eight years of Bristol: what the studio looks like now" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_kt6mpkt6mpkt6mpk.png" alt="Studio workspace for board game development" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Studio Life</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 6 min</span>
-              </div>
-              <h3 class="post-card__title">Eight years in Bristol: what the studio looks like now</h3>
-              <p class="post-card__excerpt">From a shared flat in Clifton to a proper studio with a full-time team. We look back at the decisions that shaped how we work — and the ones we'd make differently.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">EV</div>
-                  <div>
-                    <p class="blog-author__name">Elena Voss</p>
-                    <p class="blog-author__role">Feb 22, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a href="blog-single.html" class="post-card reveal" data-blog-tags="community" aria-label="Read: Forum vs Discord: why we chose to build our own" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_96mh7o96mh7o96mh.png" alt="Board gaming community" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Community</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 7 min</span>
-              </div>
-              <h3 class="post-card__title">Forum vs Discord: why designers need their own space</h3>
-              <p class="post-card__excerpt">Discord is fast and free. So why did we build a dedicated designer forum? The reasoning, the cost, and what we've learned after a year of running it ourselves.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">PK</div>
-                  <div>
-                    <p class="blog-author__name">Priya Kaur</p>
-                    <p class="blog-author__role">Feb 10, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-          <a href="blog-single.html" class="post-card reveal reveal--delay-1" data-blog-tags="designer-diary" aria-label="Read: Designing Moonfall Chronicles without a map" style="text-decoration:none;color:inherit;">
-            <div class="post-card__thumb" aria-hidden="true">
-              <img src="../assets/images/Gemini_Generated_Image_3u5wjp3u5wjp3u5w.png" alt="Moonfall Chronicles board game design" loading="lazy" />
-            </div>
-            <div class="post-card__body">
-              <div class="post-card__eyebrow">
-                <span class="tag">Designer Diary</span>
-                <span class="blog-meta-item"><i class="fa-regular fa-clock" aria-hidden="true"></i> 10 min</span>
-              </div>
-              <h3 class="post-card__title">Designing Moonfall Chronicles without a map</h3>
-              <p class="post-card__excerpt">Most board games start with a world map. Moonfall started with a question: what if the map is broken? The creative process behind this ambitious designer project.</p>
-              <div class="post-card__footer">
-                <div class="blog-author">
-                  <div class="blog-author__avatar" aria-hidden="true">DO</div>
-                  <div>
-                    <p class="blog-author__name">David Osei</p>
-                    <p class="blog-author__role">Jan 28, 2026</p>
-                  </div>
-                </div>
-                <span class="arrow-link">
-                  Read
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                </span>
-              </div>
-            </div>
-          </a>
-
-        </div>
-
-        <div id="blog-empty" style="display:none;text-align:center;padding:var(--sp-9) 0;">
-          <i class="fa-regular fa-folder-open" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:var(--sp-4);display:block;" aria-hidden="true"></i>
-          <p style="color:var(--text-secondary);font-size:0.95rem;">No posts in this category yet.</p>
-          <button class="btn btn--ghost" style="margin-top:var(--sp-4);" onclick="resetBlogFilter()" type="button">Show all posts</button>
-        </div>
-
-        <nav class="blog-pagination" aria-label="Post pagination">
-          <button class="page-btn" type="button" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="page-btn active" type="button" aria-label="Page 1">1</button>
-          <button class="page-btn" type="button" aria-label="Page 2">2</button>
-          <button class="page-btn" type="button" aria-label="Page 3">3</button>
-          <button class="page-btn" type="button" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
-        </nav>
-      </div>
-
-      <aside class="blog-sidebar" aria-label="Blog sidebar">
-
-        <div class="blog-sidebar__card">
-          <p class="blog-sidebar__title">
-            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Search
-          </p>
-          <div style="position:relative;">
-            <input
-              type="search"
-              class="sidebar-nl-input"
-              placeholder="Search posts..."
-              aria-label="Search blog posts"
-              style="padding-right:var(--sp-7);"
-            />
-            <i class="fa-solid fa-magnifying-glass" style="position:absolute;right:var(--sp-4);top:50%;transform:translateY(-50%);font-size:12px;color:var(--text-muted);pointer-events:none;" aria-hidden="true"></i>
-          </div>
-        </div>
-
-        <div class="blog-sidebar__card">
-          <p class="blog-sidebar__title">
-            <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Recent Posts
-          </p>
-          <div class="sidebar-posts">
-            <a href="blog-single.html" class="sidebar-post" style="text-decoration:none;color:inherit;">
-              <div class="sidebar-post__icon"><i class="fa-solid fa-water" aria-hidden="true"></i></div>
-              <div>
-                <p class="sidebar-post__title">Why the Tide Mechanic took three years to get right</p>
-                <p class="sidebar-post__date">Mar 18, 2026</p>
-              </div>
-            </a>
-            <a href="blog-single.html" class="sidebar-post" style="text-decoration:none;color:inherit;">
-              <div class="sidebar-post__icon"><i class="fa-solid fa-chess-rook" aria-hidden="true"></i></div>
-              <div>
-                <p class="sidebar-post__title">How to set up your first print-on-demand order</p>
-                <p class="sidebar-post__date">Mar 20, 2026</p>
-              </div>
-            </a>
-            <a href="blog-single.html" class="sidebar-post" style="text-decoration:none;color:inherit;">
-              <div class="sidebar-post__icon"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
-              <div>
-                <p class="sidebar-post__title">What 200 playtests taught us about player AP</p>
-                <p class="sidebar-post__date">Mar 5, 2026</p>
-              </div>
-            </a>
-            <a href="blog-single.html" class="sidebar-post" style="text-decoration:none;color:inherit;">
-              <div class="sidebar-post__icon"><i class="fa-solid fa-moon" aria-hidden="true"></i></div>
-              <div>
-                <p class="sidebar-post__title">Designing Moonfall Chronicles without a map</p>
-                <p class="sidebar-post__date">Jan 28, 2026</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="blog-sidebar__card">
-          <p class="blog-sidebar__title">
-            <i class="fa-solid fa-tags" aria-hidden="true"></i> Topics
-          </p>
-          <div class="sidebar-tags">
-            <button class="sidebar-tag" type="button">Designer Diary</button>
-            <button class="sidebar-tag" type="button">Design Update</button>
-            <button class="sidebar-tag" type="button">Playtesting</button>
-            <button class="sidebar-tag" type="button">Studio Life</button>
-            <button class="sidebar-tag" type="button">Community</button>
-            <button class="sidebar-tag" type="button">Art Direction</button>
-            <button class="sidebar-tag" type="button">Manufacturing</button>
-            <button class="sidebar-tag" type="button">Fulfilment</button>
-            <button class="sidebar-tag" type="button">Game Design</button>
-          </div>
-        </div>
-
-        <div class="blog-sidebar__card">
-          <p class="blog-sidebar__title">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i> Newsletter
-          </p>
-          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:var(--sp-4);line-height:1.6;">
-            New posts, design guides, and platform updates — straight to your inbox.
-          </p>
-          <form data-newsletter-form novalidate aria-label="Sidebar newsletter">
-            <input class="sidebar-nl-input" type="email" placeholder="your@email.com" aria-label="Email address" />
-            <button class="btn btn--primary" style="width:100%;justify-content:center;" type="submit">Subscribe</button>
-          </form>
-        </div>
-
-      </aside>
-    </div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
+<section class="sec-hero" style="min-height:45vh;">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1585634917202-6f67b6aba8de?w=1800&q=80&auto=format&fit=crop" alt="" aria-hidden="true" /></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="hero-eyebrow reveal"><i class="fa-solid fa-newspaper"></i> The Forge Post</div>
+    <h1 class="hero-title reveal reveal-d1" style="font-size:clamp(2.4rem,5vw,4.5rem);">Stories, Tips<br>&amp; <em>Insights</em></h1>
   </div>
 </section>
 
-</main>
-
-
-
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
+<section class="sec sec--lt sec--ov">
   <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand-name">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-          TabletopForge
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;" class="reveal">
+      <button class="chip active" data-cat="all">All Posts</button>
+      <button class="chip" data-cat="design">Design Tips</button>
+      <button class="chip" data-cat="crowdfunding">Crowdfunding</button>
+      <button class="chip" data-cat="industry">Industry</button>
+      <button class="chip" data-cat="spotlights">Spotlights</button>
+    </div>
+
+    <!-- Featured -->
+    <a href="blog-single.html" class="blog-card reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;">
+      <img src="https://images.unsplash.com/photo-1542396601-dca920ea2807?w=800&q=80&auto=format&fit=crop" alt="Blog hero" loading="lazy" style="width:100%;height:360px;object-fit:cover;" />
+      <div style="padding:40px;">
+        <div class="blog-card__cat">Design Tips</div>
+        <h2 style="font-family:'Rubik',sans-serif;font-size:1.8rem;font-weight:400;color:#0c0e12;margin-bottom:12px;line-height:1.25;">10 Things Every First-Time Board Game Designer Gets Wrong</h2>
+        <p style="font-size:0.9rem;color:#6b7280;line-height:1.75;margin-bottom:16px;">From prototype to campaign — the most common mistakes we see and how to avoid them before you even launch.</p>
+        <div class="blog-card__meta">May 8, 2026 &middot; 6 min read</div>
+      </div>
+    </a>
+
+    <div class="cards-grid reveal" id="blog-grid">
+      <a href="blog-single.html" class="blog-card" data-cat="crowdfunding"><img class="blog-card__img" src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Crowdfunding</div><h3 class="blog-card__title">How Kingdoms of Ash Hit 847% on Day One</h3><div class="blog-card__meta">May 2, 2026 &middot; 8 min read</div></div></a>
+      <a href="blog-single.html" class="blog-card" data-cat="industry"><img class="blog-card__img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Industry</div><h3 class="blog-card__title">The Rise of the Independent Board Game Publisher in 2026</h3><div class="blog-card__meta">Apr 28, 2026 &middot; 5 min read</div></div></a>
+      <a href="blog-single.html" class="blog-card" data-cat="spotlights"><img class="blog-card__img" src="https://images.unsplash.com/photo-1553481187-be93c21490a9?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Spotlights</div><h3 class="blog-card__title">Designer Spotlight: Ember &amp; Forge Studio</h3><div class="blog-card__meta">Apr 20, 2026 &middot; 4 min read</div></div></a>
+      <a href="blog-single.html" class="blog-card" data-cat="design"><img class="blog-card__img" src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Design Tips</div><h3 class="blog-card__title">Playtest Like a Pro: A Framework for Getting Useful Feedback</h3><div class="blog-card__meta">Apr 15, 2026 &middot; 7 min read</div></div></a>
+      <a href="blog-single.html" class="blog-card" data-cat="crowdfunding"><img class="blog-card__img" src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Crowdfunding</div><h3 class="blog-card__title">Setting Your Funding Goal: A Mathematical Approach</h3><div class="blog-card__meta">Apr 10, 2026 &middot; 6 min read</div></div></a>
+      <a href="blog-single.html" class="blog-card" data-cat="industry"><img class="blog-card__img" src="https://images.unsplash.com/photo-1574192438143-5f2b3ef6c9a4?w=600&q=80&auto=format&fit=crop" alt="Blog" loading="lazy" /><div class="blog-card__body"><div class="blog-card__cat">Industry</div><h3 class="blog-card__title">Retail vs. Direct: Which Post-Campaign Strategy Wins?</h3><div class="blog-card__meta">Apr 5, 2026 &middot; 9 min read</div></div></a>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <p class="footer__brand-desc">The all-in-one platform for independent board game designers. Design, print, playtest, and sell your game worldwide since 2018.</p>
-        <nav class="footer__social" aria-label="Social links">
-          <a href="#" class="footer__social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Platform</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="index.html"   class="footer__col-link">Home</a></li>
-          <li><a href="about.html"   class="footer__col-link">About</a></li>
-          <li><a href="blog.html"    class="footer__col-link">Blog &amp; Guides</a></li>
-          <li><a href="contact.html" class="footer__col-link">Contact</a></li>
-          <li><a href="press-kit.html" class="footer__col-link">Press Kit</a></li>
-          <li><a href="careers.html"   class="footer__col-link">Careers</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Create</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="games.html" class="footer__col-link">Designer Studio</a></li>
-          <li><a href="forum.html" class="footer__col-link">Template Library</a></li>
-          <li><a href="games.html"              class="footer__col-link">Browse Games</a></li>
-          <li><a href="coming-soon.html"        class="footer__col-link">Coming Soon</a></li>
-          <li><a href="retailer-info.html"      class="footer__col-link">Retailer Info</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Community</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="forum.html"             class="footer__col-link">Designer Forum</a></li>
-          <li><a href="faq.html"               class="footer__col-link">FAQ</a></li>
-          <li><a href="shipping-status.html"   class="footer__col-link">Order Tracking</a></li>
-          <li><a href="login.html"             class="footer__col-link">Login</a></li>
-          <li><a href="dashboard-user.html"    class="footer__col-link">Dashboard</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Support &amp; Legal</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="privacy-policy.html"            class="footer__col-link">Privacy Policy</a></li>
-          <li><a href="terms-conditions.html"            class="footer__col-link">Terms &amp; Conditions</a></li>
-          <li><a href="contact.html" class="footer__col-link">Support</a></li>
-        </ul>
-        <div style="margin-top:1.5rem;">
-          <p class="footer__col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-          <form data-newsletter-form style="display:flex;gap:8px;flex-direction:column;" aria-label="Footer newsletter">
-            <input class="newsletter__input" type="email" placeholder="Enter email" aria-label="Email" style="min-width:unset;font-size:0.82rem;padding:10px 14px;" />
-            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
-          </form>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TabletopForge Ltd. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <a href="mailto:hello@tabletopforge.com" class="footer__copy">hello@tabletopforge.com</a>
-        <span class="footer__copy">·</span>
-        <span class="footer__copy">+1 (000) 000-0000</span>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
       </div>
-      <nav class="footer__bottom-links" aria-label="Legal">
-        <a href="privacy-policy.html" class="footer__bottom-link">Privacy</a>
-        <a href="terms-conditions.html" class="footer__bottom-link">Terms</a>
-        <a href="privacy-policy.html#cookies-policy" class="footer__bottom-link">Cookies</a>
-      </nav>
     </div>
   </div>
 </footer>
-
-<script src="../assets/js/main.js?v=20260412r2"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+  document.querySelectorAll('[data-cat]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-cat]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('#blog-grid .blog-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>

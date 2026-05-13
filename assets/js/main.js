@@ -111,12 +111,12 @@ const NavManager = (() => {
   function buildHeaderMarkup(file) {
     const activeGroup = currentGroup(file);
     return `
-<header class="nav" role="banner" data-nav-normalized="1">
-  <div class="container">
+<div class="nav-wrap" data-nav-normalized="1">
+<header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
       <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
         <div class="nav__logo-mark" aria-hidden="true">
-          ${brandMarkSvg(20)}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
         </div>
         <span class="nav__logo-text">TabletopForge</span>
       </a>
@@ -138,27 +138,42 @@ const NavManager = (() => {
             </a>
           </div>
         </li>
-
+        <li class="nav__item">
+          <a href="games.html" class="${linkClass('games', activeGroup)}" aria-haspopup="true" data-nav-group="games">
+            Games
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
+          </a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-dice" aria-hidden="true"></i>
+              <div>All Titles <span>Browse our full catalogue</span></div>
+            </a>
+            <a href="games.html?filter=live" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
+              <div>Live Campaigns <span>Back a game now</span></div>
+            </a>
+            <a href="games.html?filter=coming" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <div>Coming Soon <span>Wishlist &amp; notify</span></div>
+            </a>
+            <a href="games.html?filter=funded" class="nav__dropdown-link" role="menuitem">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <div>Funded Games <span>Find where to buy</span></div>
+            </a>
+          </div>
+        </li>
         <li class="nav__item">
           <a href="about.html" class="${linkClass('about', activeGroup)}" data-nav-group="about">About</a>
         </li>
-
-        <li class="nav__item">
-          <a href="games.html" class="${linkClass('games', activeGroup)}" data-nav-group="games">Games</a>
-        </li>
-
         <li class="nav__item">
           <a href="blog.html" class="${linkClass('blog', activeGroup)}" data-nav-group="blog">Blog</a>
         </li>
-
         <li class="nav__item">
           <a href="contact.html" class="${linkClass('contact', activeGroup)}" data-nav-group="contact">Contact</a>
         </li>
-
         <li class="nav__item">
           <a href="forum.html" class="${linkClass('community', activeGroup)}" data-nav-group="community">Forum</a>
         </li>
-
         <li class="nav__item">
           <a href="dashboard-user.html" class="${linkClass('dashboard', activeGroup)}" aria-haspopup="true" data-nav-group="dashboard">
             Dashboard
@@ -178,17 +193,19 @@ const NavManager = (() => {
       </ul>
 
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
         <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <a href="login.html" class="btn btn--primary btn--sm nav__login">Login</a>
       </div>
 
       <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="${SHARED_MOBILE_ID}" type="button">
         <span></span><span></span><span></span>
       </button>
     </nav>
-  </div>
-</header>`;
+</header>
+</div>`;
   }
 
   function buildMobileMarkup(file) {
@@ -212,14 +229,14 @@ const NavManager = (() => {
   }
 
   function normalizePublicNav(file) {
-    const header = $('.nav');
-    if (!header || header.dataset.navNormalized === '1') return;
+    const existing = $('.nav-wrap') || $('.nav');
+    if (!existing || existing.dataset.navNormalized === '1') return;
     if (document.body.classList.contains('coming-soon-page') || document.body.classList.contains('dashboard-page')) return;
 
     const existingMobileNav = $('.nav__mobile');
-    header.outerHTML = buildHeaderMarkup(file);
+    existing.outerHTML = buildHeaderMarkup(file);
     existingMobileNav?.remove();
-    $('.nav')?.insertAdjacentHTML('afterend', buildMobileMarkup(file));
+    $('.nav-wrap')?.insertAdjacentHTML('afterend', buildMobileMarkup(file));
   }
 
   function init() {
@@ -227,7 +244,7 @@ const NavManager = (() => {
     normalizePublicNav(file);
     syncBrandMarks();
 
-    const nav       = $('.nav');
+    const nav       = $('.nav-wrap .nav') || $('.nav');
     const burger    = $('.nav__hamburger');
     const mobileNav = $('.nav__mobile');
     if (!nav) return;
@@ -536,16 +553,16 @@ const CursorManager = (() => {
                    height .35s cubic-bezier(.16,1,.3,1),
                    border-color .2s;
       }
-      .ttf-cursor.hover .ttf-cursor__dot  { width:10px;height:10px;background:var(--accent); }
-      .ttf-cursor.hover .ttf-cursor__ring { width:52px;height:52px;border-color:rgba(212,245,60,.3); }
+      .ttf-cursor.hover .ttf-cursor__dot  { width:10px;height:10px;background:var(--primary); }
+      .ttf-cursor.hover .ttf-cursor__ring { width:52px;height:52px;border-color:rgba(244,87,69,.35); }
       .ttf-cursor.click .ttf-cursor__ring { width:20px;height:20px; }
       .ttf-cursor.hidden { opacity:0; }
       [data-theme="light"] .ttf-cursor__ring {
-        border-color: rgba(152,194,23,.48);
-        box-shadow: 0 0 0 1px rgba(152,194,23,.14);
+        border-color: rgba(244,87,69,.30);
+        box-shadow: 0 0 0 1px rgba(244,87,69,.10);
       }
       [data-theme="light"] .ttf-cursor.hover .ttf-cursor__ring {
-        border-color: rgba(152,194,23,.7);
+        border-color: rgba(244,87,69,.55);
       }
     `;
     document.head.appendChild(s);
@@ -706,17 +723,10 @@ const TimelineManager = (() => {
 
 
 /* ─────────────────────────────────────────────────────────────
-   13. PARTICLE MANAGER — dense floating dots for hero sections
+   13. PARTICLE MANAGER — disabled; decorative bg handled in CSS
 ───────────────────────────────────────────────────────────── */
 const ParticleManager = (() => {
-  const TARGETS = [
-    '.hero', '.page-hero', '.cs-page',
-    '.gs-hero', '.blog-hero', '.h2-hero',
-    '.contact-hero', '.games-hero', '.forum-hero',
-    '.bs-hero', '.thread-hero',
-  ];
-
-  const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
+  const TARGETS = [];
 
   class Dot {
     constructor(W, H, initial) {
@@ -745,20 +755,10 @@ const ParticleManager = (() => {
     draw(ctx) {
       const t = this.life / this.maxL;
       const alpha = t < 0.12 ? t / 0.12 : t > 0.82 ? (1 - t) / 0.18 : 1;
-
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = isDark()
-        ? `rgba(212,245,60,${(alpha * 0.72).toFixed(3)})`
-        : `rgba(45,80,0,${(alpha * 0.55).toFixed(3)})`;
+      ctx.fillStyle = `rgba(244,87,69,${(alpha * 0.30).toFixed(3)})`;
       ctx.fill();
-
-      if (isDark() && this.r > 1.8) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r * 2.8, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212,245,60,${(alpha * 0.10).toFixed(3)})`;
-        ctx.fill();
-      }
     }
   }
 

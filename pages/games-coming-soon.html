@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon Games — TabletopForge</title>
+  <meta name="description" content="Discover upcoming board games before they launch. Join wishlists, get early alerts, and be first to back the next big thing on TabletopForge." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    /* ── Hero ── */
+    .cs-hero {
+      background: linear-gradient(150deg, #0c0e12 55%, #0a0d18 100%);
+      padding: 130px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(244,87,69,0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .cs-hero::after {
+      content: '';
+      position: absolute;
+      left: -100px;
+      bottom: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,87,69,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cs-hero__inner { position: relative; z-index: 1; }
+    .cs-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 99px;
+      background: rgba(244,87,69,0.1); border: 1px solid rgba(244,87,69,0.2);
+      font-size: 0.78rem; color: var(--primary);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px;
+    }
+    .cs-hero__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px;
+    }
+    .cs-hero__title em { color: var(--primary); font-style: normal; }
+    .cs-hero__sub {
+      font-size: 1rem; color: rgba(255,255,255,0.50); line-height: 1.7;
+      max-width: 520px; margin-bottom: 32px;
+    }
+    .cs-hero__chips { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .cs-hero__chip {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .cs-hero__chip-num { font-family: 'Space Mono', monospace; font-size: 1.4rem; color: #fff; }
+    .cs-hero__chip-lbl { font-size: 0.73rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    /* ── Orbit ring decoration ── */
+    .orbit-deco {
+      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+      width: 280px; height: 280px; pointer-events: none;
+    }
+    .orbit-deco__ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid rgba(244,87,69,0.15);
+      animation: spin-slow 20s linear infinite;
+    }
+    .orbit-deco__ring::before {
+      content: ''; position: absolute;
+      width: 8px; height: 8px;
+      background: var(--primary); border-radius: 50%;
+      top: -4px; left: 50%; transform: translateX(-50%);
+    }
+    .orbit-deco__ring--2 {
+      inset: 30px;
+      border-color: rgba(244,87,69,0.09);
+      animation-duration: 32s;
+      animation-direction: reverse;
+    }
+    .orbit-deco__ring--2::before { background: rgba(244,87,69,0.5); width: 6px; height: 6px; top: -3px; }
+    .orbit-deco__ring--3 {
+      inset: 60px;
+      border-color: rgba(244,87,69,0.06);
+      animation-duration: 48s;
+    }
+    .orbit-deco__ring--3::before { display: none; }
+    .orbit-deco__centre {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: rgba(244,87,69,0.35);
+    }
+    @media(max-width: 900px) { .orbit-deco { display: none; } }
+
+    /* ── Timeline strip ── */
+    .timeline-strip {
+      display: flex; gap: 0; overflow-x: auto;
+      scrollbar-width: none; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--dark-card);
+    }
+    .timeline-strip::-webkit-scrollbar { display: none; }
+    .timeline-month {
+      flex-shrink: 0; min-width: 140px;
+      padding: 20px 24px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .timeline-month:last-child { border-right: none; }
+    .timeline-month:hover { background: rgba(255,255,255,0.04); }
+    .timeline-month.active { background: rgba(244,87,69,0.08); border-bottom: 2px solid var(--primary); }
+    .timeline-month__label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+    .timeline-month__name { font-family: 'Rubik', sans-serif; font-size: 1rem; color: #fff; margin-bottom: 6px; }
+    .timeline-month__count { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--primary); }
+
+    /* ── Preview card (upcoming game) ── */
+    .preview-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .preview-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .preview-card__img { width: 100%; height: 210px; object-fit: cover; position: relative; }
+    .preview-card__img img { width: 100%; height: 100%; object-fit: cover; }
+    .preview-card__status {
+      position: absolute; top: 12px; left: 12px;
+      padding: 4px 10px; border-radius: 99px;
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.70);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.7rem; font-weight: 600;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .preview-card__wishlist {
+      position: absolute; top: 12px; right: 12px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55); font-size: 0.85rem; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preview-card__wishlist:hover { background: rgba(244,87,69,0.2); color: var(--primary); border-color: rgba(244,87,69,0.3); }
+    .preview-card__body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .preview-card__genre { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--primary); margin-bottom: 6px; }
+    .preview-card__title { font-family: 'Rubik', sans-serif; font-size: 1rem; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+    .preview-card__designer { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+    .preview-card__info { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .preview-card__info-item { font-size: 0.78rem; color: rgba(255,255,255,0.40); display: flex; align-items: center; gap: 5px; }
+    .preview-card__info-item i { color: rgba(255,255,255,0.25); font-size: 0.72rem; }
+    .preview-card__launch { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: rgba(255,255,255,0.50); margin-bottom: 14px; }
+    .preview-card__launch span { color: var(--primary); }
+    .preview-card__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .preview-card__watchers { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+    /* ── Featured upcoming ── */
+    .featured-up {
+      display: grid; grid-template-columns: 1fr 1fr; border-radius: 24px;
+      overflow: hidden; background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .featured-up__img { min-height: 360px; position: relative; }
+    .featured-up__img img { width: 100%; height: 100%; object-fit: cover; }
+    .featured-up__img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--dark-card) 100%);
+    }
+    .featured-up__body {
+      padding: 48px 40px; display: flex; flex-direction: column; justify-content: center;
+    }
+    @media(max-width: 860px) {
+      .featured-up { grid-template-columns: 1fr; }
+      .featured-up__img { min-height: 220px; }
+      .featured-up__img::after { background: linear-gradient(to bottom, transparent 60%, var(--dark-card) 100%); }
+      .featured-up__body { padding: 28px 24px; }
+    }
+    .featured-up__meta { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--primary); margin-bottom: 10px; }
+    .featured-up__title { font-family: 'Rubik', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: #fff; line-height: 1.2; margin-bottom: 14px; }
+    .featured-up__desc { font-size: 0.925rem; color: rgba(255,255,255,0.50); line-height: 1.7; margin-bottom: 24px; }
+    .featured-up__facts { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 28px; }
+    .featured-up__fact { display: flex; flex-direction: column; gap: 3px; }
+    .featured-up__fact-val { font-family: 'Space Mono', monospace; font-size: 1rem; color: #fff; }
+    .featured-up__fact-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── Alert preference section ── */
+    .alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .alert-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .alert-card:hover { border-color: rgba(244,87,69,0.3); background: rgba(244,87,69,0.04); }
+    .alert-card.selected { border-color: var(--primary); background: rgba(244,87,69,0.06); }
+    .alert-card__icon { font-size: 1.4rem; color: var(--primary); }
+    .alert-card__title { font-family: 'Rubik', sans-serif; font-size: 0.95rem; color: #fff; }
+    .alert-card__desc { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* ── Genre pills ── */
+    .genre-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .genre-pill {
+      padding: 7px 18px; border-radius: 99px;
+      font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.60);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .genre-pill:hover { background: rgba(255,255,255,0.09); color: #fff; }
+    .genre-pill.active { background: var(--primary); color: #fff; border-color: transparent; }
+
+    /* ── Notify bar ── */
+    .cs-notify {
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center; max-width: 540px;
+    }
+    .cs-notify__input {
+      flex: 1; min-width: 200px;
+      padding: 12px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+      color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .cs-notify__input:focus { border-color: rgba(244,87,69,0.35); }
+    .cs-notify__input::placeholder { color: rgba(255,255,255,0.30); }
+
+    /* ── Preview grid ── */
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 24px; }
+
+    /* ── Concept reveal section ── */
+    .concept-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+    .concept-cell { background: var(--dark-card); padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .concept-cell__icon { font-size: 1.4rem; color: var(--primary); }
+    .concept-cell__title { font-family: 'Rubik', sans-serif; font-size: 0.95rem; color: #fff; }
+    .concept-cell__desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
+    <nav class="nav__inner" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
+      <ul class="nav__links" role="list">
+        <li class="nav__item">
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link active" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link active" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
+      </ul>
+      <div class="nav__controls">
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+</div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="games-coming-soon.html" class="nav__mobile-link nav__mobile-sub">Coming Soon</a>
+  <a href="games-funded.html" class="nav__mobile-link nav__mobile-sub">Funded Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container cs-hero__inner">
+    <div style="display:flex;align-items:flex-start;gap:60px;">
+      <div style="flex:1;">
+        <div class="cs-hero__eyebrow reveal"><i class="fa-solid fa-clock"></i> Upcoming Releases</div>
+        <h1 class="cs-hero__title reveal reveal-d1">Be the First to<br>Back the Next<br><em>Big Game</em></h1>
+        <p class="cs-hero__sub reveal reveal-d2">Discover board games before they launch. Join wishlists, set personal alerts, and never miss a campaign you'll love.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-d3">
+          <a href="#preview-grid" class="btn btn--primary btn--lg"><i class="fa-solid fa-eye"></i> Browse Upcoming</a>
+          <a href="#notify-signup" class="btn btn--ghost btn--lg"><i class="fa-solid fa-bell"></i> Get Early Alerts</a>
+        </div>
+        <div class="cs-hero__chips reveal reveal-d4">
+          <div class="cs-hero__chip"><span class="cs-hero__chip-num">34</span><span class="cs-hero__chip-lbl">Games Announced</span></div>
+          <div class="cs-hero__chip"><span class="cs-hero__chip-num">12,800+</span><span class="cs-hero__chip-lbl">On Wishlists</span></div>
+          <div class="cs-hero__chip"><span class="cs-hero__chip-num">8</span><span class="cs-hero__chip-lbl">Launching This Month</span></div>
+        </div>
+      </div>
+      <div class="orbit-deco">
+        <div class="orbit-deco__ring"></div>
+        <div class="orbit-deco__ring orbit-deco__ring--2"></div>
+        <div class="orbit-deco__ring orbit-deco__ring--3"></div>
+        <div class="orbit-deco__centre"><i class="fa-solid fa-clock"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAUNCH TIMELINE -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div class="sec-head sec-head--left">
+      <div class="sec-label"><i class="fa-solid fa-calendar"></i> Launch Calendar</div>
+      <h2 class="sec-title">Upcoming by Month</h2>
+      <p class="sec-sub">Click a month to filter upcoming campaigns by their expected launch window.</p>
+    </div>
+    <div class="timeline-strip reveal">
+      <div class="timeline-month active">
+        <div class="timeline-month__label">2026</div>
+        <div class="timeline-month__name">June</div>
+        <div class="timeline-month__count">8 games</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2026</div>
+        <div class="timeline-month__name">July</div>
+        <div class="timeline-month__count">11 games</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2026</div>
+        <div class="timeline-month__name">August</div>
+        <div class="timeline-month__count">6 games</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2026</div>
+        <div class="timeline-month__name">September</div>
+        <div class="timeline-month__count">9 games</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2026</div>
+        <div class="timeline-month__name">Q4 2026</div>
+        <div class="timeline-month__count">varies</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2027</div>
+        <div class="timeline-month__name">Early 2027</div>
+        <div class="timeline-month__count">TBA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED UPCOMING -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><i class="fa-solid fa-star"></i> Most Anticipated</div>
+      <h2 class="sec-title">Featured Upcoming Game</h2>
+      <p class="sec-sub">Our most wishlisted upcoming campaign — currently in final playtesting.</p>
+    </div>
+    <div class="featured-up reveal">
+      <div class="featured-up__img">
+        <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&auto=format&fit=crop&q=80" alt="Celestial Empires" />
+      </div>
+      <div class="featured-up__body">
+        <div class="featured-up__meta"><i class="fa-solid fa-clock"></i> &nbsp;Launching July 2026</div>
+        <h2 class="featured-up__title">Celestial Empires: The Void Expansion</h2>
+        <p class="featured-up__desc">Build galactic civilisations across a modular hex board. Asymmetric factions, dynamic diplomacy, and emergent economic systems make every session unique. The most-watched upcoming title of 2026.</p>
+        <div class="featured-up__facts">
+          <div class="featured-up__fact">
+            <div class="featured-up__fact-val">2–6</div>
+            <div class="featured-up__fact-lbl">Players</div>
+          </div>
+          <div class="featured-up__fact">
+            <div class="featured-up__fact-val">90–150 min</div>
+            <div class="featured-up__fact-lbl">Play Time</div>
+          </div>
+          <div class="featured-up__fact">
+            <div class="featured-up__fact-val">Ages 14+</div>
+            <div class="featured-up__fact-lbl">Recommended</div>
+          </div>
+          <div class="featured-up__fact">
+            <div class="featured-up__fact-val">4,920</div>
+            <div class="featured-up__fact-lbl">On Wishlist</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn--primary"><i class="fa-solid fa-bell"></i> Notify Me at Launch</button>
+          <button class="btn btn--ghost"><i class="fa-solid fa-heart"></i> Add to Wishlist</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GENRE FILTER + GRID -->
+<section class="sec sec--dk" id="preview-grid">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+      <div>
+        <div class="sec-label"><i class="fa-solid fa-dice"></i> Browse Upcoming</div>
+        <h2 class="sec-title">34 Games Announced</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:9px 14px;">
+          <i class="fa-solid fa-magnifying-glass" style="color:rgba(255,255,255,0.30);font-size:0.85rem;"></i>
+          <input type="text" placeholder="Search upcoming games…" style="background:none;border:none;outline:none;color:#fff;font-size:0.875rem;font-family:inherit;width:180px;" />
+        </div>
+      </div>
+    </div>
+    <div class="genre-row reveal" style="margin-bottom:28px;">
+      <button class="genre-pill active">All Genres</button>
+      <button class="genre-pill">Strategy</button>
+      <button class="genre-pill">Cooperative</button>
+      <button class="genre-pill">RPG-Lite</button>
+      <button class="genre-pill">Family</button>
+      <button class="genre-pill">Puzzle</button>
+      <button class="genre-pill">Adventure</button>
+      <button class="genre-pill">Economic</button>
+    </div>
+    <div class="preview-grid">
+
+      <!-- Game 1 -->
+      <article class="preview-card reveal">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1568694836920-a96aa7ac2c58?w=600&auto=format&fit=crop&q=80" alt="Project Nexus" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">Strategy · Economic</div>
+          <div class="preview-card__title">Project Nexus</div>
+          <div class="preview-card__designer">by Stormveil Studios</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 3–6 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 90–120 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">Megacorporations compete in a near-future city. Economic warfare, sabotage, and corporate espionage.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 1,204 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Game 2 -->
+      <article class="preview-card reveal reveal-d1">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=600&auto=format&fit=crop&q=80" alt="Last Light Station" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">Cooperative · Survival</div>
+          <div class="preview-card__title">Last Light Station</div>
+          <div class="preview-card__designer">by Helion Games</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 1–5 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 60–120 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">Survival co-op set aboard a drifting space station. Manage oxygen, repairs, and crew morale.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 847 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Game 3 -->
+      <article class="preview-card reveal reveal-d2">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=600&auto=format&fit=crop&q=80" alt="Verdant City" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">Strategy · City Building</div>
+          <div class="preview-card__title">Verdant City</div>
+          <div class="preview-card__designer">by Otter Tail Games</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 2–4 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 75–100 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">Compete to build the most sustainable urban district. Balance ecology and economy across 12 scenarios.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 2,118 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Game 4 -->
+      <article class="preview-card reveal">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=600&auto=format&fit=crop&q=80" alt="Iron Covenant" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming August 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">RPG-Lite · Adventure</div>
+          <div class="preview-card__title">Iron Covenant</div>
+          <div class="preview-card__designer">by Ironclad Creative</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 2–5 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 120–180 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">A gritty fantasy campaign game. Build your guild, navigate political intrigue, and survive the Ironlands.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 3,402 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Game 5 -->
+      <article class="preview-card reveal reveal-d1">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600&auto=format&fit=crop&q=80" alt="Prism Puzzle Works" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">Puzzle · Abstract</div>
+          <div class="preview-card__title">Prism Puzzle Works</div>
+          <div class="preview-card__designer">by Lighthouse Labs</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 1–4 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 30–60 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">Light refraction puzzles with competitive and solo modes. Gorgeous transparent components.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 966 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Game 6 -->
+      <article class="preview-card reveal reveal-d2">
+        <div class="preview-card__img">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&auto=format&fit=crop&q=80" alt="Tidewater Trade" loading="lazy" />
+          <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming September 2026</div>
+          <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-card__genre">Economic · Maritime</div>
+          <div class="preview-card__title">Tidewater Trade</div>
+          <div class="preview-card__designer">by Saltwind Games</div>
+          <div class="preview-card__info">
+            <div class="preview-card__info-item"><i class="fa-solid fa-user"></i> 2–5 players</div>
+            <div class="preview-card__info-item"><i class="fa-solid fa-clock"></i> 90–140 min</div>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:12px;">Build trading routes across a shifting archipelago. Weather, pirates, and rival merchants in a lush maritime economy.</p>
+          <div class="preview-card__foot">
+            <div class="preview-card__watchers"><i class="fa-solid fa-eye"></i> 1,533 watching</div>
+            <button class="btn btn--primary btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <button class="btn btn--ghost btn--lg"><i class="fa-solid fa-plus"></i> Load More Upcoming Games</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><i class="fa-solid fa-circle-info"></i> How It Works</div>
+      <h2 class="sec-title">From Wishlist to Backer</h2>
+      <p class="sec-sub">Our wishlist system ensures you never miss the opening day of a campaign you've been waiting for.</p>
+    </div>
+    <div class="concept-strip reveal">
+      <div class="concept-cell">
+        <div class="concept-cell__icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="concept-cell__title">Discover Early</div>
+        <div class="concept-cell__desc">Browse announced games months before they launch. Read designer notes and early previews.</div>
+      </div>
+      <div class="concept-cell">
+        <div class="concept-cell__icon"><i class="fa-solid fa-heart"></i></div>
+        <div class="concept-cell__title">Add to Wishlist</div>
+        <div class="concept-cell__desc">Save games you're excited about. Your wishlist lives in your profile and syncs across devices.</div>
+      </div>
+      <div class="concept-cell">
+        <div class="concept-cell__icon"><i class="fa-solid fa-bell"></i></div>
+        <div class="concept-cell__title">Set Your Alerts</div>
+        <div class="concept-cell__desc">Choose email, push, or in-app notifications. Get notified at launch, for early-bird discounts, or both.</div>
+      </div>
+      <div class="concept-cell">
+        <div class="concept-cell__icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="concept-cell__title">Back at Launch</div>
+        <div class="concept-cell__desc">Click straight from your notification to the live campaign. First-hour backers often unlock exclusive tiers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERT PREFERENCES -->
+<section class="sec sec--dk" id="notify-signup">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div>
+        <div class="sec-label"><i class="fa-solid fa-bell"></i> Alert Preferences</div>
+        <h2 class="sec-title">Choose What You Hear About</h2>
+        <p class="sec-sub" style="margin-bottom:32px;">Customise your notifications so we only alert you for games that match your interests.</p>
+        <div class="alert-grid reveal">
+          <div class="alert-card selected">
+            <div class="alert-card__icon"><i class="fa-solid fa-chess"></i></div>
+            <div class="alert-card__title">Strategy Games</div>
+            <div class="alert-card__desc">Engine builders, area control, and resource management.</div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-card__icon"><i class="fa-solid fa-users"></i></div>
+            <div class="alert-card__title">Cooperative</div>
+            <div class="alert-card__desc">Team vs game, social deduction, and co-op campaigns.</div>
+          </div>
+          <div class="alert-card selected">
+            <div class="alert-card__icon"><i class="fa-solid fa-dungeon"></i></div>
+            <div class="alert-card__title">RPG & Adventure</div>
+            <div class="alert-card__desc">Campaign games with narrative, dungeon crawlers, and legacy.</div>
+          </div>
+          <div class="alert-card">
+            <div class="alert-card__icon"><i class="fa-solid fa-child"></i></div>
+            <div class="alert-card__title">Family Friendly</div>
+            <div class="alert-card__desc">Games for all ages and skill levels, 45 min or under.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top:8px;">
+        <h3 style="font-family:'Rubik',sans-serif;font-size:1.2rem;color:#fff;margin-bottom:8px;">Sign Up for Launch Alerts</h3>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:24px;">Drop your email below and we'll send you a heads-up the moment any upcoming game on your wishlist goes live — with no spam, ever.</p>
+        <div class="cs-notify reveal">
+          <input class="cs-notify__input" type="email" placeholder="your@email.com" />
+          <button class="btn btn--primary"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+        </div>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:12px;">Unsubscribe any time. We respect your inbox.</p>
+        <div style="margin-top:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.07);">
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.07em;">Notification channels</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <label style="display:flex;align-items:center;gap:10px;font-size:0.875rem;color:rgba(255,255,255,0.65);cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--primary);" /> Email notifications
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:0.875rem;color:rgba(255,255,255,0.65);cursor:pointer;">
+              <input type="checkbox" style="accent-color:var(--primary);" /> In-app alerts (requires account)
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;font-size:0.875rem;color:rgba(255,255,255,0.65);cursor:pointer;">
+              <input type="checkbox" style="accent-color:var(--primary);" /> Weekly wishlist digest
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  /* Genre pill filter */
+  document.querySelectorAll('.genre-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.genre-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  /* Timeline month active */
+  document.querySelectorAll('.timeline-month').forEach(m => {
+    m.addEventListener('click', () => {
+      document.querySelectorAll('.timeline-month').forEach(x => x.classList.remove('active'));
+      m.classList.add('active');
+    });
+  });
+  /* Alert card toggle */
+  document.querySelectorAll('.alert-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('selected'));
+  });
+  /* Wishlist heart toggle */
+  document.querySelectorAll('.preview-card__wishlist').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('fa-regular');
+      icon.classList.toggle('fa-solid');
+      if (icon.classList.contains('fa-solid')) btn.style.color = 'var(--primary)';
+      else btn.style.color = '';
+    });
+  });
+</script>
+</body>
+</html>

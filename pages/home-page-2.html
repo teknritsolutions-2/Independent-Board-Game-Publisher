@@ -3,636 +3,675 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
-  <title>TabletopForge — Design, Print &amp; Publish Your Board Game</title>
-  <meta name="description" content="The platform for indie board game designers. Upload artwork, order print prototypes, run playtests online, and sell your game worldwide." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tabletopforge.com/home-page-2" />
-  <meta property="og:title"       content="TabletopForge — Design, Print &amp; Publish Your Board Game" />
-  <meta property="og:description" content="Create, prototype, playtest and sell your board game with TabletopForge." />
-  <meta property="og:type"        content="website" />
-
+  <title>Launch Your Game — TabletopForge for Designers</title>
+  <meta name="description" content="TabletopForge for game designers: launch crowdfunding campaigns, reach 1.4M backers, and bring your board game to life." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    /* Hero dark with mesh gradient */
+    .sec-hero {
+      background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(244,87,69,0.18) 0%, transparent 55%),
+                  radial-gradient(ellipse 50% 60% at 100% 80%, rgba(244,87,69,0.08) 0%, transparent 55%),
+                  #0c0e12;
+      overflow:hidden;
+    }
+    /* Rotating circle grid behind hero */
+    .hero-orbit {
+      position:absolute; right:-60px; top:50%; transform:translateY(-50%);
+      width:600px; height:600px; pointer-events:none;
+    }
+    .hero-orbit__ring {
+      position:absolute; border-radius:50%; border:1px solid rgba(244,87,69,0.12);
+      top:50%; left:50%; transform:translate(-50%,-50%);
+    }
+    .hero-orbit__ring:nth-child(1) { width:200px; height:200px; animation:spin-slow 14s linear infinite; }
+    .hero-orbit__ring:nth-child(2) { width:340px; height:340px; animation:spin-slow 22s linear infinite reverse; border-color:rgba(244,87,69,0.08); }
+    .hero-orbit__ring:nth-child(3) { width:480px; height:480px; animation:spin-slow 30s linear infinite; border-color:rgba(244,87,69,0.05); }
+    .hero-orbit__dot {
+      position:absolute; width:8px; height:8px; border-radius:50%; background:var(--primary);
+      top:0; left:50%; transform:translateX(-50%) translateY(-4px);
+    }
+    /* Designer stats pill */
+    .dsign-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 18px; background:rgba(244,87,69,0.12);
+      border:1px solid rgba(244,87,69,0.24); border-radius:99px;
+      font-size:0.82rem; color:rgba(255,255,255,0.80);
+    }
+    /* Comparison table */
+    .compare-table { width:100%; border-collapse:collapse; }
+    .compare-table th, .compare-table td { padding:14px 20px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.875rem; }
+    .compare-table th { color:rgba(255,255,255,0.40); font-weight:400; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; }
+    .compare-table td:first-child { color:rgba(255,255,255,0.60); }
+    .compare-table td.ttf { color:#fff; font-weight:500; }
+    .compare-table td.ttf i { color:var(--primary); margin-right:6px; }
+    .compare-table td.other { color:rgba(255,255,255,0.30); }
+    .compare-table td.other i { color:rgba(255,0,0,0.5); margin-right:6px; }
+    /* App screenshot mockup */
+    .mockup-frame {
+      background:var(--dark-card); border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.6);
+    }
+    .mockup-bar {
+      background:rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.06);
+      padding:12px 16px; display:flex; align-items:center; gap:8px;
+    }
+    .mockup-dot { width:9px; height:9px; border-radius:50%; }
+    /* Revenue split */
+    .split-bar { height:8px; border-radius:99px; background:rgba(255,255,255,0.08); overflow:hidden; margin:8px 0; }
+    .split-bar__fill { height:100%; border-radius:99px; background:var(--primary); }
+    /* Success card */
+    .success-card {
+      background:var(--dark-card); border:1px solid rgba(255,255,255,0.07);
+      border-radius:20px; padding:28px; position:relative; overflow:hidden;
+    }
+    .success-card__num { font-family:'Space Mono',monospace; font-size:2.4rem; color:var(--primary); line-height:1; margin-bottom:6px; }
+    .success-card__label { font-size:0.875rem; color:rgba(255,255,255,0.50); }
+    .success-card__glow {
+      position:absolute; width:120px; height:120px; background:var(--primary);
+      opacity:0.08; filter:blur(40px); top:-20px; right:-20px; border-radius:50%;
+    }
+    /* Pricing */
+    .price-tier {
+      background:var(--dark-card); border:1px solid rgba(255,255,255,0.07);
+      border-radius:20px; padding:32px; flex:1;
+    }
+    .price-tier--featured {
+      background:var(--primary); border-color:var(--primary);
+    }
+    .price-tier__name { font-family:'Rubik',sans-serif; font-size:1.1rem; color:#fff; margin-bottom:4px; }
+    .price-tier__price { font-family:'Space Mono',monospace; font-size:2rem; color:#fff; margin:16px 0 4px; }
+    .price-tier__note { font-size:0.78rem; color:rgba(255,255,255,0.45); margin-bottom:20px; }
+    .price-tier--featured .price-tier__note { color:rgba(255,255,255,0.70); }
+    .price-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+    .price-list li { display:flex; align-items:center; gap:10px; font-size:0.875rem; color:rgba(255,255,255,0.65); }
+    .price-list li i { color:var(--primary); width:14px; }
+    .price-tier--featured .price-list li { color:rgba(255,255,255,0.88); }
+    .price-tier--featured .price-list li i { color:#fff; }
+    /* Progress mockup card */
+    .prog-mockup { background:var(--dark); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:20px; margin-bottom:12px; }
+    /* FAQ minimal */
+    .faq-min-item { border-bottom:1px solid rgba(255,255,255,0.07); }
+    .faq-min-btn { width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 0; cursor:pointer; background:none; border:none; color:rgba(255,255,255,0.80); font-size:0.95rem; font-family:'Rubik',sans-serif; text-align:left; gap:16px; }
+    .faq-min-btn i { color:var(--primary); transition:transform 0.2s; flex-shrink:0; }
+    .faq-min-btn.open i { transform:rotate(45deg); }
+    .faq-min-ans { display:none; font-size:0.875rem; color:rgba(255,255,255,0.50); line-height:1.7; padding-bottom:20px; }
+    .faq-min-ans.open { display:block; }
+    /* light mode fixes */
+    [data-theme="light"] .compare-table td:first-child { color:#6b7280; }
+    [data-theme="light"] .compare-table th { color:#9ca3af; }
+    [data-theme="light"] .compare-table td.other { color:#d1d5db; }
+    [data-theme="light"] .compare-table td.ttf { color:#0c0e12; }
+    [data-theme="light"] .success-card, [data-theme="light"] .prog-mockup { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .price-tier { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .price-tier__name, [data-theme="light"] .price-tier__price { color:#0c0e12; }
+    [data-theme="light"] .price-list li { color:#6b7280; }
+    [data-theme="light"] .mockup-frame { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .faq-min-btn { color:#0c0e12; }
+    [data-theme="light"] .faq-min-ans { color:#6b7280; }
+    [data-theme="light"] .faq-min-item { border-color:#e5e7eb; }
+    [data-theme="light"] .dsign-pill { background:rgba(244,87,69,0.07); }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     NAV  (shared across all pages)
-═══════════════════════════════════════════ -->
-<header class="nav" role="banner">
-  <div class="container">
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-
-      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
-        <div class="nav__logo-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/>
-            <path d="M8 16V9a4 4 0 0 1 8 0v7"/>
-            <path d="M9 9h6"/>
-            <circle cx="12" cy="6" r="1"/>
-          </svg>
-        </div>
-        <span class="nav__logo-text">TabletopForge</span>
-      </a>
-
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
       <ul class="nav__links" role="list">
-
         <li class="nav__item">
-          <a href="index.html" class="nav__link active" aria-haspopup="true">
-            Home
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
-            <a href="index.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-house" aria-hidden="true"></i>
-              <div>Home Page 1 <span>Main landing experience</span></div>
-            </a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              <div>Home Page 2 <span>Designer showcase layout</span></div>
-            </a>
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
           </div>
         </li>
-
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link active">Launch</a></li>
         <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-
-        <li class="nav__item">
-          <a href="games.html" class="nav__link" aria-haspopup="true">
-            Games
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
-          <div class="nav__dropdown" role="menu">
-            <a href="games.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-dice" aria-hidden="true"></i>
-              <div>All Titles <span>Browse our full catalogue</span></div>
-            </a>          </div>
-        </li>
-
         <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-
-        <li class="nav__item">
-          <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">
-            Dashboard
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg>
-          </a>
-          <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-user" aria-hidden="true"></i>
-              <div>User Dashboard <span>Orders, downloads, forum</span></div>
-            </a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem">
-              <i class="fa-solid fa-gear" aria-hidden="true"></i>
-              <div>Admin Dashboard <span>Manage games &amp; designers</span></div>
-            </a>
-          </div>
-        </li>
-
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
-
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
-
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-2" type="button">
-        <span></span><span></span><span></span>
-      </button>
-
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
     </nav>
-  </div>
-</header>
-
-<nav id="mobile-menu-2" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"           class="nav__mobile-link">Home Page 1</a>
-  <a href="home-page-2.html"         class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
-  <a href="about.html"           class="nav__mobile-link">About</a>
-  <a href="games.html"           class="nav__mobile-link">Games</a>
-  <a href="blog.html"            class="nav__mobile-link">Blog</a>
-  <a href="contact.html"         class="nav__mobile-link">Contact</a>
-  <a href="dashboard-user.html"  class="nav__mobile-link">User Dashboard</a>
-  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
-  </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:1rem;width:100%;justify-content:center;">Login</a>
+  </header>
+</div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home Page 1</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-user.html" class="nav__mobile-link">Dashboard</a>
+  <div class="nav__mobile-controls"><button class="btn btn--ghost" data-theme-toggle type="button">Theme</button><button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button></div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
 </nav>
 
+<!-- ══════════════════════════════════════════════════════════════
+     HERO — Designer focused with orbit animation
+══════════════════════════════════════════════════════════════ -->
+<section class="sec-hero" style="min-height:100vh;display:flex;align-items:center;">
+  <!-- Orbit rings -->
+  <div class="hero-orbit">
+    <div class="hero-orbit__ring"><div class="hero-orbit__dot"></div></div>
+    <div class="hero-orbit__ring"><div class="hero-orbit__dot"></div></div>
+    <div class="hero-orbit__ring"></div>
+  </div>
 
-<main id="main-content">
-
-<!-- ═══════════════════════════════════════════
-     SPLIT HERO  — Left: headline / Right: live campaign card
-═══════════════════════════════════════════ -->
-<section class="h2-hero" aria-labelledby="h2-heading">
-
-  <div class="h2-hero__bg" aria-hidden="true"></div>
-
-  <div class="container h2-hero__inner">
-
-    <div class="h2-hero__left">
-
-      <div class="h2-hero__live-pill reveal">
-        <span class="h2-live-dot" aria-hidden="true"></span>
-        <span>12,000+ games created by designers like you</span>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div style="max-width:680px;">
+      <div class="dsign-pill reveal">
+        <i class="fa-solid fa-pencil" style="color:var(--primary);"></i>
+        Built for Independent Board Game Designers
       </div>
-
-      <h1 id="h2-heading" class="display-xl h2-hero__title">
-        <span class="hero__title-line"><span>Design.</span></span>
-        <span class="hero__title-line"><span>Print.</span></span>
-        <span class="hero__title-line"><span>Publish.</span></span>
+      <h1 class="hero-title reveal reveal-d1" style="margin-top:24px;">
+        Your Game.<br>Your Vision.<br><em>Our Platform.</em>
       </h1>
-
-      <p class="h2-hero__sub reveal">
-        The all-in-one platform for independent board game designers.
-        Upload your artwork, order print prototypes, run online playtests,
-        and sell your game worldwide — no gatekeepers.
+      <p class="hero-sub reveal reveal-d2" style="max-width:520px;">
+        TabletopForge gives independent designers everything they need to crowdfund, launch, and grow a board game — from first prototype to global retail.
       </p>
-
-      <div class="h2-hero__ctas reveal">
-        <a href="create-account.html" class="btn btn--primary">
-          Start Creating Free
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <div class="hero-actions reveal reveal-d3">
+        <a href="launch.html" class="btn btn--primary btn--lg">
+          <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+          Submit Your Game
         </a>
-        <a href="games.html" class="btn btn--ghost">Browse games</a>
+        <a href="campaigns.html" class="btn btn--ghost btn--lg">Browse Live Games</a>
       </div>
-
-      <div class="h2-trust reveal">
-        <div class="h2-trust__item">
-          <i class="fa-solid fa-dice" aria-hidden="true"></i>
-          <span>12K+ games created</span>
-        </div>
-        <div class="h2-trust__sep" aria-hidden="true"></div>
-        <div class="h2-trust__item">
-          <i class="fa-solid fa-print" aria-hidden="true"></i>
-          <span>Print in 48 hrs</span>
-        </div>
-        <div class="h2-trust__sep" aria-hidden="true"></div>
-        <div class="h2-trust__item">
-          <i class="fa-solid fa-users" aria-hidden="true"></i>
-          <span>3,500+ designers</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="h2-hero__right reveal reveal--delay-2">
-      <div class="h2-featured-card" aria-label="Featured game: Citadels of the Deep">
-
-        <div class="h2-featured-card__thumb" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_9wyc2z9wyc2z9wyc.png" alt="Citadels of the Deep — featured game" width="560" height="315" loading="eager" />
-        </div>
-        <div class="h2-featured-card__header">
-          <div>
-            <span class="tag tag--accent">
-              <i class="fa-solid fa-circle" style="font-size:0.45rem;"></i> Featured Game
-            </span>
-          </div>
-        </div>
-
-        <h2 class="h2-featured-card__title">Citadels of the Deep</h2>
-        <p class="h2-featured-card__desc">
-          A naval conquest and fortress-building game designed on TabletopForge.
-          Shifting alliances, brutal tides. For 2–5 players. 90–150 minutes.
-        </p>
-
-        <div class="h2-featured-card__meter">
-          <div class="h2-meter-bar">
-            <div class="h2-meter-fill progress__fill" data-width="100"></div>
-          </div>
-          <div class="h2-meter-labels">
-            <span><strong>Fully published</strong></span>
-            <span>Available in marketplace</span>
-          </div>
-        </div>
-
-        <div class="h2-featured-card__stats">
-          <div class="h2-stat">
-            <span class="h2-stat__value" data-count="2847">—</span>
-            <span class="h2-stat__label">Copies sold</span>
-          </div>
-          <div class="h2-stat">
-            <span class="h2-stat__value" data-count="284" data-prefix="$" data-suffix="K">—</span>
-            <span class="h2-stat__label">Revenue</span>
-          </div>
-          <div class="h2-stat">
-            <span class="h2-stat__value" data-count="4">—</span>
-            <span class="h2-stat__label">Stars avg</span>
-          </div>
-        </div>
-
-        <a href="game-single.html" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:var(--sp-4);">
-          View this game
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-
+      <div class="hero-stats-strip reveal reveal-d4" style="display:flex;gap:40px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);">
+        <div><div style="font-family:'Space Mono',monospace;font-size:1.5rem;color:#fff;"><span data-count="248">0</span>+</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Games Launched</div></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:1.5rem;color:#fff;"><span data-count="92">0</span>%</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Success Rate</div></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:1.5rem;color:#fff;">$<span data-count="12">0</span>M+</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Funds Raised</div></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:1.5rem;color:#fff;"><span data-count="18">0</span> days</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Avg to Fund</div></div>
       </div>
     </div>
-
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════
-     TICKER — scrolling platform logos / stats
-═══════════════════════════════════════════ -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-item">12,000+ Games Created <i></i></div>
-    <div class="marquee-item">3,500+ Designers <i></i></div>
-    <div class="marquee-item">Print-on-Demand <i></i></div>
-    <div class="marquee-item">Online Playtest Rooms <i></i></div>
-    <div class="marquee-item">50+ Component Types <i></i></div>
-    <div class="marquee-item">48 Countries <i></i></div>
-    <div class="marquee-item">Template Library <i></i></div>
-    <div class="marquee-item">Live Shipment Tracking <i></i></div>
-    <div class="marquee-item">Designer Forum <i></i></div>
-    <div class="marquee-item">Sell on Marketplace <i></i></div>
+<!-- STUDIO NAMES STRIP -->
+<div style="position:relative;z-index:3;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0;overflow:hidden;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;" class="container">
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-pencil" style="color:var(--primary);margin-right:6px;"></i>Ember &amp; Forge Studio</span>
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-dice" style="color:var(--primary);margin-right:6px;"></i>Verdant Games Workshop</span>
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-star" style="color:var(--primary);margin-right:6px;"></i>Nebula Press</span>
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-dragon" style="color:var(--primary);margin-right:6px;"></i>Shadow Sanctum Studios</span>
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-chess" style="color:var(--primary);margin-right:6px;"></i>Iron Tower Designs</span>
+    <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:0.12em;white-space:nowrap;"><i class="fa-solid fa-hat-wizard" style="color:var(--primary);margin-right:6px;"></i>Arcane Atlas Co.</span>
   </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════
-     ALL CAMPAIGNS — horizontal scrolling row
-═══════════════════════════════════════════ -->
-<section class="h2-campaigns section-pad" aria-labelledby="h2-campaigns-heading">
+<!-- ══════════════════════════════════════════════════════════════
+     SUCCESS STATS — campaign performance cards
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk sec--ov">
   <div class="container">
-
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow reveal"><span class="tag">Made on TabletopForge</span></div>
-        <h2 id="h2-campaigns-heading" class="display-md reveal reveal--delay-1">Games built by real designers.</h2>
-      </div>
-      <a href="games.html" class="arrow-link reveal reveal--delay-1">
-        Full catalogue
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-trophy"></i> Designer Results</div>
+      <h2 class="sec-title">What Our Designers Achieve</h2>
+      <p class="sec-sub">Real numbers from games that launched on TabletopForge in the last 12 months.</p>
     </div>
-
-    <div class="h2-campaigns__scroll" role="list">
-
-      <article class="h2-camp-card h2-camp-card--live reveal" role="listitem">
-        <div class="h2-camp-card__status">
-          <span class="tag tag--accent"><i class="fa-solid fa-circle" style="font-size:0.45rem;"></i> Published</span>
-          <span class="h2-camp-card__days">2,847 copies sold</span>
-        </div>
-        <div class="h2-camp-card__thumb" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_9wyc2z9wyc2z9wyc.png" alt="Citadels of the Deep board game" width="400" height="225" loading="lazy" />
-        </div>
-        <h3 class="h2-camp-card__title">Citadels of the Deep</h3>
-        <p class="h2-camp-card__genre">Strategy · 2–5 players · 90–150 min</p>
-        <div class="progress" style="margin:var(--sp-4) 0;">
-          <div class="progress__bar"><div class="progress__fill" data-width="100"></div></div>
-          <div class="progress__meta"><span><strong>Designed by</strong> Elena Voss</span><span>TabletopForge ✓</span></div>
-        </div>
-        <a href="game-single.html" class="btn btn--primary btn--sm" style="width:100%;justify-content:center;">View game</a>
-      </article>
-
-      <article class="h2-camp-card reveal reveal--delay-1" role="listitem">
-        <div class="h2-camp-card__status">
-          <span class="tag">In Production</span>
-          <span class="h2-camp-card__days">200 copies printing</span>
-        </div>
-        <div class="h2-camp-card__thumb" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_n3jzyln3jzyln3jz.png" alt="Verdant Empires board game" width="400" height="225" loading="lazy" />
-        </div>
-        <h3 class="h2-camp-card__title">Verdant Empires</h3>
-        <p class="h2-camp-card__genre">Eco-Strategy · 1–4 players · 60–120 min</p>
-        <div class="progress" style="margin:var(--sp-4) 0;">
-          <div class="progress__bar"><div class="progress__fill" data-width="75"></div></div>
-          <div class="progress__meta"><span><strong>Designed by</strong> David Osei</span><span>TabletopForge ✓</span></div>
-        </div>
-        <a href="games.html" class="btn btn--ghost btn--sm" style="width:100%;justify-content:center;">View game</a>
-      </article>
-
-      <article class="h2-camp-card reveal reveal--delay-2" role="listitem">
-        <div class="h2-camp-card__status">
-          <span class="tag">Playtesting</span>
-          <span class="h2-camp-card__days">Open beta</span>
-        </div>
-        <div class="h2-camp-card__thumb" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_3u5wjp3u5wjp3u5w.png" alt="Moonfall Chronicles board game" width="400" height="225" loading="lazy" />
-        </div>
-        <h3 class="h2-camp-card__title">Moonfall Chronicles</h3>
-        <p class="h2-camp-card__genre">Co-op Narrative · 1–4 players · Campaign</p>
-        <div class="progress" style="margin:var(--sp-4) 0;">
-          <div class="progress__bar"><div class="progress__fill" data-width="40"></div></div>
-          <div class="progress__meta"><span><strong>Designed by</strong> Noa Bergman</span><span>TabletopForge ✓</span></div>
-        </div>
-        <a href="games.html" class="btn btn--ghost btn--sm" style="width:100%;justify-content:center;">Join playtest</a>
-      </article>
-
-      <article class="h2-camp-card reveal reveal--delay-3" role="listitem">
-        <div class="h2-camp-card__status">
-          <span class="tag"><i class="fa-solid fa-check" style="font-size:0.6rem;"></i> Published</span>
-          <span class="h2-camp-card__days">Feb 2026</span>
-        </div>
-        <div class="h2-camp-card__thumb" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_oba3deoba3deoba3.png" alt="The Iron Pact board game" width="400" height="225" loading="lazy" />
-        </div>
-        <h3 class="h2-camp-card__title">The Iron Pact</h3>
-        <p class="h2-camp-card__genre">Deck Building · 3–6 players · 60–90 min</p>
-        <div class="progress" style="margin:var(--sp-4) 0;">
-          <div class="progress__bar"><div class="progress__fill" data-width="100"></div></div>
-          <div class="progress__meta"><span><strong>Designed by</strong> Priya Kaur</span><span>4,200 copies sold</span></div>
-        </div>
-        <a href="games.html" class="btn btn--ghost btn--sm" style="width:100%;justify-content:center;">Buy game</a>
-      </article>
-
+    <div class="cards-grid cards-grid--4 reveal">
+      <div class="success-card">
+        <div class="success-card__glow"></div>
+        <div class="success-card__num">847%</div>
+        <div class="success-card__label">Highest campaign funding rate in 2025</div>
+      </div>
+      <div class="success-card">
+        <div class="success-card__glow"></div>
+        <div class="success-card__num">18 hrs</div>
+        <div class="success-card__label">Fastest campaign to hit 100% funding</div>
+      </div>
+      <div class="success-card">
+        <div class="success-card__glow"></div>
+        <div class="success-card__num">$284k</div>
+        <div class="success-card__label">Highest single campaign funds raised</div>
+      </div>
+      <div class="success-card">
+        <div class="success-card__glow"></div>
+        <div class="success-card__num">38</div>
+        <div class="success-card__label">Countries receiving fulfilment deliveries</div>
+      </div>
     </div>
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════
-     DESIGNER STUDIO PREVIEW — 3 core platform features
-═══════════════════════════════════════════ -->
-<section class="h2-portal section-pad" aria-labelledby="h2-portal-heading">
+<!-- ══════════════════════════════════════════════════════════════
+     HOW TO LAUNCH — Step-by-step process
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt sec--ov">
   <div class="container">
-
-    <div class="section-head" style="flex-direction:column;align-items:center;text-align:center;margin-bottom:var(--sp-7);">
-      <div class="section-eyebrow reveal"><span class="tag">Designer Studio</span></div>
-      <h2 id="h2-portal-heading" class="display-md reveal reveal--delay-1" style="max-width:600px;margin-top:var(--sp-4);">
-        Everything you need to make your game real.
-      </h2>
-      <p class="reveal reveal--delay-2" style="color:var(--text-secondary);max-width:480px;margin-top:var(--sp-4);font-size:0.95rem;line-height:1.75;">
-        Design, print, playtest, and publish — all inside one platform built for independent creators.
-      </p>
-    </div>
-
-    <div class="h2-portal__grid">
-
-      <div class="h2-portal-card reveal">
-        <div class="h2-portal-card__icon" aria-hidden="true">
-          <i class="fa-solid fa-pencil-ruler"></i>
-        </div>
-        <h3 class="h2-portal-card__title">Design &amp; Template Library</h3>
-        <p class="h2-portal-card__body">Start from 50+ professional templates for cards, boards, tokens, and rulebooks. Customise every layer — no design software needed.</p>
-        <div class="h2-file-list" aria-hidden="true" style="flex:1;">
-          <div class="h2-file-item">
-            <i class="fa-solid fa-file-pdf"></i>
-            <span>Standard Card Template</span>
-            <span class="h2-file-size">Free</span>
-          </div>
-          <div class="h2-file-item">
-            <i class="fa-solid fa-file-pdf"></i>
-            <span>Hex Board Layout — A2</span>
-            <span class="h2-file-size">Free</span>
-          </div>
-          <div class="h2-file-item">
-            <i class="fa-solid fa-file-pdf"></i>
-            <span>Deluxe Box &amp; Insert Pack</span>
-            <span class="h2-file-size">Creator+</span>
-          </div>
-        </div>
-        <a href="dashboard-user-pnp.html" class="arrow-link" style="margin-top:auto;padding-top:var(--sp-4);display:inline-flex;align-self:flex-start;">
-          Browse templates
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="h2-portal-card reveal reveal--delay-1">
-        <div class="h2-portal-card__icon" aria-hidden="true">
-          <i class="fa-solid fa-print"></i>
-        </div>
-        <h3 class="h2-portal-card__title">Print-on-Demand</h3>
-        <p class="h2-portal-card__body">Order 1 copy or 1,000. Upload your files and we handle printing, packaging, and shipping direct to you or your customers worldwide.</p>
-        <div class="h2-mini-tracker" aria-hidden="true" style="flex:1;">
-          <div class="h2-track-step h2-track-step--done">
-            <div class="h2-track-dot"></div>
-            <span>Upload files &amp; approve proof</span>
-          </div>
-          <div class="h2-track-step h2-track-step--done">
-            <div class="h2-track-dot"></div>
-            <span>Production starts</span>
-          </div>
-          <div class="h2-track-step h2-track-step--active">
-            <div class="h2-track-dot"></div>
-            <span>Ships in 48 hrs — track live</span>
-          </div>
-          <div class="h2-track-step">
-            <div class="h2-track-dot"></div>
-            <span>Delivered to your door</span>
-          </div>
-        </div>
-        <a href="dashboard-user-orders.html" class="arrow-link" style="margin-top:auto;padding-top:var(--sp-4);display:inline-flex;align-self:flex-start;">
-          Start a print order
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="h2-portal-card reveal reveal--delay-2">
-        <div class="h2-portal-card__icon" aria-hidden="true">
-          <i class="fa-solid fa-comments"></i>
-        </div>
-        <h3 class="h2-portal-card__title">Designer Forum</h3>
-        <p class="h2-portal-card__body">Rulebook critique, balance threads, playtest feedback requests. A community of 3,500 designers who get what you're building.</p>
-        <div class="h2-forum-preview" aria-hidden="true" style="flex:1;">
-          <div class="h2-forum-item">
-            <div class="h2-forum-avatar">MR</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="reveal">
+      <div>
+        <div class="sec-label"><i class="fa-solid fa-map"></i> The Road to Launch</div>
+        <h2 class="sec-title" style="font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:32px;">How to Launch Your Game</h2>
+        <div class="launch-steps">
+          <div class="launch-step">
+            <div class="launch-step__num">01</div>
             <div>
-              <p class="h2-forum-title">Best playtesting methods for solo games?</p>
-              <p class="h2-forum-meta">42 replies · 2h ago</p>
+              <div class="launch-step__title">Submit Your Pitch</div>
+              <div class="launch-step__desc">Fill in the launch form with your game concept, rules summary, prototype photos, and target market. No fee to submit.</div>
             </div>
           </div>
-          <div class="h2-forum-item">
-            <div class="h2-forum-avatar">SL</div>
+          <div class="launch-step">
+            <div class="launch-step__num">02</div>
             <div>
-              <p class="h2-forum-title">Card template bleed vs. safe zone guide</p>
-              <p class="h2-forum-meta">28 replies · 5h ago</p>
+              <div class="launch-step__title">Team Review (7–14 days)</div>
+              <div class="launch-step__desc">Our editorial team evaluates gameplay, component quality, and campaign viability. You get direct feedback regardless of outcome.</div>
             </div>
           </div>
-          <div class="h2-forum-item">
-            <div class="h2-forum-avatar">TK</div>
+          <div class="launch-step">
+            <div class="launch-step__num">03</div>
             <div>
-              <p class="h2-forum-title">How to price your game for the marketplace</p>
-              <p class="h2-forum-meta">15 replies · 1d ago</p>
+              <div class="launch-step__title">Build Your Campaign Page</div>
+              <div class="launch-step__desc">Use our drag-and-drop builder to design your page — images, videos, pledge tiers, stretch goals, and backer updates.</div>
+            </div>
+          </div>
+          <div class="launch-step">
+            <div class="launch-step__num">04</div>
+            <div>
+              <div class="launch-step__title">Go Live &amp; Get Funded</div>
+              <div class="launch-step__desc">We promote your campaign to our 1.4M+ community on launch day. Our fulfillment partners handle printing and shipping.</div>
             </div>
           </div>
         </div>
-        <a href="forum.html" class="arrow-link" style="margin-top:auto;padding-top:var(--sp-4);display:inline-flex;align-self:flex-start;">
-          Join the conversation
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </div>
+      <!-- Mockup card column -->
+      <div>
+        <div class="mockup-frame anim-float" style="max-width:400px;margin:0 auto;">
+          <div class="mockup-bar">
+            <div class="mockup-dot" style="background:#ff5f57;"></div>
+            <div class="mockup-dot" style="background:#febc2e;"></div>
+            <div class="mockup-dot" style="background:#28c840;"></div>
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.25);margin-left:8px;">Campaign Dashboard</span>
+          </div>
+          <div style="padding:20px;">
+            <div class="prog-mockup">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:0.8rem;color:rgba(255,255,255,0.60);">Kingdoms of Ash</span>
+                <span style="font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--primary);">847%</span>
+              </div>
+              <div class="pbar"><div class="pbar-fill" style="width:100%"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.72rem;color:rgba(255,255,255,0.35);">
+                <span>$284,120 raised</span><span>15 days left</span>
+              </div>
+            </div>
+            <div class="prog-mockup">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:0.8rem;color:rgba(255,255,255,0.60);">Verdant Isles</span>
+                <span style="font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--primary);">214%</span>
+              </div>
+              <div class="pbar"><div class="pbar-fill" style="width:100%"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.72rem;color:rgba(255,255,255,0.35);">
+                <span>$64,200 raised</span><span>28 days left</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;">
+              <div style="background:rgba(244,87,69,0.10);border-radius:12px;padding:14px;text-align:center;">
+                <div style="font-family:'Space Mono',monospace;font-size:1.2rem;color:#fff;">4,281</div>
+                <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:2px;">Total Backers</div>
+              </div>
+              <div style="background:rgba(244,87,69,0.10);border-radius:12px;padding:14px;text-align:center;">
+                <div style="font-family:'Space Mono',monospace;font-size:1.2rem;color:var(--primary);">+12%</div>
+                <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:2px;">vs yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DESIGNER SPOTLIGHTS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk sec--ov">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-users"></i> Creator Spotlights</div>
+      <h2 class="sec-title">Designers Who Launched Here</h2>
+      <p class="sec-sub">Independent studios building tomorrow's favourite games — stories from the TabletopForge community.</p>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=104&h=104&q=80&auto=format&fit=crop&crop=face" alt="Marcus Chen" /></div>
+          <div>
+            <div class="creator-card__name">Marcus Chen</div>
+            <div class="creator-card__meta">Ember &amp; Forge Studio · 2 campaigns</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">"TabletopForge connected us to an audience we couldn't have reached alone. Our second campaign funded in under 24 hours."</p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">847%</div><div class="creator-card__stat-label">Peak funding</div></div>
+          <div><div class="creator-card__stat-num">4,200</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">22</div><div class="creator-card__stat-label">Countries</div></div>
+        </div>
+      </div>
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=104&h=104&q=80&auto=format&fit=crop&crop=face" alt="Priya Sharma" /></div>
+          <div>
+            <div class="creator-card__name">Priya Sharma</div>
+            <div class="creator-card__meta">Verdant Games · 1 campaign</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">"The campaign builder was intuitive and the support team guided us through every step. We exceeded our stretch goals twice over."</p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">214%</div><div class="creator-card__stat-label">Funded</div></div>
+          <div><div class="creator-card__stat-num">1,840</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">15</div><div class="creator-card__stat-label">Countries</div></div>
+        </div>
+      </div>
+      <div class="creator-card">
+        <div class="creator-card__head">
+          <div class="creator-card__avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=104&h=104&q=80&auto=format&fit=crop&crop=face" alt="James Torres" /></div>
+          <div>
+            <div class="creator-card__name">James Torres</div>
+            <div class="creator-card__meta">Nebula Workshop · 3 campaigns</div>
+          </div>
+        </div>
+        <p class="creator-card__desc">"The retail distribution support after funding was the real game-changer. My game is now in 12 countries with zero logistics headache."</p>
+        <div class="creator-card__stats">
+          <div><div class="creator-card__stat-num">320%</div><div class="creator-card__stat-label">Best funding</div></div>
+          <div><div class="creator-card__stat-num">3,100</div><div class="creator-card__stat-label">Backers</div></div>
+          <div><div class="creator-card__stat-num">12</div><div class="creator-card__stat-label">Countries</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     VS COMPARISON — TabletopForge vs the rest
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt sec--ov">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-scale-balanced"></i> Why TabletopForge</div>
+      <h2 class="sec-title">The Smarter Way to Launch</h2>
+      <p class="sec-sub">We're built specifically for board games. That difference shows in every feature.</p>
+    </div>
+    <div style="background:var(--dark-card);border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;" class="reveal">
+      <table class="compare-table">
+        <thead><tr><th>Feature</th><th>TabletopForge</th><th>Generic Platforms</th></tr></thead>
+        <tbody>
+          <tr><td>Board game-specific campaign tools</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> Fully specialised</td><td class="other"><i class="fa-solid fa-times-circle"></i> Generic only</td></tr>
+          <tr><td>PnP / Digital tier support</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> Built-in</td><td class="other"><i class="fa-solid fa-times-circle"></i> Manual workaround</td></tr>
+          <tr><td>Fulfilment partner network</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> 12 global partners</td><td class="other"><i class="fa-solid fa-times-circle"></i> You manage it</td></tr>
+          <tr><td>Pre-built backer community</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> 1.4M+ members</td><td class="other"><i class="fa-solid fa-times-circle"></i> You build from zero</td></tr>
+          <tr><td>Retail distribution post-campaign</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> Included</td><td class="other"><i class="fa-solid fa-times-circle"></i> Not offered</td></tr>
+          <tr style="border:none;"><td>Platform fee</td><td class="ttf"><i class="fa-solid fa-check-circle"></i> 5% (success only)</td><td class="other">5–10% + monthly</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRICING TIERS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk sec--ov">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-tag"></i> Transparent Pricing</div>
+      <h2 class="sec-title">Simple. Success-Based.</h2>
+      <p class="sec-sub">We only charge when you succeed. No upfront costs. No monthly subscriptions.</p>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+      <div class="price-tier">
+        <div class="price-tier__name">Starter</div>
+        <div class="price-tier__price">Free</div>
+        <div class="price-tier__note">to submit &amp; build your campaign</div>
+        <ul class="price-list">
+          <li><i class="fa-solid fa-check"></i> Campaign page builder</li>
+          <li><i class="fa-solid fa-check"></i> Up to 5 pledge tiers</li>
+          <li><i class="fa-solid fa-check"></i> Basic analytics</li>
+          <li><i class="fa-solid fa-check"></i> Backer messaging</li>
+        </ul>
+        <a href="launch.html" class="btn btn--ghost" style="width:100%;justify-content:center;">Get Started Free</a>
+      </div>
+      <div class="price-tier price-tier--featured">
+        <div style="font-size:0.72rem;background:rgba(255,255,255,0.2);color:#fff;padding:3px 10px;border-radius:99px;display:inline-block;margin-bottom:8px;">Most Popular</div>
+        <div class="price-tier__name">Creator</div>
+        <div class="price-tier__price">5%</div>
+        <div class="price-tier__note">of funds raised — only if campaign succeeds</div>
+        <ul class="price-list">
+          <li><i class="fa-solid fa-check"></i> Everything in Starter</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited pledge tiers</li>
+          <li><i class="fa-solid fa-check"></i> Full analytics &amp; A/B testing</li>
+          <li><i class="fa-solid fa-check"></i> Fulfilment partner integration</li>
+          <li><i class="fa-solid fa-check"></i> Retail listing post-campaign</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated campaign manager</li>
+        </ul>
+        <a href="launch.html" class="btn" style="width:100%;justify-content:center;background:#fff;color:var(--primary);">Launch Your Game</a>
+      </div>
+      <div class="price-tier">
+        <div class="price-tier__name">Studio</div>
+        <div class="price-tier__price">3%</div>
+        <div class="price-tier__note">for studios with 3+ past campaigns</div>
+        <ul class="price-list">
+          <li><i class="fa-solid fa-check"></i> Everything in Creator</li>
+          <li><i class="fa-solid fa-check"></i> Reduced platform fee</li>
+          <li><i class="fa-solid fa-check"></i> Priority editorial review</li>
+          <li><i class="fa-solid fa-check"></i> Featured placement on homepage</li>
+        </ul>
+        <a href="contact.html" class="btn btn--ghost" style="width:100%;justify-content:center;">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     3D GAME IMAGE SECTION — Visual showcase
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt sec--ov">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="reveal">
+      <!-- 3D image left -->
+      <div>
+        <div class="hero-3d" style="justify-content:flex-start;">
+          <div class="hero-3d__blob"></div>
+          <div class="hero-3d__ring"></div>
+          <img
+            class="hero-3d__img"
+            src="https://images.unsplash.com/photo-1542396601-dca920ea2807?w=840&q=85&auto=format&fit=crop"
+            alt="Game designer at work"
+            style="width:380px;height:460px;"
+          />
+          <div class="hero-3d__badge hero-3d__badge--tl"><i class="fa-solid fa-pencil" style="margin-right:5px;"></i> 248 Games Launched</div>
+          <div class="hero-3d__badge hero-3d__badge--br"><i class="fa-solid fa-star" style="margin-right:5px;"></i> 92% Success Rate</div>
+        </div>
+      </div>
+      <!-- Copy right -->
+      <div>
+        <div class="sec-label"><i class="fa-solid fa-award"></i> Why Designers Choose Us</div>
+        <h2 class="sec-title" style="font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:24px;">We're in Your Corner From Day One</h2>
+        <p style="font-size:0.95rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:28px;">Launching a board game campaign is a full-time job. TabletopForge removes the friction — campaign tools, community, fulfilment, and retail in one platform.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div class="feat-strip__icon" style="flex-shrink:0;"><i class="fa-solid fa-users"></i></div>
+            <div><div style="font-family:'Rubik',sans-serif;font-size:0.95rem;color:#fff;margin-bottom:4px;">Built-In Audience</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">1.4M+ passionate backers actively looking for their next favourite game — already on the platform.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div class="feat-strip__icon" style="flex-shrink:0;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div><div style="font-family:'Rubik',sans-serif;font-size:0.95rem;color:#fff;margin-bottom:4px;">Campaign Builder</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">Drag-and-drop page builder designed specifically for board game campaigns. No coding needed.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div class="feat-strip__icon" style="flex-shrink:0;"><i class="fa-solid fa-box-open"></i></div>
+            <div><div style="font-family:'Rubik',sans-serif;font-size:0.95rem;color:#fff;margin-bottom:4px;">End-to-End Fulfilment</div><div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.6;">Partner print shops and logistics partners handle manufacturing and worldwide shipping on your behalf.</div></div>
+          </div>
+        </div>
+        <a href="launch.html" class="btn btn--primary btn--lg" style="margin-top:32px;">Start Your Campaign</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk sec--ov">
+  <div class="container container--sm">
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+      <h2 class="sec-title">Designer Questions, Answered</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-min-item">
+        <button class="faq-min-btn">Do I need a finished game to apply? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-min-ans">No — you need a working prototype that has been playtested, not a finished product. We review concept, gameplay, and market fit. Graphic design and component finalization happen during the campaign prep phase.</div>
+      </div>
+      <div class="faq-min-item">
+        <button class="faq-min-btn">How long does the review process take? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-min-ans">Our editorial team reviews submissions within 7–14 business days. You'll receive detailed feedback whether we move forward or not. Approved games then enter a 4–6 week campaign prep period before going live.</div>
+      </div>
+      <div class="faq-min-item">
+        <button class="faq-min-btn">What percentage does TabletopForge take? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-min-ans">Our Creator plan charges 5% of total funds raised — only if your campaign reaches its goal. If you don't fund, you owe nothing. Payment processor fees (typically 3%) are separate and standard across all platforms.</div>
+      </div>
+      <div class="faq-min-item">
+        <button class="faq-min-btn">Do you handle manufacturing and shipping? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-min-ans">Yes. We have partnerships with board game manufacturers and logistics companies across three continents. You set retail pricing, we handle introductions, contracts, and backer fulfilment coordination. You keep creative control.</div>
+      </div>
+      <div class="faq-min-item">
+        <button class="faq-min-btn">Can I run a digital / PnP-only campaign? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-min-ans">Absolutely. Print-and-play campaigns are fully supported and have some of the highest success rates on the platform — low production risk and instant delivery make them very backer-friendly.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="faq.html" class="btn btn--ghost">View Full FAQ <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt sec--ov">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;" class="reveal">
+      <div class="sec-label"><i class="fa-solid fa-rocket"></i> Ready to Launch?</div>
+      <h2 class="sec-title" style="font-size:clamp(2rem,4vw,3.2rem);margin-top:12px;">Your Game Deserves an Audience</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.50);line-height:1.7;margin:20px 0 36px;">Join 248+ independent designers who found their backers on TabletopForge. Submit your game today — it's free to start.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="launch.html" class="btn btn--primary btn--lg"><i class="fa-solid fa-rocket"></i> Submit Your Game</a>
+        <a href="contact.html" class="btn btn--ghost btn--lg">Talk to Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
         </a>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:var(--sp-7);" class="reveal">
-      <a href="create-account.html" class="btn btn--primary">
-        <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
-        Open your Designer Studio
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     EDITORIAL ROW — "Why independent matters"
-═══════════════════════════════════════════ -->
-<section class="h2-editorial section-pad" aria-labelledby="h2-editorial-heading">
-  <div class="container">
-    <div class="h2-editorial__layout">
-
-      <div class="h2-editorial__statement reveal">
-        <h2 id="h2-editorial-heading" class="display-lg">
-          We built the tools<br>we wished existed.<br>
-          <span class="h2-editorial__accent">For designers.</span>
-        </h2>
-      </div>
-
-      <div class="h2-editorial__points">
-
-        <div class="h2-point reveal reveal--delay-1">
-          <div class="h2-point__num">01</div>
-          <div class="h2-point__body">
-            <h3>No gatekeepers</h3>
-            <p>You don't need a publisher deal or a big budget. Upload your design, order a prototype, and ship your game to the world — from day one.</p>
-          </div>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-
-        <div class="h2-point reveal reveal--delay-2">
-          <div class="h2-point__num">02</div>
-          <div class="h2-point__body">
-            <h3>Transparent pricing</h3>
-            <p>Print costs, marketplace fees, and royalties are all shown upfront. No hidden charges, no surprise deductions at payout.</p>
-          </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
         </div>
-
-        <div class="h2-point reveal reveal--delay-3">
-          <div class="h2-point__num">03</div>
-          <div class="h2-point__body">
-            <h3>Designers first</h3>
-            <p>Every feature we build starts with one question: does this make it easier to design a great game? That's the only metric that matters here.</p>
-          </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
         </div>
-
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     NEWSLETTER
-═══════════════════════════════════════════ -->
-<section class="newsletter section-pad" aria-labelledby="h2-nl-heading">
-  <div class="container">
-    <div class="newsletter__inner">
-      <div class="newsletter__text reveal">
-        <h2 class="display-md" id="h2-nl-heading">Stay in the loop.</h2>
-        <p>New templates, design guides, and platform updates — straight to your inbox. No spam, ever.</p>
-      </div>
-      <form class="newsletter__form reveal reveal--delay-2" data-newsletter-form aria-label="Newsletter signup" novalidate>
-        <input class="newsletter__input" type="email" placeholder="your@email.com" aria-label="Email address" autocomplete="email" required />
-        <button class="btn btn--primary" type="submit">Notify me</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-</main>
-
-
-
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand-name">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-          TabletopForge
-        </div>
-        <p class="footer__brand-desc">The all-in-one platform for independent board game designers. Design, print, playtest, and sell your game worldwide since 2018.</p>
-        <nav class="footer__social" aria-label="Social links">
-          <a href="#" class="footer__social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </nav>
-      </div>
-      <div>
-        <p class="footer__col-title">Platform</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="index.html"   class="footer__col-link">Home</a></li>
-          <li><a href="about.html"   class="footer__col-link">About</a></li>
-          <li><a href="blog.html"    class="footer__col-link">Blog &amp; Guides</a></li>
-          <li><a href="contact.html" class="footer__col-link">Contact</a></li>
-          <li><a href="press-kit.html" class="footer__col-link">Press Kit</a></li>
-          <li><a href="careers.html"   class="footer__col-link">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Create</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="games.html" class="footer__col-link">Designer Studio</a></li>
-          <li><a href="forum.html" class="footer__col-link">Template Library</a></li>
-          <li><a href="games.html"              class="footer__col-link">Browse Games</a></li>
-          <li><a href="coming-soon.html"        class="footer__col-link">Coming Soon</a></li>
-          <li><a href="retailer-info.html"      class="footer__col-link">Retailer Info</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Community</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="forum.html"             class="footer__col-link">Designer Forum</a></li>
-          <li><a href="faq.html"               class="footer__col-link">FAQ</a></li>
-          <li><a href="shipping-status.html"   class="footer__col-link">Order Tracking</a></li>
-          <li><a href="login.html"             class="footer__col-link">Login</a></li>
-          <li><a href="dashboard-user.html"    class="footer__col-link">Dashboard</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Support &amp; Legal</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="privacy-policy.html"            class="footer__col-link">Privacy Policy</a></li>
-          <li><a href="terms-conditions.html"            class="footer__col-link">Terms &amp; Conditions</a></li>
-          <li><a href="contact.html" class="footer__col-link">Support</a></li>
-        </ul>
-        <div style="margin-top:1.5rem;">
-          <p class="footer__col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-          <form data-newsletter-form style="display:flex;gap:8px;flex-direction:column;" aria-label="Footer newsletter">
-            <input class="newsletter__input" type="email" placeholder="Enter email" aria-label="Email" style="min-width:unset;font-size:0.82rem;padding:10px 14px;" />
-            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
-          </form>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TabletopForge Ltd. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <a href="mailto:hello@tabletopforge.com" class="footer__copy">hello@tabletopforge.com</a>
-        <span class="footer__copy">·</span>
-        <span class="footer__copy">+1 (000) 000-0000</span>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
       </div>
-      <nav class="footer__bottom-links" aria-label="Legal">
-        <a href="privacy-policy.html" class="footer__bottom-link">Privacy</a>
-        <a href="terms-conditions.html" class="footer__bottom-link">Terms</a>
-        <a href="privacy-policy.html#cookies-policy" class="footer__bottom-link">Cookies</a>
-      </nav>
     </div>
   </div>
 </footer>
 
-<script src="../assets/js/main.js?v=20260412r2"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-min-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ans = btn.nextElementSibling;
+      const isOpen = ans.classList.contains('open');
+      document.querySelectorAll('.faq-min-ans').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-min-btn').forEach(b => b.classList.remove('open'));
+      if (!isOpen) { ans.classList.add('open'); btn.classList.add('open'); }
+    });
+  });
+  /* Counter animation */
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const obs = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+      let start = 0;
+      const step = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / 1800, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = target < 2 ? (eased * target).toFixed(1) : Math.round(eased * target);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+</script>
 </body>
 </html>

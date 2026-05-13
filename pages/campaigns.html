@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Campaigns — TabletopForge</title>
+  <meta name="description" content="Discover and back independent board game campaigns. Find live crowdfunding projects, track funding progress, and support the games you love." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    /* ── Page hero ── */
+    .camp-hero {
+      background: linear-gradient(135deg, #0c0e12 50%, #14111a 100%);
+      padding: 120px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .camp-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(244,87,69,0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .camp-hero::after {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: -80px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,87,69,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .camp-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+    .camp-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      background: rgba(244,87,69,0.1);
+      border: 1px solid rgba(244,87,69,0.2);
+      font-size: 0.78rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .camp-hero__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .camp-hero__title em { color: var(--primary); font-style: normal; }
+    .camp-hero__sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+    /* ── Live stats bar ── */
+    .camp-stats-bar {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 24px 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      margin-top: 40px;
+    }
+    .camp-stats-bar__item { display: flex; flex-direction: column; gap: 2px; }
+    .camp-stats-bar__num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.6rem;
+      color: #fff;
+      line-height: 1;
+    }
+    .camp-stats-bar__num span { color: var(--primary); }
+    .camp-stats-bar__lbl {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    /* ── Search + filter bar ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-bar__search {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      padding: 10px 16px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .filter-bar__search input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 0.9rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    .filter-bar__search input::placeholder { color: rgba(255,255,255,0.35); }
+    .filter-bar__search:focus-within {
+      border-color: rgba(244,87,69,0.3);
+      background: rgba(255,255,255,0.07);
+    }
+    .filter-bar__chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sort-select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.85rem;
+      font-family: inherit;
+      padding: 10px 14px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    /* ── Featured campaign (hero card) ── */
+    .feat-camp {
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--dark-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      transition: box-shadow 0.3s;
+    }
+    .feat-camp:hover { box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+    .feat-camp__img {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+    }
+    .feat-camp__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .feat-camp:hover .feat-camp__img img { transform: scale(1.04); }
+    .feat-camp__badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 8px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .status-badge--live {
+      background: rgba(244,87,69,0.9);
+      color: #fff;
+    }
+    .status-badge--live .ldot {
+      width: 6px; height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse-dot 1.4s ease-in-out infinite;
+    }
+    .status-badge--featured {
+      background: rgba(244,87,69,0.15);
+      color: var(--primary);
+      border: 1px solid rgba(244,87,69,0.25);
+    }
+    .status-badge--coming {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.70);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .status-badge--funded {
+      background: rgba(244,87,69,0.10);
+      color: var(--primary);
+      border: 1px solid rgba(244,87,69,0.18);
+      opacity: 0.80;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+    .feat-camp__body {
+      padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feat-camp__genre {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .feat-camp__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .feat-camp__desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .feat-camp__progress-wrap { margin-bottom: 20px; }
+    .feat-camp__progress-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .feat-camp__pct {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .feat-camp__days {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.40);
+    }
+    .feat-camp__pbar {
+      height: 6px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .feat-camp__pbar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(244,87,69,0.4);
+    }
+    .feat-camp__stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 14px;
+      margin-bottom: 28px;
+    }
+    .feat-camp__stat { display: flex; flex-direction: column; gap: 2px; }
+    .feat-camp__stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .feat-camp__stat-lbl {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    /* ── Campaign grid ── */
+    .camp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    /* ── Pledge CTA inside fund-card ── */
+    .fund-card__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .fund-card__backers {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+    /* ── Category filter section ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .cat-card:hover {
+      background: rgba(244,87,69,0.08);
+      border-color: rgba(244,87,69,0.2);
+      transform: translateY(-3px);
+    }
+    .cat-card.active {
+      background: rgba(244,87,69,0.12);
+      border-color: var(--primary);
+    }
+    .cat-card__icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(244,87,69,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    .cat-card__name {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+    .cat-card__count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.28);
+    }
+    /* ── How pledging works ── */
+    .pledge-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      counter-reset: pledge-step;
+    }
+    .pledge-step {
+      position: relative;
+      padding: 32px 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .pledge-step__num {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(244,87,69,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .pledge-step__title {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .pledge-step__desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+    /* ── Countdown urgency banner ── */
+    .urgency-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px 28px;
+      background: linear-gradient(135deg, rgba(244,87,69,0.12), rgba(244,87,69,0.06));
+      border: 1px solid rgba(244,87,69,0.2);
+      border-radius: 16px;
+      margin-bottom: 28px;
+    }
+    .urgency-banner__left { display: flex; align-items: center; gap: 12px; }
+    .urgency-banner__icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(244,87,69,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+    .urgency-banner__text { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .urgency-banner__text strong { color: var(--primary); }
+    .urgency-countdown {
+      display: flex;
+      gap: 12px;
+    }
+    .urgency-count {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 52px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+    .urgency-count__num {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .urgency-count__lbl {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    /* ── Newsletter / notify ── */
+    .notify-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .notify-bar input {
+      flex: 1;
+      min-width: 240px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .notify-bar input:focus { border-color: rgba(244,87,69,0.35); }
+    /* ── Trust badges row ── */
+    .trust-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .trust-badge i { color: var(--primary); }
+    /* ── Empty state ── */
+    .empty-state {
+      text-align: center;
+      padding: 64px 24px;
+      color: rgba(255,255,255,0.35);
+      display: none;
+    }
+    .empty-state.visible { display: block; }
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .feat-camp { grid-template-columns: 1fr; }
+      .feat-camp__img { min-height: 240px; }
+      .feat-camp__body { padding: 28px 24px; }
+      .camp-stats-bar { gap: 20px; padding: 16px 20px; }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .filter-bar__search { min-width: 100%; }
+    }
+    /* ── Light mode ── */
+    [data-theme="light"] .camp-hero { background: linear-gradient(135deg, #f9fafb 50%, #f3f4f6 100%); }
+    [data-theme="light"] .camp-hero::before { background-image: radial-gradient(circle, rgba(244,87,69,0.04) 1px, transparent 1px); }
+    [data-theme="light"] .camp-hero__title { color: #0c0e12; }
+    [data-theme="light"] .camp-stats-bar { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .camp-stats-bar__num { color: #0c0e12; }
+    [data-theme="light"] .feat-camp { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .feat-camp__title { color: #0c0e12; }
+    [data-theme="light"] .filter-bar__search { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .filter-bar__search input { color: #0c0e12; }
+    [data-theme="light"] .sort-select { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .cat-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .cat-card__name { color: #374151; }
+    [data-theme="light"] .pledge-step { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .pledge-step__title { color: #0c0e12; }
+    [data-theme="light"] .urgency-banner { background: linear-gradient(135deg, rgba(244,87,69,0.06), rgba(244,87,69,0.03)); }
+    [data-theme="light"] .urgency-count { background: rgba(0,0,0,0.06); }
+    [data-theme="light"] .urgency-count__num { color: #0c0e12; }
+    [data-theme="light"] .notify-bar input { background: #fff; border-color: #e5e7eb; color: #0c0e12; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
+    <nav class="nav__inner" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
+        <div class="nav__logo-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
+        </div>
+        <span class="nav__logo-text">TabletopForge</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li class="nav__item">
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link active">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
+      </ul>
+      <div class="nav__controls">
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+</div>
+
+<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════════ -->
+<section class="camp-hero">
+  <!-- Orbit ring decoration -->
+  <div class="orbit-wrap" style="right:-100px;top:50%;transform:translateY(-50%);width:600px;height:600px;">
+    <div class="orbit-ring orbit-ring--1"><div class="orbit-dot"></div></div>
+    <div class="orbit-ring orbit-ring--2"><div class="orbit-dot orbit-dot--sm"></div></div>
+    <div class="orbit-ring orbit-ring--3"></div>
+  </div>
+  <div class="container camp-hero__inner">
+    <div class="camp-hero__eyebrow">
+      <span class="ldot" style="width:7px;height:7px;background:var(--primary);border-radius:50%;display:inline-block;animation:pulse-dot 1.4s ease-in-out infinite;"></span>
+      12 Campaigns Funding Right Now
+    </div>
+    <h1 class="camp-hero__title reveal">
+      Back the Next<br>Great <em>Board Game</em>
+    </h1>
+    <p class="camp-hero__sub reveal reveal-d1">
+      Discover live crowdfunding campaigns from independent designers. Choose your pledge tier, track progress, and be part of bringing a game to life.
+    </p>
+    <div class="trust-row reveal reveal-d2">
+      <div class="trust-badge"><i class="fa-solid fa-shield-halved"></i> Secure Pledges</div>
+      <div class="trust-badge"><i class="fa-solid fa-rotate-left"></i> Full Refund if Unfunded</div>
+      <div class="trust-badge"><i class="fa-solid fa-bell"></i> Campaign Alerts</div>
+      <div class="trust-badge"><i class="fa-solid fa-globe"></i> Ship Worldwide</div>
+    </div>
+    <div class="camp-stats-bar reveal reveal-d3">
+      <div class="camp-stats-bar__item">
+        <div class="camp-stats-bar__num"><span data-count="12">0</span></div>
+        <div class="camp-stats-bar__lbl">Live Now</div>
+      </div>
+      <div class="camp-stats-bar__item">
+        <div class="camp-stats-bar__num">$<span data-count="2.8">0</span>M+</div>
+        <div class="camp-stats-bar__lbl">Total Funded</div>
+      </div>
+      <div class="camp-stats-bar__item">
+        <div class="camp-stats-bar__num"><span data-count="47300">0</span>+</div>
+        <div class="camp-stats-bar__lbl">Active Backers</div>
+      </div>
+      <div class="camp-stats-bar__item">
+        <div class="camp-stats-bar__num"><span data-count="248">0</span></div>
+        <div class="camp-stats-bar__lbl">Games Launched</div>
+      </div>
+      <div class="camp-stats-bar__item">
+        <div class="camp-stats-bar__num"><span data-count="94">0</span>%</div>
+        <div class="camp-stats-bar__lbl">Success Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FEATURED CAMPAIGN
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px;">
+      <div>
+        <div class="sec-eyebrow reveal">Editor's Pick</div>
+        <h2 class="sec-title reveal reveal-d1">Featured Campaign</h2>
+      </div>
+      <a href="#all-campaigns" class="btn btn--ghost btn--sm reveal reveal-d2">View All <i class="fa-solid fa-arrow-right" style="margin-left:4px;"></i></a>
+    </div>
+
+    <article class="feat-camp reveal">
+      <div class="feat-camp__img">
+        <img
+          src="https://images.unsplash.com/photo-1606503825008-909a67e63c3d?w=900&auto=format&fit=crop&q=80"
+          alt="Void Architects board game — sci-fi strategy"
+          loading="eager"
+        />
+        <div class="feat-camp__badge">
+          <span class="status-badge status-badge--live"><span class="ldot"></span> Live</span>
+          <span class="status-badge status-badge--featured"><i class="fa-solid fa-star" style="font-size:0.65rem;"></i> Editor's Pick</span>
+        </div>
+      </div>
+      <div class="feat-camp__body">
+        <div class="feat-camp__genre">Sci-Fi · Strategy · 2-5 Players</div>
+        <h3 class="feat-camp__title">Void Architects: The Deep Space Chronicles</h3>
+        <p class="feat-camp__desc">
+          Build civilizations across a procedurally generated galaxy. Each session evolves based on players' choices — no two games ever play the same. An epic legacy-lite experience for 2–5 players.
+        </p>
+        <div class="feat-camp__progress-wrap">
+          <div class="feat-camp__progress-top">
+            <div class="feat-camp__pct">847%</div>
+            <div class="feat-camp__days">9 days left</div>
+          </div>
+          <div class="feat-camp__pbar">
+            <div class="feat-camp__pbar-fill" style="width:100%;"></div>
+          </div>
+        </div>
+        <div class="feat-camp__stats">
+          <div class="feat-camp__stat">
+            <div class="feat-camp__stat-num">$1,694k</div>
+            <div class="feat-camp__stat-lbl">Raised</div>
+          </div>
+          <div class="feat-camp__stat">
+            <div class="feat-camp__stat-num">6,824</div>
+            <div class="feat-camp__stat-lbl">Backers</div>
+          </div>
+          <div class="feat-camp__stat">
+            <div class="feat-camp__stat-num">$200k</div>
+            <div class="feat-camp__stat-lbl">Goal</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="game-single.html" class="btn btn--primary">
+            <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
+            Back This Game
+          </a>
+          <a href="game-single.html" class="btn btn--ghost">View Details</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     URGENCY BANNER
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk" style="padding-top:0;">
+  <div class="container">
+    <div class="urgency-banner reveal">
+      <div class="urgency-banner__left">
+        <div class="urgency-banner__icon"><i class="fa-solid fa-fire"></i></div>
+        <div class="urgency-banner__text">
+          <strong>3 campaigns end in less than 24 hours.</strong> Don't miss your chance to back them.
+        </div>
+      </div>
+      <div class="urgency-countdown" id="countdown-bar">
+        <div class="urgency-count"><div class="urgency-count__num" id="cnt-h">18</div><div class="urgency-count__lbl">hrs</div></div>
+        <div class="urgency-count"><div class="urgency-count__num" id="cnt-m">42</div><div class="urgency-count__lbl">min</div></div>
+        <div class="urgency-count"><div class="urgency-count__num" id="cnt-s">07</div><div class="urgency-count__lbl">sec</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BROWSE CAMPAIGNS — filter + grid
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt" id="all-campaigns">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Discover</div>
+    <h2 class="sec-title reveal reveal-d1">All Campaigns</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">Find your next favourite game to back — filter by status, genre, or funding level.</p>
+
+    <!-- Filter bar -->
+    <div class="filter-bar reveal reveal-d3" style="margin-bottom:24px;">
+      <div class="filter-bar__search">
+        <i class="fa-solid fa-magnifying-glass" style="opacity:0.45;"></i>
+        <input type="search" placeholder="Search campaigns…" id="camp-search" aria-label="Search campaigns" />
+      </div>
+      <div class="filter-bar__chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="live">Live</button>
+        <button class="chip" data-filter="coming">Coming Soon</button>
+        <button class="chip" data-filter="funded">Funded</button>
+      </div>
+      <select class="sort-select" id="camp-sort" aria-label="Sort campaigns">
+        <option value="trending">Trending</option>
+        <option value="newest">Newest</option>
+        <option value="ending">Ending Soon</option>
+        <option value="funded">Most Funded</option>
+        <option value="backers">Most Backers</option>
+      </select>
+    </div>
+
+    <!-- Genre chips -->
+    <div class="cat-grid reveal" style="margin-bottom:32px;">
+      <button class="cat-card active" data-genre="all">
+        <div class="cat-card__icon"><i class="fa-solid fa-border-all"></i></div>
+        <div class="cat-card__name">All Genres</div>
+        <div class="cat-card__count">48</div>
+      </button>
+      <button class="cat-card" data-genre="strategy">
+        <div class="cat-card__icon"><i class="fa-solid fa-chess"></i></div>
+        <div class="cat-card__name">Strategy</div>
+        <div class="cat-card__count">14</div>
+      </button>
+      <button class="cat-card" data-genre="adventure">
+        <div class="cat-card__icon"><i class="fa-solid fa-map"></i></div>
+        <div class="cat-card__name">Adventure</div>
+        <div class="cat-card__count">11</div>
+      </button>
+      <button class="cat-card" data-genre="puzzle">
+        <div class="cat-card__icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+        <div class="cat-card__name">Puzzle</div>
+        <div class="cat-card__count">8</div>
+      </button>
+      <button class="cat-card" data-genre="rpg">
+        <div class="cat-card__icon"><i class="fa-solid fa-dragon"></i></div>
+        <div class="cat-card__name">RPG</div>
+        <div class="cat-card__count">7</div>
+      </button>
+      <button class="cat-card" data-genre="family">
+        <div class="cat-card__icon"><i class="fa-solid fa-people-group"></i></div>
+        <div class="cat-card__name">Family</div>
+        <div class="cat-card__count">5</div>
+      </button>
+      <button class="cat-card" data-genre="coop">
+        <div class="cat-card__icon"><i class="fa-solid fa-handshake"></i></div>
+        <div class="cat-card__name">Co-op</div>
+        <div class="cat-card__count">3</div>
+      </button>
+    </div>
+
+    <!-- Campaign grid -->
+    <div class="camp-grid" id="camp-grid">
+
+      <!-- Card 1 — LIVE -->
+      <article class="fund-card" data-status="live" data-genre="strategy">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&auto=format&fit=crop&q=80" alt="Ironclad Empires" loading="lazy" />
+          <div class="fund-card__status status-badge--live" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.9);font-size:0.7rem;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse-dot 1.4s ease-in-out infinite;display:inline-block;"></span> Live
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Ironclad Empires</div>
+          <div class="fund-card__desc">A steampunk civilization builder where engines of war decide the fate of nations. 2-4 players, 90-180 min.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct">312%</span>
+            <span>14 days left</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;margin-bottom:0;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);box-shadow:0 0 8px rgba(244,87,69,0.3);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 2,148 backers</div>
+            <a href="game-single.html" class="btn btn--primary btn--sm">Back Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 — LIVE -->
+      <article class="fund-card" data-status="live" data-genre="adventure">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=600&auto=format&fit=crop&q=80" alt="Wyrmwood Chronicles" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.9);font-size:0.7rem;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse-dot 1.4s ease-in-out infinite;display:inline-block;"></span> Live
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Wyrmwood Chronicles</div>
+          <div class="fund-card__desc">A narrative dungeon crawler through an ancient forest cursed by a sleeping dragon. Solo or 1-4 players.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct">189%</span>
+            <span>21 days left</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 1,403 backers</div>
+            <a href="game-single.html" class="btn btn--primary btn--sm">Back Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 — LIVE / ENDING SOON -->
+      <article class="fund-card" data-status="live" data-genre="puzzle">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600&auto=format&fit=crop&q=80" alt="Fractal Realms" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.9);font-size:0.7rem;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse-dot 1.4s ease-in-out infinite;display:inline-block;"></span> Live
+          </div>
+          <div style="position:absolute;top:12px;right:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.20);color:var(--primary);font-size:0.7rem;font-weight:600;border:1px solid rgba(244,87,69,0.35);">⚡ Ending Soon</div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Fractal Realms</div>
+          <div class="fund-card__desc">A spatial puzzle game where reality bends. Tiles fold into impossible structures. Abstract, stunning, maddening.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct">524%</span>
+            <span style="color:var(--primary);font-weight:600;">18 hrs left</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 3,912 backers</div>
+            <a href="game-single.html" class="btn btn--primary btn--sm">Back Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 — LIVE -->
+      <article class="fund-card" data-status="live" data-genre="rpg">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&auto=format&fit=crop&q=80" alt="Sanctum of Forgotten Gods" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.9);font-size:0.7rem;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse-dot 1.4s ease-in-out infinite;display:inline-block;"></span> Live
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Sanctum of Forgotten Gods</div>
+          <div class="fund-card__desc">A cooperative RPG-lite where ancient deities compete through mortal champions. Asymmetric abilities, brutal choices.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct">76%</span>
+            <span>33 days left</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:76%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 589 backers</div>
+            <a href="game-single.html" class="btn btn--primary btn--sm">Back Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 — COMING SOON -->
+      <article class="fund-card" data-status="coming" data-genre="strategy">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=600&auto=format&fit=crop&q=80" alt="Project Nexus" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.70);font-size:0.7rem;font-weight:600;border:1px solid rgba(255,255,255,0.14);">
+            <i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming Soon
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Project Nexus</div>
+          <div class="fund-card__desc">Control competing megacorporations in a near-future city. Economic warfare, sabotage, and corporate espionage. 3-6 players.</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.40);">Launches in</span>
+            <span style="font-family:'Space Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.65);">June 2026</span>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-bell"></i> 1,204 watching</div>
+            <button class="btn btn--ghost btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6 — COMING SOON -->
+      <article class="fund-card" data-status="coming" data-genre="coop">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1568694836920-a96aa7ac2c58?w=600&auto=format&fit=crop&q=80" alt="Last Light Station" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.70);font-size:0.7rem;font-weight:600;border:1px solid rgba(255,255,255,0.14);">
+            <i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming Soon
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Last Light Station</div>
+          <div class="fund-card__desc">A survival co-op set aboard a drifting space station. Manage oxygen, repairs, and crew morale. 1-5 players, 60-120 min.</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,0.40);">Launches in</span>
+            <span style="font-family:'Space Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.65);">July 2026</span>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-bell"></i> 847 watching</div>
+            <button class="btn btn--ghost btn--sm"><i class="fa-solid fa-bell"></i> Notify Me</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 7 — FUNDED -->
+      <article class="fund-card" data-status="funded" data-genre="adventure">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&auto=format&fit=crop&q=80" alt="Depths of Eld" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.12);color:var(--primary);font-size:0.7rem;font-weight:600;border:1px solid rgba(244,87,69,0.22);">
+            <i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Funded
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Depths of Eld</div>
+          <div class="fund-card__desc">A deep-sea exploration game with branching narrative. 4,200 backers helped this unique adventure reach its goal.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct" style="color:var(--primary);">437%</span>
+            <span style="color:var(--primary);">Fully Funded</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 4,200 backed</div>
+            <a href="game-single.html" class="btn btn--ghost btn--sm">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 8 — FUNDED -->
+      <article class="fund-card" data-status="funded" data-genre="family">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=600&auto=format&fit=crop&q=80" alt="Meadowvale" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.12);color:var(--primary);font-size:0.7rem;font-weight:600;border:1px solid rgba(244,87,69,0.22);">
+            <i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Funded
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Meadowvale</div>
+          <div class="fund-card__desc">A gentle village-building game for the whole family. Place tiles, grow crops, and help your neighbours thrive. Ages 6+.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct" style="color:var(--primary);">892%</span>
+            <span style="color:var(--primary);">Fully Funded</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 7,018 backed</div>
+            <a href="game-single.html" class="btn btn--ghost btn--sm">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 9 — LIVE -->
+      <article class="fund-card" data-status="live" data-genre="strategy">
+        <div class="fund-card__img">
+          <img src="https://images.unsplash.com/photo-1585854467604-cf2d9b6b2a73?w=600&auto=format&fit=crop&q=80" alt="Thornwall Keep" loading="lazy" />
+          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(244,87,69,0.9);font-size:0.7rem;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pulse-dot 1.4s ease-in-out infinite;display:inline-block;"></span> Live
+          </div>
+        </div>
+        <div class="fund-card__body">
+          <div class="fund-card__title">Thornwall Keep</div>
+          <div class="fund-card__desc">A medieval fortress defence game with asymmetric factions. Each castle layout creates a unique tactical challenge. 2-6 players.</div>
+          <div class="fund-card__meta">
+            <span class="fund-card__pct">143%</span>
+            <span>27 days left</span>
+          </div>
+          <div class="pbar" style="height:5px;border-radius:99px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div class="pbar-fill" style="width:100%;height:100%;background:var(--primary);border-radius:99px;"></div>
+          </div>
+          <div class="fund-card__foot">
+            <div class="fund-card__backers"><i class="fa-solid fa-users"></i> 1,061 backers</div>
+            <a href="game-single.html" class="btn btn--primary btn--sm">Back Now</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Load more -->
+    <div style="text-align:center;margin-top:40px;">
+      <button class="btn btn--ghost" id="load-more">Load More Campaigns <i class="fa-solid fa-chevron-down" style="margin-left:6px;"></i></button>
+    </div>
+    <div class="empty-state" id="empty-state">
+      <i class="fa-solid fa-face-meh" style="font-size:2.5rem;margin-bottom:16px;opacity:0.4;"></i>
+      <p style="font-size:1rem;">No campaigns match your filters.</p>
+      <button class="btn btn--ghost btn--sm" style="margin-top:12px;" onclick="resetFilters()">Clear Filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOW PLEDGING WORKS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div class="sec-eyebrow reveal">For Backers</div>
+    <h2 class="sec-title reveal reveal-d1">How Pledging Works</h2>
+    <p class="sec-sub reveal reveal-d2" style="margin-bottom:40px;">Back a campaign in three simple steps. Your pledge is only charged if the campaign meets its funding goal.</p>
+    <div class="pledge-steps reveal reveal-d3">
+      <div class="pledge-step">
+        <div class="pledge-step__num">01</div>
+        <div class="pledge-step__title">Discover a Campaign</div>
+        <div class="pledge-step__desc">Browse live and upcoming campaigns. Filter by genre, funding status, or search for something specific. Read the full design story.</div>
+      </div>
+      <div class="pledge-step">
+        <div class="pledge-step__num">02</div>
+        <div class="pledge-step__title">Choose a Pledge Tier</div>
+        <div class="pledge-step__desc">Each campaign offers reward tiers — from digital rule books to deluxe editions with miniatures. Pick what excites you most.</div>
+      </div>
+      <div class="pledge-step">
+        <div class="pledge-step__num">03</div>
+        <div class="pledge-step__title">Secure Your Pledge</div>
+        <div class="pledge-step__desc">Enter your details. Your card is only charged if the campaign hits its goal. Full refund guaranteed if it doesn't fund.</div>
+      </div>
+      <div class="pledge-step">
+        <div class="pledge-step__num">04</div>
+        <div class="pledge-step__title">Track & Receive</div>
+        <div class="pledge-step__desc">Watch the campaign progress, get backer-only updates from the designer, and receive your game when it ships worldwide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BACKER PROMISE (TRUST)
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--ov" style="z-index:3;position:relative;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;" class="reveal">
+      <div style="display:flex;flex-direction:column;gap:12px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <div style="font-size:1.5rem;"><i class="fa-solid fa-shield-halved" style="color:var(--primary);"></i></div>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;">Pledge Protection</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Your pledge is 100% refundable if a campaign doesn't reach its funding goal. No risk, no worries.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <div style="font-size:1.5rem;"><i class="fa-solid fa-user-check" style="color:var(--primary);"></i></div>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;">Verified Designers</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Every campaign goes through our vetting process. We review game design, production plans, and creator track record before approval.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <div style="font-size:1.5rem;"><i class="fa-solid fa-headset" style="color:var(--primary);"></i></div>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;">Backer Support</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Our team mediates between backers and designers to resolve any fulfilment issues. We don't disappear after a campaign ends.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:32px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;">
+        <div style="font-size:1.5rem;"><i class="fa-solid fa-truck-fast" style="color:var(--primary);"></i></div>
+        <div style="font-family:'Rubik',sans-serif;font-size:1rem;color:#fff;">Global Fulfilment</div>
+        <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;">Integrated shipping to 38 countries through our logistics partners. Track your game from warehouse to doorstep.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NOTIFY — UPCOMING DROPS
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--lt">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;text-align:center;">
+      <div class="sec-eyebrow reveal" style="justify-content:center;">Never Miss a Launch</div>
+      <h2 class="sec-title reveal reveal-d1">Get Campaign Alerts</h2>
+      <p class="sec-sub reveal reveal-d2">Enter your email to be notified when new campaigns go live, when favourites are ending, and when funded games begin shipping.</p>
+      <div class="notify-bar reveal reveal-d3" style="margin-top:28px;">
+        <input type="email" placeholder="your@email.com" aria-label="Email for campaign alerts" />
+        <button class="btn btn--primary"><i class="fa-solid fa-bell" aria-hidden="true"></i> Get Alerts</button>
+      </div>
+      <div class="trust-row reveal reveal-d4" style="justify-content:center;margin-top:16px;">
+        <div class="trust-badge" style="font-size:0.78rem;"><i class="fa-solid fa-lock"></i> No spam</div>
+        <div class="trust-badge" style="font-size:0.78rem;"><i class="fa-solid fa-envelope-open"></i> Unsubscribe anytime</div>
+        <div class="trust-badge" style="font-size:0.78rem;"><i class="fa-solid fa-users"></i> 47,000+ subscribers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CTA — LAUNCH YOUR OWN
+══════════════════════════════════════════════════════════════ -->
+<section class="sec sec--dk">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;" class="reveal">
+      <div>
+        <div class="sec-eyebrow" style="margin-bottom:12px;">Are You a Designer?</div>
+        <h2 style="font-family:'Rubik',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;line-height:1.15;margin-bottom:16px;">
+          Launch Your Game<br>to <em style="color:var(--primary);font-style:normal;">47,000+ Backers</em>
+        </h2>
+        <p style="font-size:0.95rem;color:rgba(255,255,255,0.50);line-height:1.7;margin-bottom:28px;max-width:460px;">
+          TabletopForge isn't just for backers. If you've designed a game worth playing, our platform gives you the audience, tools, and support to fund it.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="launch.html" class="btn btn--primary btn--lg">
+            <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+            Start Your Campaign
+          </a>
+          <a href="home-page-2.html" class="btn btn--ghost btn--lg">Learn More</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;">
+          <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--primary);">$0</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:4px;">Upfront cost to launch</div>
+        </div>
+        <div style="padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;">
+          <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--primary);">5%</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:4px;">Platform fee (only if funded)</div>
+        </div>
+        <div style="padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;">
+          <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--primary);">18h</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:4px;">Average time to first backer</div>
+        </div>
+        <div style="padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;">
+          <div style="font-family:'Space Mono',monospace;font-size:1.8rem;color:var(--primary);">94%</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:4px;">Campaigns that hit goal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+<script>
+  /* ── Filter chips ── */
+  const chips = document.querySelectorAll('[data-filter]');
+  const cards = document.querySelectorAll('#camp-grid .fund-card');
+  const emptyState = document.getElementById('empty-state');
+  let activeFilter = 'all';
+  let activeGenre = 'all';
+  let searchQuery = '';
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach(card => {
+      const status = card.dataset.status;
+      const genre  = card.dataset.genre;
+      const title  = card.querySelector('.fund-card__title')?.textContent.toLowerCase() || '';
+      const matchFilter = activeFilter === 'all' || status === activeFilter;
+      const matchGenre  = activeGenre === 'all' || genre === activeGenre;
+      const matchSearch = !searchQuery || title.includes(searchQuery);
+      if (matchFilter && matchGenre && matchSearch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    emptyState.classList.toggle('visible', visible === 0);
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilter = chip.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll('[data-genre]').forEach(cat => {
+    cat.addEventListener('click', () => {
+      document.querySelectorAll('[data-genre]').forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+      activeGenre = cat.dataset.genre;
+      applyFilters();
+    });
+  });
+
+  document.getElementById('camp-search').addEventListener('input', e => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    applyFilters();
+  });
+
+  function resetFilters() {
+    activeFilter = 'all';
+    activeGenre = 'all';
+    searchQuery = '';
+    chips.forEach(c => c.classList.toggle('active', c.dataset.filter === 'all'));
+    document.querySelectorAll('[data-genre]').forEach(c => c.classList.toggle('active', c.dataset.genre === 'all'));
+    document.getElementById('camp-search').value = '';
+    applyFilters();
+  }
+
+  /* ── Countdown timer ── */
+  (function() {
+    let total = 18 * 3600 + 42 * 60 + 7;
+    const hEl = document.getElementById('cnt-h');
+    const mEl = document.getElementById('cnt-m');
+    const sEl = document.getElementById('cnt-s');
+    if (!hEl) return;
+    setInterval(() => {
+      if (total <= 0) return;
+      total--;
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = total % 60;
+      hEl.textContent = String(h).padStart(2, '0');
+      mEl.textContent = String(m).padStart(2, '0');
+      sEl.textContent = String(s).padStart(2, '0');
+    }, 1000);
+  })();
+
+  /* ── Load more (visual only) ── */
+  document.getElementById('load-more').addEventListener('click', function() {
+    this.textContent = 'All campaigns loaded';
+    this.disabled = true;
+    this.style.opacity = '0.5';
+  });
+
+  /* ── Counter animation ── */
+  const counters = document.querySelectorAll('[data-count]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const isFloat = el.dataset.count.includes('.');
+      let start = 0;
+      const step = target / 50;
+      const interval = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = isFloat ? start.toFixed(1) : Math.floor(start).toLocaleString();
+        if (start >= target) clearInterval(interval);
+      }, 30);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>

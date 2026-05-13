@@ -3,505 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
-  <title>Designer Forum — TabletopForge</title>
-  <meta name="description" content="Discuss strategy, share house rules, and talk directly with our designers. The TabletopForge designer community forum." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tabletopforge.com/forum" />
+  <title>Forum — TabletopForge</title>
+  <meta name="description" content="Join the TabletopForge community forum — discuss games, get design feedback, and connect with fellow board game enthusiasts." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
-  </head>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+</head>
 <body>
-
-<header class="nav" role="banner">
-  <div class="container">
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
-        <div class="nav__logo-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-        </div>
-        <span class="nav__logo-text">TabletopForge</span>
-      </a>
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
       <ul class="nav__links" role="list">
-        <li class="nav__item"><a href="index.html"  class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="games.html"  class="nav__link">Games</a></li>
-        <li class="nav__item"><a href="blog.html"   class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="forum.html"  class="nav__link active">Forum</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-        <li class="nav__item"><a href="dashboard-user.html" class="nav__link">Dashboard</a></li>
+        <li class="nav__item">
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
     </nav>
-  </div>
-</header>
-
-<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"          class="nav__mobile-link">Home</a>
-  <a href="games.html"          class="nav__mobile-link">Games</a>
-  <a href="blog.html"           class="nav__mobile-link">Blog</a>
-  <a href="forum.html"          class="nav__mobile-link">Forum</a>
-  <a href="contact.html"        class="nav__mobile-link">Contact</a>
-  <a href="dashboard-user.html" class="nav__mobile-link">Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
-  </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:1rem;width:100%;justify-content:center;">Login</a>
-</nav>
-
-<main id="main-content">
-
-<section class="forum-hero" aria-labelledby="forum-heading">
-  <div class="container">
-    <div class="compact-hero__stack">
-      <div class="compact-hero__row">
-        <div class="compact-hero__copy">
-          <div class="page-hero__eyebrow"><span class="tag">Community</span></div>
-          <h1 id="forum-heading" class="display-xl page-hero__title">
-            <span class="hero__title-line"><span>Designer Forum.</span></span>
-          </h1>
-          <p class="page-hero__sub">
-            Design feedback, playtesting tips, print advice, and rulebook critique.
-            Built for designers who want real answers from people who've shipped real games.
-          </p>
-        </div>
-
-        <aside class="compact-hero__aside forum-hero-preview" aria-label="Live thread preview">
-          <div class="forum-hero-preview__head">
-            <div>
-              <p class="forum-hero-preview__title">Trending now</p>
-              <p class="forum-hero-preview__sub">The conversations pulling the most replies this week.</p>
-            </div>
-            <span class="tag tag--accent">Live</span>
-          </div>
-
-          <div class="forum-hero-preview__list">
-            <a href="forum-thread.html" class="forum-hero-preview__item">
-              <p class="forum-hero-preview__item-title">Best playtesting methods for solo game design?</p>
-              <div class="forum-hero-preview__item-meta">
-                <span>42 replies</span>
-                <span>2h ago</span>
-              </div>
-            </a>
-            <a href="forum-thread.html" class="forum-hero-preview__item">
-              <p class="forum-hero-preview__item-title">[Official] Print production update — Q2 2026 timeline</p>
-              <div class="forum-hero-preview__item-meta">
-                <span>28 replies</span>
-                <span>5h ago</span>
-              </div>
-            </a>
-            <a href="forum-thread.html" class="forum-hero-preview__item">
-              <p class="forum-hero-preview__item-title">How I tested my game 50 times and what I learned each time</p>
-              <div class="forum-hero-preview__item-meta">
-                <span>15 replies</span>
-                <span>1d ago</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="forum-hero-preview__footer">
-            <span class="forum-hero-preview__metric">
-              <i class="fa-solid fa-users" aria-hidden="true"></i>
-              1,240 members
-            </span>
-            <a href="forum-thread.html" class="btn btn--primary btn--sm">
-              <i class="fa-solid fa-plus" aria-hidden="true"></i>
-              New Thread
-            </a>
-          </div>
-        </aside>
-      </div>
-
-      <div class="inner-hero-strip inner-hero-strip--full compact-hero__strip" aria-label="Forum highlights">
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">Active Topics</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-comments" aria-hidden="true"></i> Rules, shipping, variants</span>
-          <span class="inner-hero-strip__meta">The busiest threads focus on gameplay clarity, fulfilment updates, and player-made tweaks.</span>
-        </div>
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">Studio Presence</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Designer replies every week</span>
-          <span class="inner-hero-strip__meta">Official answers, design context, and dev-side explanations show up in the same threads players use.</span>
-        </div>
-        <div class="inner-hero-strip__item">
-          <span class="inner-hero-strip__label">Signal Over Noise</span>
-          <span class="inner-hero-strip__value"><i class="fa-solid fa-filter" aria-hidden="true"></i> Structured by game and topic</span>
-          <span class="inner-hero-strip__meta">Threads stay easy to scan, easier to search, and useful long after launch week fades.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div style="background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:var(--sp-4) 0;position:sticky;top:var(--nav-h);z-index:50;">
-  <div class="container">
-    <div style="position:relative;max-width:500px;">
-      <i class="fa-solid fa-magnifying-glass" style="position:absolute;left:var(--sp-4);top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-muted);pointer-events:none;" aria-hidden="true"></i>
-      <input type="search" placeholder="Search threads..." aria-label="Search forum threads"
-        style="width:100%;background:var(--bg-card);border:1px solid var(--border-hover);border-radius:var(--r-md);padding:10px var(--sp-4) 10px var(--sp-8);font-family:var(--font-body);font-size:0.88rem;color:var(--text-primary);outline:none;min-height:42px;" />
-    </div>
-  </div>
+  </header>
 </div>
-
-<section style="background:var(--bg-primary);padding:var(--sp-8) 0;" aria-label="Forum content">
-  <div class="container">
-    <div class="forum-layout">
-
-      <div>
-
-        <div style="margin-bottom:var(--sp-7);">
-          <h2 class="display-md reveal" style="margin-bottom:var(--sp-5);">Categories</h2>
-          <div class="forum-categories">
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-chess-rook" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">Citadels of the Deep</p>
-                <p class="forum-cat__desc">Strategy, rules questions, design discussion</p>
-              </div>
-              <div class="forum-cat__stats">84 threads<br>423 posts</div>
-            </a>
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">Verdant Empires</p>
-                <p class="forum-cat__desc">Solo play, ecology strategies, expansion ideas</p>
-              </div>
-              <div class="forum-cat__stats">112 threads<br>891 posts</div>
-            </a>
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-moon" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">Moonfall Chronicles</p>
-                <p class="forum-cat__desc">Pre-launch speculation and wishlist</p>
-              </div>
-              <div class="forum-cat__stats">31 threads<br>167 posts</div>
-            </a>
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">Publisher Updates</p>
-                <p class="forum-cat__desc">Official announcements from the TabletopForge team</p>
-              </div>
-              <div class="forum-cat__stats">18 threads<br>204 posts</div>
-            </a>
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">House Rules &amp; Variants</p>
-                <p class="forum-cat__desc">Player-made modifications and experimental rules</p>
-              </div>
-              <div class="forum-cat__stats">57 threads<br>338 posts</div>
-            </a>
-            <a href="forum-thread.html" class="forum-cat">
-              <div class="forum-cat__icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
-              <div>
-                <p class="forum-cat__name">General Discussion</p>
-                <p class="forum-cat__desc">Off-topic gaming talk, introductions, community</p>
-              </div>
-              <div class="forum-cat__stats">143 threads<br>1.2K posts</div>
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head reveal" style="margin-bottom:var(--sp-5);">
-            <h2 class="display-md">Recent Threads</h2>
-            <div style="display:flex;gap:var(--sp-2);">
-              <button class="filter-pill active" type="button">All</button>
-              <button class="filter-pill" type="button">Hot</button>
-              <button class="filter-pill" type="button">Unanswered</button>
-            </div>
-          </div>
-
-          <div class="thread-list">
-
-            <a href="forum-thread.html" class="thread-item" aria-label="Pinned: Welcome to the TabletopForge Forum">
-              <div class="thread-item__pin" aria-label="Pinned post">
-                <i class="fa-solid fa-thumbtack" aria-hidden="true"></i>
-              </div>
-              <div style="flex:1;">
-                <p class="thread-item__title">Welcome to the TabletopForge Forum — read before posting</p>
-                <div class="thread-item__meta">
-                  <span>by Priya Kaur</span>
-                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Jan 5, 2026</span>
-                  <span class="tag" style="font-size:0.62rem;">Publisher Updates</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <i class="fa-regular fa-comment" aria-hidden="true"></i> 12
-              </div>
-            </a>
-
-            <a href="forum-thread.html" class="thread-item" aria-label="Thread: Best solo strategies for Verdant Empires">
-              <div class="thread-item__avatar">MR</div>
-              <div style="flex:1;">
-                <p class="thread-item__title">Best playtesting methods for solo game design?</p>
-                <div class="thread-item__meta">
-                  <span>by Marcus R.</span>
-                  <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 2h ago</span>
-                  <span class="tag" style="font-size:0.62rem;">Verdant Empires</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <div><i class="fa-regular fa-comment" aria-hidden="true"></i> 42</div>
-                <div style="margin-top:2px;"><i class="fa-solid fa-eye" aria-hidden="true"></i> 189</div>
-              </div>
-            </a>
-
-            <a href="forum-thread.html" class="thread-item" aria-label="Thread: EU shipping delay update">
-              <div class="thread-item__pin" style="background:var(--accent-muted);border-color:var(--accent-border);">
-                <i class="fa-solid fa-bullhorn" style="color:var(--accent);" aria-hidden="true"></i>
-              </div>
-              <div style="flex:1;">
-                <p class="thread-item__title">[Official] Print production timeline update — Q2 2026</p>
-                <div class="thread-item__meta">
-                  <span>by Noa Bergman</span>
-                  <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 5h ago</span>
-                  <span class="tag tag--accent" style="font-size:0.62rem;">Publisher Updates</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <div><i class="fa-regular fa-comment" aria-hidden="true"></i> 28</div>
-                <div style="margin-top:2px;"><i class="fa-solid fa-eye" aria-hidden="true"></i> 442</div>
-              </div>
-            </a>
-
-            <a href="forum-thread.html" class="thread-item">
-              <div class="thread-item__avatar">TK</div>
-              <div style="flex:1;">
-                <p class="thread-item__title">House rule: asymmetric starting VP — tested with 4 groups, here's what happened</p>
-                <div class="thread-item__meta">
-                  <span>by Tomáš K.</span>
-                  <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 1d ago</span>
-                  <span class="tag" style="font-size:0.62rem;">House Rules</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <div><i class="fa-regular fa-comment" aria-hidden="true"></i> 15</div>
-                <div style="margin-top:2px;"><i class="fa-solid fa-eye" aria-hidden="true"></i> 98</div>
-              </div>
-            </a>
-
-            <a href="forum-thread.html" class="thread-item">
-              <div class="thread-item__avatar">AK</div>
-              <div style="flex:1;">
-                <p class="thread-item__title">Citadels unboxing — Castellan Edition photos (spoilers)</p>
-                <div class="thread-item__meta">
-                  <span>by Aiko N.</span>
-                  <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 3d ago</span>
-                  <span class="tag" style="font-size:0.62rem;">Citadels</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <div><i class="fa-regular fa-comment" aria-hidden="true"></i> 67</div>
-                <div style="margin-top:2px;"><i class="fa-solid fa-eye" aria-hidden="true"></i> 1.2K</div>
-              </div>
-            </a>
-
-            <a href="forum-thread.html" class="thread-item">
-              <div class="thread-item__avatar">SL</div>
-              <div style="flex:1;">
-                <p class="thread-item__title">Does anyone have a 2-player Verdant Empires guide? Solo variant doesn't quite hit the same.</p>
-                <div class="thread-item__meta">
-                  <span>by Sophie L.</span>
-                  <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 4d ago</span>
-                  <span class="tag" style="font-size:0.62rem;">Verdant Empires</span>
-                </div>
-              </div>
-              <div class="thread-item__stats">
-                <div><i class="fa-regular fa-comment" aria-hidden="true"></i> 9</div>
-                <div style="margin-top:2px;"><i class="fa-solid fa-eye" aria-hidden="true"></i> 54</div>
-              </div>
-            </a>
-
-          </div>
-
-          <nav class="blog-pagination" aria-label="Thread pagination">
-            <button class="page-btn" type="button" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="page-btn active" type="button" aria-label="Page 1">1</button>
-            <button class="page-btn" type="button" aria-label="Page 2">2</button>
-            <button class="page-btn" type="button" aria-label="Page 3">3</button>
-            <button class="page-btn" type="button" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
-          </nav>
-        </div>
-
-      </div>
-
-      <aside class="forum-sidebar" aria-label="Forum sidebar">
-
-        <div class="forum-sidebar-card">
-          <p class="forum-sidebar-card__title">
-            <i class="fa-solid fa-fire" aria-hidden="true"></i> Trending
-          </p>
-          <div style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <a href="forum-thread.html" style="display:flex;align-items:flex-start;gap:var(--sp-3);text-decoration:none;color:inherit;cursor:pointer;">
-              <span style="font-family:var(--font-head);font-size:0.75rem;font-weight:800;color:var(--text-muted);min-width:16px;">01</span>
-              <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.4;transition:color var(--t-fast);">Citadels unboxing — Castellan Edition photos</p>
-            </a>
-            <a href="forum-thread.html" style="display:flex;align-items:flex-start;gap:var(--sp-3);text-decoration:none;color:inherit;cursor:pointer;">
-              <span style="font-family:var(--font-head);font-size:0.75rem;font-weight:800;color:var(--text-muted);min-width:16px;">02</span>
-              <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.4;">EU shipping delay — updated ETA</p>
-            </a>
-            <a href="forum-thread.html" style="display:flex;align-items:flex-start;gap:var(--sp-3);text-decoration:none;color:inherit;cursor:pointer;">
-              <span style="font-family:var(--font-head);font-size:0.75rem;font-weight:800;color:var(--text-muted);min-width:16px;">03</span>
-              <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.4;">Best playtesting methods for solo game design?</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="forum-sidebar-card">
-          <p class="forum-sidebar-card__title">
-            <i class="fa-solid fa-chart-simple" aria-hidden="true"></i> Stats
-          </p>
-          <div style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <div style="display:flex;justify-content:space-between;font-size:0.82rem;">
-              <span style="color:var(--text-muted);">Total threads</span>
-              <span style="font-family:var(--font-head);font-weight:700;">445</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:0.82rem;">
-              <span style="color:var(--text-muted);">Total posts</span>
-              <span style="font-family:var(--font-head);font-weight:700;">3,225</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:0.82rem;">
-              <span style="color:var(--text-muted);">Members</span>
-              <span style="font-family:var(--font-head);font-weight:700;">1,240</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:0.82rem;">
-              <span style="color:var(--text-muted);">Online now</span>
-              <span style="display:flex;align-items:center;gap:5px;font-family:var(--font-head);font-weight:700;">
-                <span style="width:7px;height:7px;border-radius:50%;background:#5EE89A;display:inline-block;"></span> 18
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="forum-sidebar-card">
-          <p class="forum-sidebar-card__title">
-            <i class="fa-solid fa-star" aria-hidden="true"></i> Top Members
-          </p>
-          <div style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:0.62rem;font-weight:700;color:var(--text-secondary);">SL</div>
-              <div><p style="font-size:0.82rem;font-weight:600;">Sophie L.</p><p style="font-size:0.7rem;color:var(--text-muted);">312 posts</p></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:0.62rem;font-weight:700;color:var(--text-secondary);">MR</div>
-              <div><p style="font-size:0.82rem;font-weight:600;">Marcus R.</p><p style="font-size:0.7rem;color:var(--text-muted);">287 posts</p></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);">
-              <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-hover);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:0.62rem;font-weight:700;color:var(--text-secondary);">TK</div>
-              <div><p style="font-size:0.82rem;font-weight:600;">Tomáš K.</p><p style="font-size:0.7rem;color:var(--text-muted);">201 posts</p></div>
-            </div>
-          </div>
-        </div>
-
-      </aside>
-    </div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
+  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
+  </div>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
+</nav>
+<section class="sec-hero" style="min-height:45vh;">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1559732277-7453b141e3a1?w=1800&q=80&auto=format&fit=crop" alt="" aria-hidden="true" /></div>
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="hero-eyebrow reveal"><i class="fa-brands fa-discord"></i> Community</div>
+    <h1 class="hero-title reveal reveal-d1" style="font-size:clamp(2.4rem,5vw,4.5rem);">The Forge<br><em>Community</em></h1>
+    <p class="hero-sub reveal reveal-d2">Discuss games, share prototypes, get feedback, and connect with 1.4M+ board game enthusiasts.</p>
   </div>
 </section>
 
-</main>
-
-
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
+<section class="sec sec--lt sec--ov">
   <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand-name">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-          TabletopForge
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:32px;" class="reveal">
+      <div class="chip-row" style="margin:0;">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="general">General</button>
+        <button class="chip" data-cat="design">Design Help</button>
+        <button class="chip" data-cat="campaigns">Campaigns</button>
+        <button class="chip" data-cat="news">News</button>
+      </div>
+      <a href="login.html" class="btn btn--primary btn--sm"><i class="fa-solid fa-plus"></i> New Thread</a>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px;" id="forum-list" class="reveal">
+      <a href="forum-thread.html" class="thread-card" data-cat="campaigns" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">Anyone else blown away by Kingdoms of Ash? Discussion thread</div>
+          <div class="thread-card__meta">by MarcusR &middot; 2 hours ago &middot; <span class="badge badge--live" style="font-size:0.65rem;padding:2px 6px;">Campaigns</span></div>
         </div>
-        <p class="footer__brand-desc">The all-in-one platform for independent board game designers. Design, print, playtest, and sell your game worldwide since 2018.</p>
-        <nav class="footer__social" aria-label="Social links">
-          <a href="#" class="footer__social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </nav>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 48</span><span><i class="fa-regular fa-eye"></i> 320</span></div>
+      </a>
+      <a href="forum-thread.html" class="thread-card" data-cat="design" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">How do you balance complexity vs accessibility in your rulebook?</div>
+          <div class="thread-card__meta">by SanaO &middot; 5 hours ago &middot; <span class="badge badge--new" style="font-size:0.65rem;padding:2px 6px;">Design Help</span></div>
+        </div>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 22</span><span><i class="fa-regular fa-eye"></i> 184</span></div>
+      </a>
+      <a href="forum-thread.html" class="thread-card" data-cat="general" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">Recommendations for mid-weight strategy games with solo modes?</div>
+          <div class="thread-card__meta">by TomK &middot; Yesterday &middot; <span class="badge badge--coming" style="font-size:0.65rem;padding:2px 6px;">General</span></div>
+        </div>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 35</span><span><i class="fa-regular fa-eye"></i> 412</span></div>
+      </a>
+      <a href="forum-thread.html" class="thread-card" data-cat="design" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">Playtest feedback wanted — asymmetric euro for 2-4 players</div>
+          <div class="thread-card__meta">by YukiT &middot; Yesterday &middot; <span class="badge badge--new" style="font-size:0.65rem;padding:2px 6px;">Design Help</span></div>
+        </div>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 14</span><span><i class="fa-regular fa-eye"></i> 97</span></div>
+      </a>
+      <a href="forum-thread.html" class="thread-card" data-cat="news" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">TabletopForge Q2 Platform Update — new features &amp; improvements</div>
+          <div class="thread-card__meta">by TabletopForge Team &middot; 2 days ago &middot; <span class="badge badge--funded" style="font-size:0.65rem;padding:2px 6px;">News</span></div>
+        </div>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 67</span><span><i class="fa-regular fa-eye"></i> 890</span></div>
+      </a>
+      <a href="forum-thread.html" class="thread-card" data-cat="campaigns" style="text-decoration:none;">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=48&h=48&q=80&auto=format&fit=crop&crop=face" alt="" class="avatar avatar--md" />
+        <div class="thread-card__body">
+          <div class="thread-card__title">Verdant Isles stretch goal unlocked — what should goal #3 be?</div>
+          <div class="thread-card__meta">by VerdantTeam &middot; 3 days ago &middot; <span class="badge badge--live" style="font-size:0.65rem;padding:2px 6px;">Campaigns</span></div>
+        </div>
+        <div class="thread-card__stats"><span><i class="fa-regular fa-comment"></i> 93</span><span><i class="fa-regular fa-eye"></i> 540</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Platform</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="index.html"   class="footer__col-link">Home</a></li>
-          <li><a href="about.html"   class="footer__col-link">About</a></li>
-          <li><a href="blog.html"    class="footer__col-link">Blog &amp; Guides</a></li>
-          <li><a href="contact.html" class="footer__col-link">Contact</a></li>
-          <li><a href="press-kit.html" class="footer__col-link">Press Kit</a></li>
-          <li><a href="careers.html"   class="footer__col-link">Careers</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Create</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="games.html" class="footer__col-link">Designer Studio</a></li>
-          <li><a href="forum.html" class="footer__col-link">Template Library</a></li>
-          <li><a href="games.html"              class="footer__col-link">Browse Games</a></li>
-          <li><a href="coming-soon.html"        class="footer__col-link">Coming Soon</a></li>
-          <li><a href="retailer-info.html"      class="footer__col-link">Retailer Info</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Community</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="forum.html"             class="footer__col-link">Designer Forum</a></li>
-          <li><a href="faq.html"               class="footer__col-link">FAQ</a></li>
-          <li><a href="shipping-status.html"   class="footer__col-link">Order Tracking</a></li>
-          <li><a href="login.html"             class="footer__col-link">Login</a></li>
-          <li><a href="dashboard-user.html"    class="footer__col-link">Dashboard</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Support &amp; Legal</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="privacy-policy.html"            class="footer__col-link">Privacy Policy</a></li>
-          <li><a href="terms-conditions.html"            class="footer__col-link">Terms &amp; Conditions</a></li>
-          <li><a href="contact.html" class="footer__col-link">Support</a></li>
-        </ul>
-        <div style="margin-top:1.5rem;">
-          <p class="footer__col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-          <form data-newsletter-form style="display:flex;gap:8px;flex-direction:column;" aria-label="Footer newsletter">
-            <input class="newsletter__input" type="email" placeholder="Enter email" aria-label="Email" style="min-width:unset;font-size:0.82rem;padding:10px 14px;" />
-            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
-          </form>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TabletopForge Ltd. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <a href="mailto:hello@tabletopforge.com" class="footer__copy">hello@tabletopforge.com</a>
-        <span class="footer__copy">·</span>
-        <span class="footer__copy">+1 (000) 000-0000</span>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
       </div>
-      <nav class="footer__bottom-links" aria-label="Legal">
-        <a href="privacy-policy.html" class="footer__bottom-link">Privacy</a>
-        <a href="terms-conditions.html" class="footer__bottom-link">Terms</a>
-        <a href="privacy-policy.html#cookies-policy" class="footer__bottom-link">Cookies</a>
-      </nav>
     </div>
   </div>
 </footer>
-
-<script src="../assets/js/main.js?v=20260412r2"></script>
-<script src="../assets/js/forum.js?v=20260411r1"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+  document.querySelectorAll('[data-cat]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-cat]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('#forum-list .thread-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>

@@ -3,644 +3,403 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" sizes="any" />
-  <link rel="shortcut icon" href="../assets/images/icons/brand-favicon.svg?v=20260411r1" type="image/svg+xml" />
-  <link rel="manifest" href="../assets/images/icons/site.webmanifest?v=20260411r1" />
-  <meta name="theme-color" content="#0B0D0F" />
-  <title>Citadels of the Deep — TabletopForge</title>
-  <meta name="description" content="Buy Citadels of the Deep on TabletopForge. A naval conquest and fortress-building game for 2–5 players. Designed and printed on-demand." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tabletopforge.com/games/citadels-of-the-deep" />
-  <meta property="og:title"       content="Citadels of the Deep — TabletopForge" />
-  <meta property="og:description" content="Buy direct from the designer. Naval conquest and fortress building for 2–5 players." />
-  <meta property="og:type"        content="website" />
-
+  <title>Kingdoms of Ash — TabletopForge</title>
+  <meta name="description" content="Back Kingdoms of Ash — a dark fantasy area-control board game currently 847% funded on TabletopForge." />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=20260413r2" />
-  <link rel="stylesheet" href="../assets/css/dark-mode.css?v=20260411r1" />
-  <link rel="stylesheet" href="../assets/css/rtl.css?v=20260412r7" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <style>
+    .game-hero { position:relative; height:520px; overflow:hidden; margin:10px 10px 0; border-radius:50px 50px 0 0; }
+    @media(max-width:640px) { .game-hero { height:320px; margin:6px 6px 0; border-radius:28px 28px 0 0; } }
+    .game-hero img { width:100%; height:100%; object-fit:cover; }
+    .game-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(12,14,18,0.2) 0%, rgba(12,14,18,0.85) 100%); }
+    .game-hero__overlay { position:absolute; bottom:0; left:0; right:0; padding:48px; z-index:1; }
+    @media(max-width:640px) { .game-hero__overlay { padding:24px; } }
+    .gs-layout { display:grid; grid-template-columns:1fr 340px; gap:0; }
+    @media(max-width:960px) { .gs-layout { grid-template-columns:1fr; } }
+    .gs-main { padding:48px 40px 80px; }
+    @media(max-width:640px) { .gs-main { padding:32px 20px 60px; } }
+    .gs-sidebar {
+      width:340px; position:sticky; top:90px; align-self:start;
+      margin:40px 40px 80px 0;
+      background:var(--dark-card); border:1px solid rgba(255,255,255,0.08);
+      border-radius:22px; padding:24px; flex-shrink:0;
+    }
+    @media(max-width:960px) { .gs-sidebar { width:100%; margin:0 0 40px; position:static; } }
+    .tab-bar { display:flex; gap:0; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:36px; }
+    .tab-btn { padding:12px 20px; font-size:0.875rem; color:rgba(255,255,255,0.45); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+    .tab-btn.active { color:#fff; border-bottom-color:var(--primary); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    .countdown { display:flex; gap:8px; }
+    .cdown-unit { flex:1; background:rgba(255,255,255,0.05); border-radius:10px; padding:10px 6px; text-align:center; }
+    .cdown-num { font-family:'Space Mono',monospace; font-size:1.4rem; font-weight:700; color:#fff; line-height:1; }
+    .cdown-label { font-size:0.62rem; color:rgba(255,255,255,0.35); text-transform:uppercase; margin-top:2px; }
+    .sidebar-stat { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .sidebar-stat:last-child { border-bottom:none; }
+  </style>
 </head>
 <body>
 
-<header class="nav" role="banner">
-  <div class="container">
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" role="banner">
     <nav class="nav__inner" aria-label="Main navigation">
-      <a href="index.html" class="nav__logo" aria-label="TabletopForge Home">
-        <div class="nav__logo-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-        </div>
-        <span class="nav__logo-text">TabletopForge</span>
-      </a>
+      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
       <ul class="nav__links" role="list">
         <li class="nav__item">
-          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></a>
+          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
-            <a href="index.html"   class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house" aria-hidden="true"></i><div>Home Page 1 <span>Main landing experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><div>Home Page 2 <span>Designer showcase layout</span></div></a>
+            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
           </div>
         </li>
+        <li class="nav__item">
+          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
+          <div class="nav__dropdown" role="menu">
+            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
+            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
+            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
+          </div>
+        </li>
+        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
+        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
         <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item">
-          <a href="games.html" class="nav__link active" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></a>
-          <div class="nav__dropdown" role="menu">
-            <a href="games.html"       class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice" aria-hidden="true"></i><div>All Titles <span>Browse our full catalogue</span></div></a>          </div>
-        </li>
-        <li class="nav__item"><a href="blog.html"    class="nav__link">Blog</a></li>
-        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-        <li class="nav__item">
-          <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">Dashboard <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></a>
-          <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html"  class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-user" aria-hidden="true"></i><div>User Dashboard <span>Orders, downloads, forum</span></div></a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-gear" aria-hidden="true"></i><div>Admin Dashboard <span>Manage games &amp; designers</span></div></a>
-          </div>
-        </li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="dashboard-admin.html" class="nav__link">Admin</a></li>
       </ul>
       <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"></button>
-        <button class="nav__icon-btn" data-rtl-toggle  aria-label="Switch RTL"   type="button">RTL</button>
-        <a href="login.html" class="btn btn--ghost nav__login">Login</a>
+        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
+        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
       </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
     </nav>
-  </div>
-</header>
-
-<nav id="mobile-menu" class="nav__mobile" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="index.html"           class="nav__mobile-link">Home</a>
-  <a href="about.html"           class="nav__mobile-link">About</a>
-  <a href="games.html"           class="nav__mobile-link">Games</a>
-  <a href="blog.html"            class="nav__mobile-link">Blog</a>
-  <a href="contact.html"         class="nav__mobile-link">Contact</a>
-  <a href="dashboard-user.html"  class="nav__mobile-link">User Dashboard</a>
+  </header>
+</div>
+<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
+  <a href="index.html" class="nav__mobile-link">Home</a>
+  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
+  <a href="games.html" class="nav__mobile-link">Games</a>
+  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
+  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
+  <a href="about.html" class="nav__mobile-link">About</a>
+  <a href="blog.html" class="nav__mobile-link">Blog</a>
   <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
-  <div style="margin-top:2rem;display:flex;gap:12px;">
-    <button class="btn btn--ghost" data-theme-toggle type="button" style="flex:1;">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle   type="button" style="flex:1;">RTL</button>
+  <div class="nav__mobile-controls">
+    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
+    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
   </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:1rem;width:100%;justify-content:center;">Login</a>
+  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
 </nav>
 
+<!-- GAME HERO -->
+<div style="padding-top:80px;">
+  <div class="game-hero">
+    <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=1800&q=80&auto=format&fit=crop" alt="Kingdoms of Ash board game" loading="eager" />
+    <div class="game-hero__overlay">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span class="badge badge--live"><span class="ldot" style="width:6px;height:6px;"></span> Live Campaign</span>
+        <span class="badge badge--new">Fantasy Strategy</span>
+      </div>
+      <h1 style="font-family:'Rubik',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#fff;margin-bottom:8px;line-height:1.1;">Kingdoms of Ash</h1>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.60);">By <strong style="color:rgba(255,255,255,0.85);">Ember & Forge Studio</strong> &middot; Fantasy Strategy &middot; 2–5 Players &middot; Ages 14+</p>
+    </div>
+  </div>
+</div>
 
-<main id="main-content">
+<!-- MAIN + SIDEBAR LAYOUT -->
+<div style="background:var(--dark);padding:0 10px;">
+  <div class="container" style="padding-top:0;padding-bottom:0;">
+    <div class="gs-layout">
 
-<!-- ═══════════════════════════════════════════
-     GAME HERO — split layout
-═══════════════════════════════════════════ -->
-<section class="gs-hero" aria-labelledby="gs-title">
+      <!-- MAIN CONTENT -->
+      <div class="gs-main">
+        <div class="tab-bar" role="tablist">
+          <button class="tab-btn active" data-tab="about" role="tab" aria-selected="true">About</button>
+          <button class="tab-btn" data-tab="updates" role="tab" aria-selected="false">Updates <span style="background:var(--primary);color:#fff;border-radius:99px;padding:1px 7px;font-size:0.7rem;margin-left:4px;">3</span></button>
+          <button class="tab-btn" data-tab="faq" role="tab" aria-selected="false">FAQ</button>
+          <button class="tab-btn" data-tab="retail" role="tab" aria-selected="false">Where to Buy</button>
+        </div>
+
+        <!-- ABOUT -->
+        <div id="tab-about" class="tab-panel active">
+          <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=1000&q=80&auto=format&fit=crop" alt="Game spread" loading="lazy" style="width:100%;border-radius:18px;margin-bottom:32px;" />
+          <h2 style="font-family:'Rubik',sans-serif;font-size:1.8rem;font-weight:400;color:#fff;margin-bottom:16px;">A World Consumed by War</h2>
+          <p style="color:rgba(255,255,255,0.60);line-height:1.8;margin-bottom:20px;">Kingdoms of Ash is a dark fantasy area-control board game for 2–5 players. Set in a realm shattered by centuries of magical conflict, players command ancient houses vying for dominion over the ash-covered continent of Vaelthar.</p>
+          <p style="color:rgba(255,255,255,0.60);line-height:1.8;margin-bottom:20px;">Each house brings a unique playstyle — from the brutal siege tactics of House Morrath to the cunning espionage networks of House Silven. Choose your path, forge alliances, and break them at the right moment.</p>
+
+          <h3 style="font-family:'Rubik',sans-serif;font-size:1.2rem;font-weight:400;color:#fff;margin:32px 0 16px;">Key Features</h3>
+          <ul class="split__feats" style="margin-top:0;">
+            <li class="split__feat"><i class="fa-solid fa-check"></i> Asymmetric factions with unique abilities and win conditions</li>
+            <li class="split__feat"><i class="fa-solid fa-check"></i> 80+ hand-illustrated event cards and a modular hex map</li>
+            <li class="split__feat"><i class="fa-solid fa-check"></i> Campaign mode with persistent consequences across 10 scenarios</li>
+            <li class="split__feat"><i class="fa-solid fa-check"></i> Premium resin miniatures for all faction leaders</li>
+          </ul>
+
+          <h3 style="font-family:'Rubik',sans-serif;font-size:1.2rem;font-weight:400;color:#fff;margin:32px 0 16px;">Pledge Tiers</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="tier-card" data-tier="ash-seeker">
+              <div class="tier-price">$35</div>
+              <div class="tier-name">Ash Seeker</div>
+              <div class="tier-desc">The core game with all stretch goal content unlocked.</div>
+              <ul class="tier-perks">
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Core game box</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> All unlocked stretch goals</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Digital rulebook &amp; lore PDF</li>
+              </ul>
+            </div>
+            <div class="tier-card" data-tier="warlord">
+              <div class="tier-price">$75</div>
+              <div class="tier-name">Warlord Edition</div>
+              <div class="tier-desc">Everything in Ash Seeker plus the Deluxe Component Upgrade pack.</div>
+              <ul class="tier-perks">
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Everything in Ash Seeker</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Resin miniatures for all leaders</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Metal coins &amp; custom dice</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Collector's art print (signed)</li>
+              </ul>
+            </div>
+            <div class="tier-card" data-tier="dragon-lord">
+              <div class="tier-price">$140</div>
+              <div class="tier-name">Dragon Lord</div>
+              <div class="tier-desc">Ultimate collector's set with exclusive content not available after the campaign.</div>
+              <ul class="tier-perks">
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Everything in Warlord Edition</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Exclusive Dragon Expansion</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Oversized game mat (900×600mm)</li>
+                <li class="tier-perk"><i class="fa-solid fa-circle-check"></i> Name in the rulebook credits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPDATES -->
+        <div id="tab-updates" class="tab-panel">
+          <div style="display:flex;flex-direction:column;gap:28px;">
+            <div style="border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+              <div style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--primary);margin-bottom:8px;">Update #3 &middot; May 10, 2026</div>
+              <h3 style="font-family:'Rubik',sans-serif;font-size:1.1rem;font-weight:400;color:#fff;margin-bottom:10px;">Dragon Lord Tier Unlocked!</h3>
+              <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.75;">We've smashed through our 800% milestone! As promised, the Dragon Lord tier is now live. Grab it before the campaign ends — this tier will not return after funding closes.</p>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+              <div style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--primary);margin-bottom:8px;">Update #2 &middot; May 3, 2026</div>
+              <h3 style="font-family:'Rubik',sans-serif;font-size:1.1rem;font-weight:400;color:#fff;margin-bottom:10px;">500% — Metal Coins Unlocked</h3>
+              <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.75;">We've hit our 500% stretch goal — all Warlord and Dragon Lord backers will receive the custom metal coin set at no extra charge. Thank you!</p>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+              <div style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--primary);margin-bottom:8px;">Update #1 &middot; Apr 28, 2026</div>
+              <h3 style="font-family:'Rubik',sans-serif;font-size:1.1rem;font-weight:400;color:#fff;margin-bottom:10px;">We're Live — Thank You!</h3>
+              <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.75;">We launched 6 hours ago and have already hit 200% funding. This is incredible — thank you every single backer. First stretch goal (digital soundtrack) is now unlocked!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div id="tab-faq" class="tab-panel">
+          <div class="faq-item">
+            <div class="faq-q">When does the game ship? <i class="fa-solid fa-plus"></i></div>
+            <div class="faq-a"><p>We estimate fulfilment by Q1 2027. All backers will receive tracking information when their order ships. We'll post regular production updates throughout the process.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Is this a standalone game or an expansion? <i class="fa-solid fa-plus"></i></div>
+            <div class="faq-a"><p>Kingdoms of Ash is a fully standalone game. No other purchases are required. The Dragon Lord tier includes an exclusive expansion that adds new mechanics and a 6th faction.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How long does a game take to play? <i class="fa-solid fa-plus"></i></div>
+            <div class="faq-a"><p>Average play time is 90–150 minutes depending on player count and experience. The campaign mode scenarios run 60–90 minutes each.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Do you ship internationally? <i class="fa-solid fa-plus"></i></div>
+            <div class="faq-a"><p>Yes! We ship to 38 countries. International shipping costs are calculated at pledge manager stage after the campaign ends. We use regional fulfilment hubs to minimise costs and customs delays.</p></div>
+          </div>
+        </div>
+
+        <!-- WHERE TO BUY -->
+        <div id="tab-retail" class="tab-panel">
+          <div style="text-align:center;padding:40px 0;">
+            <i class="fa-solid fa-store" style="font-size:3rem;color:var(--primary);margin-bottom:16px;display:block;"></i>
+            <h3 style="font-family:'Rubik',sans-serif;font-size:1.3rem;font-weight:400;color:#fff;margin-bottom:8px;">Campaign Still Active</h3>
+            <p style="color:rgba(255,255,255,0.50);max-width:400px;margin:0 auto 24px;">Kingdoms of Ash is still in its crowdfunding campaign. Retail availability will be added here after campaign completion and fulfilment.</p>
+            <a href="games-funded.html" class="btn btn--primary">Browse Funded Games at Retail</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="gs-sidebar">
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--primary);font-weight:700;">847%</span>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.40);">funded</span>
+          </div>
+          <div class="pbar" style="height:8px;"><div class="pbar-fill" id="gs-pbar" style="width:0;transition:width 1.4s cubic-bezier(0.16,1,0.3,1);"></div></div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div class="sidebar-stat"><span style="font-size:0.8rem;color:rgba(255,255,255,0.40);">Pledged</span><span style="font-family:'Space Mono',monospace;font-size:0.9rem;color:#fff;font-weight:700;">$84,700</span></div>
+          <div class="sidebar-stat"><span style="font-size:0.8rem;color:rgba(255,255,255,0.40);">Goal</span><span style="font-family:'Space Mono',monospace;font-size:0.9rem;color:#fff;">$10,000</span></div>
+          <div class="sidebar-stat"><span style="font-size:0.8rem;color:rgba(255,255,255,0.40);">Backers</span><span style="font-family:'Space Mono',monospace;font-size:0.9rem;color:#fff;">2,340</span></div>
+          <div class="sidebar-stat"><span style="font-size:0.8rem;color:rgba(255,255,255,0.40);">Days Left</span><span style="font-family:'Space Mono',monospace;font-size:0.9rem;color:var(--primary);font-weight:700;">15</span></div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em;">Campaign Ends</div>
+          <div class="countdown" id="countdown" data-launch="2026-05-28T23:59:59">
+            <div class="cdown-unit"><div class="cdown-num" id="cd-d">00</div><div class="cdown-label">Days</div></div>
+            <div class="cdown-unit"><div class="cdown-num" id="cd-h">00</div><div class="cdown-label">Hrs</div></div>
+            <div class="cdown-unit"><div class="cdown-num" id="cd-m">00</div><div class="cdown-label">Min</div></div>
+            <div class="cdown-unit"><div class="cdown-num" id="cd-s">00</div><div class="cdown-label">Sec</div></div>
+          </div>
+        </div>
+
+        <a href="login.html" class="btn btn--primary btn--full" style="margin-bottom:10px;"><i class="fa-solid fa-bolt"></i> Back This Game</a>
+        <button class="btn btn--ghost btn--full" id="wishlist-btn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+
+        <div class="divider"></div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);display:flex;align-items:flex-start;gap:8px;">
+          <i class="fa-solid fa-shield-halved" style="color:var(--primary);margin-top:2px;"></i>
+          <span>Secure checkout. All backers are protected by our fulfilment guarantee.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED GAMES -->
+<section class="sec sec--dk" style="margin-top:0;border-radius:0 0 50px 50px;">
   <div class="container">
-    <div class="gs-hero__layout">
-
-      <div class="gs-cover reveal">
-        <div class="gs-cover__frame" aria-hidden="true">
-          <img src="../assets/images/Gemini_Generated_Image_i6gffai6gffai6gf.png" alt="Citadels of the Deep — game components and board layout" loading="eager" />
-        </div>
-        <div class="gs-cover__thumbs" aria-label="Additional images">
-          <div class="gs-thumb active" role="button" tabindex="0" aria-label="Game overview">
-            <img src="../assets/images/Gemini_Generated_Image_asl5h9asl5h9asl5.png" alt="Game overview" loading="lazy" />
-          </div>
-          <div class="gs-thumb" role="button" tabindex="0" aria-label="Game board detail">
-            <img src="../assets/images/Gemini_Generated_Image_a3fycta3fycta3fy.png" alt="Game board detail" loading="lazy" />
-          </div>
-          <div class="gs-thumb" role="button" tabindex="0" aria-label="Game components">
-            <img src="../assets/images/Gemini_Generated_Image_bg6m9tbg6m9tbg6m.png" alt="Game components" loading="lazy" />
-          </div>
-          <div class="gs-thumb" role="button" tabindex="0" aria-label="Cards and tokens">
-            <img src="../assets/images/Gemini_Generated_Image_xuyjgixuyjgixuyj.png" alt="Cards and tokens" loading="lazy" />
-          </div>
-        </div>
-      </div>
-
-      <div class="gs-detail reveal reveal--delay-1">
-
-        <nav class="gs-detail__breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a>
-          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          <a href="games.html">Games</a>
-          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          <span aria-current="page">Citadels of the Deep</span>
-        </nav>
-
-        <div class="gs-detail__status" style="display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:center;">
-          <span class="tag tag--accent">
-            <i class="fa-solid fa-circle" style="font-size:0.45rem;" aria-hidden="true"></i>
-            Live — Buy Now
-          </span>
-          <span class="tag" style="font-size:0.65rem;">
-            <i class="fa-solid fa-check" style="font-size:0.5rem;" aria-hidden="true"></i>
-            Designed on TabletopForge
-          </span>
-        </div>
-
-        <h1 id="gs-title" class="gs-detail__title">Citadels of the Deep</h1>
-
-        <p class="gs-detail__tagline">
-          Naval conquest and fortress building. Designed, prototyped, and playtested
-          entirely on TabletopForge by independent designer Marcus R. Now live —
-          order your copy — printed on demand and shipped direct to your door.
-        </p>
-
-        <div class="gs-specs">
-          <div class="gs-spec">
-            <i class="fa-solid fa-user-group" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Players</span>
-              <span class="gs-spec__value">2–5</span>
-            </div>
-          </div>
-          <div class="gs-spec">
-            <i class="fa-solid fa-clock" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Play time</span>
-              <span class="gs-spec__value">90–150 min</span>
-            </div>
-          </div>
-          <div class="gs-spec">
-            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Age</span>
-              <span class="gs-spec__value">14+</span>
-            </div>
-          </div>
-          <div class="gs-spec">
-            <i class="fa-solid fa-brain" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Complexity</span>
-              <span class="gs-spec__value">Medium–Heavy</span>
-            </div>
-          </div>
-          <div class="gs-spec">
-            <i class="fa-solid fa-tags" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Genre</span>
-              <span class="gs-spec__value">Strategy</span>
-            </div>
-          </div>
-          <div class="gs-spec">
-            <i class="fa-solid fa-language" aria-hidden="true"></i>
-            <div>
-              <span class="gs-spec__label">Languages</span>
-              <span class="gs-spec__value">EN, DE, FR, ES</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gs-funding">
-          <div class="gs-funding__header">
-            <span class="gs-funding__pct" data-count="342" data-suffix="%">342%</span>
-            <span class="gs-funding__goal">of $80,000 goal</span>
-          </div>
-          <div class="gs-funding__bar">
-            <div class="gs-funding__fill progress__fill" data-width="100" style="width:0"></div>
-          </div>
-          <div class="gs-funding__row">
-            <div>
-              <span class="gs-funding__stat-val" data-count="2847">—</span>
-              <span class="gs-funding__stat-lbl">Sold</span>
-            </div>
-            <div>
-              <span class="gs-funding__stat-val" data-count="284" data-prefix="$" data-suffix="K">—</span>
-              <span class="gs-funding__stat-lbl">Raised</span>
-            </div>
-            <div>
-              <span class="gs-funding__stat-val" data-count="14">—</span>
-              <span class="gs-funding__stat-lbl">Days left</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gs-detail__ctas">
-          <a href="#buy" class="btn btn--primary">
-            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
-            Buy This Game — $65
-          </a>
-          <a href="create-account.html" class="btn btn--ghost">
-            <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
-            Design your own
-          </a>
-          <a href="dashboard-user-pnp.html" class="btn btn--ghost">
-            <i class="fa-solid fa-print" aria-hidden="true"></i>
-            Print &amp; Play
-          </a>
-        </div>
-
-        <p class="gs-detail__note">
-          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-          Sold via TabletopForge. Ships Q4 2026. 30-day return policy.
-        </p>
-
-      </div>
+    <div class="sec-head reveal">
+      <div class="sec-label"><i class="fa-solid fa-dice"></i> More to Explore</div>
+      <h2 class="sec-title">You May Also Like</h2>
+    </div>
+    <div class="cards-grid reveal">
+      <article class="camp-card"><img class="camp-card__img" src="https://images.unsplash.com/photo-1553481187-be93c21490a9?w=600&q=80&auto=format&fit=crop" alt="Project Nebula" loading="lazy" /><div class="camp-card__body"><div class="camp-card__tag"><span class="ldot"></span> Live</div><h3 class="camp-card__title">Project Nebula</h3><p class="camp-card__desc">Cooperative sci-fi deck-builder about humanity's last fleet.</p><a href="game-single.html" class="btn btn--primary camp-card__cta">View Campaign</a></div></article>
+      <article class="camp-card"><img class="camp-card__img" src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=600&q=80&auto=format&fit=crop" alt="Verdant Isles" loading="lazy" /><div class="camp-card__body"><div class="camp-card__tag"><span class="ldot"></span> Live</div><h3 class="camp-card__title">Verdant Isles</h3><p class="camp-card__desc">Explore and trade across a procedurally generated archipelago.</p><a href="game-single.html" class="btn btn--primary camp-card__cta">View Campaign</a></div></article>
+      <article class="camp-card"><img class="camp-card__img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80&auto=format&fit=crop" alt="Shadow Sanctum" loading="lazy" /><div class="camp-card__body"><div class="camp-card__tag"><i class="fa-solid fa-clock"></i> Coming Soon</div><h3 class="camp-card__title">Shadow Sanctum</h3><p class="camp-card__desc">Gothic dungeon-crawler with hand-sculpted miniatures.</p><a href="game-single.html" class="btn btn--outline camp-card__cta">Wishlist</a></div></article>
     </div>
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════
-     GAME BODY — tabs + sidebar
-═══════════════════════════════════════════ -->
-<section class="gs-body section-pad" aria-label="Game details">
+<!-- FOOTER -->
+<footer class="footer">
   <div class="container">
-    <div class="gs-body__layout">
-
-      <div>
-        <div class="gs-tabs" role="tablist" aria-label="Game information tabs">
-          <button class="gs-tab active" data-tab="about"      role="tab" aria-selected="true"  aria-controls="panel-about"      type="button">About</button>
-          <button class="gs-tab"        data-tab="components" role="tab" aria-selected="false" aria-controls="panel-components"  type="button">What's in the Box</button>
-          <button class="gs-tab"        data-tab="designers"  role="tab" aria-selected="false" aria-controls="panel-designers"   type="button">Designers</button>
-          <button class="gs-tab"        data-tab="updates"    role="tab" aria-selected="false" aria-controls="panel-updates"     type="button">Updates</button>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
+          <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
+        </a>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="btn btn--ghost btn--icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
-
-        <div id="panel-about" class="gs-panel gs-about active" role="tabpanel" aria-labelledby="tab-about">
-          <p>
-            Citadels of the Deep drops players into a world of contested
-            coastlines, where every bay and headland is a prize worth fighting for.
-            You'll build fortresses, command fleets, and negotiate — or betray —
-            the alliances that keep you afloat.
-          </p>
-          <p>
-            The game unfolds across three Acts. In Act One, players scramble to
-            claim uncontested territory. Act Two introduces the Tide Mechanic —
-            a rotating pressure system that floods low-lying fortifications and
-            forces strategic retreats. By Act Three, the deep-water citadels
-            dominate the board and only the strongest network of alliances survives.
-          </p>
-          <p>
-            Every player board is asymmetric. The five factions — Ironmarch,
-            Saltkin, Veilborn, Coralheld, and the Tidewraith — each have a unique
-            action track, starting resources, and one-time power card that can
-            swing a game decisively when played at the right moment.
-          </p>
-
-          <h3>Design intentions</h3>
-          <p>
-            Lead designer David Osei built the core loop around one question:
-            "what if the most important move is the one you don't make?"
-            Every action advances you — but also gives opponents information.
-            The best players learn to be deliberately slow.
-          </p>
-          <p>
-            The game supports 2–5 players with no added rules complexity.
-            Two-player plays as a direct duel with an automated pressure system;
-            five-player introduces full coalition politics.
-          </p>
-        </div>
-
-        <div id="panel-components" class="gs-panel" role="tabpanel" aria-labelledby="tab-components">
-          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:var(--sp-5);">
-            Standard Edition contents. Deluxe and All-In editions include upgraded components.
-          </p>
-          <div class="gs-components">
-            <div class="gs-component">
-              <i class="fa-solid fa-map" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Modular Sea Board</div>
-                <div class="gs-component__qty">18 interlocking tiles</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-chess-rook" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Citadel Miniatures</div>
-                <div class="gs-component__qty">25 plastic pieces</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-regular fa-rectangle-list" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Faction Boards</div>
-                <div class="gs-component__qty">5 double-sided boards</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Action Cards</div>
-                <div class="gs-component__qty">180 cards</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-dice" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Tide Dice</div>
-                <div class="gs-component__qty">6 custom dice</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-coins" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Resource Tokens</div>
-                <div class="gs-component__qty">120 cardboard tokens</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-scroll" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Alliance Treaties</div>
-                <div class="gs-component__qty">30 binding contract cards</div>
-              </div>
-            </div>
-            <div class="gs-component">
-              <i class="fa-solid fa-book-open" aria-hidden="true"></i>
-              <div>
-                <div class="gs-component__name">Rulebook</div>
-                <div class="gs-component__qty">32-page full colour</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-designers" class="gs-panel gs-designers" role="tabpanel" aria-labelledby="tab-designers">
-
-          <div class="gs-designer">
-            <div class="gs-designer__avatar" aria-hidden="true">DO</div>
-            <div style="flex:1;min-width:0;">
-              <p class="gs-designer__name">David Osei</p>
-              <p class="gs-designer__role">Lead Game Designer</p>
-              <p class="gs-designer__bio">
-                David is the lead designer behind Citadels of the Deep, Verdant Empires,
-                and The Iron Pact. He spent three years designing and discarding the Tide
-                Mechanic before landing on the version you're about to play.
-              </p>
-            </div>
-          </div>
-
-          <div class="gs-designer">
-            <div class="gs-designer__avatar" aria-hidden="true">EV</div>
-            <div style="flex:1;min-width:0;">
-              <p class="gs-designer__name">Elena Voss</p>
-              <p class="gs-designer__role">Art Direction &amp; Graphic Design</p>
-              <p class="gs-designer__bio">
-                Elena developed the entire visual world of Citadels — from the faction
-                iconography to the tile artwork. The five factions each have a distinct
-                visual palette drawn from historical maritime cultures.
-              </p>
-            </div>
-          </div>
-
-          <div class="gs-designer">
-            <div class="gs-designer__avatar" aria-hidden="true">MK</div>
-            <div style="flex:1;min-width:0;">
-              <p class="gs-designer__name">Mira Kato</p>
-              <p class="gs-designer__role">Narrative Design</p>
-              <p class="gs-designer__bio">
-                Mira wrote the lore, faction history, and the flavour text on every
-                card. The world of Citadels started as a short story she wrote
-                during a train journey — it's been expanding ever since.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div id="panel-updates" class="gs-panel" role="tabpanel" aria-labelledby="tab-updates">
-          <div style="display:flex;flex-direction:column;gap:var(--sp-5);">
-
-            <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3);">
-                <span class="tag tag--accent" style="font-size:0.65rem;">Update #8</span>
-                <span style="font-size:0.78rem;color:var(--text-muted);">Mar 20, 2026</span>
-              </div>
-              <h3 style="font-size:1rem;margin-bottom:var(--sp-2);">Final stretch goal unlocked — Deluxe Faction Boards</h3>
-              <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">
-                We've hit 300% and unlocked the Deluxe double-layer faction boards for all
-                Castellan edition and above. Production specs confirmed with our
-                manufacturer. No delay to fulfilment timeline.
-              </p>
-            </div>
-
-            <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3);">
-                <span class="tag" style="font-size:0.65rem;">Update #7</span>
-                <span style="font-size:0.78rem;color:var(--text-muted);">Mar 10, 2026</span>
-              </div>
-              <h3 style="font-size:1rem;margin-bottom:var(--sp-2);">Print files sent — PnP available now</h3>
-              <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">
-                Full print-and-play files are live in the Designer Studio. Includes all five factions,
-                the sea board tiles, and both rules variants. Download from your dashboard.
-              </p>
-            </div>
-
-            <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5);">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3);">
-                <span class="tag" style="font-size:0.65rem;">Update #6</span>
-                <span style="font-size:0.78rem;color:var(--text-muted);">Feb 28, 2026</span>
-              </div>
-              <h3 style="font-size:1rem;margin-bottom:var(--sp-2);">200% funded — Thank you</h3>
-              <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">
-                We hit 200% in under 30 days. The 200% stretch goal — a sixth faction, the Ashwarden —
-                is now in design. A preview drops for designers next week.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-      </div><!-- end main tabs column -->
-
-
-      <!-- ─── SIDEBAR ─────────────────────────────────────── -->
-      <aside class="gs-sidebar" aria-label="Purchase options and related games">
-
-        <div class="gs-sidebar-card" id="buy">
-          <p class="gs-sidebar-card__title">
-            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
-            Choose your edition
-          </p>
-          <div class="gs-tiers">
-
-            <div class="gs-tier">
-              <p class="gs-tier__name">Scout</p>
-              <p class="gs-tier__price">$20</p>
-              <ul class="gs-tier__items">
-                <li>Digital print-and-play files</li>
-                <li>Designer forum access</li>
-                <li>Digital rulebook</li>
-              </ul>
-            </div>
-
-            <div class="gs-tier popular">
-              <div class="gs-tier__popular-badge">Most popular</div>
-              <p class="gs-tier__name">Sailor</p>
-              <p class="gs-tier__price">$65</p>
-              <ul class="gs-tier__items">
-                <li>Standard Edition box</li>
-                <li>All printed components</li>
-                <li>Exclusive designer promo card</li>
-                <li>Digital PnP + rulebook</li>
-              </ul>
-            </div>
-
-            <div class="gs-tier">
-              <p class="gs-tier__name">Castellan</p>
-              <p class="gs-tier__price">$95</p>
-              <ul class="gs-tier__items">
-                <li>Deluxe Edition box</li>
-                <li>Double-layer faction boards</li>
-                <li>Upgraded neoprene mat</li>
-                <li>All previous tier contents</li>
-              </ul>
-            </div>
-
-            <div class="gs-tier">
-              <p class="gs-tier__name">Warlord</p>
-              <p class="gs-tier__price">$145</p>
-              <ul class="gs-tier__items">
-                <li>All-In Edition</li>
-                <li>Resin citadel miniatures</li>
-                <li>Signed designer insert</li>
-                <li>Early access to Moonfall PnP</li>
-                <li>All previous tier contents</li>
-              </ul>
-            </div>
-
-          </div>
-          <a href="create-account.html" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:var(--sp-4);">
-            Buy Now
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <p style="font-size:0.72rem;color:var(--text-muted);text-align:center;margin-top:var(--sp-3);">
-            <i class="fa-solid fa-lock" aria-hidden="true"></i>
-            Sold via TabletopForge marketplace. Buyer protection included.
-          </p>
-        </div>
-
-        <div class="gs-sidebar-card">
-          <p class="gs-sidebar-card__title">
-            <i class="fa-solid fa-dice" aria-hidden="true"></i>
-            More from TabletopForge
-          </p>
-          <div class="gs-related">
-
-            <a href="game-single.html" class="gs-related-item">
-              <div class="gs-related-item__thumb">
-                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="gs-related-item__name">Verdant Empires</p>
-                <p class="gs-related-item__meta">Strategy · In Fulfilment</p>
-              </div>
-            </a>
-
-            <a href="game-single.html" class="gs-related-item">
-              <div class="gs-related-item__thumb">
-                <i class="fa-solid fa-moon" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="gs-related-item__name">Moonfall Chronicles</p>
-                <p class="gs-related-item__meta">Co-op · Coming Q2 2026</p>
-              </div>
-            </a>
-
-            <a href="game-single.html" class="gs-related-item">
-              <div class="gs-related-item__thumb">
-                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="gs-related-item__name">The Iron Pact</p>
-                <p class="gs-related-item__meta">Deck Building · Available</p>
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-      </aside>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-
-
-<!-- ═══════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer__top">
-      <div>
-        <div class="footer__brand-name">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg>
-          TabletopForge
-        </div>
-        <p class="footer__brand-desc">The all-in-one platform for independent board game designers. Design, print, playtest, and sell your game worldwide since 2018.</p>
-        <nav class="footer__social" aria-label="Social links">
-          <a href="#" class="footer__social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="footer__social-link" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a href="#" class="footer__social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </nav>
       </div>
-      <div>
-        <p class="footer__col-title">Platform</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="index.html"   class="footer__col-link">Home</a></li>
-          <li><a href="about.html"   class="footer__col-link">About</a></li>
-          <li><a href="blog.html"    class="footer__col-link">Blog &amp; Guides</a></li>
-          <li><a href="contact.html" class="footer__col-link">Contact</a></li>
-          <li><a href="press-kit.html" class="footer__col-link">Press Kit</a></li>
-          <li><a href="careers.html"   class="footer__col-link">Careers</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Backers</div>
+        <div class="footer-col__links">
+          <a href="campaigns.html" class="footer-col__link">Live Campaigns</a>
+          <a href="games.html" class="footer-col__link">Explore Games</a>
+          <a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a>
+          <a href="games-funded.html" class="footer-col__link">Funded Games</a>
+          <a href="retailer-info.html" class="footer-col__link">Retailer Info</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Create</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="games.html" class="footer__col-link">Designer Studio</a></li>
-          <li><a href="forum.html" class="footer__col-link">Template Library</a></li>
-          <li><a href="games.html"              class="footer__col-link">Browse Games</a></li>
-          <li><a href="coming-soon.html"        class="footer__col-link">Coming Soon</a></li>
-          <li><a href="retailer-info.html"      class="footer__col-link">Retailer Info</a></li>
-        </ul>
+      <div class="footer-col">
+        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__links">
+          <a href="launch.html" class="footer-col__link">Launch a Game</a>
+          <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
+          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="press-kit.html" class="footer-col__link">Press Kit</a>
+        </div>
       </div>
-      <div>
-        <p class="footer__col-title">Community</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="forum.html"             class="footer__col-link">Designer Forum</a></li>
-          <li><a href="faq.html"               class="footer__col-link">FAQ</a></li>
-          <li><a href="shipping-status.html"   class="footer__col-link">Order Tracking</a></li>
-          <li><a href="login.html"             class="footer__col-link">Login</a></li>
-          <li><a href="dashboard-user.html"    class="footer__col-link">Dashboard</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Support &amp; Legal</p>
-        <ul class="footer__col-links" role="list">
-          <li><a href="privacy-policy.html"            class="footer__col-link">Privacy Policy</a></li>
-          <li><a href="terms-conditions.html"            class="footer__col-link">Terms &amp; Conditions</a></li>
-          <li><a href="contact.html" class="footer__col-link">Support</a></li>
-        </ul>
-        <div style="margin-top:1.5rem;">
-          <p class="footer__col-title" style="margin-bottom:0.75rem;">Newsletter</p>
-          <form data-newsletter-form style="display:flex;gap:8px;flex-direction:column;" aria-label="Footer newsletter">
-            <input class="newsletter__input" type="email" placeholder="Enter email" aria-label="Email" style="min-width:unset;font-size:0.82rem;padding:10px 14px;" />
-            <button class="btn btn--primary btn--sm" type="submit">Subscribe</button>
-          </form>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="about.html" class="footer-col__link">About Us</a>
+          <a href="blog.html" class="footer-col__link">Blog</a>
+          <a href="careers.html" class="footer-col__link">Careers</a>
+          <a href="contact.html" class="footer-col__link">Contact</a>
+          <a href="privacy-policy.html" class="footer-col__link">Privacy</a>
+          <a href="terms-conditions.html" class="footer-col__link">Terms</a>
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TabletopForge Ltd. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <a href="mailto:hello@tabletopforge.com" class="footer__copy">hello@tabletopforge.com</a>
-        <span class="footer__copy">·</span>
-        <span class="footer__copy">+1 (000) 000-0000</span>
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);">&copy; 2026 TabletopForge. All rights reserved.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="privacy-policy.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Privacy</a>
+        <a href="terms-conditions.html" style="font-size:0.8rem;color:rgba(255,255,255,0.25);">Terms</a>
       </div>
-      <nav class="footer__bottom-links" aria-label="Legal">
-        <a href="privacy-policy.html" class="footer__bottom-link">Privacy</a>
-        <a href="terms-conditions.html" class="footer__bottom-link">Terms</a>
-        <a href="privacy-policy.html#cookies-policy" class="footer__bottom-link">Cookies</a>
-      </nav>
     </div>
   </div>
 </footer>
 
-<script src="../assets/js/main.js?v=20260412r2"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      document.getElementById('tab-' + btn.dataset.tab)?.classList.add('active');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+  });
+
+  // Pledge tier selection
+  document.querySelectorAll('.tier-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+
+  // Wishlist toggle
+  const wBtn = document.getElementById('wishlist-btn');
+  let wishlisted = false;
+  wBtn?.addEventListener('click', () => {
+    wishlisted = !wishlisted;
+    wBtn.innerHTML = wishlisted
+      ? '<i class="fa-solid fa-heart" style="color:var(--primary);"></i> Wishlisted'
+      : '<i class="fa-regular fa-heart"></i> Add to Wishlist';
+  });
+
+  // Countdown
+  function runCountdown() {
+    const endDate = new Date('2026-05-28T23:59:59').getTime();
+    function tick() {
+      const diff = endDate - Date.now();
+      if (diff <= 0) return;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+  }
+  runCountdown();
+
+  // Progress bar animate
+  setTimeout(() => { document.getElementById('gs-pbar').style.width = '100%'; }, 300);
+</script>
 </body>
 </html>
