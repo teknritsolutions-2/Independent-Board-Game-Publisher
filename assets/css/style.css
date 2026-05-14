@@ -2488,6 +2488,59 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 .preview-grid,
 .fd-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
 
+/* ── LIGHT MODE: Redefine dark CSS variables for content pages (not dashboards) ── */
+[data-theme="light"] body:not(.dashboard-page) {
+  --dark-card : #ffffff;
+  --dark      : #f4f4f4;
+  --dark-2    : #eeeeee;
+}
+
+/* ── LIGHT MODE: GLOBAL CARD BORDERS — all card-type elements ────────────── */
+[data-theme="light"] body:not(.dashboard-page) .camp-card,
+[data-theme="light"] body:not(.dashboard-page) .game-card,
+[data-theme="light"] body:not(.dashboard-page) .blog-card,
+[data-theme="light"] body:not(.dashboard-page) .gx-card,
+[data-theme="light"] body:not(.dashboard-page) .fd-card,
+[data-theme="light"] body:not(.dashboard-page) .thread-card,
+[data-theme="light"] body:not(.dashboard-page) .editorial-card,
+[data-theme="light"] body:not(.dashboard-page) .audience-panel,
+[data-theme="light"] body:not(.dashboard-page) .testi-card,
+[data-theme="light"] body:not(.dashboard-page) .creator-card,
+[data-theme="light"] body:not(.dashboard-page) .feat-card,
+[data-theme="light"] body:not(.dashboard-page) .spotlight { border-color: #e5e7eb !important; }
+
+/* Fix inline rgba(255,255,255) border-color to visible dark in light mode */
+[data-theme="light"] body:not(.dashboard-page) [style*="border:1px solid rgba(255,255,255"] { border-color: rgba(0,0,0,0.10) !important; }
+
+/* ── LIGHT MODE: CARD TITLE TEXT ─────────────────────────────────────────── */
+[data-theme="light"] body:not(.dashboard-page) .camp-card__title,
+[data-theme="light"] body:not(.dashboard-page) .game-card__title,
+[data-theme="light"] body:not(.dashboard-page) .blog-card__title,
+[data-theme="light"] body:not(.dashboard-page) .gx-card__title,
+[data-theme="light"] body:not(.dashboard-page) .fd-card__title,
+[data-theme="light"] body:not(.dashboard-page) .thread-card__title,
+[data-theme="light"] body:not(.dashboard-page) .editorial-card__title,
+[data-theme="light"] body:not(.dashboard-page) .spotlight__title,
+[data-theme="light"] body:not(.dashboard-page) .audience-panel__title { color: #0c0e12 !important; }
+
+/* ── LIGHT MODE: CARD BODY TEXT ──────────────────────────────────────────── */
+[data-theme="light"] body:not(.dashboard-page) .camp-card__desc,
+[data-theme="light"] body:not(.dashboard-page) .camp-card__meta,
+[data-theme="light"] body:not(.dashboard-page) .game-card__designer,
+[data-theme="light"] body:not(.dashboard-page) .game-card__meta,
+[data-theme="light"] body:not(.dashboard-page) .blog-card__meta,
+[data-theme="light"] body:not(.dashboard-page) .gx-card__desc,
+[data-theme="light"] body:not(.dashboard-page) .gx-card__meta-item,
+[data-theme="light"] body:not(.dashboard-page) .gx-card__score,
+[data-theme="light"] body:not(.dashboard-page) .gx-card__tag,
+[data-theme="light"] body:not(.dashboard-page) .fd-card__desc,
+[data-theme="light"] body:not(.dashboard-page) .thread-card__meta,
+[data-theme="light"] body:not(.dashboard-page) .thread-card__stats,
+[data-theme="light"] body:not(.dashboard-page) .editorial-card__desc,
+[data-theme="light"] body:not(.dashboard-page) .spotlight__desc,
+[data-theme="light"] body:not(.dashboard-page) .spotlight__meta-item,
+[data-theme="light"] body:not(.dashboard-page) .rating-count { color: #6b7280 !important; }
+
 /* ── LIGHT MODE: SEC-HERO STAYS DARK — keep all nested text white ────────── */
 [data-theme="light"] .sec-hero .hero-eyebrow { color: rgba(255,255,255,0.60) !important; }
 [data-theme="light"] .sec-hero .hero-title   { color: #fff !important; }

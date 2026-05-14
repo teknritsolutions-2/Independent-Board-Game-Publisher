@@ -105,12 +105,11 @@
       padding-top: 104px;
     }
     /* ── Hero Illustration ── */
-    .hero-illus { position:relative;width:min(460px,100%);height:480px;margin:0 auto;flex-shrink:0; }
-    .hero-illus__dots { position:absolute;inset:0;background-image:radial-gradient(circle,rgba(244,87,69,0.12) 1px,transparent 1px);background-size:26px 26px;border-radius:20px;pointer-events:none; }
-    .hero-illus__glow-a { position:absolute;top:38%;left:48%;transform:translate(-50%,-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(244,87,69,0.16) 0%,transparent 68%);border-radius:50%;animation:hi-pulse 5s ease-in-out infinite;pointer-events:none; }
-    .hero-illus__glow-b { position:absolute;top:14%;right:6%;width:110px;height:110px;background:radial-gradient(circle,rgba(212,245,60,0.07) 0%,transparent 70%);border-radius:50%;animation:hi-pulse 7s ease-in-out infinite 2s;pointer-events:none; }
-    .hero-illus__d20 { position:absolute;top:6%;left:4%;width:84px;height:84px;animation:hi-spin 22s linear infinite; }
-    .hero-illus__card { position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:232px;background:rgba(18,22,36,0.97);border:1px solid rgba(244,87,69,0.22);border-radius:18px;padding:18px;box-shadow:0 24px 64px rgba(0,0,0,0.55),0 0 0 1px rgba(244,87,69,0.06);animation:hi-float 7s ease-in-out infinite;z-index:4; }
+    .hero-illus { position:relative;width:min(460px,100%);height:460px;margin:0 auto;flex-shrink:0;overflow:hidden;border-radius:20px; }
+    .hero-illus::before { content:'';position:absolute;top:35%;left:45%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(244,87,69,0.18) 0%,transparent 68%);border-radius:50%;pointer-events:none;z-index:0; }
+    .hero-illus__dots { position:absolute;inset:0;background-image:radial-gradient(circle,rgba(244,87,69,0.10) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:1; }
+    .hero-illus__d20 { position:absolute;top:7%;left:6%;width:80px;height:80px;animation:hi-spin 22s linear infinite;z-index:2; }
+    .hero-illus__card { position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);width:228px;background:rgba(18,22,36,0.97);border:1px solid rgba(244,87,69,0.22);border-radius:18px;padding:18px;box-shadow:0 20px 56px rgba(0,0,0,0.60);animation:hi-float 7s ease-in-out infinite;z-index:4; }
     .hi-card-header { display:flex;align-items:center;gap:8px;margin-bottom:12px; }
     .hi-card-dot { width:7px;height:7px;border-radius:50%;background:var(--primary);animation:hi-pulse 2.2s ease-in-out infinite; }
     .hi-card-live { font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--primary);text-transform:uppercase;letter-spacing:0.08em; }
@@ -123,14 +122,14 @@
     .hi-stat-lbl { font-size:0.6rem;color:rgba(255,255,255,0.28);margin-top:2px; }
     .hi-divider { height:1px;background:rgba(255,255,255,0.06);margin:12px 0; }
     .hi-card-foot { display:flex;align-items:center;gap:7px;font-size:0.68rem;color:rgba(255,255,255,0.35); }
-    .hero-illus__badge { position:absolute;top:7%;right:5%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:10px 14px;animation:hi-float 9s ease-in-out infinite 1.2s;z-index:3; }
+    .hero-illus__badge { position:absolute;top:8%;right:6%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:10px 14px;animation:hi-float 9s ease-in-out infinite 1.2s;z-index:3; }
     .hi-badge-row { display:flex;align-items:center;gap:6px;font-size:0.68rem;color:rgba(255,255,255,0.50);font-family:'Space Mono',monospace;white-space:nowrap; }
     .hi-badge-row+.hi-badge-row { margin-top:5px; }
     .hi-badge-dot { width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0; }
-    .hero-illus__d6 { position:absolute;bottom:11%;right:7%;width:52px;height:52px;animation:hi-float 8s ease-in-out infinite 2.5s;z-index:2; }
-    .hero-illus__meeple { position:absolute;bottom:8%;left:9%;width:34px;opacity:0.45;animation:hi-float 10s ease-in-out infinite 0.8s;z-index:2; }
-    .hero-illus__chip { position:absolute;top:43%;left:-4%;background:rgba(244,87,69,0.10);border:1px solid rgba(244,87,69,0.22);border-radius:99px;padding:5px 12px;font-size:0.65rem;color:var(--primary);font-family:'Space Mono',monospace;white-space:nowrap;animation:hi-float 8s ease-in-out infinite 3.5s;z-index:3; }
-    @keyframes hi-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    .hero-illus__d6 { position:absolute;bottom:10%;right:8%;width:52px;height:52px;animation:hi-float 8s ease-in-out infinite 2.5s;z-index:2; }
+    .hero-illus__meeple { position:absolute;bottom:7%;left:8%;width:34px;opacity:0.45;animation:hi-float 10s ease-in-out infinite 0.8s;z-index:2; }
+    .hero-illus__chip { position:absolute;bottom:18%;left:6%;background:rgba(244,87,69,0.10);border:1px solid rgba(244,87,69,0.22);border-radius:99px;padding:5px 12px;font-size:0.65rem;color:var(--primary);font-family:'Space Mono',monospace;white-space:nowrap;animation:hi-float 8s ease-in-out infinite 3.5s;z-index:3; }
+    @keyframes hi-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
     @keyframes hi-pulse { 0%,100%{opacity:0.65} 50%{opacity:1} }
     @keyframes hi-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
     @keyframes hi-grow { from{width:0} to{width:84%} }
@@ -260,8 +259,6 @@
       <div class="hero-split__visual">
         <div class="hero-illus" aria-hidden="true">
           <div class="hero-illus__dots"></div>
-          <div class="hero-illus__glow-a"></div>
-          <div class="hero-illus__glow-b"></div>
           <!-- D20 die – slow rotation top-left -->
           <div class="hero-illus__d20">
             <svg viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">

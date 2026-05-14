@@ -129,14 +129,12 @@
     .faq-min-ans { display:none; font-size:0.875rem; color:rgba(255,255,255,0.50); line-height:1.7; padding-bottom:20px; }
     .faq-min-ans.open { display:block; }
     /* ── Hero Discovery Illustration ── */
-    .disco-illus { position:relative;width:min(440px,100%);height:480px;margin:0 auto;flex-shrink:0; }
+    .disco-illus { position:relative;width:min(440px,100%);height:460px;margin:0 auto;flex-shrink:0;overflow:hidden;border-radius:20px; }
+    .disco-illus::before { content:'';position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;background:radial-gradient(circle,rgba(244,87,69,0.16) 0%,transparent 68%);border-radius:50%;pointer-events:none;z-index:0; }
     /* Hex grid background pattern */
-    .disco-illus__hex-bg { position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:20px; }
-    /* Glow orbs */
-    .disco-illus__glow-a { position:absolute;top:35%;left:45%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(244,87,69,0.14) 0%,transparent 68%);border-radius:50%;animation:di-pulse 6s ease-in-out infinite;pointer-events:none; }
-    .disco-illus__glow-b { position:absolute;bottom:15%;right:5%;width:100px;height:100px;background:radial-gradient(circle,rgba(212,245,60,0.09) 0%,transparent 70%);border-radius:50%;animation:di-pulse 8s ease-in-out infinite 2s;pointer-events:none; }
+    .disco-illus__hex-bg { position:absolute;inset:0;pointer-events:none;z-index:1; }
     /* Main watchlist panel */
-    .disco-illus__panel { position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:248px;background:rgba(18,22,36,0.97);border:1px solid rgba(255,255,255,0.09);border-radius:18px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.55);animation:di-float 8s ease-in-out infinite;z-index:4; }
+    .disco-illus__panel { position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);width:240px;background:rgba(18,22,36,0.97);border:1px solid rgba(255,255,255,0.09);border-radius:18px;overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,0.60);animation:di-float 8s ease-in-out infinite;z-index:4; }
     .disco-illus__panel-bar { background:rgba(255,255,255,0.04);padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.06); }
     .disco-panel-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
     .disco-panel-title { font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.35);margin-left:4px;flex:1; }
@@ -144,26 +142,25 @@
     /* Game row inside panel */
     .disco-game-row { display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05); }
     .disco-game-row:last-child { border-bottom:none; }
-    .disco-game-thumb { width:36px;height:36px;border-radius:8px;flex-shrink:0;background:var(--c,rgba(244,87,69,0.25)); }
+    .disco-game-thumb { width:36px;height:36px;border-radius:8px;flex-shrink:0; }
     .disco-game-info { flex:1;min-width:0; }
     .disco-game-name { font-size:0.72rem;color:#fff;font-family:'Rubik',sans-serif;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
     .disco-game-bar-bg { height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden; }
     .disco-game-bar-fill { height:100%;border-radius:2px;background:linear-gradient(90deg,var(--primary),rgba(244,87,69,0.6));animation:di-grow 1.8s ease-out both; }
     .disco-game-pct { font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--primary);flex-shrink:0; }
-    /* Floating "Coming Soon" badge */
-    .disco-illus__soon { position:absolute;top:8%;right:3%;background:rgba(18,22,36,0.92);border:1px solid rgba(212,245,60,0.20);border-radius:12px;padding:10px 14px;animation:di-float 9s ease-in-out infinite 1.4s;z-index:3; }
+    /* Floating "Coming Soon" badge – top-right */
+    .disco-illus__soon { position:absolute;top:7%;right:5%;background:rgba(18,22,36,0.92);border:1px solid rgba(212,245,60,0.20);border-radius:12px;padding:9px 13px;animation:di-float 9s ease-in-out infinite 1.4s;z-index:3; }
     .disco-soon-label { font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(212,245,60,0.70);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px; }
-    .disco-soon-row { display:flex;align-items:center;gap:6px;font-size:0.68rem;color:rgba(255,255,255,0.50);white-space:nowrap; }
+    .disco-soon-row { display:flex;align-items:center;gap:6px;font-size:0.65rem;color:rgba(255,255,255,0.50);white-space:nowrap; }
     .disco-soon-dot { width:4px;height:4px;border-radius:50%;background:rgba(212,245,60,0.6);flex-shrink:0; }
-    /* Floating rating card – left */
-    .disco-illus__rating { position:absolute;top:40%;left:-2%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;animation:di-float 10s ease-in-out infinite 0.6s;z-index:3; }
+    /* Floating rating card – top-left */
+    .disco-illus__rating { position:absolute;top:8%;left:5%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:9px 13px;animation:di-float 10s ease-in-out infinite 0.6s;z-index:3; }
     .disco-rating-stars { color:var(--primary);font-size:0.75rem;letter-spacing:1px; }
     .disco-rating-lbl { font-family:'Space Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.38);margin-top:3px; }
-    /* Small game icons floating */
-    .disco-illus__token { position:absolute;bottom:9%;left:8%;animation:di-float 11s ease-in-out infinite 1.8s;z-index:2;opacity:0.50; }
-    .disco-illus__d4 { position:absolute;bottom:12%;right:8%;animation:di-float 7s ease-in-out infinite 3s;z-index:2; }
-    @keyframes di-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
-    @keyframes di-pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+    /* Small elements bottom row */
+    .disco-illus__token { position:absolute;bottom:8%;left:8%;animation:di-float 11s ease-in-out infinite 1.8s;z-index:2;opacity:0.50; }
+    .disco-illus__d4 { position:absolute;bottom:9%;right:8%;animation:di-float 7s ease-in-out infinite 3s;z-index:2; }
+    @keyframes di-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
     @keyframes di-grow { from{width:0} to{width:var(--w,70%)} }
     /* light mode fixes */
     [data-theme="light"] .compare-table td:first-child { color:#374151; }
@@ -287,8 +284,6 @@
               <rect width="100%" height="100%" fill="url(#hexPat)"/>
             </svg>
           </div>
-          <div class="disco-illus__glow-a"></div>
-          <div class="disco-illus__glow-b"></div>
           <!-- Main watchlist panel -->
           <div class="disco-illus__panel">
             <div class="disco-illus__panel-bar">
