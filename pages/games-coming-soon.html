@@ -136,11 +136,12 @@
     .preview-card__img img { width: 100%; height: 100%; object-fit: cover; }
     .preview-card__status {
       position: absolute; top: 12px; left: 12px;
-      padding: 4px 10px; border-radius: 99px;
-      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.70);
-      border: 1px solid rgba(255,255,255,0.14);
+      padding: 5px 12px; border-radius: 99px;
+      background: rgba(244,87,69,0.85); color: #fff;
+      border: 1px solid rgba(244,87,69,0.5);
       font-size: 0.7rem; font-weight: 600;
       display: flex; align-items: center; gap: 5px;
+      backdrop-filter: blur(4px);
     }
     .preview-card__wishlist {
       position: absolute; top: 12px; right: 12px;
@@ -176,7 +177,7 @@
       background: linear-gradient(to right, transparent 60%, var(--dark-card) 100%);
     }
     .featured-up__body {
-      padding: 48px 40px; display: flex; flex-direction: column; justify-content: center;
+      padding: 48px 40px; display: flex; flex-direction: column; justify-content: flex-start;
     }
     @media(max-width: 860px) {
       .featured-up { grid-template-columns: 1fr; }
@@ -255,7 +256,7 @@
           <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
             <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Campaign spotlight layout</span></div></a>
           </div>
         </li>
         <li class="nav__item">
@@ -317,12 +318,7 @@
           <div class="cs-hero__chip"><span class="cs-hero__chip-num">8</span><span class="cs-hero__chip-lbl">Launching This Month</span></div>
         </div>
       </div>
-      <div class="orbit-deco">
-        <div class="orbit-deco__ring"></div>
-        <div class="orbit-deco__ring orbit-deco__ring--2"></div>
-        <div class="orbit-deco__ring orbit-deco__ring--3"></div>
-        <div class="orbit-deco__centre"><i class="fa-solid fa-clock"></i></div>
-      </div>
+      <div class="orbit-deco" style="display:none;"></div>
     </div>
   </div>
 </section>
@@ -385,7 +381,7 @@
     </div>
     <div class="featured-up reveal">
       <div class="featured-up__img">
-        <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&auto=format&fit=crop&q=80" alt="Celestial Empires" />
+        <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Celestial Empires" />
       </div>
       <div class="featured-up__body">
         <div class="featured-up__meta"><i class="fa-solid fa-clock"></i> &nbsp;Launching July 2026</div>
@@ -448,7 +444,7 @@
       <!-- Game 1 -->
       <article class="preview-card reveal">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1568694836920-a96aa7ac2c58?w=600&auto=format&fit=crop&q=80" alt="Project Nexus" loading="lazy" />
+          <img src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Project Nexus" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -471,7 +467,7 @@
       <!-- Game 2 -->
       <article class="preview-card reveal reveal-d1">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1528659882437-b89a74bc157f?w=600&auto=format&fit=crop&q=80" alt="Last Light Station" loading="lazy" />
+          <img src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Last Light Station" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -494,7 +490,7 @@
       <!-- Game 3 -->
       <article class="preview-card reveal reveal-d2">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=600&auto=format&fit=crop&q=80" alt="Verdant City" loading="lazy" />
+          <img src="../assets/images/home1/phuwanai-chaosuan-n-lVbeCIGqM-unsplash.jpg" alt="Verdant City" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -517,7 +513,7 @@
       <!-- Game 4 -->
       <article class="preview-card reveal">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=600&auto=format&fit=crop&q=80" alt="Iron Covenant" loading="lazy" />
+          <img src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Iron Covenant" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming August 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -540,7 +536,7 @@
       <!-- Game 5 -->
       <article class="preview-card reveal reveal-d1">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600&auto=format&fit=crop&q=80" alt="Prism Puzzle Works" loading="lazy" />
+          <img src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Prism Puzzle Works" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -563,7 +559,7 @@
       <!-- Game 6 -->
       <article class="preview-card reveal reveal-d2">
         <div class="preview-card__img">
-          <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&auto=format&fit=crop&q=80" alt="Tidewater Trade" loading="lazy" />
+          <img src="../assets/images/home1/an-le-khanh-WofhwIoUURk-unsplash.jpg" alt="Tidewater Trade" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming September 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -690,7 +686,7 @@
           <div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div>
           <span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span>
         </a>
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">The crowdfunding home for independent board game designers and the backers who love them.</p>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">Live campaigns, upcoming launches, and funded board games in one place for backers and studios following the tabletop scene.</p>
         <div style="display:flex;gap:10px;margin-top:20px;">
           <a href="#" class="btn btn--ghost btn--icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
           <a href="#" class="btn btn--ghost btn--icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -709,11 +705,11 @@
         </div>
       </div>
       <div class="footer-col">
-        <div class="footer-col__heading">For Designers</div>
+        <div class="footer-col__heading">Launch</div>
         <div class="footer-col__links">
           <a href="launch.html" class="footer-col__link">Launch a Game</a>
           <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
-          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="faq.html" class="footer-col__link">Launch FAQ</a>
           <a href="press-kit.html" class="footer-col__link">Press Kit</a>
         </div>
       </div>

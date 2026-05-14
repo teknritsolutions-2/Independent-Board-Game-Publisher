@@ -150,10 +150,10 @@ const NavManager = (() => {
           </div>
           <span class="footer__brand-text">TabletopForge</span>
         </a>
-        <p class="footer__summary">Crowdfunding, discovery, and launch tooling for independent board game publishers and the backers who keep them moving.</p>
+        <p class="footer__summary">Live campaigns, upcoming launches, and funded board games in one place for backers and studios following the tabletop scene.</p>
         <div class="footer__cta-row">
           <a href="campaigns.html" class="btn btn--primary btn--sm">Browse Campaigns</a>
-          <a href="launch.html" class="btn btn--ghost btn--sm">Launch a Game</a>
+          <a href="games.html" class="btn btn--ghost btn--sm">Explore Games</a>
         </div>
       </div>
       <div class="footer-col">
@@ -194,7 +194,7 @@ const NavManager = (() => {
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 TabletopForge. All rights reserved.</span>
-      <span>Independent board games, cleaner launches, stronger backer support.</span>
+      <span>Independent board games, clearer discovery, stronger backer support.</span>
     </div>
   </div>
 </footer>`;

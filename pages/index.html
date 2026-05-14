@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TabletopForge — Discover &amp; Back Independent Board Game Campaigns</title>
-  <meta name="description" content="The crowdfunding platform for independent board games. Backers discover live campaigns. Designers launch their next big game." />
+  <meta name="description" content="The tabletop crowdfunding platform for live campaigns, upcoming launches, and funded board game favorites." />
   <link rel="icon" type="image/svg+xml" href="../assets/images/icons/brand-favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,9 +62,10 @@
     .testi-card-sm {
       background:var(--dark-card); border:1px solid rgba(255,255,255,0.07);
       border-radius:18px; padding:24px;
+      display:flex; flex-direction:column;
     }
-    .testi-card-sm__quote { font-size:0.925rem; color:rgba(255,255,255,0.65); line-height:1.7; margin-bottom:16px; font-style:italic; }
-    .testi-card-sm__author { display:flex; align-items:center; gap:10px; }
+    .testi-card-sm__quote { font-size:0.925rem; color:rgba(255,255,255,0.65); line-height:1.7; margin-bottom:16px; font-style:italic; flex:1; }
+    .testi-card-sm__author { display:flex; align-items:center; gap:10px; margin-top:auto; }
     .testi-card-sm__avatar { width:36px; height:36px; border-radius:50%; overflow:hidden; background:var(--primary); flex-shrink:0; }
     .testi-card-sm__avatar img { width:100%; height:100%; object-fit:cover; }
     .testi-card-sm__name  { font-size:0.85rem; color:#fff; }
@@ -132,7 +133,7 @@
           <a href="index.html" class="nav__link active" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
           <div class="nav__dropdown" role="menu">
             <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Designer launch experience</span></div></a>
+            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Campaign spotlight layout</span></div></a>
           </div>
         </li>
         <li class="nav__item">
@@ -231,7 +232,7 @@
           <div class="poly-wrap">
             <img
               class="poly-img"
-              src="https://images.unsplash.com/photo-1609372332255-611485350f25?w=840&q=85&auto=format&fit=crop"
+              src="../assets/images/home1/2h-media-Z9Jv6WRKRpA-unsplash.jpg"
               alt="Players gathered around a fantasy tabletop game"
             />
           </div>
@@ -359,7 +360,7 @@
     <div class="cards-grid reveal">
       <article class="fund-card">
         <div class="fund-card__img">
-          <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=600&q=80&auto=format&fit=crop" alt="Kingdoms of Ash board game" loading="lazy" />
+          <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Kingdoms of Ash board game" loading="lazy" />
           <div class="fund-card__status"><i class="fa-solid fa-fire"></i> Live</div>
         </div>
         <div class="fund-card__body">
@@ -376,7 +377,7 @@
       </article>
       <article class="fund-card">
         <div class="fund-card__img">
-          <img src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=600&q=80&auto=format&fit=crop" alt="Verdant Isles board game" loading="lazy" />
+          <img src="../assets/images/home1/2h-media-hH3JuONz7CQ-unsplash.jpg" alt="Verdant Isles board game" loading="lazy" />
           <div class="fund-card__status"><i class="fa-solid fa-fire"></i> Live</div>
         </div>
         <div class="fund-card__body">
@@ -393,7 +394,7 @@
       </article>
       <article class="fund-card">
         <div class="fund-card__img">
-          <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?w=600&q=80&auto=format&fit=crop" alt="Project Nebula board game" loading="lazy" />
+          <img src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Project Nebula board game" loading="lazy" />
           <div class="fund-card__status"><i class="fa-solid fa-fire"></i> Live</div>
         </div>
         <div class="fund-card__body">
@@ -436,7 +437,7 @@
     </div>
     <div class="cards-grid reveal" style="margin-top:40px;">
       <article class="tgame-card">
-        <img class="tgame-card__img" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80&auto=format&fit=crop" alt="Strategy board game" loading="lazy" />
+        <img class="tgame-card__img" src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Strategy board game" loading="lazy" />
         <div class="tgame-card__body">
           <div class="tgame-card__genre">Worker Placement</div>
           <h3 class="tgame-card__title">Dune: Imperium</h3>
@@ -452,7 +453,7 @@
         </div>
       </article>
       <article class="tgame-card">
-        <img class="tgame-card__img" src="https://images.unsplash.com/photo-1559732277-7453b141e3a1?w=600&q=80&auto=format&fit=crop" alt="Cascadia board game tiles" loading="lazy" />
+        <img class="tgame-card__img" src="../assets/images/about/pexels-cottonbro-4691555.jpg" alt="Cascadia board game tiles" loading="lazy" />
         <div class="tgame-card__body">
           <div class="tgame-card__genre">Tile Placement</div>
           <h3 class="tgame-card__title">Cascadia</h3>
@@ -468,7 +469,7 @@
         </div>
       </article>
       <article class="tgame-card">
-        <img class="tgame-card__img" src="https://images.unsplash.com/photo-1565620731358-e8c038abc8d1?w=600&q=80&auto=format&fit=crop" alt="Ark Nova zoo board game" loading="lazy" />
+        <img class="tgame-card__img" src="../assets/images/home1/an-le-khanh-SllAB9SsHRc-unsplash.jpg" alt="Ark Nova zoo board game" loading="lazy" />
         <div class="tgame-card__body">
           <div class="tgame-card__genre">Euro Strategy</div>
           <h3 class="tgame-card__title">Ark Nova</h3>
@@ -541,7 +542,7 @@
     </div>
     <div class="cards-grid cards-grid--4 reveal">
       <article class="camp-card">
-        <img class="camp-card__img" src="https://images.unsplash.com/photo-1582916629695-ec7e3b3f6b8c?w=600&q=80&auto=format&fit=crop" alt="Shadow Sanctum" loading="lazy" />
+        <img class="camp-card__img" src="../assets/images/home1/an-le-khanh-WofhwIoUURk-unsplash.jpg" alt="Shadow Sanctum" loading="lazy" />
         <div class="camp-card__body">
           <span class="badge badge--coming" style="margin-bottom:10px;"><i class="fa-solid fa-clock"></i> Jun 15</span>
           <h3 class="camp-card__title">Shadow Sanctum</h3>
@@ -550,7 +551,7 @@
         </div>
       </article>
       <article class="camp-card">
-        <img class="camp-card__img" src="https://images.unsplash.com/photo-1524634126442-357e0eac3c14?w=600&q=80&auto=format&fit=crop" alt="Desert Odyssey" loading="lazy" />
+        <img class="camp-card__img" src="../assets/images/about/pexels-karola-g-6333910.jpg" alt="Desert Odyssey" loading="lazy" />
         <div class="camp-card__body">
           <span class="badge badge--coming" style="margin-bottom:10px;"><i class="fa-solid fa-clock"></i> Jul 1</span>
           <h3 class="camp-card__title">Desert Odyssey</h3>
@@ -559,7 +560,7 @@
         </div>
       </article>
       <article class="camp-card">
-        <img class="camp-card__img" src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80&auto=format&fit=crop" alt="Neon Syndicate" loading="lazy" />
+        <img class="camp-card__img" src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Neon Syndicate" loading="lazy" />
         <div class="camp-card__body">
           <span class="badge badge--coming" style="margin-bottom:10px;"><i class="fa-solid fa-clock"></i> Aug 3</span>
           <h3 class="camp-card__title">Neon Syndicate</h3>
@@ -568,7 +569,7 @@
         </div>
       </article>
       <article class="camp-card">
-        <img class="camp-card__img" src="https://images.unsplash.com/photo-1606503153255-59d5a2f6d0d8?w=600&q=80&auto=format&fit=crop" alt="Arcane Atlas" loading="lazy" />
+        <img class="camp-card__img" src="../assets/images/home1/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Arcane Atlas" loading="lazy" />
         <div class="camp-card__body">
           <span class="badge badge--coming" style="margin-bottom:10px;"><i class="fa-solid fa-clock"></i> Sep 10</span>
           <h3 class="camp-card__title">Arcane Atlas</h3>
@@ -636,7 +637,7 @@
       <div class="testi-card-sm">
         <p class="testi-card-sm__quote">"Backed three games through TabletopForge and every single one delivered on time. The campaign updates are transparent and the team actually cares."</p>
         <div class="testi-card-sm__author">
-          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&q=80&auto=format&fit=crop&crop=face" alt="Marcus" /></div>
+          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=face" alt="Marcus O." /></div>
           <div>
             <div class="testi-card-sm__name">Marcus O.</div>
             <div class="testi-card-sm__role">Backer — 12 campaigns</div>
@@ -646,7 +647,7 @@
       <div class="testi-card-sm">
         <p class="testi-card-sm__quote">"As a first-time studio, TabletopForge gave us the tools and the audience we needed. We hit our goal in 18 hours and ended at 847% funded."</p>
         <div class="testi-card-sm__author">
-          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=72&h=72&q=80&auto=format&fit=crop&crop=face" alt="Priya" /></div>
+          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=face" alt="Priya S." /></div>
           <div>
             <div class="testi-card-sm__name">Priya S.</div>
             <div class="testi-card-sm__role">Studio Lead — Kingdoms of Ash</div>
@@ -656,7 +657,7 @@
       <div class="testi-card-sm">
         <p class="testi-card-sm__quote">"The discovery page is leagues ahead of the competition. I find games I actually want to back instead of scrolling through endless noise."</p>
         <div class="testi-card-sm__author">
-          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&q=80&auto=format&fit=crop&crop=face" alt="James" /></div>
+          <div class="testi-card-sm__avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=face" alt="James T." /></div>
           <div>
             <div class="testi-card-sm__name">James T.</div>
             <div class="testi-card-sm__role">Backer — 28 campaigns</div>
@@ -681,15 +682,15 @@
     </div>
     <div class="cards-grid reveal">
       <a href="blog-single.html" class="blog-card">
-        <img class="blog-card__img" src="https://images.unsplash.com/photo-1542396601-dca920ea2807?w=600&q=80&auto=format&fit=crop" alt="Board game design tips" loading="lazy" />
+        <img class="blog-card__img" src="../assets/images/about/pexels-cottonbro-4691555.jpg" alt="Board game design tips" loading="lazy" />
         <div class="blog-card__body">
           <div class="blog-card__cat">Design Tips</div>
-          <h3 class="blog-card__title">10 Things Every First-Time Designer Gets Wrong</h3>
+          <h3 class="blog-card__title">10 First-Time Campaign Mistakes to Avoid</h3>
           <div class="blog-card__meta">May 8, 2026 &middot; 6 min read</div>
         </div>
       </a>
       <a href="blog-single.html" class="blog-card">
-        <img class="blog-card__img" src="https://images.unsplash.com/photo-1585634917202-6f67b6aba8de?w=600&q=80&auto=format&fit=crop" alt="Board game campaign" loading="lazy" />
+        <img class="blog-card__img" src="../assets/images/home1/phuwanai-chaosuan-n-lVbeCIGqM-unsplash.jpg" alt="Board game campaign" loading="lazy" />
         <div class="blog-card__body">
           <div class="blog-card__cat">Crowdfunding</div>
           <h3 class="blog-card__title">How Kingdoms of Ash Hit 847% on Day One</h3>
@@ -697,7 +698,7 @@
         </div>
       </a>
       <a href="blog-single.html" class="blog-card">
-        <img class="blog-card__img" src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=600&q=80&auto=format&fit=crop" alt="Board game industry" loading="lazy" />
+        <img class="blog-card__img" src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Board game industry" loading="lazy" />
         <div class="blog-card__body">
           <div class="blog-card__cat">Industry</div>
           <h3 class="blog-card__title">The Rise of the Independent Board Game Publisher in 2026</h3>
@@ -758,7 +759,7 @@
         <div class="footer-col__links">
           <a href="launch.html" class="footer-col__link">Launch a Game</a>
           <a href="dashboard-admin.html" class="footer-col__link">Admin Dashboard</a>
-          <a href="faq.html" class="footer-col__link">Designer FAQ</a>
+          <a href="faq.html" class="footer-col__link">Launch FAQ</a>
           <a href="press-kit.html" class="footer-col__link">Press Kit</a>
         </div>
       </div>
