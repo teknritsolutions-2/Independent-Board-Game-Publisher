@@ -22,8 +22,13 @@
       overflow: hidden;
     }
     [data-theme="light"] .camp-hero {
-      background: linear-gradient(rgba(12,14,18,0.72) 0%, rgba(12,14,18,0.88) 100%), url('../assets/images/all titles/jan-antonin-kolar-W2tTCQ1tdog-unsplash.jpg') center/cover no-repeat !important;
+      background: linear-gradient(rgba(12,14,18,0.80) 0%, rgba(12,14,18,0.92) 100%), url('../assets/images/all titles/jan-antonin-kolar-W2tTCQ1tdog-unsplash.jpg') center/cover no-repeat !important;
     }
+    [data-theme="light"] .camp-hero__title { color: #ffffff !important; }
+    [data-theme="light"] .camp-hero__title em { color: var(--primary) !important; }
+    [data-theme="light"] .camp-hero__sub { color: rgba(255,255,255,0.75) !important; }
+    [data-theme="light"] .camp-hero__eyebrow { color: var(--primary) !important; background: rgba(244,87,69,0.15) !important; border-color: rgba(244,87,69,0.35) !important; }
+    [data-theme="light"] .camp-hero .feat-trust__item { color: rgba(255,255,255,0.70) !important; }
     .camp-hero::before {
       content: '';
       position: absolute;
@@ -526,9 +531,8 @@
       .filter-bar__search { min-width: 100%; }
     }
     /* ── Light mode ── */
-    [data-theme="light"] .camp-hero { background: linear-gradient(135deg, #f9fafb 50%, #f3f4f6 100%); }
-    [data-theme="light"] .camp-hero::before { background-image: radial-gradient(circle, rgba(244,87,69,0.04) 1px, transparent 1px); }
-    [data-theme="light"] .camp-hero__title { color: #0c0e12; }
+    [data-theme="light"] .camp-hero__title { color: #ffffff !important; }
+    [data-theme="light"] .camp-hero__sub { color: rgba(255,255,255,0.75) !important; }
     [data-theme="light"] .camp-stats-bar { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .camp-stats-bar__num { color: #0c0e12; }
     [data-theme="light"] .feat-camp { background: #fff; border-color: #e5e7eb; }
