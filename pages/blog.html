@@ -65,9 +65,40 @@
   </div>
   <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
 </nav>
+<style>
+  .blog-illus { position:absolute;right:max(4%,40px);top:50%;transform:translateY(-50%);width:250px;z-index:2;display:flex;flex-direction:column;gap:12px;pointer-events:none; }
+  .blog-illus__card { background:rgba(18,22,36,0.94);border:1px solid rgba(255,255,255,0.09);border-radius:14px;overflow:hidden;animation:bli-float 9s ease-in-out infinite; }
+  .blog-illus__card:nth-child(2) { animation-duration:11s;animation-delay:1.5s;margin-left:20px; }
+  .blog-illus__img { width:100%;height:80px;object-fit:cover; }
+  .blog-illus__body { padding:10px 12px; }
+  .blog-illus__cat { font-size:0.63rem;color:var(--primary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px; }
+  .blog-illus__title { font-size:0.78rem;font-family:'Rubik',sans-serif;color:#fff;line-height:1.35;margin-bottom:6px; }
+  .blog-illus__meta { display:flex;align-items:center;gap:8px;font-size:0.64rem;color:rgba(255,255,255,0.38); }
+  @keyframes bli-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  @media(max-width:900px) { .blog-illus { display:none; } }
+</style>
 <section class="sec-hero" style="min-height:45vh;">
   <div class="orbit-wrap" style="right:-80px;top:50%;transform:translateY(-50%);width:520px;height:520px;"><div class="orbit-ring orbit-ring--1"><div class="orbit-dot"></div></div><div class="orbit-ring orbit-ring--2"><div class="orbit-dot orbit-dot--sm"></div></div><div class="orbit-ring orbit-ring--3"></div></div>
   <div class="hero-bg"><img src="../assets/images/home1/an-le-khanh-SllAB9SsHRc-unsplash.jpg" alt="" aria-hidden="true" /></div>
+  <!-- Floating article preview cards -->
+  <div class="blog-illus" aria-hidden="true">
+    <div class="blog-illus__card">
+      <img class="blog-illus__img" src="../assets/images/all titles/alexander-lyashkov-kHq6TnM-SyU-unsplash.jpg" alt="" />
+      <div class="blog-illus__body">
+        <div class="blog-illus__cat"><i class="fa-solid fa-lightbulb"></i> Design Tips</div>
+        <div class="blog-illus__title">10 Playtesting Methods That Actually Work</div>
+        <div class="blog-illus__meta"><i class="fa-solid fa-clock"></i> 5 min read &nbsp;·&nbsp; <i class="fa-solid fa-heart"></i> 312</div>
+      </div>
+    </div>
+    <div class="blog-illus__card">
+      <img class="blog-illus__img" src="../assets/images/all titles/kyrie-isaac-7H03ki4VBgM-unsplash.jpg" alt="" />
+      <div class="blog-illus__body">
+        <div class="blog-illus__cat"><i class="fa-solid fa-coins"></i> Crowdfunding</div>
+        <div class="blog-illus__title">How Kickstarter-alumni use TabletopForge</div>
+        <div class="blog-illus__meta"><i class="fa-solid fa-clock"></i> 8 min read &nbsp;·&nbsp; <i class="fa-solid fa-heart"></i> 218</div>
+      </div>
+    </div>
+  </div>
   <div class="container" style="position:relative;z-index:1;width:100%;">
     <div class="hero-eyebrow reveal"><i class="fa-solid fa-newspaper"></i> The Forge Post</div>
     <h1 class="hero-title reveal reveal-d1" style="font-size:clamp(2.4rem,5vw,4.5rem);">Stories, Tips<br>&amp; <em>Insights</em></h1>

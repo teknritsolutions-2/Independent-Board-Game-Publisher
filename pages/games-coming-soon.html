@@ -260,7 +260,8 @@
     [data-theme="light"] .timeline-month__name { color: #0c0e12; }
     [data-theme="light"] .timeline-month__count { color: #dc3f2e; }
     [data-theme="light"] .featured-up { background: #fff; border-color: #e5e7eb; }
-    [data-theme="light"] .featured-up__img { min-height: 240px; max-height: 260px; }
+    [data-theme="light"] .featured-up__img { height: 100%; min-height: 300px; max-height: none; overflow: hidden; }
+    [data-theme="light"] .featured-up__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     [data-theme="light"] .featured-up__img::after { background: linear-gradient(to right, transparent 58%, #fff 100%); }
     [data-theme="light"] .featured-up__meta { color: #dc3f2e; }
     [data-theme="light"] .featured-up__title { color: #0c0e12; }
@@ -432,6 +433,11 @@
         <div class="timeline-month__label">2027</div>
         <div class="timeline-month__name">Late 2027</div>
         <div class="timeline-month__count">4 games</div>
+      </div>
+      <div class="timeline-month">
+        <div class="timeline-month__label">2028+</div>
+        <div class="timeline-month__name">Beyond</div>
+        <div class="timeline-month__count">TBA</div>
       </div>
     </div>
   </div>

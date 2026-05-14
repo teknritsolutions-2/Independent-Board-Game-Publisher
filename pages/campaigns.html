@@ -207,9 +207,15 @@
       border: 1px solid rgba(244,87,69,0.25);
     }
     .status-badge--coming {
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.70);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.50);
+      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    [data-theme="light"] .status-badge--coming,
+    [data-theme="light"] .fund-card__status {
+      background: rgba(0,0,0,0.60) !important;
+      color: #fff !important;
+      border-color: rgba(0,0,0,0.12) !important;
     }
     .status-badge--funded {
       background: rgba(244,87,69,0.10);
@@ -533,7 +539,7 @@
     [data-theme="light"] .filter-bar__search input { color: #0c0e12; }
     [data-theme="light"] .filter-bar__search input::placeholder,
     [data-theme="light"] .filter-bar__search i { color: #9ca3af; }
-    [data-theme="light"] .sort-select { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .sort-select { background: #fff; border-color: #e5e7eb; color: #374151; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='rgba(0,0,0,0.45)' stroke-width='1.5'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
     [data-theme="light"] .cat-card { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .cat-card__name { color: #374151; }
     [data-theme="light"] .cat-card__count { color: #6b7280; }
@@ -932,7 +938,7 @@
       <article class="fund-card" data-status="coming" data-genre="strategy">
         <div class="fund-card__img">
           <img src="../assets/images/all titles/daniele-franchi-yuAOkXNQ9RI-unsplash.jpg" alt="Project Nexus" loading="lazy" />
-          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.70);font-size:0.7rem;font-weight:600;border:1px solid rgba(255,255,255,0.14);">
+          <div class="fund-card__status status-badge--coming" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;font-size:0.7rem;font-weight:600;">
             <i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming Soon
           </div>
         </div>
@@ -954,7 +960,7 @@
       <article class="fund-card" data-status="coming" data-genre="coop">
         <div class="fund-card__img">
           <img src="../assets/images/all titles/doerge-monopoly-1356307_1920.jpg" alt="Last Light Station" loading="lazy" />
-          <div class="fund-card__status" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.70);font-size:0.7rem;font-weight:600;border:1px solid rgba(255,255,255,0.14);">
+          <div class="fund-card__status status-badge--coming" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:99px;font-size:0.7rem;font-weight:600;">
             <i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming Soon
           </div>
         </div>

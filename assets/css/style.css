@@ -2031,8 +2031,19 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 [data-theme="light"] .sec--dk .pbar { background: rgba(0,0,0,0.08); }
 
 /* Badge readability */
-[data-theme="light"] .badge--coming { background: rgba(0,0,0,0.06); color: #374151; }
+[data-theme="light"] .badge--coming { background: rgba(0,0,0,0.08); color: #374151; border-color: rgba(0,0,0,0.14) !important; }
 [data-theme="light"] .badge--funded { background: rgba(244,87,69,0.10); color: var(--primary); }
+
+/* ── LIGHT MODE: Comparison table row dividers ── */
+[data-theme="light"] .compare-table th,
+[data-theme="light"] .compare-table td { border-bottom-color: #e5e7eb !important; }
+
+/* ── LIGHT MODE: tgame-card tags ── */
+[data-theme="light"] .tgame-card__tag { background: rgba(0,0,0,0.06) !important; color: #4b5563 !important; }
+
+/* ── Collection-card overlay text: always white (gradient bg is always dark) ── */
+[data-theme="light"] .collection-card__title { color: #fff !important; }
+[data-theme="light"] .collection-card__count { color: rgba(255,255,255,0.80) !important; }
 
 /* Section number label */
 [data-theme="light"] .sec--dk .sec-num { color: rgba(0,0,0,0.20); }
@@ -2855,6 +2866,27 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 [data-theme="light"] .hero-bg img { opacity: 0.55; }
 [data-theme="light"] .hero-bg::after {
   background: linear-gradient(to bottom, rgba(12,14,18,0.50) 0%, rgba(12,14,18,0.92) 100%);
+}
+
+/* ── LIGHT MODE: Hero sections keep white text (bg is always dark) ── */
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .hero-eyebrow,
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .sec-eyebrow,
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .sec-label { color: rgba(255,255,255,0.65) !important; }
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .sec-eyebrow i,
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .sec-label i { color: var(--primary) !important; }
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .hero-title,
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .games-hero__title { color: #ffffff !important; }
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .hero-sub,
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .games-hero__sub { color: rgba(255,255,255,0.78) !important; }
+/* Ghost buttons inside always-dark hero sections stay white in light mode */
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .btn--ghost {
+  background: rgba(255,255,255,0.10) !important;
+  color: rgba(255,255,255,0.88) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+}
+[data-theme="light"] :is(.sec-hero,.games-hero,.camp-hero,.launch-hero,.forum-hero,.blog-hero,.contact-hero) .btn--ghost:hover {
+  background: rgba(255,255,255,0.18) !important;
+  color: #fff !important;
 }
 
 /* ── LIGHT MODE: Keep footer always dark so white text stays visible ── */
