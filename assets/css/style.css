@@ -268,7 +268,7 @@ button                 { font-family: inherit; cursor: pointer; border: none; ba
 @media(max-width: 980px) {
   .nav__inner { padding: 8px 12px; gap: 10px; }
   .nav__links { display: none; }
-  .nav__hamburger { display: flex; }
+  .nav__hamburger { display: flex; margin-left: auto; }
   .nav__controls { display: none; }
 }
 @media(max-width: 480px) {
@@ -2367,12 +2367,16 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 
 /* ── Section grid fallbacks ── */
 @media (max-width: 900px) {
-  /* Hero split stacks vertically */
+  /* Hero split stacks vertically — it's a flex container, not grid */
   .hero-split {
-    grid-template-columns: 1fr !important;
+    flex-direction: column;
+    gap: 40px;
+    min-height: 0;
+    align-items: flex-start !important;
   }
-  .hero-3d {
-    display: none; /* hide the floating 3D image on tablet – keeps content clean */
+  /* Hide the visual/image side on tablet — copy fills full width */
+  .hero-split__visual, .hero-3d {
+    display: none;
   }
   /* Audience grid single column */
   .audience-grid {
