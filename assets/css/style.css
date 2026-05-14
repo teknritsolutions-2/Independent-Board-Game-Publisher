@@ -269,7 +269,7 @@ button                 { font-family: inherit; cursor: pointer; border: none; ba
   .nav__inner { padding: 8px 12px; gap: 10px; }
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
-  .nav__login { display: none; }
+  .nav__controls { display: none; }
 }
 @media(max-width: 480px) {
   .nav-wrap { padding: 12px 10px 0; }
@@ -456,9 +456,36 @@ button                 { font-family: inherit; cursor: pointer; border: none; ba
   padding       : 14px 12px 5px;
 }
 [data-theme="light"] .dash-nav-label { color: #9ca3af; }
+
+/* Dashboard sidebar toggle button (mobile only) */
+.dash-sidebar-toggle {
+  display: none;
+  background: none; border: none; padding: 8px;
+  align-items: center; justify-content: center; flex-direction: column;
+  gap: 4px; border-radius: 8px; flex-shrink: 0;
+  transition: background var(--t-fast); cursor: none;
+}
+.dash-sidebar-toggle:hover { background: rgba(255,255,255,0.08); }
+[data-theme="light"] .dash-sidebar-toggle:hover { background: rgba(0,0,0,0.06); }
+.dash-sidebar-toggle span {
+  display: block; width: 18px; height: 2px;
+  background: rgba(255,255,255,0.72); border-radius: 2px;
+  transition: all var(--t-fast);
+}
+[data-theme="light"] .dash-sidebar-toggle span { background: rgba(0,0,0,0.65); }
+
+/* Full-screen overlay behind open sidebar */
+.dash-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55); z-index: 199;
+}
+.dash-overlay.active { display: block; }
+
 @media(max-width:900px) {
-  .dash-sidebar { display: none; }
+  .dash-sidebar { display: none; position: fixed; z-index: 200; }
+  .dash-sidebar.open { display: block !important; }
   .dash-content { margin-left: 0; padding: 24px 16px; }
+  .dash-sidebar-toggle { display: flex; }
 }
 
 /* ── 10. CUSTOM CURSOR ──────────────────────────────────────── */
@@ -2356,16 +2383,20 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
     grid-template-columns: 1fr !important;
   }
   .launch-mockup { display: none; }
-  /* Campaign grid min-width reduction */
+  /* Campaign grid — fixed 2 cols on tablet to prevent orphan expansion */
   .camp-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   .collection-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  /* Games grid */
+  /* Games grid — fixed 2 cols on tablet */
   .games-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Funded / preview grids — fixed 2 cols on tablet */
+  .fd-grid, .preview-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   /* Pricing grid */
   .pricing-grid {
@@ -2444,12 +2475,19 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   .sec { padding: 48px 0; }
   .sec-hero, .games-hero, .camp-hero, .launch-hero { padding: 100px 0 48px; }
 
+  /* Hero title: reduce multi-line font size on mobile */
+  .sec-hero .hero-title { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+  .sec-hero { min-height: 0 !important; }
   /* Camp grid single col */
   .camp-grid {
     grid-template-columns: 1fr !important;
   }
   /* Games grid single col */
   .games-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Funded / preview grids single col */
+  .fd-grid, .preview-grid {
     grid-template-columns: 1fr !important;
   }
   /* Pledge steps single col */
@@ -2677,6 +2715,18 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 .cat-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; }
 .preview-grid,
 .fd-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
+
+/* ── Responsive grid overrides (placed after global !important rules so they win) ── */
+@media(max-width:900px) {
+  .camp-grid, .games-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .fd-grid, .preview-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .collection-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media(max-width:600px) {
+  .camp-grid, .games-grid, .fd-grid, .preview-grid, .collection-grid { grid-template-columns: 1fr !important; }
+  .sec-hero .hero-title { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+  .sec-hero { min-height: 0 !important; }
+}
 
 /* ── LIGHT MODE: Redefine dark CSS variables for content pages (not dashboards) ── */
 [data-theme="light"] body:not(.dashboard-page) {

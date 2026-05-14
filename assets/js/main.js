@@ -1173,6 +1173,47 @@ const PaginationManager = (() => {
 
 
 /* ─────────────────────────────────────────────────────────────
+   20. DASH SIDEBAR MANAGER — mobile/tablet sidebar toggle
+───────────────────────────────────────────────────────────── */
+const DashSidebarManager = (() => {
+  function init() {
+    const sidebar = $('.dash-sidebar');
+    const topbar  = $('.dash-topbar');
+    if (!sidebar || !topbar) return;
+
+    const toggle = document.createElement('button');
+    toggle.className = 'dash-sidebar-toggle';
+    toggle.setAttribute('aria-label', 'Toggle sidebar');
+    toggle.setAttribute('type', 'button');
+    toggle.innerHTML = '<span></span><span></span><span></span>';
+    topbar.insertBefore(toggle, topbar.firstChild);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'dash-overlay';
+    document.body.appendChild(overlay);
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+    overlay.addEventListener('click', closeSidebar);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) closeSidebar(); });
+  }
+
+  return { init };
+})();
+
+
+/* ─────────────────────────────────────────────────────────────
    INIT ALL — single DOMContentLoaded
 ───────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1195,4 +1236,5 @@ document.addEventListener('DOMContentLoaded', () => {
   ReadingProgress.init();
   FAQManager.init();
   PaginationManager.init();
+  DashSidebarManager.init();
 });
