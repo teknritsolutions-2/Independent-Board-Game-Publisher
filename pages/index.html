@@ -104,13 +104,43 @@
       margin-top: 24px;
       padding-top: 104px;
     }
+    /* ── Hero Illustration ── */
+    .hero-illus { position:relative;width:min(460px,100%);height:480px;margin:0 auto;flex-shrink:0; }
+    .hero-illus__dots { position:absolute;inset:0;background-image:radial-gradient(circle,rgba(244,87,69,0.12) 1px,transparent 1px);background-size:26px 26px;border-radius:20px;pointer-events:none; }
+    .hero-illus__glow-a { position:absolute;top:38%;left:48%;transform:translate(-50%,-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(244,87,69,0.16) 0%,transparent 68%);border-radius:50%;animation:hi-pulse 5s ease-in-out infinite;pointer-events:none; }
+    .hero-illus__glow-b { position:absolute;top:14%;right:6%;width:110px;height:110px;background:radial-gradient(circle,rgba(212,245,60,0.07) 0%,transparent 70%);border-radius:50%;animation:hi-pulse 7s ease-in-out infinite 2s;pointer-events:none; }
+    .hero-illus__d20 { position:absolute;top:6%;left:4%;width:84px;height:84px;animation:hi-spin 22s linear infinite; }
+    .hero-illus__card { position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:232px;background:rgba(18,22,36,0.97);border:1px solid rgba(244,87,69,0.22);border-radius:18px;padding:18px;box-shadow:0 24px 64px rgba(0,0,0,0.55),0 0 0 1px rgba(244,87,69,0.06);animation:hi-float 7s ease-in-out infinite;z-index:4; }
+    .hi-card-header { display:flex;align-items:center;gap:8px;margin-bottom:12px; }
+    .hi-card-dot { width:7px;height:7px;border-radius:50%;background:var(--primary);animation:hi-pulse 2.2s ease-in-out infinite; }
+    .hi-card-live { font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--primary);text-transform:uppercase;letter-spacing:0.08em; }
+    .hi-card-title { font-family:'Rubik',sans-serif;font-size:0.92rem;color:#fff;margin-bottom:2px; }
+    .hi-card-sub { font-size:0.68rem;color:rgba(255,255,255,0.32);margin-bottom:14px; }
+    .hi-bar-bg { height:5px;background:rgba(255,255,255,0.07);border-radius:3px;margin-bottom:8px;overflow:hidden; }
+    .hi-bar-fill { height:100%;width:0;background:linear-gradient(90deg,var(--primary),rgba(244,87,69,0.60));border-radius:3px;animation:hi-grow 1.8s ease-out 0.4s both; }
+    .hi-stats { display:flex;justify-content:space-between; }
+    .hi-stat-num { font-family:'Space Mono',monospace;font-size:0.8rem;color:var(--primary); }
+    .hi-stat-lbl { font-size:0.6rem;color:rgba(255,255,255,0.28);margin-top:2px; }
+    .hi-divider { height:1px;background:rgba(255,255,255,0.06);margin:12px 0; }
+    .hi-card-foot { display:flex;align-items:center;gap:7px;font-size:0.68rem;color:rgba(255,255,255,0.35); }
+    .hero-illus__badge { position:absolute;top:7%;right:5%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:10px 14px;animation:hi-float 9s ease-in-out infinite 1.2s;z-index:3; }
+    .hi-badge-row { display:flex;align-items:center;gap:6px;font-size:0.68rem;color:rgba(255,255,255,0.50);font-family:'Space Mono',monospace;white-space:nowrap; }
+    .hi-badge-row+.hi-badge-row { margin-top:5px; }
+    .hi-badge-dot { width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0; }
+    .hero-illus__d6 { position:absolute;bottom:11%;right:7%;width:52px;height:52px;animation:hi-float 8s ease-in-out infinite 2.5s;z-index:2; }
+    .hero-illus__meeple { position:absolute;bottom:8%;left:9%;width:34px;opacity:0.45;animation:hi-float 10s ease-in-out infinite 0.8s;z-index:2; }
+    .hero-illus__chip { position:absolute;top:43%;left:-4%;background:rgba(244,87,69,0.10);border:1px solid rgba(244,87,69,0.22);border-radius:99px;padding:5px 12px;font-size:0.65rem;color:var(--primary);font-family:'Space Mono',monospace;white-space:nowrap;animation:hi-float 8s ease-in-out infinite 3.5s;z-index:3; }
+    @keyframes hi-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes hi-pulse { 0%,100%{opacity:0.65} 50%{opacity:1} }
+    @keyframes hi-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes hi-grow { from{width:0} to{width:84%} }
     /* Light mode overrides */
     [data-theme="light"] .testi-card-sm { background:#fff; border-color:#e5e7eb; }
     [data-theme="light"] .testi-card-sm__quote { color:#6b7280; }
     [data-theme="light"] .trending-chip { background:#f3f4f6; border-color:#e5e7eb; color:#6b7280; }
     [data-theme="light"] .partner-strip__item { color:rgba(0,0,0,0.28); }
     @media (max-width: 960px) {
-      .home-hero-scene { display: none; }
+      .hero-illus { display: none; }
       .home-platform-bar { margin-bottom: 16px; }
       .home-lead-section { margin-top: 16px; padding-top: 84px; }
     }
@@ -226,15 +256,66 @@
           </div>
         </div>
       </div>
-      <!-- Polygon Visual -->
+      <!-- Hero Illustration -->
       <div class="hero-split__visual">
-        <div class="home-hero-scene">
-          <div class="poly-wrap">
-            <img
-              class="poly-img"
-              src="../assets/images/home1/2h-media-Z9Jv6WRKRpA-unsplash.jpg"
-              alt="Players gathered around a fantasy tabletop game"
-            />
+        <div class="hero-illus" aria-hidden="true">
+          <div class="hero-illus__dots"></div>
+          <div class="hero-illus__glow-a"></div>
+          <div class="hero-illus__glow-b"></div>
+          <!-- D20 die – slow rotation top-left -->
+          <div class="hero-illus__d20">
+            <svg viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="42,5 79,26 79,58 42,79 5,58 5,26" stroke="var(--primary)" stroke-width="1.5" fill="rgba(244,87,69,0.07)"/>
+              <polygon points="42,5 79,26 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.05)"/>
+              <polygon points="79,26 79,58 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.08)"/>
+              <polygon points="42,79 79,58 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.04)"/>
+              <polygon points="5,58 42,79 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.07)"/>
+              <polygon points="5,26 5,58 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.05)"/>
+              <polygon points="42,5 5,26 42,42" stroke="rgba(244,87,69,0.28)" stroke-width="1" fill="rgba(244,87,69,0.08)"/>
+              <text x="42" y="47" text-anchor="middle" font-family="'Space Mono',monospace" font-size="14" fill="var(--primary)" font-weight="700">20</text>
+            </svg>
+          </div>
+          <!-- Campaign progress card – center -->
+          <div class="hero-illus__card">
+            <div class="hi-card-header">
+              <div class="hi-card-dot"></div>
+              <span class="hi-card-live">Live Campaign</span>
+            </div>
+            <div class="hi-card-title">Kingdoms of Ash</div>
+            <div class="hi-card-sub">Strategy · 2–5 players · Age 14+</div>
+            <div class="hi-bar-bg"><div class="hi-bar-fill"></div></div>
+            <div class="hi-stats">
+              <div><div class="hi-stat-num">$284k</div><div class="hi-stat-lbl">Raised</div></div>
+              <div style="text-align:center"><div class="hi-stat-num">847%</div><div class="hi-stat-lbl">Funded</div></div>
+              <div style="text-align:right"><div class="hi-stat-num">15d</div><div class="hi-stat-lbl">Left</div></div>
+            </div>
+            <div class="hi-divider"></div>
+            <div class="hi-card-foot"><i class="fa-solid fa-users" style="font-size:0.6rem;"></i> 1,247 backers this week</div>
+          </div>
+          <!-- Mini watchlist badge – top-right -->
+          <div class="hero-illus__badge">
+            <div class="hi-badge-row"><div class="hi-badge-dot"></div>12 campaigns live now</div>
+            <div class="hi-badge-row"><div class="hi-badge-dot" style="background:rgba(212,245,60,0.7)"></div>94% success rate</div>
+          </div>
+          <!-- Tag chip – left -->
+          <div class="hero-illus__chip">⚡ 47k+ active backers</div>
+          <!-- D6 die – bottom-right -->
+          <div class="hero-illus__d6">
+            <svg viewBox="0 0 52 52" fill="none">
+              <rect x="3" y="3" width="46" height="46" rx="9" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" fill="rgba(255,255,255,0.025)"/>
+              <circle cx="16" cy="16" r="3" fill="rgba(255,255,255,0.35)"/>
+              <circle cx="36" cy="36" r="3" fill="rgba(255,255,255,0.35)"/>
+              <circle cx="36" cy="16" r="3" fill="rgba(255,255,255,0.35)"/>
+              <circle cx="16" cy="36" r="3" fill="rgba(255,255,255,0.35)"/>
+              <circle cx="26" cy="26" r="3" fill="rgba(255,255,255,0.35)"/>
+            </svg>
+          </div>
+          <!-- Meeple – bottom-left -->
+          <div class="hero-illus__meeple">
+            <svg viewBox="0 0 36 54" fill="none">
+              <circle cx="18" cy="9" r="8" fill="rgba(244,87,69,0.55)"/>
+              <path d="M8 26 C7 17 2 16 5 24 L5 36 L13 36 L13 48 L23 48 L23 36 L31 36 L31 24 C34 16 29 17 28 26 C26 21 22 19 18 19 C14 19 10 21 8 26Z" fill="rgba(244,87,69,0.50)"/>
+            </svg>
           </div>
         </div>
       </div>

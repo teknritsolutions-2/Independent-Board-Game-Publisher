@@ -117,6 +117,7 @@
     }
     @media(max-width: 980px) {
       .price-grid { grid-template-columns:1fr; }
+      .disco-illus { display:none; }
     }
     /* Progress mockup card */
     .prog-mockup { background:var(--dark); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:20px; margin-bottom:12px; }
@@ -127,16 +128,61 @@
     .faq-min-btn.open i { transform:rotate(45deg); }
     .faq-min-ans { display:none; font-size:0.875rem; color:rgba(255,255,255,0.50); line-height:1.7; padding-bottom:20px; }
     .faq-min-ans.open { display:block; }
+    /* ── Hero Discovery Illustration ── */
+    .disco-illus { position:relative;width:min(440px,100%);height:480px;margin:0 auto;flex-shrink:0; }
+    /* Hex grid background pattern */
+    .disco-illus__hex-bg { position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:20px; }
+    /* Glow orbs */
+    .disco-illus__glow-a { position:absolute;top:35%;left:45%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(244,87,69,0.14) 0%,transparent 68%);border-radius:50%;animation:di-pulse 6s ease-in-out infinite;pointer-events:none; }
+    .disco-illus__glow-b { position:absolute;bottom:15%;right:5%;width:100px;height:100px;background:radial-gradient(circle,rgba(212,245,60,0.09) 0%,transparent 70%);border-radius:50%;animation:di-pulse 8s ease-in-out infinite 2s;pointer-events:none; }
+    /* Main watchlist panel */
+    .disco-illus__panel { position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:248px;background:rgba(18,22,36,0.97);border:1px solid rgba(255,255,255,0.09);border-radius:18px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.55);animation:di-float 8s ease-in-out infinite;z-index:4; }
+    .disco-illus__panel-bar { background:rgba(255,255,255,0.04);padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.06); }
+    .disco-panel-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
+    .disco-panel-title { font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.35);margin-left:4px;flex:1; }
+    .disco-illus__body { padding:12px 14px; }
+    /* Game row inside panel */
+    .disco-game-row { display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05); }
+    .disco-game-row:last-child { border-bottom:none; }
+    .disco-game-thumb { width:36px;height:36px;border-radius:8px;flex-shrink:0;background:var(--c,rgba(244,87,69,0.25)); }
+    .disco-game-info { flex:1;min-width:0; }
+    .disco-game-name { font-size:0.72rem;color:#fff;font-family:'Rubik',sans-serif;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .disco-game-bar-bg { height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden; }
+    .disco-game-bar-fill { height:100%;border-radius:2px;background:linear-gradient(90deg,var(--primary),rgba(244,87,69,0.6));animation:di-grow 1.8s ease-out both; }
+    .disco-game-pct { font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--primary);flex-shrink:0; }
+    /* Floating "Coming Soon" badge */
+    .disco-illus__soon { position:absolute;top:8%;right:3%;background:rgba(18,22,36,0.92);border:1px solid rgba(212,245,60,0.20);border-radius:12px;padding:10px 14px;animation:di-float 9s ease-in-out infinite 1.4s;z-index:3; }
+    .disco-soon-label { font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(212,245,60,0.70);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px; }
+    .disco-soon-row { display:flex;align-items:center;gap:6px;font-size:0.68rem;color:rgba(255,255,255,0.50);white-space:nowrap; }
+    .disco-soon-dot { width:4px;height:4px;border-radius:50%;background:rgba(212,245,60,0.6);flex-shrink:0; }
+    /* Floating rating card – left */
+    .disco-illus__rating { position:absolute;top:40%;left:-2%;background:rgba(18,22,36,0.92);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;animation:di-float 10s ease-in-out infinite 0.6s;z-index:3; }
+    .disco-rating-stars { color:var(--primary);font-size:0.75rem;letter-spacing:1px; }
+    .disco-rating-lbl { font-family:'Space Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.38);margin-top:3px; }
+    /* Small game icons floating */
+    .disco-illus__token { position:absolute;bottom:9%;left:8%;animation:di-float 11s ease-in-out infinite 1.8s;z-index:2;opacity:0.50; }
+    .disco-illus__d4 { position:absolute;bottom:12%;right:8%;animation:di-float 7s ease-in-out infinite 3s;z-index:2; }
+    @keyframes di-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
+    @keyframes di-pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+    @keyframes di-grow { from{width:0} to{width:var(--w,70%)} }
     /* light mode fixes */
-    [data-theme="light"] .compare-table td:first-child { color:#6b7280; }
-    [data-theme="light"] .compare-table th { color:#9ca3af; }
-    [data-theme="light"] .compare-table td.other { color:#d1d5db; }
+    [data-theme="light"] .compare-table td:first-child { color:#374151; }
+    [data-theme="light"] .compare-table th { color:#6b7280; }
+    [data-theme="light"] .compare-table td.other { color:#9ca3af; }
     [data-theme="light"] .compare-table td.ttf { color:#0c0e12; }
     [data-theme="light"] .success-card, [data-theme="light"] .prog-mockup { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .success-card__num { color: var(--primary) !important; }
+    [data-theme="light"] .success-card__label { color: #6b7280 !important; }
     [data-theme="light"] .price-tier { background:#fff; border-color:#e5e7eb; }
     [data-theme="light"] .price-tier__name, [data-theme="light"] .price-tier__price { color:#0c0e12; }
     [data-theme="light"] .price-list li { color:#6b7280; }
+    [data-theme="light"] .price-tier--featured .price-list li { color:rgba(255,255,255,0.85) !important; }
+    [data-theme="light"] .price-tier--featured .price-tier__name,
+    [data-theme="light"] .price-tier--featured .price-tier__price { color:#fff !important; }
     [data-theme="light"] .mockup-frame { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .mockup-frame [style*="color:rgba(255,255,255"] { color: #6b7280 !important; }
+    [data-theme="light"] .mockup-frame [style*="color:#fff"] { color: #111827 !important; }
+    [data-theme="light"] .prog-mockup [style*="color:rgba(255,255,255"] { color: #6b7280 !important; }
     [data-theme="light"] .faq-min-btn { color:#0c0e12; }
     [data-theme="light"] .faq-min-ans { color:#6b7280; }
     [data-theme="light"] .faq-min-item { border-color:#e5e7eb; }
@@ -227,14 +273,89 @@
           <div><div style="font-family:'Space Mono',monospace;font-size:1.5rem;color:#fff;">$<span data-count="12">0</span>M+</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.40);text-transform:uppercase;letter-spacing:0.06em;">Funds Raised</div></div>
         </div>
       </div>
-      <!-- Polygon image right -->
+      <!-- Hero Discovery Illustration -->
       <div class="hero-split__visual">
-        <div class="poly-wrap">
-          <img
-            class="poly-img"
-            src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg"
-            alt="Painted miniature and tabletop board game pieces"
-          />
+        <div class="disco-illus" aria-hidden="true">
+          <!-- Hex SVG background grid -->
+          <div class="disco-illus__hex-bg">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hexPat" x="0" y="0" width="52" height="60" patternUnits="userSpaceOnUse">
+                  <polygon points="26,2 48,14 48,46 26,58 4,46 4,14" fill="none" stroke="rgba(244,87,69,0.07)" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hexPat)"/>
+            </svg>
+          </div>
+          <div class="disco-illus__glow-a"></div>
+          <div class="disco-illus__glow-b"></div>
+          <!-- Main watchlist panel -->
+          <div class="disco-illus__panel">
+            <div class="disco-illus__panel-bar">
+              <div class="disco-panel-dot" style="background:#ff5f57;"></div>
+              <div class="disco-panel-dot" style="background:#febc2e;"></div>
+              <div class="disco-panel-dot" style="background:#28c840;"></div>
+              <span class="disco-panel-title">My Watchlist</span>
+              <span style="font-size:0.6rem;color:var(--primary);font-family:'Space Mono',monospace;">3 live</span>
+            </div>
+            <div class="disco-illus__body">
+              <div class="disco-game-row">
+                <div class="disco-game-thumb" style="--c:rgba(244,87,69,0.28);background:linear-gradient(135deg,rgba(244,87,69,0.30),rgba(244,87,69,0.12));"></div>
+                <div class="disco-game-info">
+                  <div class="disco-game-name">Kingdoms of Ash</div>
+                  <div class="disco-game-bar-bg"><div class="disco-game-bar-fill" style="--w:84%;animation-delay:0.3s;"></div></div>
+                </div>
+                <span class="disco-game-pct">847%</span>
+              </div>
+              <div class="disco-game-row">
+                <div class="disco-game-thumb" style="background:linear-gradient(135deg,rgba(99,180,255,0.28),rgba(99,180,255,0.10));"></div>
+                <div class="disco-game-info">
+                  <div class="disco-game-name">Verdant Isles</div>
+                  <div class="disco-game-bar-bg"><div class="disco-game-bar-fill" style="--w:65%;animation-delay:0.6s;"></div></div>
+                </div>
+                <span class="disco-game-pct">214%</span>
+              </div>
+              <div class="disco-game-row">
+                <div class="disco-game-thumb" style="background:linear-gradient(135deg,rgba(212,245,60,0.22),rgba(212,245,60,0.08));"></div>
+                <div class="disco-game-info">
+                  <div class="disco-game-name">Crystal Depths</div>
+                  <div class="disco-game-bar-bg"><div class="disco-game-bar-fill" style="--w:42%;animation-delay:0.9s;"></div></div>
+                </div>
+                <span class="disco-game-pct">138%</span>
+              </div>
+              <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.28);">Total pledged</span>
+                <span style="font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--primary);">$628k</span>
+              </div>
+            </div>
+          </div>
+          <!-- Coming Soon badge – top-right -->
+          <div class="disco-illus__soon">
+            <div class="disco-soon-label">Coming Soon</div>
+            <div class="disco-soon-row"><div class="disco-soon-dot"></div>Desert Odyssey · Q3 2025</div>
+            <div class="disco-soon-row" style="margin-top:4px;"><div class="disco-soon-dot"></div>Forge &amp; Flame · Q4 2025</div>
+          </div>
+          <!-- Star rating card – left -->
+          <div class="disco-illus__rating">
+            <div class="disco-rating-stars">★★★★★</div>
+            <div class="disco-rating-lbl">4.9 avg · 2,400+ reviews</div>
+          </div>
+          <!-- Token meeple – bottom-left -->
+          <div class="disco-illus__token">
+            <svg viewBox="0 0 36 54" width="34" fill="none">
+              <circle cx="18" cy="9" r="8" fill="rgba(212,245,60,0.45)"/>
+              <path d="M8 26 C7 17 2 16 5 24 L5 36 L13 36 L13 48 L23 48 L23 36 L31 36 L31 24 C34 16 29 17 28 26 C26 21 22 19 18 19 C14 19 10 21 8 26Z" fill="rgba(212,245,60,0.40)"/>
+            </svg>
+          </div>
+          <!-- D4 die – bottom-right -->
+          <div class="disco-illus__d4">
+            <svg viewBox="0 0 60 54" width="48" fill="none">
+              <polygon points="30,4 58,50 2,50" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" fill="rgba(255,255,255,0.025)"/>
+              <line x1="30" y1="4" x2="30" y2="50" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+              <line x1="2" y1="50" x2="58" y2="50" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+              <text x="30" y="38" text-anchor="middle" font-family="'Space Mono',monospace" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="700">4</text>
+            </svg>
+          </div>
         </div>
       </div>
     </div>

@@ -2488,6 +2488,65 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 .preview-grid,
 .fd-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
 
+/* ── LIGHT MODE: SEC-HERO STAYS DARK — keep all nested text white ────────── */
+[data-theme="light"] .sec-hero .hero-eyebrow { color: rgba(255,255,255,0.60) !important; }
+[data-theme="light"] .sec-hero .hero-title   { color: #fff !important; }
+[data-theme="light"] .sec-hero .hero-title em { color: var(--primary) !important; }
+[data-theme="light"] .sec-hero .hero-sub     { color: rgba(255,255,255,0.65) !important; }
+[data-theme="light"] .sec-hero .btn--ghost   { background: rgba(255,255,255,0.08) !important; color: rgba(255,255,255,0.80) !important; border-color: rgba(255,255,255,0.18) !important; }
+[data-theme="light"] .sec-hero .hero-stats-strip__num { color: #fff !important; }
+[data-theme="light"] .sec-hero .hero-stats-strip__lbl { color: rgba(255,255,255,0.50) !important; }
+[data-theme="light"] .sec-hero [style*="color:rgba(255,255,255"] { color: rgba(255,255,255,0.65) !important; }
+[data-theme="light"] .sec-hero [style*="color:#fff"] { color: #fff !important; }
+
+/* ── LIGHT MODE: GAMES-HERO STAYS DARK ──────────────────────────────────── */
+[data-theme="light"] .games-hero { background: #0c0e12; }
+[data-theme="light"] .games-hero__title { color: #fff !important; }
+[data-theme="light"] .games-hero__sub   { color: rgba(255,255,255,0.55) !important; }
+[data-theme="light"] .stat-chip         { color: #374151 !important; background: rgba(0,0,0,0.06) !important; border-color: rgba(0,0,0,0.10) !important; }
+
+/* ── LIGHT MODE: POLY-IMG – remove border ────────────────────────────────── */
+[data-theme="light"] .poly-img { border-color: transparent !important; }
+
+/* ── LIGHT MODE: LAUNCH-STEP in sec--lt sections ─────────────────────────── */
+[data-theme="light"] .sec--lt .launch-step__title { color: #111827 !important; }
+[data-theme="light"] .sec--lt .launch-step__desc  { color: #6b7280 !important; }
+
+/* ── LIGHT MODE: SUCCESS-CARD label ─────────────────────────────────────── */
+[data-theme="light"] .success-card__label { color: rgba(0,0,0,0.50) !important; }
+
+/* ── LIGHT MODE: FEATURED PRICE TIER – list items keep white on red bg ───── */
+[data-theme="light"] .price-tier--featured .price-list li { color: rgba(255,255,255,0.85) !important; }
+
+/* ── LIGHT MODE: SEC--LT inline white text → dark readable ──────────────── */
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.55)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.50)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.45)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.40)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.35)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.30)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.25)"] { color: #6b7280 !important; }
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.60)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.65)"],
+[data-theme="light"] .sec--lt [style*="color:rgba(255,255,255,0.70)"] { color: #4b5563 !important; }
+[data-theme="light"] .sec--lt [style*="color:#fff"] { color: #111827 !important; }
+[data-theme="light"] .sec--lt [style*="color:white"] { color: #111827 !important; }
+
+/* Comparison table wrapper in sec--lt: override dark-card bg */
+[data-theme="light"] .sec--lt .table-wrap { background: transparent !important; }
+[data-theme="light"] .sec--lt > div > div[style*="background:var(--dark-card)"],
+[data-theme="light"] .sec--lt div[style*="background:var(--dark-card)"] { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
+
+/* ── LIGHT MODE: HOME PLATFORM BAR ──────────────────────────────────────── */
+[data-theme="light"] .home-platform-bar { background: rgba(0,0,0,0.04) !important; border-color: rgba(0,0,0,0.08) !important; }
+[data-theme="light"] .home-platform-bar [style*="color:rgba(255,255,255"] { color: #4b5563 !important; }
+[data-theme="light"] .home-platform-bar [style*="color:#fff"] { color: #0c0e12 !important; }
+[data-theme="light"] .home-platform-bar [style*="background:rgba(255,255,255"] { background: rgba(0,0,0,0.12) !important; }
+
+/* Orbit deco rings – hide on all pages */
+[data-theme="light"] .hero-orbit,
+[data-theme="light"] .orbit-deco { display: none !important; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
