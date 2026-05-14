@@ -17,13 +17,8 @@
     /* Hero background gradient */
     .sec-hero { background: linear-gradient(rgba(12,14,18,0.72) 0%, rgba(12,14,18,0.90) 100%), url('../assets/images/all titles/2h-media-VJMZNFrDtPs-unsplash.jpg') center/cover no-repeat; }
     .hero-bg { display:none; }
-    /* Subtle grid overlay */
-    .sec-hero::before {
-      content:''; position:absolute; inset:0;
-      background-image: radial-gradient(circle, rgba(244,87,69,0.06) 1px, transparent 1px);
-      background-size: 36px 36px;
-      pointer-events:none;
-    }
+    /* Grid overlay removed for minimal dark look */
+    .sec-hero::before { content: none; }
     /* Stats strip */
     .hero-stats-strip {
       display:flex; gap:40px; flex-wrap:wrap;
@@ -106,8 +101,8 @@
     }
     /* ── Hero Illustration ── */
     .hero-illus { position:relative;width:min(460px,100%);height:460px;margin:0 auto;flex-shrink:0;overflow:hidden;border-radius:20px; }
-    .hero-illus::before { content:'';position:absolute;top:35%;left:45%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(244,87,69,0.18) 0%,transparent 68%);border-radius:50%;pointer-events:none;z-index:0; }
-    .hero-illus__dots { position:absolute;inset:0;background-image:radial-gradient(circle,rgba(244,87,69,0.10) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:1; }
+    .hero-illus::before { content: none; }
+    .hero-illus__dots { display: none; }
     .hero-illus__d20 { position:absolute;top:7%;left:6%;width:80px;height:80px;animation:hi-spin 22s linear infinite;z-index:2; }
     .hero-illus__card { position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);width:228px;background:rgba(18,22,36,0.97);border:1px solid rgba(244,87,69,0.22);border-radius:18px;padding:18px;box-shadow:0 20px 56px rgba(0,0,0,0.60);animation:hi-float 7s ease-in-out infinite;z-index:4; }
     .hi-card-header { display:flex;align-items:center;gap:8px;margin-bottom:12px; }
@@ -140,7 +135,7 @@
     [data-theme="light"] .testi-card-sm__role { color:#6b7280; }
     [data-theme="light"] .trending-chip { background:#f3f4f6; border-color:#e5e7eb; color:#6b7280; }
     [data-theme="light"] .partner-strip__item { color:rgba(0,0,0,0.28); }
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .hero-illus { display: none; }
       .home-platform-bar { margin-bottom: 16px; }
       .home-lead-section { margin-top: 16px; padding-top: 84px; }
