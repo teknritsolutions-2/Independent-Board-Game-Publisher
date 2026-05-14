@@ -472,6 +472,22 @@
     [data-theme="light"] .spotlight__designer,
     [data-theme="light"] .gx-card__designer,
     [data-theme="light"] .editorial-card__desc { color: #6b7280; }
+    /* Spotlight text in light mode */
+    [data-theme="light"] .spotlight__meta-item { color: #6b7280; }
+    [data-theme="light"] .spotlight__meta-item i { color: var(--primary); }
+    [data-theme="light"] .rating-num { color: #0c0e12; }
+    [data-theme="light"] .rating-count { color: #9ca3af; }
+    [data-theme="light"] .game-tag { background: rgba(0,0,0,0.05); color: #6b7280; }
+    /* gx-card text in light mode */
+    [data-theme="light"] .gx-card__desc { color: #6b7280; }
+    [data-theme="light"] .gx-card__meta-item { color: #6b7280; }
+    [data-theme="light"] .gx-card__meta-item i { color: #9ca3af; }
+    [data-theme="light"] .gx-card__score { color: #374151; }
+    [data-theme="light"] .gx-card__tag { background: rgba(0,0,0,0.05); color: #6b7280; border: 1px solid rgba(0,0,0,0.08); }
+    [data-theme="light"] .gx-card__wishlist { background: rgba(0,0,0,0.05); color: #6b7280; }
+    /* Tags overflow control — limit width so they don't squash rating */
+    .gx-card__foot > div:last-child { max-width: 52%; overflow: hidden; }
+    .gx-card__tag { white-space: nowrap; max-width: 72px; overflow: hidden; text-overflow: ellipsis; }
   </style>
 </head>
 <body>

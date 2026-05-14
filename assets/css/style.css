@@ -1871,14 +1871,31 @@ table.ttf-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   color: #9ca3af !important;
 }
 [data-theme="light"] .btn--ghost {
-  background: rgba(17,24,39,0.04);
+  background: transparent;
   color: #374151;
-  border-color: rgba(17,24,39,0.12);
+  border-color: rgba(17,24,39,0.28);
 }
 [data-theme="light"] .btn--ghost:hover {
-  background: rgba(17,24,39,0.08);
+  background: rgba(17,24,39,0.06);
   color: #111827;
 }
+/* Ghost buttons inside always-dark hero sections stay white in light mode */
+[data-theme="light"] .cs-hero .btn--ghost,
+[data-theme="light"] .fd-hero .btn--ghost,
+[data-theme="light"] .launch-hero .btn--ghost {
+  background: rgba(255,255,255,0.10) !important;
+  color: rgba(255,255,255,0.85) !important;
+  border-color: rgba(255,255,255,0.28) !important;
+}
+[data-theme="light"] .cs-hero .btn--ghost:hover,
+[data-theme="light"] .fd-hero .btn--ghost:hover,
+[data-theme="light"] .launch-hero .btn--ghost:hover {
+  background: rgba(255,255,255,0.18) !important;
+  color: #fff !important;
+}
+/* Hamburger bars visible in light mode */
+[data-theme="light"] .nav__hamburger span { background: rgba(0,0,0,0.65); }
+[data-theme="light"] .nav__hamburger:hover { background: rgba(0,0,0,0.06); }
 [data-theme="light"] .feat-strip__title { color:#0c0e12; }
 [data-theme="light"] .feat-strip__desc { color:#6b7280; }
 [data-theme="light"] .audience-panel__title { color:#0c0e12; }
