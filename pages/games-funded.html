@@ -16,7 +16,7 @@
   <style>
     /* ── Hero ── */
     .fd-hero {
-      background: linear-gradient(150deg, #0c0e12 50%, #120c0a 100%);
+      background: linear-gradient(rgba(12,14,18,0.70) 0%, rgba(12,14,18,0.90) 100%), url('../assets/images/all titles/pexels-anete-lusina-4792372.jpg') center/cover no-repeat;
       padding: 130px 0 70px;
       position: relative;
       overflow: hidden;
@@ -193,6 +193,59 @@
     /* ── Progress bar ── */
     .pbar { height: 4px; border-radius: 99px; background: rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 14px; }
     .pbar-fill { height: 100%; border-radius: 99px; background: var(--primary); }
+
+    /* ── Light mode ── */
+    [data-theme="light"] .fd-hero .btn--ghost {
+      background: rgba(17,24,39,0.05);
+      border-color: rgba(17,24,39,0.14);
+      color: #374151;
+    }
+    [data-theme="light"] .fd-hero .btn--ghost:hover {
+      background: rgba(17,24,39,0.10);
+      color: #111827;
+    }
+    [data-theme="light"] .funding-bar { background: #e5e7eb; border-color: #e5e7eb; }
+    [data-theme="light"] .funding-cell { background: #fff; }
+    [data-theme="light"] .funding-cell__lbl { color: #6b7280; }
+    [data-theme="light"] .funding-cell__num { color: #111827; }
+    [data-theme="light"] .hall-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .hall-card__img { min-height: 220px; max-height: 240px; }
+    [data-theme="light"] .hall-card__img::after { background: linear-gradient(to right, transparent 58%, #fff 100%); }
+    [data-theme="light"] .hall-card__title { color: #0c0e12; }
+    [data-theme="light"] .hall-card__desc { color: #4b5563; }
+    [data-theme="light"] .hall-card__badge,
+    [data-theme="light"] .hall-card__stat-lbl { color: #6b7280; }
+    [data-theme="light"] .hall-card__stat-val { color: #111827; }
+    [data-theme="light"] .hall-card__stat-lbl { color: #6b7280; }
+    [data-theme="light"] .fd-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .fd-card__title { color: #111827; }
+    [data-theme="light"] .fd-card__designer,
+    [data-theme="light"] .fd-card__meta,
+    [data-theme="light"] .fd-card__backers,
+    [data-theme="light"] .fd-card__foot { color: #6b7280; }
+    [data-theme="light"] .fd-card__body p { color: #4b5563 !important; }
+    [data-theme="light"] .buy-strip { background: #e5e7eb; border-color: #e5e7eb; }
+    [data-theme="light"] .buy-cell { background: #fff; }
+    [data-theme="light"] .buy-cell:hover { background: #f9fafb; }
+    [data-theme="light"] .buy-cell__title { color: #111827; }
+    [data-theme="light"] .buy-cell__desc { color: #6b7280; }
+    [data-theme="light"] .review-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .review-card__quote { color: #374151; }
+    [data-theme="light"] .review-card__name { color: #111827; }
+    [data-theme="light"] .review-card__meta { color: #6b7280; }
+    [data-theme="light"] .fd-sort {
+      background: #fff !important;
+      border-color: #e5e7eb !important;
+      color: #374151 !important;
+    }
+    [data-theme="light"] .fd-sort option { color: #111827; background: #fff; }
+    @media(max-width: 860px) {
+      [data-theme="light"] .hall-card__img {
+        min-height: 190px;
+        max-height: 210px;
+      }
+      [data-theme="light"] .hall-card__img::after { background: linear-gradient(to bottom, transparent 60%, #fff 100%); }
+    }
   </style>
 </head>
 <body>
@@ -313,7 +366,7 @@
 </section>
 
 <!-- HALL OF FAME / FEATURED -->
-<section class="sec sec--dk">
+<section class="sec sec--dk sec--media-dim" style="--section-media:url('../assets/images/all titles/jacques-dillies-auJrzidINFA-unsplash.jpg');">
   <div class="container">
     <div class="sec-head sec-head--left">
       <div class="sec-label"><i class="fa-solid fa-trophy"></i> Hall of Fame</div>
@@ -321,7 +374,7 @@
     </div>
     <div class="hall-card reveal">
       <div class="hall-card__img">
-        <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Meadowvale" />
+        <img src="../assets/images/all titles/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Meadowvale" />
       </div>
       <div class="hall-card__body">
         <div class="hall-card__badge"><i class="fa-solid fa-trophy"></i> TabletopForge Record</div>
@@ -367,7 +420,7 @@
           <i class="fa-solid fa-magnifying-glass" style="color:#9ca3af;font-size:0.85rem;"></i>
           <input type="text" placeholder="Search funded games…" style="background:none;border:none;outline:none;color:#0c0e12;font-size:0.875rem;font-family:inherit;width:160px;" />
         </div>
-        <select style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:10px;color:rgba(255,255,255,0.80);font-size:0.85rem;font-family:inherit;padding:9px 32px 9px 12px;appearance:none;-webkit-appearance:none;cursor:pointer;">
+        <select class="fd-sort" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:10px;color:rgba(255,255,255,0.80);font-size:0.85rem;font-family:inherit;padding:9px 32px 9px 12px;appearance:none;-webkit-appearance:none;cursor:pointer;">
           <option>Most Funded</option>
           <option>Most Backers</option>
           <option>Newest First</option>
@@ -389,7 +442,7 @@
       <!-- Card 1 -->
       <article class="fd-card reveal">
         <div class="fd-card__img">
-          <img src="../assets/images/home1/an-le-khanh-WofhwIoUURk-unsplash.jpg" alt="Depths of Eld" loading="lazy" />
+          <img src="../assets/images/all titles/pexels-karola-g-6333933.jpg" alt="Depths of Eld" loading="lazy" />
           <div class="fd-card__funded-badge"><i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Funded</div>
           <div class="fd-card__pct-badge">437%</div>
         </div>
@@ -413,7 +466,7 @@
       <!-- Card 2 -->
       <article class="fd-card reveal reveal-d1">
         <div class="fd-card__img">
-          <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Meadowvale" loading="lazy" />
+          <img src="../assets/images/all titles/rombo-XYMqZsGOosg-unsplash.jpg" alt="Meadowvale" loading="lazy" />
           <div class="fd-card__funded-badge"><i class="fa-solid fa-trophy" style="font-size:0.65rem;"></i> Record</div>
           <div class="fd-card__pct-badge">892%</div>
         </div>
@@ -437,7 +490,7 @@
       <!-- Card 3 -->
       <article class="fd-card reveal reveal-d2">
         <div class="fd-card__img">
-          <img src="../assets/images/home1/alexander-lyashkov-rSMb45Cd_8o-unsplash.jpg" alt="Sanctum" loading="lazy" />
+          <img src="../assets/images/all titles/simon-hurry-RhYiBB-_FR8-unsplash.jpg" alt="Sanctum" loading="lazy" />
           <div class="fd-card__funded-badge"><i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Funded</div>
           <div class="fd-card__pct-badge">261%</div>
         </div>
@@ -461,7 +514,7 @@
       <!-- Card 4 -->
       <article class="fd-card reveal">
         <div class="fd-card__img">
-          <img src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Fractal Realms" loading="lazy" />
+          <img src="../assets/images/all titles/zoshua-colah-98UXqtk2qHc-unsplash.jpg" alt="Fractal Realms" loading="lazy" />
           <div class="fd-card__funded-badge"><i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Funded</div>
           <div class="fd-card__pct-badge">524%</div>
         </div>

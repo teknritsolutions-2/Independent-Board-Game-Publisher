@@ -16,7 +16,7 @@
   <style>
     /* ── Hero ── */
     .cs-hero {
-      background: linear-gradient(150deg, #0c0e12 55%, #0a0d18 100%);
+      background: linear-gradient(rgba(12,14,18,0.70) 0%, rgba(12,14,18,0.90) 100%), url('../assets/images/all titles/jacques-dillies-auJrzidINFA-unsplash.jpg') center/cover no-repeat;
       padding: 130px 0 70px;
       position: relative;
       overflow: hidden;
@@ -242,6 +242,67 @@
     .concept-cell__icon { font-size: 1.4rem; color: var(--primary); }
     .concept-cell__title { font-family: 'Rubik', sans-serif; font-size: 0.95rem; color: #fff; }
     .concept-cell__desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* ── Light mode ── */
+    [data-theme="light"] .cs-hero .btn--ghost {
+      background: rgba(17,24,39,0.05);
+      border-color: rgba(17,24,39,0.14);
+      color: #374151;
+    }
+    [data-theme="light"] .cs-hero .btn--ghost:hover {
+      background: rgba(17,24,39,0.10);
+      color: #111827;
+    }
+    [data-theme="light"] .timeline-strip { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .timeline-month { border-right-color: #e5e7eb; }
+    [data-theme="light"] .timeline-month:hover { background: #f9fafb; }
+    [data-theme="light"] .timeline-month__label { color: #9ca3af; }
+    [data-theme="light"] .timeline-month__name { color: #0c0e12; }
+    [data-theme="light"] .timeline-month__count { color: #dc3f2e; }
+    [data-theme="light"] .featured-up { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .featured-up__img { min-height: 240px; max-height: 260px; }
+    [data-theme="light"] .featured-up__img::after { background: linear-gradient(to right, transparent 58%, #fff 100%); }
+    [data-theme="light"] .featured-up__meta { color: #dc3f2e; }
+    [data-theme="light"] .featured-up__title { color: #0c0e12; }
+    [data-theme="light"] .featured-up__desc { color: #4b5563; }
+    [data-theme="light"] .featured-up__fact-val { color: #111827; }
+    [data-theme="light"] .featured-up__fact-lbl { color: #6b7280; }
+    [data-theme="light"] .preview-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .preview-card__title { color: #0c0e12; }
+    [data-theme="light"] .preview-card__designer,
+    [data-theme="light"] .preview-card__info-item,
+    [data-theme="light"] .preview-card__launch,
+    [data-theme="light"] .preview-card__watchers { color: #6b7280; }
+    [data-theme="light"] .preview-card__info-item i { color: #9ca3af; }
+    [data-theme="light"] .preview-card__body p { color: #4b5563 !important; }
+    [data-theme="light"] .preview-card__wishlist {
+      background: rgba(255,255,255,0.94);
+      border-color: #e5e7eb;
+      color: #6b7280;
+    }
+    [data-theme="light"] .concept-strip { background: #e5e7eb; border-color: #e5e7eb; }
+    [data-theme="light"] .concept-cell { background: #fff; }
+    [data-theme="light"] .concept-cell__title { color: #111827; }
+    [data-theme="light"] .concept-cell__desc { color: #6b7280; }
+    [data-theme="light"] .alert-card { background: #fff; border-color: #e5e7eb; }
+    [data-theme="light"] .alert-card:hover,
+    [data-theme="light"] .alert-card.selected { background: rgba(244,87,69,0.06); }
+    [data-theme="light"] .alert-card__title { color: #111827; }
+    [data-theme="light"] .alert-card__desc { color: #6b7280; }
+    [data-theme="light"] .cs-notify__input { background: #fff; border-color: #d1d5db; color: #111827; }
+    [data-theme="light"] .cs-notify__input::placeholder { color: #9ca3af; }
+    [data-theme="light"] #notify-signup h3 { color: #111827 !important; }
+    [data-theme="light"] #notify-signup p[style*="color:rgba(255,255,255,0.45)"],
+    [data-theme="light"] #notify-signup div[style*="color:rgba(255,255,255,0.35)"],
+    [data-theme="light"] #notify-signup label[style*="color:rgba(255,255,255,0.65)"] { color: #6b7280 !important; }
+    [data-theme="light"] #notify-signup p[style*="color:rgba(255,255,255,0.25)"] { color: #9ca3af !important; }
+    @media(max-width: 860px) {
+      [data-theme="light"] .featured-up__img {
+        min-height: 200px;
+        max-height: 220px;
+      }
+      [data-theme="light"] .featured-up__img::after { background: linear-gradient(to bottom, transparent 60%, #fff 100%); }
+    }
   </style>
 </head>
 <body>
@@ -386,7 +447,7 @@
     </div>
     <div class="featured-up reveal">
       <div class="featured-up__img">
-        <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Celestial Empires" />
+        <img src="../assets/images/all titles/jan-antonin-kolar-W2tTCQ1tdog-unsplash.jpg" alt="Celestial Empires" />
       </div>
       <div class="featured-up__body">
         <div class="featured-up__meta"><i class="fa-solid fa-clock"></i> &nbsp;Launching July 2026</div>
@@ -449,7 +510,7 @@
       <!-- Game 1 -->
       <article class="preview-card reveal">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Project Nexus" loading="lazy" />
+          <img src="../assets/images/all titles/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Project Nexus" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -472,7 +533,7 @@
       <!-- Game 2 -->
       <article class="preview-card reveal reveal-d1">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Last Light Station" loading="lazy" />
+          <img src="../assets/images/all titles/nika-benedictova-VrtwS-ayI5U-unsplash.jpg" alt="Last Light Station" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -495,7 +556,7 @@
       <!-- Game 3 -->
       <article class="preview-card reveal reveal-d2">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/phuwanai-chaosuan-n-lVbeCIGqM-unsplash.jpg" alt="Verdant City" loading="lazy" />
+          <img src="../assets/images/all titles/nika-benedictova-oEyUkJwT8_M-unsplash.jpg" alt="Verdant City" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming June 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -518,7 +579,7 @@
       <!-- Game 4 -->
       <article class="preview-card reveal">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Iron Covenant" loading="lazy" />
+          <img src="../assets/images/all titles/parinaz-mirhosseini-LcJiIpRigKQ-unsplash.jpg" alt="Iron Covenant" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming August 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -541,7 +602,7 @@
       <!-- Game 5 -->
       <article class="preview-card reveal reveal-d1">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Prism Puzzle Works" loading="lazy" />
+          <img src="../assets/images/all titles/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Prism Puzzle Works" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming July 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -564,7 +625,7 @@
       <!-- Game 6 -->
       <article class="preview-card reveal reveal-d2">
         <div class="preview-card__img">
-          <img src="../assets/images/home1/an-le-khanh-WofhwIoUURk-unsplash.jpg" alt="Tidewater Trade" loading="lazy" />
+          <img src="../assets/images/all titles/parinaz-mirhosseini-lCkh1D0RsTg-unsplash.jpg" alt="Tidewater Trade" loading="lazy" />
           <div class="preview-card__status"><i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Coming September 2026</div>
           <button class="preview-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
         </div>
@@ -625,7 +686,7 @@
 </section>
 
 <!-- ALERT PREFERENCES -->
-<section class="sec sec--dk" id="notify-signup">
+<section class="sec sec--dk sec--media-dim" id="notify-signup" style="--section-media:url('../assets/images/all titles/nika-benedictova-oEyUkJwT8_M-unsplash.jpg');">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
       <div>

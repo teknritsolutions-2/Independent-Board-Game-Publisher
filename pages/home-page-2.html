@@ -18,7 +18,8 @@
     .sec-hero {
       background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(244,87,69,0.18) 0%, transparent 55%),
                   radial-gradient(ellipse 50% 60% at 100% 80%, rgba(244,87,69,0.08) 0%, transparent 55%),
-                  #0c0e12;
+                  linear-gradient(rgba(12,14,18,0.68), rgba(12,14,18,0.85)),
+                  url('../assets/images/all titles/jan-antonin-kolar-W2tTCQ1tdog-unsplash.jpg') center/cover no-repeat;
       overflow:hidden;
     }
     /* Rotating circle grid behind hero */
@@ -171,11 +172,14 @@
     [data-theme="light"] .success-card__num { color: var(--primary) !important; }
     [data-theme="light"] .success-card__label { color: #6b7280 !important; }
     [data-theme="light"] .price-tier { background:#fff; border-color:#e5e7eb; }
+    [data-theme="light"] .price-tier--featured { background:var(--primary); border-color:var(--primary); }
     [data-theme="light"] .price-tier__name, [data-theme="light"] .price-tier__price { color:#0c0e12; }
+    [data-theme="light"] .price-tier--featured .price-tier__note { color:rgba(255,255,255,0.78) !important; }
     [data-theme="light"] .price-list li { color:#6b7280; }
     [data-theme="light"] .price-tier--featured .price-list li { color:rgba(255,255,255,0.85) !important; }
     [data-theme="light"] .price-tier--featured .price-tier__name,
     [data-theme="light"] .price-tier--featured .price-tier__price { color:#fff !important; }
+    [data-theme="light"] .price-tier--featured .price-list li i { color:#fff !important; }
     [data-theme="light"] .mockup-frame { background:#fff; border-color:#e5e7eb; }
     [data-theme="light"] .mockup-frame [style*="color:rgba(255,255,255"] { color: #6b7280 !important; }
     [data-theme="light"] .mockup-frame [style*="color:#fff"] { color: #111827 !important; }
@@ -372,7 +376,7 @@
 <!-- ══════════════════════════════════════════════════════════════
      SUCCESS STATS — campaign performance cards
 ══════════════════════════════════════════════════════════════ -->
-<section class="sec sec--dk sec--ov">
+<section class="sec sec--dk sec--ov sec--media-dim" style="--section-media:url('../assets/images/all titles/parinaz-mirhosseini-lCkh1D0RsTg-unsplash.jpg');">
   <div class="container">
     <div class="sec-head reveal">
       <div class="sec-label"><i class="fa-solid fa-trophy"></i> Campaign Highlights</div>
@@ -503,9 +507,9 @@
     </div>
     <div class="cards-grid reveal">
       <div class="creator-card">
-        <div class="creator-card__cover"><img src="../assets/images/home1/2h-media-hH3JuONz7CQ-unsplash.jpg" alt="Verdant Isles board game setup" /></div>
+        <div class="creator-card__cover"><img src="../assets/images/all titles/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Verdant Isles board game setup" /></div>
         <div class="creator-card__head">
-          <div class="creator-card__avatar"><img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Verdant Isles marker" /></div>
+          <div class="creator-card__avatar"><img src="../assets/images/all titles/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Verdant Isles marker" /></div>
           <div>
             <div class="creator-card__name">Verdant Isles</div>
             <div class="creator-card__meta">Exploration strategy · 1-4 players</div>
@@ -519,9 +523,9 @@
         </div>
       </div>
       <div class="creator-card">
-        <div class="creator-card__cover"><img src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Kingdoms of Ash board game map" /></div>
+        <div class="creator-card__cover"><img src="../assets/images/all titles/nika-benedictova-oEyUkJwT8_M-unsplash.jpg" alt="Kingdoms of Ash board game map" /></div>
         <div class="creator-card__head">
-          <div class="creator-card__avatar"><img src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Kingdoms of Ash board game icon" /></div>
+          <div class="creator-card__avatar"><img src="../assets/images/all titles/nika-benedictova-oEyUkJwT8_M-unsplash.jpg" alt="Kingdoms of Ash board game icon" /></div>
           <div>
             <div class="creator-card__name">Kingdoms of Ash</div>
             <div class="creator-card__meta">Area control fantasy · 2-5 players</div>
@@ -535,9 +539,9 @@
         </div>
       </div>
       <div class="creator-card">
-        <div class="creator-card__cover"><img src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Neon Syndicate miniature close-up" /></div>
+        <div class="creator-card__cover"><img src="../assets/images/all titles/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Neon Syndicate miniature close-up" /></div>
         <div class="creator-card__head">
-          <div class="creator-card__avatar"><img src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Neon Syndicate miniature icon" /></div>
+          <div class="creator-card__avatar"><img src="../assets/images/all titles/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Neon Syndicate miniature icon" /></div>
           <div>
             <div class="creator-card__name">Neon Syndicate</div>
             <div class="creator-card__meta">Miniatures co-op · 1-4 players</div>
@@ -645,7 +649,7 @@
         <div class="poly-wrap">
           <img
             class="poly-img"
-            src="../assets/images/home1/2h-media-Z9Jv6WRKRpA-unsplash.jpg"
+            src="../assets/images/all titles/will-goodman-oZ1Ieb4WnMc-unsplash.jpg"
             alt="Players mid-session around a fantasy board game table"
           />
         </div>

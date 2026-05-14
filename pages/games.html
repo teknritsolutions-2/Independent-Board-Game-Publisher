@@ -16,7 +16,7 @@
   <style>
     /* ── Hero ── */
     .games-hero {
-      background: linear-gradient(140deg, #0c0e12 55%, #0f1520 100%);
+      background: linear-gradient(rgba(12,14,18,0.70) 0%, rgba(12,14,18,0.90) 100%), url('../assets/images/all titles/pexels-karola-g-6333908.jpg') center/cover no-repeat;
       padding: 120px 0 60px;
       position: relative;
       overflow: hidden;
@@ -437,23 +437,41 @@
     }
     /* ── Light mode ── */
     [data-theme="light"] .games-hero { background: linear-gradient(140deg, #f9fafb 55%, #f0f4ff 100%); }
-    [data-theme="light"] .games-hero__title { color: #0c0e12; }
-    [data-theme="light"] .stat-chip { background: #fff; border-color: #e5e7eb; color: #6b7280; }
+    [data-theme="light"] .games-hero__title { color: #0c0e12 !important; }
+    [data-theme="light"] .games-hero__sub { color: #4b5563 !important; }
+    [data-theme="light"] .trend-badge {
+      background: rgba(244,87,69,0.08);
+      border-color: rgba(244,87,69,0.18);
+      color: #dc3f2e;
+    }
+    [data-theme="light"] .new-badge {
+      background: rgba(15,23,42,0.05);
+      border-color: rgba(15,23,42,0.10);
+      color: #4b5563;
+    }
+    [data-theme="light"] .stat-chip { background: #fff !important; border-color: #e5e7eb !important; color: #6b7280 !important; }
     [data-theme="light"] .spotlight { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .spotlight__title { color: #0c0e12; }
     [data-theme="light"] .gx-card { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .gx-card__title { color: #0c0e12; }
     [data-theme="light"] .games-search { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .games-search input { color: #0c0e12; }
+    [data-theme="light"] .games-search input::placeholder, [data-theme="light"] .games-search i { color: #9ca3af; }
     [data-theme="light"] .games-sort { background: #fff; border-color: #e5e7eb; color: #374151; }
+    [data-theme="light"] .games-sort option { color: #111827; background: #fff; }
     [data-theme="light"] .trend-row { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .trend-row__title { color: #0c0e12; }
+    [data-theme="light"] .trend-row__rank,
+    [data-theme="light"] .trend-row__sub,
+    [data-theme="light"] .trend-row__score,
+    [data-theme="light"] .trend-arrow.stable { color: #6b7280; }
     [data-theme="light"] .editorial-card { background: #fff; border-color: #e5e7eb; }
     [data-theme="light"] .editorial-card__title { color: #0c0e12; }
-    [data-theme="light"] .info-strip { background: rgba(244,87,69,0.05); border-color: rgba(244,87,69,0.12); }
+    [data-theme="light"] .info-strip { background: rgba(244,87,69,0.05); border-color: rgba(244,87,69,0.12); color: #4b5563; }
     [data-theme="light"] .page-btn { background: #fff; border-color: #e5e7eb; color: #6b7280; }
-    [data-theme="light"] .games-hero__sub { color: #4b5563; }
-    [data-theme="light"] .spotlight__designer, [data-theme="light"] .gx-card__designer { color: #6b7280; }
+    [data-theme="light"] .spotlight__designer,
+    [data-theme="light"] .gx-card__designer,
+    [data-theme="light"] .editorial-card__desc { color: #6b7280; }
   </style>
 </head>
 <body>
@@ -554,7 +572,7 @@
       <div class="poly-wrap">
         <img
           class="poly-img"
-          src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg"
+          src="../assets/images/all titles/pexels-aibek-skakov-418917601-29535291.jpg"
           alt="Featured board game"
         />
       </div>
@@ -578,7 +596,7 @@
       <div class="spotlight__img-wrap">
         <img
           class="spotlight__img"
-          src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg"
+          src="../assets/images/all titles/rombo-XYMqZsGOosg-unsplash.jpg"
           alt="Dune: Imperium board game"
           loading="eager"
         />
@@ -657,61 +675,61 @@
         <div class="trend-list reveal reveal-d2">
           <a class="trend-row hot" href="game-single.html">
             <div class="trend-row__rank">01</div>
-            <img class="trend-row__img" src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Dune" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/simon-hurry-RhYiBB-_FR8-unsplash.jpg" alt="Dune" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Dune: Imperium</div><div class="trend-row__sub">Strategy · Sci-Fi</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">02</div>
-            <img class="trend-row__img" src="../assets/images/home1/2h-media-hH3JuONz7CQ-unsplash.jpg" alt="Wingspan" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/zoshua-colah-98UXqtk2qHc-unsplash.jpg" alt="Wingspan" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Wingspan</div><div class="trend-row__sub">Engine Building</div></div>
             <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
           </a>
           <a class="trend-row hot" href="game-single.html">
             <div class="trend-row__rank">03</div>
-            <img class="trend-row__img" src="../assets/images/home1/rombo-XYMqZsGOosg-unsplash.jpg" alt="Ark Nova" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/2h-media-VJMZNFrDtPs-unsplash.jpg" alt="Ark Nova" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Ark Nova</div><div class="trend-row__sub">Strategy · Zoo</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">04</div>
-            <img class="trend-row__img" src="../assets/images/home1/alexander-lyashkov-RNhfwmv9Zo4-unsplash.jpg" alt="Cascadia" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/2h-media-Z9Jv6WRKRpA-unsplash.jpg" alt="Cascadia" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Cascadia</div><div class="trend-row__sub">Tile Laying</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">05</div>
-            <img class="trend-row__img" src="../assets/images/home1/alexander-lyashkov-rSMb45Cd_8o-unsplash.jpg" alt="Gloomhaven" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/aedrian-salazar-w8fPD9o7NME-unsplash.jpg" alt="Gloomhaven" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Gloomhaven</div><div class="trend-row__sub">Dungeon Crawl</div></div>
             <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">06</div>
-            <img class="trend-row__img" src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Everdell" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/alexander-lyashkov-RNhfwmv9Zo4-unsplash.jpg" alt="Everdell" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Everdell</div><div class="trend-row__sub">Worker Placement</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row hot" href="game-single.html">
             <div class="trend-row__rank">07</div>
-            <img class="trend-row__img" src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Arnak" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/alexander-lyashkov-kHq6TnM-SyU-unsplash.jpg" alt="Arnak" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Lost Ruins of Arnak</div><div class="trend-row__sub">Deck Building</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">08</div>
-            <img class="trend-row__img" src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Brass" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/alexander-lyashkov-rSMb45Cd_8o-unsplash.jpg" alt="Brass" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Brass: Birmingham</div><div class="trend-row__sub">Economic</div></div>
             <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">09</div>
-            <img class="trend-row__img" src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Spirit Island" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/alexander-lyashkov-tZMhMhmAMnQ-unsplash.jpg" alt="Spirit Island" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Spirit Island</div><div class="trend-row__sub">Co-operative</div></div>
             <div class="trend-arrow up"><i class="fa-solid fa-arrow-up"></i></div>
           </a>
           <a class="trend-row" href="game-single.html">
             <div class="trend-row__rank">10</div>
-            <img class="trend-row__img" src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Viticulture" loading="lazy" />
+            <img class="trend-row__img" src="../assets/images/all titles/amos-k-VVCd8C4mtnw-unsplash.jpg" alt="Viticulture" loading="lazy" />
             <div class="trend-row__info"><div class="trend-row__title">Viticulture: EE</div><div class="trend-row__sub">Worker Placement</div></div>
             <div class="trend-arrow stable"><i class="fa-solid fa-minus"></i></div>
           </a>
@@ -724,7 +742,7 @@
           <!-- 1. Dune: Imperium -->
           <article class="gx-card" data-genre="strategy">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Dune: Imperium" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/daniele-franchi-yuAOkXNQ9RI-unsplash.jpg" alt="Dune: Imperium" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #1</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -747,7 +765,7 @@
           <!-- 2. Wingspan -->
           <article class="gx-card" data-genre="family">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/2h-media-hH3JuONz7CQ-unsplash.jpg" alt="Wingspan" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/doerge-monopoly-1356307_1920.jpg" alt="Wingspan" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #2</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -770,7 +788,7 @@
           <!-- 3. Ark Nova -->
           <article class="gx-card" data-genre="strategy">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/rombo-XYMqZsGOosg-unsplash.jpg" alt="Ark Nova" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/fox-hyde-L3nRD7AgYZQ-unsplash.jpg" alt="Ark Nova" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #3</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -793,7 +811,7 @@
           <!-- 4. Cascadia -->
           <article class="gx-card" data-genre="family">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/alexander-lyashkov-RNhfwmv9Zo4-unsplash.jpg" alt="Cascadia" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/hans-scrabble-2876136_1920.jpg" alt="Cascadia" loading="lazy" />
               <div class="gx-card__badges">
                 <span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #4</span>
                 <span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Spiel 2022</span>
@@ -819,7 +837,7 @@
           <!-- 5. Gloomhaven -->
           <article class="gx-card" data-genre="rpg">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/alexander-lyashkov-rSMb45Cd_8o-unsplash.jpg" alt="Gloomhaven" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/jacques-dillies-5ao1SPVofnE-unsplash.jpg" alt="Gloomhaven" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> #5</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -842,7 +860,7 @@
           <!-- 6. Everdell -->
           <article class="gx-card" data-genre="family">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Everdell" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/jacques-dillies-auJrzidINFA-unsplash.jpg" alt="Everdell" loading="lazy" />
               <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Fan Favourite</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -865,7 +883,7 @@
           <!-- 7. Lost Ruins of Arnak -->
           <article class="gx-card" data-genre="strategy">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/karthik-balakrishnan-NrS53eUKgiE-unsplash.jpg" alt="Lost Ruins of Arnak" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/jan-antonin-kolar-W2tTCQ1tdog-unsplash.jpg" alt="Lost Ruins of Arnak" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-arrow-trend-up"></i> Rising</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -888,7 +906,7 @@
           <!-- 8. Brass: Birmingham -->
           <article class="gx-card" data-genre="strategy">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Brass: Birmingham" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/nika-benedictova-1k6Kjg15QW8-unsplash.jpg" alt="Brass: Birmingham" loading="lazy" />
               <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">BGG Top 10</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -911,7 +929,7 @@
           <!-- 9. Spirit Island -->
           <article class="gx-card" data-genre="coop">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Spirit Island" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/nika-benedictova-VrtwS-ayI5U-unsplash.jpg" alt="Spirit Island" loading="lazy" />
               <div class="gx-card__badges"><span class="trend-badge" style="font-size:0.65rem;padding:3px 9px;"><i class="fa-solid fa-fire"></i> Co-op #1</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -934,7 +952,7 @@
           <!-- 10. Viticulture -->
           <article class="gx-card" data-genre="strategy">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Viticulture Essential Edition" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/nika-benedictova-oEyUkJwT8_M-unsplash.jpg" alt="Viticulture Essential Edition" loading="lazy" />
               <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">Evergreen</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -957,7 +975,7 @@
           <!-- 11. Ticket to Ride: Legacy -->
           <article class="gx-card" data-genre="family">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Ticket to Ride Legacy" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/parinaz-mirhosseini-LcJiIpRigKQ-unsplash.jpg" alt="Ticket to Ride Legacy" loading="lazy" />
               <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">2024 Release</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -980,7 +998,7 @@
           <!-- 12. Pandemic Legacy S1 -->
           <article class="gx-card" data-genre="coop">
             <div class="gx-card__img-wrap">
-              <img class="gx-card__img" src="../assets/images/home1/an-le-khanh-WofhwIoUURk-unsplash.jpg" alt="Pandemic Legacy Season 1" loading="lazy" />
+              <img class="gx-card__img" src="../assets/images/all titles/parinaz-mirhosseini-YCRcavcVEFI-unsplash.jpg" alt="Pandemic Legacy Season 1" loading="lazy" />
               <div class="gx-card__badges"><span class="new-badge" style="font-size:0.65rem;padding:3px 9px;">All-Time Great</span></div>
               <button class="gx-card__wishlist" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
@@ -1022,42 +1040,42 @@
     <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">Not sure where to start? Pick a vibe and we'll surface the right titles.</p>
     <div class="collection-grid reveal reveal-d3">
       <div class="collection-card">
-        <img src="../assets/images/home1/clint-bustrillos-X-A-LJVAhzk-unsplash.jpg" alt="Epic Strategy" loading="lazy" />
+        <img src="../assets/images/all titles/parinaz-mirhosseini-lCkh1D0RsTg-unsplash.jpg" alt="Epic Strategy" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Epic Strategy</div>
           <div class="collection-card__count">24 games</div>
         </div>
       </div>
       <div class="collection-card">
-        <img src="../assets/images/home1/2h-media-hH3JuONz7CQ-unsplash.jpg" alt="Family Night" loading="lazy" />
+        <img src="../assets/images/all titles/pexels-anete-lusina-4792372.jpg" alt="Family Night" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Family Night</div>
           <div class="collection-card__count">18 games</div>
         </div>
       </div>
       <div class="collection-card">
-        <img src="../assets/images/home1/alexander-lyashkov-rSMb45Cd_8o-unsplash.jpg" alt="Dungeon Delves" loading="lazy" />
+        <img src="../assets/images/all titles/pexels-karola-g-6333908.jpg" alt="Dungeon Delves" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Dungeon Delves</div>
           <div class="collection-card__count">12 games</div>
         </div>
       </div>
       <div class="collection-card">
-        <img src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Solo Adventures" loading="lazy" />
+        <img src="../assets/images/all titles/pexels-karola-g-6333933.jpg" alt="Solo Adventures" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Solo Adventures</div>
           <div class="collection-card__count">15 games</div>
         </div>
       </div>
       <div class="collection-card">
-        <img src="../assets/images/home1/alexander-lyashkov-RNhfwmv9Zo4-unsplash.jpg" alt="Short & Sweet" loading="lazy" />
+        <img src="../assets/images/all titles/rombo-XYMqZsGOosg-unsplash.jpg" alt="Short & Sweet" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Short &amp; Sweet (under 30 min)</div>
           <div class="collection-card__count">22 games</div>
         </div>
       </div>
       <div class="collection-card">
-        <img src="../assets/images/home2/joel-abraham-8RRYJg26Wr4-unsplash.jpg" alt="Award Winners" loading="lazy" />
+        <img src="../assets/images/all titles/simon-hurry-RhYiBB-_FR8-unsplash.jpg" alt="Award Winners" loading="lazy" />
         <div class="collection-card__overlay">
           <div class="collection-card__title">Award Winners</div>
           <div class="collection-card__count">31 games</div>
@@ -1077,7 +1095,7 @@
     <p class="sec-sub reveal reveal-d2" style="margin-bottom:32px;">Hand-picked recommendations from the TabletopForge editorial team.</p>
     <div class="editorial-grid reveal reveal-d3">
       <div class="editorial-card">
-        <img class="editorial-card__img" src="../assets/images/home1/rombo-XYMqZsGOosg-unsplash.jpg" alt="Ark Nova" loading="lazy" />
+        <img class="editorial-card__img" src="../assets/images/all titles/zoshua-colah-98UXqtk2qHc-unsplash.jpg" alt="Ark Nova" loading="lazy" />
         <div class="editorial-card__body">
           <div class="editorial-card__genre">Strategy</div>
           <div class="editorial-card__title">Ark Nova — Best Complex Game 2025</div>
@@ -1085,7 +1103,7 @@
         </div>
       </div>
       <div class="editorial-card">
-        <img class="editorial-card__img" src="../assets/images/home1/alexander-lyashkov-RNhfwmv9Zo4-unsplash.jpg" alt="Cascadia" loading="lazy" />
+        <img class="editorial-card__img" src="../assets/images/all titles/2h-media-VJMZNFrDtPs-unsplash.jpg" alt="Cascadia" loading="lazy" />
         <div class="editorial-card__body">
           <div class="editorial-card__genre">Family</div>
           <div class="editorial-card__title">Cascadia — Best Gateway Game</div>
@@ -1093,7 +1111,7 @@
         </div>
       </div>
       <div class="editorial-card">
-        <img class="editorial-card__img" src="../assets/images/home1/fox-hyde-1Js7JZNf8yQ-unsplash.jpg" alt="Spirit Island" loading="lazy" />
+        <img class="editorial-card__img" src="../assets/images/all titles/2h-media-Z9Jv6WRKRpA-unsplash.jpg" alt="Spirit Island" loading="lazy" />
         <div class="editorial-card__body">
           <div class="editorial-card__genre">Co-operative</div>
           <div class="editorial-card__title">Spirit Island — Best Co-op Game</div>
@@ -1101,7 +1119,7 @@
         </div>
       </div>
       <div class="editorial-card">
-        <img class="editorial-card__img" src="../assets/images/home1/grant-durr-Kbdl_ZY12JY-unsplash.jpg" alt="Brass Birmingham" loading="lazy" />
+        <img class="editorial-card__img" src="../assets/images/all titles/aedrian-salazar-w8fPD9o7NME-unsplash.jpg" alt="Brass Birmingham" loading="lazy" />
         <div class="editorial-card__body">
           <div class="editorial-card__genre">Economic</div>
           <div class="editorial-card__title">Brass: Birmingham — Best 2-Player</div>

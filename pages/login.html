@@ -15,63 +15,6 @@
   <link rel="stylesheet" href="../assets/css/rtl.css" />
 </head>
 <body>
-<div class="nav-wrap">
-  <header class="nav" role="banner">
-    <nav class="nav__inner" aria-label="Main navigation">
-      <a href="index.html" class="nav__logo"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span class="nav__logo-text">TabletopForge</span></a>
-      <ul class="nav__links" role="list">
-        <li class="nav__item">
-          <a href="index.html" class="nav__link" aria-haspopup="true">Home <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
-          <div class="nav__dropdown" role="menu">
-            <a href="index.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-house"></i><div>Home Page 1 <span>Backer discovery experience</span></div></a>
-            <a href="home-page-2.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-layer-group"></i><div>Home Page 2 <span>Campaign spotlight layout</span></div></a>
-          </div>
-        </li>
-        <li class="nav__item">
-          <a href="games.html" class="nav__link" aria-haspopup="true">Games <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
-          <div class="nav__dropdown" role="menu">
-            <a href="games.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-dice"></i><div>Explore All <span>Browse our full catalogue</span></div></a>
-            <a href="games-coming-soon.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-clock"></i><div>Coming Soon <span>Wishlist &amp; notify</span></div></a>
-            <a href="games-funded.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-circle-check"></i><div>Funded Games <span>Find where to buy</span></div></a>
-          </div>
-        </li>
-        <li class="nav__item"><a href="campaigns.html" class="nav__link">Campaigns</a></li>
-        <li class="nav__item"><a href="launch.html" class="nav__link">Launch</a></li>
-        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-        <li class="nav__item">
-          <a href="dashboard-user.html" class="nav__link" aria-haspopup="true">Dashboard <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></a>
-          <div class="nav__dropdown" role="menu">
-            <a href="dashboard-user.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-user"></i><div>Backer Dashboard <span>Pledges, orders, wishlist</span></div></a>
-            <a href="dashboard-admin.html" class="nav__dropdown-link" role="menuitem"><i class="fa-solid fa-gear"></i><div>Admin Dashboard <span>Manage campaigns &amp; games</span></div></a>
-          </div>
-        </li>
-      </ul>
-      <div class="nav__controls">
-        <button class="nav__icon-btn" data-theme-toggle aria-label="Toggle theme" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
-        <button class="nav__icon-btn" data-rtl-toggle aria-label="Switch RTL" type="button">RTL</button>
-        <a href="login.html" class="btn btn--primary btn--sm">Login</a>
-      </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span><span></span></button>
-    </nav>
-  </header>
-</div>
-<nav id="mobile-menu" class="nav__mobile" aria-hidden="true">
-  <a href="index.html" class="nav__mobile-link">Home</a>
-  <a href="home-page-2.html" class="nav__mobile-link nav__mobile-sub">Home Page 2</a>
-  <a href="games.html" class="nav__mobile-link">Games</a>
-  <a href="campaigns.html" class="nav__mobile-link">Campaigns</a>
-  <a href="launch.html" class="nav__mobile-link">Launch a Game</a>
-  <a href="about.html" class="nav__mobile-link">About</a>
-  <a href="blog.html" class="nav__mobile-link">Blog</a>
-  <a href="dashboard-user.html" class="nav__mobile-link">Backer Dashboard</a>
-  <a href="dashboard-admin.html" class="nav__mobile-link nav__mobile-sub">Admin Dashboard</a>
-  <div class="nav__mobile-controls">
-    <button class="btn btn--ghost" data-theme-toggle type="button">Theme</button>
-    <button class="btn btn--ghost" data-rtl-toggle type="button">RTL</button>
-  </div>
-  <a href="login.html" class="btn btn--primary" style="margin-top:8px;">Login</a>
-</nav>
 <div class="auth-shell">
   <div class="auth-card auth-card--wide reveal">
     <div style="text-align:center;margin-bottom:30px;">
@@ -109,17 +52,6 @@
     <p class="auth-note" style="text-align:center;margin-top:24px;font-size:0.9rem;">Don't have an account? <a href="create-account.html" style="color:var(--primary);">Create one free</a></p>
   </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col"><a href="index.html" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><div class="nav__logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16"/><path d="M8 16V9a4 4 0 0 1 8 0v7"/><path d="M9 9h6"/><circle cx="12" cy="6" r="1"/></svg></div><span style="font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;color:#fff;">TabletopForge</span></a><p style="font-size:0.875rem;color:rgba(255,255,255,0.40);line-height:1.7;max-width:280px;">Live campaigns, upcoming launches, and funded board games in one place for backers and studios following the tabletop scene.</p></div>
-      <div class="footer-col"><div class="footer-col__heading">Platform</div><div class="footer-col__links"><a href="games.html" class="footer-col__link">All Games</a><a href="campaigns.html" class="footer-col__link">Live Campaigns</a><a href="games-coming-soon.html" class="footer-col__link">Coming Soon</a><a href="games-funded.html" class="footer-col__link">Funded Games</a><a href="retailer-info.html" class="footer-col__link">Retailer Info</a></div></div>
-      <div class="footer-col"><div class="footer-col__heading">Company</div><div class="footer-col__links"><a href="about.html" class="footer-col__link">About Us</a><a href="blog.html" class="footer-col__link">Blog</a><a href="careers.html" class="footer-col__link">Careers</a><a href="press-kit.html" class="footer-col__link">Press Kit</a><a href="contact.html" class="footer-col__link">Contact</a></div></div>
-      <div class="footer-col"><div class="footer-col__heading">Legal</div><div class="footer-col__links"><a href="privacy-policy.html" class="footer-col__link">Privacy Policy</a><a href="terms-conditions.html" class="footer-col__link">Terms &amp; Conditions</a><a href="faq.html" class="footer-col__link">FAQ</a></div></div>
-    </div>
-    <div class="footer-bottom"><span>&copy; 2026 TabletopForge. All rights reserved.</span><span>Made with <i class="fa-solid fa-heart" style="color:var(--primary);"></i> for board game lovers</span></div>
-  </div>
-</footer>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
